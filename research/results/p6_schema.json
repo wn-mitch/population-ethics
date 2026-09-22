@@ -12,43 +12,43 @@
       "baseline-p1q1-N2": 0.0,
       "baseline-p1q1-N3": 0.0,
       "baseline-p1q1-N4": 0.2,
-      "baseline-p1q1-N5": 0.8,
-      "baseline-p1q1-N6": 3.0,
-      "baseline-p1q1-N7": 13.5,
-      "baseline-p1q1-N8": 90.8,
+      "baseline-p1q1-N5": 0.7,
+      "baseline-p1q1-N6": 2.9,
+      "baseline-p1q1-N7": 13.0,
+      "baseline-p1q1-N8": 85.4,
       "baseline-p1q2-N2": 0.0,
       "baseline-p1q2-N3": 0.1,
       "baseline-p1q2-N4": 0.3,
       "baseline-p1q2-N5": 1.0,
-      "baseline-p1q2-N6": 3.7,
-      "baseline-p1q2-N7": 14.9,
-      "baseline-p1q2-N8": 97.4,
+      "baseline-p1q2-N6": 3.6,
+      "baseline-p1q2-N7": 14.5,
+      "baseline-p1q2-N8": 90.4,
       "gapped-p1q1-N2": 0.0,
       "gapped-p1q1-N3": 0.1,
       "gapped-p1q1-N4": 0.3,
-      "gapped-p1q1-N5": 1.1,
-      "gapped-p1q1-N6": 3.8,
-      "gapped-p1q1-N7": 363.3,
+      "gapped-p1q1-N5": 1.0,
+      "gapped-p1q1-N6": 3.7,
+      "gapped-p1q1-N7": 392.4,
       "gapped-p1q2-N2": 0.0,
       "gapped-p1q2-N3": 0.1,
       "gapped-p1q2-N4": 0.3,
       "gapped-p1q2-N5": 1.0,
-      "gapped-p1q2-N6": 3.8,
-      "gapped-p1q2-N7": 15.3,
-      "gapped-p1q2-N8": 96.9,
+      "gapped-p1q2-N6": 3.9,
+      "gapped-p1q2-N7": 15.2,
+      "gapped-p1q2-N8": 107.7,
       "relaxed-p1q1-N2": 3.0,
       "relaxed-p1q2-N2": 0.0,
       "relaxed-p1q2-N3": 3.0,
       "relaxed-p1q3-N2": 0.0,
       "relaxed-p1q3-N3": 0.1,
-      "relaxed-p1q3-N4": 1.8,
+      "relaxed-p1q3-N4": 1.9,
       "relaxed-p1q4-N2": 0.0,
       "relaxed-p1q4-N3": 0.1,
       "relaxed-p1q4-N4": 0.3,
       "relaxed-p1q4-N5": 1.0,
-      "relaxed-p1q4-N6": 3.7
+      "relaxed-p1q4-N6": 3.6
     },
-    "wall_time_s": 727.07
+    "wall_time_s": 752.78
   },
   "result": {
     "baseline_skeleton_logical": "(7, (('I', '', (0, 1, 2)), ('N', '', (2, 3)), ('N', '', (3, 0)), ('N', '', (4, 5)), ('N', '', (5, 6)), ('S', '', (2, 6)), ('W', '', (4, 1))))",
@@ -387,40 +387,60 @@
             "skeletons": [
               {
                 "canonical_form_exact": true,
-                "example": [
-                  "dominance(P_6_6, P_5_5)",
-                  "non-anti-egalitarianism(P_m1_8, P_5_5)",
-                  "mnep(P_m1_8, P_6_6)"
-                ],
-                "instances": 3,
-                "largest_population": 2,
-                "logically_isomorphic_to_baseline": false,
-                "occurrences": 3,
-                "principles": {
-                  "dominance": 1,
-                  "mnep": 1,
-                  "non-anti-egalitarianism": 1
-                },
-                "relata": 3,
-                "semantically_isomorphic_to_baseline": false,
-                "total_distinct_lives": 6,
-                "verification": {
-                  "all_instances_pass_applicability_audit": true,
-                  "cli_decision": "unsat",
-                  "cli_verify_accepted": true,
-                  "complete_preorders_satisfying_core": 0,
-                  "completeness_mus_sizes": {
-                    "0": 1
+                "core": [
+                  {
+                    "args": [
+                      [
+                        6,
+                        6
+                      ],
+                      [
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
                   },
-                  "escape_k_min": null,
-                  "escape_minimum_patterns": [],
-                  "escape_without_completeness": "unsat",
-                  "relata": 3,
-                  "toml": "research/experiments/schema-relaxed-p1q1-N2-skeleton0.toml"
-                }
-              },
-              {
-                "canonical_form_exact": true,
+                  {
+                    "args": [
+                      [
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8
+                      ],
+                      [
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8
+                      ],
+                      [
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  }
+                ],
                 "example": [
                   "dominance(P_6_6, P_5_5)",
                   "dominance(P_7_7, P_6_6)",
@@ -428,6 +448,24 @@
                   "mnep(P_m1_8, P_7_7)"
                 ],
                 "instances": 4,
+                "known_ground": {
+                  "exact_known": null,
+                  "largest_fragment": "project-r6-gapped",
+                  "largest_fragment_edges": "3/8",
+                  "per_known": {
+                    "arrhenius-1999": "2/5",
+                    "arrhenius-2000-ep": "2/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "3/8"
+                  },
+                  "residual": [
+                    "mnep([-1, 8], [7, 7])"
+                  ],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": [
+                    "dominance([7, 7], [6, 6])"
+                  ]
+                },
                 "largest_population": 2,
                 "logically_isomorphic_to_baseline": false,
                 "occurrences": 1,
@@ -451,6 +489,97 @@
                   "escape_minimum_patterns": [],
                   "escape_without_completeness": "unsat",
                   "relata": 4,
+                  "toml": "research/experiments/schema-relaxed-p1q1-N2-skeleton0.toml"
+                }
+              },
+              {
+                "canonical_form_exact": true,
+                "core": [
+                  {
+                    "args": [
+                      [
+                        6,
+                        6
+                      ],
+                      [
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8
+                      ],
+                      [
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8
+                      ],
+                      [
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "mnep"
+                  }
+                ],
+                "example": [
+                  "dominance(P_6_6, P_5_5)",
+                  "non-anti-egalitarianism(P_m1_8, P_5_5)",
+                  "mnep(P_m1_8, P_6_6)"
+                ],
+                "instances": 3,
+                "known_ground": {
+                  "exact_known": "project-r5-triangle",
+                  "largest_fragment": "project-r5-triangle",
+                  "largest_fragment_edges": "3/3",
+                  "per_known": {
+                    "arrhenius-1999": "2/5",
+                    "arrhenius-2000-ep": "2/7",
+                    "project-r5-triangle": "3/3",
+                    "project-r6-gapped": "2/8"
+                  },
+                  "residual": [],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": [
+                    "mnep([-1, 8], [6, 6])"
+                  ]
+                },
+                "largest_population": 2,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 3,
+                "principles": {
+                  "dominance": 1,
+                  "mnep": 1,
+                  "non-anti-egalitarianism": 1
+                },
+                "relata": 3,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 6,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "0": 1
+                  },
+                  "escape_k_min": null,
+                  "escape_minimum_patterns": [],
+                  "escape_without_completeness": "unsat",
+                  "relata": 3,
                   "toml": "research/experiments/schema-relaxed-p1q1-N2-skeleton1.toml"
                 }
               }
@@ -500,40 +629,68 @@
             "skeletons": [
               {
                 "canonical_form_exact": true,
-                "example": [
-                  "dominance(P_7_7_7, P_6_6_6)",
-                  "non-anti-egalitarianism(P_m1_8_8, P_6_6_6)",
-                  "mnep(P_m1_8_8, P_7_7_7)"
-                ],
-                "instances": 3,
-                "largest_population": 3,
-                "logically_isomorphic_to_baseline": false,
-                "occurrences": 1,
-                "principles": {
-                  "dominance": 1,
-                  "mnep": 1,
-                  "non-anti-egalitarianism": 1
-                },
-                "relata": 3,
-                "semantically_isomorphic_to_baseline": false,
-                "total_distinct_lives": 9,
-                "verification": {
-                  "all_instances_pass_applicability_audit": true,
-                  "cli_decision": "unsat",
-                  "cli_verify_accepted": true,
-                  "complete_preorders_satisfying_core": 0,
-                  "completeness_mus_sizes": {
-                    "0": 1
+                "core": [
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
                   },
-                  "escape_k_min": null,
-                  "escape_minimum_patterns": [],
-                  "escape_without_completeness": "unsat",
-                  "relata": 3,
-                  "toml": "research/experiments/schema-relaxed-p1q2-N3-skeleton0.toml"
-                }
-              },
-              {
-                "canonical_form_exact": true,
+                  {
+                    "args": [
+                      [
+                        1,
+                        8,
+                        8
+                      ],
+                      [
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8,
+                        8
+                      ],
+                      [
+                        1,
+                        8,
+                        8
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8,
+                        8
+                      ],
+                      [
+                        7,
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  }
+                ],
                 "example": [
                   "dominance(P_7_7_7, P_6_6_6)",
                   "non-anti-egalitarianism(P_1_8_8, P_6_6_6)",
@@ -541,6 +698,20 @@
                   "mnep(P_m1_8_8, P_7_7_7)"
                 ],
                 "instances": 4,
+                "known_ground": {
+                  "exact_known": null,
+                  "largest_fragment": "arrhenius-2000-ep",
+                  "largest_fragment_edges": "3/7",
+                  "per_known": {
+                    "arrhenius-1999": "3/5",
+                    "arrhenius-2000-ep": "3/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "3/8"
+                  },
+                  "residual": [],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": []
+                },
                 "largest_population": 3,
                 "logically_isomorphic_to_baseline": false,
                 "occurrences": 1,
@@ -571,6 +742,103 @@
                   ],
                   "escape_without_completeness": "sat",
                   "relata": 4,
+                  "toml": "research/experiments/schema-relaxed-p1q2-N3-skeleton0.toml"
+                }
+              },
+              {
+                "canonical_form_exact": true,
+                "core": [
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8,
+                        8
+                      ],
+                      [
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8,
+                        8
+                      ],
+                      [
+                        7,
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  }
+                ],
+                "example": [
+                  "dominance(P_7_7_7, P_6_6_6)",
+                  "non-anti-egalitarianism(P_m1_8_8, P_6_6_6)",
+                  "mnep(P_m1_8_8, P_7_7_7)"
+                ],
+                "instances": 3,
+                "known_ground": {
+                  "exact_known": "project-r5-triangle",
+                  "largest_fragment": "project-r5-triangle",
+                  "largest_fragment_edges": "3/3",
+                  "per_known": {
+                    "arrhenius-1999": "2/5",
+                    "arrhenius-2000-ep": "2/7",
+                    "project-r5-triangle": "3/3",
+                    "project-r6-gapped": "2/8"
+                  },
+                  "residual": [],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": [
+                    "mnep([-1, 8, 8], [7, 7, 7])"
+                  ]
+                },
+                "largest_population": 3,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "dominance": 1,
+                  "mnep": 1,
+                  "non-anti-egalitarianism": 1
+                },
+                "relata": 3,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 9,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "0": 1
+                  },
+                  "escape_k_min": null,
+                  "escape_minimum_patterns": [],
+                  "escape_without_completeness": "unsat",
+                  "relata": 3,
                   "toml": "research/experiments/schema-relaxed-p1q2-N3-skeleton1.toml"
                 }
               }
@@ -635,12 +903,81 @@
             "skeletons": [
               {
                 "canonical_form_exact": true,
+                "core": [
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8,
+                        8,
+                        8
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        8,
+                        8,
+                        8
+                      ],
+                      [
+                        7,
+                        7,
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  }
+                ],
                 "example": [
                   "dominance(P_7_7_7_7, P_6_6_6_6)",
                   "non-anti-egalitarianism(P_m1_8_8_8, P_6_6_6_6)",
                   "mnep(P_m1_8_8_8, P_7_7_7_7)"
                 ],
                 "instances": 3,
+                "known_ground": {
+                  "exact_known": "project-r5-triangle",
+                  "largest_fragment": "project-r5-triangle",
+                  "largest_fragment_edges": "3/3",
+                  "per_known": {
+                    "arrhenius-1999": "2/5",
+                    "arrhenius-2000-ep": "2/7",
+                    "project-r5-triangle": "3/3",
+                    "project-r6-gapped": "2/8"
+                  },
+                  "residual": [],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": [
+                    "mnep([-1, 8, 8, 8], [7, 7, 7, 7])"
+                  ]
+                },
                 "largest_population": 4,
                 "logically_isomorphic_to_baseline": false,
                 "occurrences": 1,
@@ -863,122 +1200,196 @@
             "skeletons": [
               {
                 "canonical_form_exact": true,
-                "example": [
-                  "dominance(P_6_6_6_6_6_6_6, P_5_5_5_5_5_5_5)",
-                  "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
-                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
-                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
-                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
-                  "mnep(P_m1_14_14, P_7_7_14)",
-                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_6)",
-                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
-                ],
-                "instances": 8,
-                "largest_population": 7,
-                "logically_isomorphic_to_baseline": false,
-                "occurrences": 1,
-                "principles": {
-                  "addition": 1,
-                  "dominance": 2,
-                  "mnep": 2,
-                  "non-anti-egalitarianism": 1,
-                  "non-repugnance": 1,
-                  "non-sadism": 1
-                },
-                "relata": 8,
-                "semantically_isomorphic_to_baseline": false,
-                "total_distinct_lives": 42,
-                "verification": {
-                  "all_instances_pass_applicability_audit": true,
-                  "cli_decision": "unsat",
-                  "cli_verify_accepted": true,
-                  "complete_preorders_satisfying_core": 0,
-                  "completeness_mus_sizes": {
-                    "3": 119,
-                    "4": 16
-                  },
-                  "escape_k_min": 5,
-                  "escape_minimum_patterns": [
-                    [
-                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
-                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_6",
-                      "P_1_1_1_1_1_14_14|P_7_7_14",
-                      "P_1_1_1_1_1_14_14|P_m1_14_14",
-                      "P_1_1_1_1_1_14_14|P_m1_6_6_6_6_6_14"
-                    ]
-                  ],
-                  "escape_without_completeness": "sat",
-                  "relata": 8,
-                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton0.toml"
-                }
-              },
-              {
-                "canonical_form_exact": true,
-                "example": [
-                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
-                  "dominance(P_7_7_7_7_7_7_7, P_5_5_5_5_5_5_5)",
-                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
-                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
-                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
-                  "mnep(P_m1_14_14, P_7_7_14)",
-                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
-                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
-                ],
-                "instances": 8,
-                "largest_population": 7,
-                "logically_isomorphic_to_baseline": false,
-                "occurrences": 2,
-                "principles": {
-                  "addition": 1,
-                  "dominance": 2,
-                  "mnep": 2,
-                  "non-anti-egalitarianism": 1,
-                  "non-repugnance": 1,
-                  "non-sadism": 1
-                },
-                "relata": 8,
-                "semantically_isomorphic_to_baseline": false,
-                "total_distinct_lives": 42,
-                "verification": {
-                  "all_instances_pass_applicability_audit": true,
-                  "cli_decision": "unsat",
-                  "cli_verify_accepted": true,
-                  "complete_preorders_satisfying_core": 0,
-                  "completeness_mus_sizes": {
-                    "3": 61,
-                    "4": 27
-                  },
-                  "escape_k_min": 5,
-                  "escape_minimum_patterns": [
-                    [
-                      "P_14|P_1_1_1_1_1_14_14",
-                      "P_14|P_5_5_5_5_5_5_5",
-                      "P_14|P_7_7_14",
-                      "P_14|P_7_7_7_7_7_7_7",
-                      "P_14|P_m1_14_14"
+                "core": [
+                  {
+                    "args": [
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
                     ],
-                    [
-                      "P_14|P_1_1_1_1_1_14_14",
-                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
-                      "P_1_1_1_1_1_14_14|P_7_7_14",
-                      "P_1_1_1_1_1_14_14|P_7_7_7_7_7_7_7",
-                      "P_1_1_1_1_1_14_14|P_m1_14_14"
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
                     ],
-                    [
-                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
-                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_7",
-                      "P_1_1_1_1_1_14_14|P_7_7_14",
-                      "P_1_1_1_1_1_14_14|P_m1_14_14",
-                      "P_1_1_1_1_1_14_14|P_m1_6_6_6_6_6_14"
-                    ]
-                  ],
-                  "escape_without_completeness": "sat",
-                  "relata": 8,
-                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton1.toml"
-                }
-              },
-              {
-                "canonical_form_exact": true,
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        14
+                      ]
+                    ],
+                    "principle": "non-repugnance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "addition"
+                  }
+                ],
                 "example": [
                   "dominance(P_6_6_6_6_6_6_6, P_5_5_5_5_5_5_5)",
                   "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
@@ -991,6 +1402,28 @@
                   "addition(P_14, P_7_7_14, P_1_6_6_6_6_6_14)"
                 ],
                 "instances": 9,
+                "known_ground": {
+                  "exact_known": null,
+                  "largest_fragment": "project-r6-gapped",
+                  "largest_fragment_edges": "7/8",
+                  "per_known": {
+                    "arrhenius-1999": "4/5",
+                    "arrhenius-2000-ep": "5/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "7/8"
+                  },
+                  "residual": [
+                    "non-sadism([-1, 6, 6, 6, 6, 6, 14], [1, 6, 6, 6, 6, 6, 14])"
+                  ],
+                  "uncovered_by_catalogue": [
+                    "non-sadism([-1, 6, 6, 6, 6, 6, 14], [1, 6, 6, 6, 6, 6, 14])"
+                  ],
+                  "uncovered_by_published": [
+                    "dominance([7, 7, 7, 7, 7, 7, 7], [6, 6, 6, 6, 6, 6, 6])",
+                    "non-sadism([-1, 6, 6, 6, 6, 6, 14], [1, 6, 6, 6, 6, 6, 14])",
+                    "mnep([-1, 6, 6, 6, 6, 6, 14], [6, 6, 6, 6, 6, 6, 6])"
+                  ]
+                },
                 "largest_population": 7,
                 "logically_isomorphic_to_baseline": false,
                 "occurrences": 1,
@@ -1040,41 +1473,296 @@
                   ],
                   "escape_without_completeness": "sat",
                   "relata": 9,
-                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton2.toml"
+                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton0.toml"
                 }
               },
               {
                 "canonical_form_exact": false,
-                "example": [
-                  "dominance(P_7_7_7_7_7_7, P_6_6_6_6_6_6)",
-                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
-                  "non-anti-egalitarianism(P_1_1_1_1_14_14, P_6_6_6_6_6_6)",
-                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
-                  "non-repugnance(P_7_7_7_7_7_7, P_14)",
-                  "non-sadism(P_m1_14_14, P_1_1_1_1_14_14)",
-                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
-                  "mnep(P_m1_14_14, P_7_7_14)",
-                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
-                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                "core": [
+                  {
+                    "args": [
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        1,
+                        1,
+                        1,
+                        7,
+                        14,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        14
+                      ]
+                    ],
+                    "principle": "non-repugnance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        -1,
+                        7,
+                        14,
+                        14
+                      ],
+                      [
+                        -1,
+                        1,
+                        1,
+                        1,
+                        7,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        -1,
+                        7,
+                        14,
+                        14
+                      ],
+                      [
+                        -1,
+                        7,
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        7,
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "addition"
+                  }
                 ],
-                "instances": 10,
-                "largest_population": 7,
-                "logically_isomorphic_to_baseline": false,
-                "occurrences": 1,
-                "principles": {
-                  "addition": 1,
-                  "dominance": 2,
-                  "mnep": 2,
-                  "non-anti-egalitarianism": 2,
-                  "non-repugnance": 1,
-                  "non-sadism": 2
-                },
-                "relata": 10,
-                "semantically_isomorphic_to_baseline": false,
-                "total_distinct_lives": 53
-              },
-              {
-                "canonical_form_exact": false,
                 "example": [
                   "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
                   "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
@@ -1092,6 +1780,33 @@
                   "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
                 ],
                 "instances": 14,
+                "known_ground": {
+                  "exact_known": null,
+                  "largest_fragment": "project-r6-gapped",
+                  "largest_fragment_edges": "7/8",
+                  "per_known": {
+                    "arrhenius-1999": "4/5",
+                    "arrhenius-2000-ep": "5/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "7/8"
+                  },
+                  "residual": [
+                    "dominance([7, 7, 7, 7, 7, 7, 7], [6, 6, 6, 6, 6, 6, 6])",
+                    "non-anti-egalitarianism([1, 1, 1, 14, 14], [7, 7, 7, 7, 7])",
+                    "non-anti-egalitarianism([-1, 1, 1, 1, 7, 14, 14], [6, 6, 6, 6, 6, 6, 6])",
+                    "non-sadism([-1, 14, 14], [1, 1, 1, 14, 14])",
+                    "non-sadism([-1, -1, 7, 14, 14], [-1, 1, 1, 1, 7, 14, 14])",
+                    "mnep([-1, -1, 7, 14, 14], [-1, 7, 7, 7, 14])",
+                    "mnep([-1, 7, 7, 7, 14], [7, 7, 7, 7, 7])"
+                  ],
+                  "uncovered_by_catalogue": [
+                    "mnep([-1, 7, 7, 7, 14], [7, 7, 7, 7, 7])"
+                  ],
+                  "uncovered_by_published": [
+                    "mnep([-1, 7, 7, 7, 14], [7, 7, 7, 7, 7])",
+                    "mnep([-1, 6, 6, 6, 6, 6, 14], [6, 6, 6, 6, 6, 6, 7])"
+                  ]
+                },
                 "largest_population": 7,
                 "logically_isomorphic_to_baseline": false,
                 "occurrences": 1,
@@ -1105,10 +1820,338 @@
                 },
                 "relata": 14,
                 "semantically_isomorphic_to_baseline": false,
-                "total_distinct_lives": 76
+                "total_distinct_lives": 76,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": null,
+                  "completeness_mus_sizes": {},
+                  "escape_k_min": 5,
+                  "escape_minimum_patterns": [
+                    [
+                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
+                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_7",
+                      "P_1_1_1_1_1_14_14|P_7_7_14",
+                      "P_1_1_1_1_1_14_14|P_m1_14_14",
+                      "P_1_1_1_1_1_14_14|P_m1_6_6_6_6_6_14"
+                    ]
+                  ],
+                  "escape_without_completeness": "sat",
+                  "relata": 14,
+                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton1.toml"
+                }
               },
               {
                 "canonical_form_exact": false,
+                "core": [
+                  {
+                    "args": [
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        1,
+                        1,
+                        1,
+                        7,
+                        14,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        14
+                      ]
+                    ],
+                    "principle": "non-repugnance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        -1,
+                        7,
+                        14,
+                        14
+                      ],
+                      [
+                        -1,
+                        1,
+                        1,
+                        1,
+                        7,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        -1,
+                        7,
+                        14,
+                        14
+                      ],
+                      [
+                        -1,
+                        7,
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        7,
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "addition"
+                  }
+                ],
                 "example": [
                   "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
                   "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
@@ -1127,6 +2170,33 @@
                   "addition(P_14, P_7_7_14, P_1_6_6_6_6_6_14)"
                 ],
                 "instances": 15,
+                "known_ground": {
+                  "exact_known": null,
+                  "largest_fragment": "project-r6-gapped",
+                  "largest_fragment_edges": "6/8",
+                  "per_known": {
+                    "arrhenius-1999": "4/5",
+                    "arrhenius-2000-ep": "5/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "6/8"
+                  },
+                  "residual": [
+                    "non-anti-egalitarianism([-1, 1, 1, 1, 7, 14, 14], [6, 6, 6, 6, 6, 6, 6])",
+                    "non-sadism([-1, -1, 7, 14, 14], [-1, 1, 1, 1, 7, 14, 14])",
+                    "non-sadism([-1, 6, 6, 6, 6, 6, 14], [1, 6, 6, 6, 6, 6, 14])",
+                    "mnep([-1, -1, 7, 14, 14], [-1, 7, 7, 7, 14])",
+                    "mnep([-1, 7, 7, 7, 14], [7, 7, 7, 7, 7])"
+                  ],
+                  "uncovered_by_catalogue": [
+                    "non-sadism([-1, 6, 6, 6, 6, 6, 14], [1, 6, 6, 6, 6, 6, 14])",
+                    "mnep([-1, 7, 7, 7, 14], [7, 7, 7, 7, 7])"
+                  ],
+                  "uncovered_by_published": [
+                    "non-sadism([-1, 6, 6, 6, 6, 6, 14], [1, 6, 6, 6, 6, 6, 14])",
+                    "mnep([-1, 7, 7, 7, 14], [7, 7, 7, 7, 7])",
+                    "mnep([-1, 6, 6, 6, 6, 6, 14], [6, 6, 6, 6, 6, 6, 7])"
+                  ]
+                },
                 "largest_population": 7,
                 "logically_isomorphic_to_baseline": false,
                 "occurrences": 1,
@@ -1140,7 +2210,706 @@
                 },
                 "relata": 15,
                 "semantically_isomorphic_to_baseline": false,
-                "total_distinct_lives": 83
+                "total_distinct_lives": 83,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": null,
+                  "completeness_mus_sizes": {},
+                  "escape_k_min": 6,
+                  "escape_minimum_patterns": [
+                    [
+                      "P_1_1_1_1_1_14_14|P_1_6_6_6_6_6_14",
+                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
+                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_7",
+                      "P_1_1_1_1_1_14_14|P_7_7_14",
+                      "P_1_1_1_1_1_14_14|P_m1_14_14",
+                      "P_1_1_1_1_1_14_14|P_m1_6_6_6_6_6_14"
+                    ]
+                  ],
+                  "escape_without_completeness": "sat",
+                  "relata": 15,
+                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton2.toml"
+                }
+              },
+              {
+                "canonical_form_exact": true,
+                "core": [
+                  {
+                    "args": [
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        14
+                      ]
+                    ],
+                    "principle": "non-repugnance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "addition"
+                  }
+                ],
+                "example": [
+                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
+                  "dominance(P_7_7_7_7_7_7_7, P_5_5_5_5_5_5_5)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
+                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                ],
+                "instances": 8,
+                "known_ground": {
+                  "exact_known": null,
+                  "largest_fragment": "project-r6-gapped",
+                  "largest_fragment_edges": "7/8",
+                  "per_known": {
+                    "arrhenius-1999": "4/5",
+                    "arrhenius-2000-ep": "5/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "7/8"
+                  },
+                  "residual": [
+                    "dominance([7, 7, 7, 7, 7, 7, 7], [5, 5, 5, 5, 5, 5, 5])"
+                  ],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": [
+                    "mnep([-1, 6, 6, 6, 6, 6, 14], [6, 6, 6, 6, 6, 6, 7])"
+                  ]
+                },
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 2,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 2,
+                  "non-anti-egalitarianism": 1,
+                  "non-repugnance": 1,
+                  "non-sadism": 1
+                },
+                "relata": 8,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 42
+              },
+              {
+                "canonical_form_exact": false,
+                "core": [
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        14
+                      ]
+                    ],
+                    "principle": "non-repugnance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        7
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "addition"
+                  }
+                ],
+                "example": [
+                  "dominance(P_7_7_7_7_7_7, P_6_6_6_6_6_6)",
+                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
+                  "non-anti-egalitarianism(P_1_1_1_1_14_14, P_6_6_6_6_6_6)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-repugnance(P_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_14_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
+                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                ],
+                "instances": 10,
+                "known_ground": {
+                  "exact_known": null,
+                  "largest_fragment": "project-r6-gapped",
+                  "largest_fragment_edges": "7/8",
+                  "per_known": {
+                    "arrhenius-1999": "4/5",
+                    "arrhenius-2000-ep": "5/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "7/8"
+                  },
+                  "residual": [
+                    "dominance([7, 7, 7, 7, 7, 7], [6, 6, 6, 6, 6, 6])",
+                    "non-anti-egalitarianism([1, 1, 1, 1, 14, 14], [6, 6, 6, 6, 6, 6])",
+                    "non-sadism([-1, 14, 14], [1, 1, 1, 1, 14, 14])"
+                  ],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": [
+                    "mnep([-1, 6, 6, 6, 6, 6, 14], [6, 6, 6, 6, 6, 6, 7])"
+                  ]
+                },
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 2,
+                  "non-anti-egalitarianism": 2,
+                  "non-repugnance": 1,
+                  "non-sadism": 2
+                },
+                "relata": 10,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 53
+              },
+              {
+                "canonical_form_exact": true,
+                "core": [
+                  {
+                    "args": [
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "dominance"
+                  },
+                  {
+                    "args": [
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ],
+                      [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                      ]
+                    ],
+                    "principle": "non-anti-egalitarianism"
+                  },
+                  {
+                    "args": [
+                      [
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7,
+                        7
+                      ],
+                      [
+                        14
+                      ]
+                    ],
+                    "principle": "non-repugnance"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        14,
+                        14
+                      ]
+                    ],
+                    "principle": "non-sadism"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        14,
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ],
+                      [
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6
+                      ]
+                    ],
+                    "principle": "mnep"
+                  },
+                  {
+                    "args": [
+                      [
+                        14
+                      ],
+                      [
+                        7,
+                        7,
+                        14
+                      ],
+                      [
+                        -1,
+                        6,
+                        6,
+                        6,
+                        6,
+                        6,
+                        14
+                      ]
+                    ],
+                    "principle": "addition"
+                  }
+                ],
+                "example": [
+                  "dominance(P_6_6_6_6_6_6_6, P_5_5_5_5_5_5_5)",
+                  "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_6)",
+                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                ],
+                "instances": 8,
+                "known_ground": {
+                  "exact_known": "project-r6-gapped",
+                  "largest_fragment": "project-r6-gapped",
+                  "largest_fragment_edges": "8/8",
+                  "per_known": {
+                    "arrhenius-1999": "4/5",
+                    "arrhenius-2000-ep": "5/7",
+                    "project-r5-triangle": "2/3",
+                    "project-r6-gapped": "8/8"
+                  },
+                  "residual": [],
+                  "uncovered_by_catalogue": [],
+                  "uncovered_by_published": [
+                    "dominance([7, 7, 7, 7, 7, 7, 7], [6, 6, 6, 6, 6, 6, 6])",
+                    "mnep([-1, 6, 6, 6, 6, 6, 14], [6, 6, 6, 6, 6, 6, 6])"
+                  ]
+                },
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 2,
+                  "non-anti-egalitarianism": 1,
+                  "non-repugnance": 1,
+                  "non-sadism": 1
+                },
+                "relata": 8,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 42
               }
             ]
           }
@@ -1269,6 +3038,6 @@
     "schema": "arrhenius-2000.schema/v0-unreviewed",
     "transfer": "UNSAT over D_N refutes v0 schema + W(p,q) (universal instances over D_N are consequences of the unrestricted v0 schema; W is fixed inside D_N). It does not refute Arrhenius's principles, nor v0 with other witnesses."
   },
-  "result_sha256": "4a06334dab5f90846ee85f6e8f8fd8e58fa38fadfc886300a739301bf4e52085",
+  "result_sha256": "e5777c1e3647949f72845f5fc135e0a31381f42dc5cff5b7dbd04d8358230412",
   "schema": "population-ethics.research-result/v1"
 }

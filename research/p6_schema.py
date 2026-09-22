@@ -18,6 +18,7 @@ from typing import Any
 
 from population_ethics.principles import GroundConstraint
 from population_ethics.relations import Formula, Implies, Not, strict, weak
+from research.known import known_ground, novelty_rank
 from research.lab import (
     ROOT,
     Engine,
@@ -90,33 +91,54 @@ def formula_of(inst: Instance) -> Formula:
     return Implies(strict(x[0], x[1]), weak(x[1], x[2]))
 
 
-def core_constraints(core: list[Instance]) -> list[GroundConstraint]:
+def core_constraints(
+    core: list[Instance], formalization_id: str = SCHEMA_ID
+) -> list[GroundConstraint]:
     return [
         ground(
             f"{inst.principle}:{i}",
             inst.principle,
             formula_of(inst),
-            SCHEMA_ID,
+            formalization_id,
             f"{inst.principle} instance over {[name_of(p) for p in inst.args]}",
         )
         for i, inst in enumerate(core)
     ]
 
 
-def materialize(tag: str, grid: Grid, core: list[Instance], p: int, q: int, n: int) -> str:
+def materialize(
+    tag: str,
+    grid: Grid,
+    core: list[Instance],
+    p: int,
+    q: int,
+    n: int,
+    *,
+    source_ids: tuple[str, ...] = ("arrhenius-2000",),
+    formalization_id: str = SCHEMA_ID,
+    source_fidelity: str = "unreviewed schema generalization; solver-discovered proof skeleton",
+    claim_kind: str = "bounded-search",
+    bindings: dict[str, int] | None = None,
+    completeness_candidate: bool = True,
+) -> str:
     relata = sorted({x for inst in core for x in inst.args})
     names = [name_of(x) for x in relata]
     lines = [
         'schema = "population-ethics.experiment/v2"',
         f"id = {toml_value(tag)}",
         'kind = "compatibility"',
-        'claim_kind = "bounded-search"',
-        'source_fidelity = "unreviewed schema generalization; solver-discovered proof skeleton"',
-        'source_ids = ["arrhenius-2000"]',
-        f"formalization_id = {toml_value(SCHEMA_ID + '/' + tag)}",
+        f"claim_kind = {toml_value(claim_kind)}",
+        f"source_fidelity = {toml_value(source_fidelity)}",
+        f"source_ids = {toml_value(list(source_ids))}",
+        f"formalization_id = {toml_value(formalization_id + '/' + tag)}",
         'fixed_groups = ["reflexivity", "transitivity"]',
         "candidate_groups = "
-        + toml_value(["completeness", *sorted({inst.principle for inst in core})]),
+        + toml_value(
+            [
+                *(["completeness"] if completeness_candidate else []),
+                *sorted({inst.principle for inst in core}),
+            ]
+        ),
         "",
         "[resource_policy]",
         "max_populations = 100",
@@ -144,11 +166,18 @@ def materialize(tag: str, grid: Grid, core: list[Instance], p: int, q: int, n: i
         f"very_high_positive = {toml_value(sorted(grid.very_high))}",
         "",
         "[witness_bindings]",
-        f"p = {p}",
-        f"q = {q}",
-        f"max_lives = {n}",
+        *(
+            f"{k} = {v}"
+            for k, v in (
+                bindings if bindings is not None else {"p": p, "q": q, "max_lives": n}
+            ).items()
+        ),
     ]
-    for group in ("reflexivity", "transitivity", "completeness"):
+    for group in (
+        "reflexivity",
+        "transitivity",
+        *(["completeness"] if completeness_candidate else []),
+    ):
         lines += [
             "",
             "[[groups]]",
@@ -158,7 +187,7 @@ def materialize(tag: str, grid: Grid, core: list[Instance], p: int, q: int, n: i
             f"populations = {toml_value(names)}",
         ]
     by_principle: dict[str, list[GroundConstraint]] = {}
-    for c in core_constraints(core):
+    for c in core_constraints(core, formalization_id):
         by_principle.setdefault(c.principle_id, []).append(c)
     from population_ethics.relations import formula_to_data
 
@@ -176,7 +205,7 @@ def materialize(tag: str, grid: Grid, core: list[Instance], p: int, q: int, n: i
                 f"id = {toml_value(c.id)}",
                 f"formula = {toml_value(formula_to_data(c.formula))}",
                 f"populations = {toml_value(list(c.populations))}",
-                f"formalization_id = {toml_value(SCHEMA_ID)}",
+                f"formalization_id = {toml_value(formalization_id)}",
                 f"explanation = {toml_value(c.explanation)}",
             ]
     path = ROOT / "research" / "experiments" / f"{tag}.toml"
@@ -336,12 +365,18 @@ def run_config(grid_name: str, p: int, q: int, n_max: int) -> dict[str, Any]:
                         len(x) for x in {x for i in core_insts for x in i.args}
                     ),
                     "example": describe(core_insts),
+                    "core": [
+                        {"principle": i.principle, "args": [list(x) for x in i.args]}
+                        for i in core_insts
+                    ],
+                    "known_ground": known_ground(core_insts),
                     "occurrences": 0,
                     "_core": core_insts,
                 },
             )
             entry["occurrences"] += 1
-        ranked = sorted(skeletons.values(), key=lambda s: (s["instances"], s["relata"]))
+        # Cores isomorphic to a catalogued skeleton go last so verification targets new ground.
+        ranked = sorted(skeletons.values(), key=novelty_rank)
         for k, s in enumerate(ranked[:3]):
             tag = f"schema-{grid_name}-p{p}q{q}-N{n}-skeleton{k}"
             s["verification"] = verify_core(tag, grid, s["_core"], p, q, n)
@@ -514,7 +549,12 @@ def _ledger(data: dict[str, Any]) -> None:
         if last["decision"] != "unsat":
             continue
         for k, sk in enumerate(last["skeletons"]):
-            if sk["instances"] <= 3 or sk["logically_isomorphic_to_baseline"]:
+            known = sk.get("known_ground", {})
+            if (
+                sk["instances"] <= 3
+                or sk["logically_isomorphic_to_baseline"]
+                or known.get("exact_known")
+            ):
                 continue
             v = sk.get("verification")
             entries.append(
@@ -536,6 +576,12 @@ def _ledger(data: dict[str, Any]) -> None:
                             else "not re-verified (ranked below top 3)"
                         )
                         + f"; core: {sk['example']}"
+                        + (
+                            f"; known ground {known['per_known']}, uncovered by published "
+                            f"skeletons: {known['uncovered_by_published']}"
+                            if known
+                            else ""
+                        )
                     ),
                     evidence_type="Z3 rank encoding + CLI atom encoding + exhaustive enumeration"
                     if v

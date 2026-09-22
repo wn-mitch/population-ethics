@@ -6,7 +6,7 @@ source_fidelity = "unreviewed schema generalization; solver-discovered proof ske
 source_ids = ["arrhenius-2000"]
 formalization_id = "arrhenius-2000.schema/v0-unreviewed/schema-relaxed-p1q2-N3-skeleton0"
 fixed_groups = ["reflexivity", "transitivity"]
-candidate_groups = ["completeness", "dominance", "mnep", "non-anti-egalitarianism"]
+candidate_groups = ["completeness", "dominance", "mnep", "non-anti-egalitarianism", "non-sadism"]
 
 [resource_policy]
 max_populations = 100
@@ -22,6 +22,10 @@ mode = "explicit"
 [[domain.populations]]
 name = "P_m1_8_8"
 values = [-1, 8, 8]
+
+[[domain.populations]]
+name = "P_1_8_8"
+values = [1, 8, 8]
 
 [[domain.populations]]
 name = "P_6_6_6"
@@ -45,19 +49,19 @@ max_lives = 3
 id = "reflexivity"
 principle_id = "reflexivity"
 compiler = "reflexivity"
-populations = ["P_m1_8_8", "P_6_6_6", "P_7_7_7"]
+populations = ["P_m1_8_8", "P_1_8_8", "P_6_6_6", "P_7_7_7"]
 
 [[groups]]
 id = "transitivity"
 principle_id = "transitivity"
 compiler = "transitivity"
-populations = ["P_m1_8_8", "P_6_6_6", "P_7_7_7"]
+populations = ["P_m1_8_8", "P_1_8_8", "P_6_6_6", "P_7_7_7"]
 
 [[groups]]
 id = "completeness"
 principle_id = "completeness"
 compiler = "completeness"
-populations = ["P_m1_8_8", "P_6_6_6", "P_7_7_7"]
+populations = ["P_m1_8_8", "P_1_8_8", "P_6_6_6", "P_7_7_7"]
 
 [[groups]]
 id = "dominance"
@@ -75,7 +79,7 @@ id = "mnep"
 principle_id = "mnep"
 
 [[groups.constraints]]
-id = "mnep:2"
+id = "mnep:3"
 formula = { kind = "atom", left = "P_m1_8_8", relation = "weak", right = "P_7_7_7" }
 populations = ["P_7_7_7", "P_m1_8_8"]
 formalization_id = "arrhenius-2000.schema/v0-unreviewed"
@@ -87,7 +91,18 @@ principle_id = "non-anti-egalitarianism"
 
 [[groups.constraints]]
 id = "non-anti-egalitarianism:1"
-formula = { kind = "not", operand = { kind = "and", operands = [{ kind = "atom", left = "P_m1_8_8", relation = "weak", right = "P_6_6_6" }, { kind = "not", operand = { kind = "atom", left = "P_6_6_6", relation = "weak", right = "P_m1_8_8" } }] } }
-populations = ["P_6_6_6", "P_m1_8_8"]
+formula = { kind = "not", operand = { kind = "and", operands = [{ kind = "atom", left = "P_1_8_8", relation = "weak", right = "P_6_6_6" }, { kind = "not", operand = { kind = "atom", left = "P_6_6_6", relation = "weak", right = "P_1_8_8" } }] } }
+populations = ["P_1_8_8", "P_6_6_6"]
 formalization_id = "arrhenius-2000.schema/v0-unreviewed"
-explanation = "non-anti-egalitarianism instance over ['P_m1_8_8', 'P_6_6_6']"
+explanation = "non-anti-egalitarianism instance over ['P_1_8_8', 'P_6_6_6']"
+
+[[groups]]
+id = "non-sadism"
+principle_id = "non-sadism"
+
+[[groups.constraints]]
+id = "non-sadism:2"
+formula = { kind = "not", operand = { kind = "and", operands = [{ kind = "atom", left = "P_m1_8_8", relation = "weak", right = "P_1_8_8" }, { kind = "not", operand = { kind = "atom", left = "P_1_8_8", relation = "weak", right = "P_m1_8_8" } }] } }
+populations = ["P_1_8_8", "P_m1_8_8"]
+formalization_id = "arrhenius-2000.schema/v0-unreviewed"
+explanation = "non-sadism instance over ['P_m1_8_8', 'P_1_8_8']"

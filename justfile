@@ -23,3 +23,4 @@ research:
     uv run python -m research.p4_mutations
     uv run python -m research.p5_sat_structure
     uv run python -m research.p6_schema
+    uv run python -m research.p7_arrhenius1999

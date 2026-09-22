@@ -1,0 +1,117 @@
+schema = "population-ethics.experiment/v2"
+id = "arrhenius-1999-p1q1r5"
+kind = "compatibility"
+claim_kind = "bounded-proof-instance"
+source_fidelity = "selected finite witness instance; not the unrestricted theorem"
+source_ids = ["arrhenius-1999"]
+formalization_id = "arrhenius-1999.selected-witness/v1/arrhenius-1999-p1q1r5"
+fixed_groups = ["reflexivity", "transitivity"]
+candidate_groups = ["arrhenius-1999:egalitarian-dominance", "arrhenius-1999:minimal-inequality-aversion", "arrhenius-1999:minimal-non-extreme-priority", "arrhenius-1999:non-sadism", "arrhenius-1999:quality-addition"]
+
+[resource_policy]
+max_populations = 100
+max_expanded_lives = 5000
+max_relation_atoms = 1000
+max_ground_constraints = 5000
+max_subsets = 256
+timeout_ms = 0
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "P_m1_14_14"
+values = [-1, 14, 14]
+
+[[domain.populations]]
+name = "P_1_1_1_1_1_14_14"
+values = [1, 1, 1, 1, 1, 14, 14]
+
+[[domain.populations]]
+name = "P_5_5_5_5_5_5_5"
+values = [5, 5, 5, 5, 5, 5, 5]
+
+[[domain.populations]]
+name = "P_7_7_7_7_7_7_7"
+values = [7, 7, 7, 7, 7, 7, 7]
+
+[[domain.populations]]
+name = "P_7_7_14"
+values = [7, 7, 14]
+
+[categories]
+slightly_negative = [-1]
+very_low_positive = [1, 5, 6, 7]
+very_high_positive = [14]
+
+[witness_bindings]
+p = 1
+q = 1
+r = 5
+
+[[groups]]
+id = "reflexivity"
+principle_id = "reflexivity"
+compiler = "reflexivity"
+populations = ["P_m1_14_14", "P_1_1_1_1_1_14_14", "P_5_5_5_5_5_5_5", "P_7_7_7_7_7_7_7", "P_7_7_14"]
+
+[[groups]]
+id = "transitivity"
+principle_id = "transitivity"
+compiler = "transitivity"
+populations = ["P_m1_14_14", "P_1_1_1_1_1_14_14", "P_5_5_5_5_5_5_5", "P_7_7_7_7_7_7_7", "P_7_7_14"]
+
+[[groups]]
+id = "arrhenius-1999:egalitarian-dominance"
+principle_id = "arrhenius-1999:egalitarian-dominance"
+
+[[groups.constraints]]
+id = "arrhenius-1999:egalitarian-dominance:2"
+formula = { kind = "and", operands = [{ kind = "atom", left = "P_7_7_7_7_7_7_7", relation = "weak", right = "P_5_5_5_5_5_5_5" }, { kind = "not", operand = { kind = "atom", left = "P_5_5_5_5_5_5_5", relation = "weak", right = "P_7_7_7_7_7_7_7" } }] }
+populations = ["P_5_5_5_5_5_5_5", "P_7_7_7_7_7_7_7"]
+formalization_id = "arrhenius-1999.selected-witness/v1"
+explanation = "arrhenius-1999:egalitarian-dominance instance over ['P_7_7_7_7_7_7_7', 'P_5_5_5_5_5_5_5']"
+
+[[groups]]
+id = "arrhenius-1999:minimal-inequality-aversion"
+principle_id = "arrhenius-1999:minimal-inequality-aversion"
+
+[[groups.constraints]]
+id = "arrhenius-1999:minimal-inequality-aversion:3"
+formula = { kind = "atom", left = "P_5_5_5_5_5_5_5", relation = "weak", right = "P_1_1_1_1_1_14_14" }
+populations = ["P_1_1_1_1_1_14_14", "P_5_5_5_5_5_5_5"]
+formalization_id = "arrhenius-1999.selected-witness/v1"
+explanation = "arrhenius-1999:minimal-inequality-aversion instance over ['P_5_5_5_5_5_5_5', 'P_1_1_1_1_1_14_14']"
+
+[[groups]]
+id = "arrhenius-1999:minimal-non-extreme-priority"
+principle_id = "arrhenius-1999:minimal-non-extreme-priority"
+
+[[groups.constraints]]
+id = "arrhenius-1999:minimal-non-extreme-priority:0"
+formula = { kind = "atom", left = "P_m1_14_14", relation = "weak", right = "P_7_7_14" }
+populations = ["P_7_7_14", "P_m1_14_14"]
+formalization_id = "arrhenius-1999.selected-witness/v1"
+explanation = "arrhenius-1999:minimal-non-extreme-priority instance over ['P_m1_14_14', 'P_7_7_14']"
+
+[[groups]]
+id = "arrhenius-1999:non-sadism"
+principle_id = "arrhenius-1999:non-sadism"
+
+[[groups.constraints]]
+id = "arrhenius-1999:non-sadism:4"
+formula = { kind = "atom", left = "P_1_1_1_1_1_14_14", relation = "weak", right = "P_m1_14_14" }
+populations = ["P_1_1_1_1_1_14_14", "P_m1_14_14"]
+formalization_id = "arrhenius-1999.selected-witness/v1"
+explanation = "arrhenius-1999:non-sadism instance over ['P_1_1_1_1_1_14_14', 'P_m1_14_14']"
+
+[[groups]]
+id = "arrhenius-1999:quality-addition"
+principle_id = "arrhenius-1999:quality-addition"
+
+[[groups.constraints]]
+id = "arrhenius-1999:quality-addition:1"
+formula = { kind = "atom", left = "P_7_7_14", relation = "weak", right = "P_7_7_7_7_7_7_7" }
+populations = ["P_7_7_14", "P_7_7_7_7_7_7_7"]
+formalization_id = "arrhenius-1999.selected-witness/v1"
+explanation = "arrhenius-1999:quality-addition instance over ['P_7_7_14', 'P_7_7_7_7_7_7_7']"

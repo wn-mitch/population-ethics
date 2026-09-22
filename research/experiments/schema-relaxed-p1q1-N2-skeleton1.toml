@@ -31,10 +31,6 @@ values = [5, 5]
 name = "P_6_6"
 values = [6, 6]
 
-[[domain.populations]]
-name = "P_7_7"
-values = [7, 7]
-
 [categories]
 slightly_negative = [-1]
 very_low_positive = [1, 5, 6, 7]
@@ -49,19 +45,19 @@ max_lives = 2
 id = "reflexivity"
 principle_id = "reflexivity"
 compiler = "reflexivity"
-populations = ["P_m1_8", "P_5_5", "P_6_6", "P_7_7"]
+populations = ["P_m1_8", "P_5_5", "P_6_6"]
 
 [[groups]]
 id = "transitivity"
 principle_id = "transitivity"
 compiler = "transitivity"
-populations = ["P_m1_8", "P_5_5", "P_6_6", "P_7_7"]
+populations = ["P_m1_8", "P_5_5", "P_6_6"]
 
 [[groups]]
 id = "completeness"
 principle_id = "completeness"
 compiler = "completeness"
-populations = ["P_m1_8", "P_5_5", "P_6_6", "P_7_7"]
+populations = ["P_m1_8", "P_5_5", "P_6_6"]
 
 [[groups]]
 id = "dominance"
@@ -74,30 +70,23 @@ populations = ["P_5_5", "P_6_6"]
 formalization_id = "arrhenius-2000.schema/v0-unreviewed"
 explanation = "dominance instance over ['P_6_6', 'P_5_5']"
 
-[[groups.constraints]]
-id = "dominance:1"
-formula = { kind = "and", operands = [{ kind = "atom", left = "P_7_7", relation = "weak", right = "P_6_6" }, { kind = "not", operand = { kind = "atom", left = "P_6_6", relation = "weak", right = "P_7_7" } }] }
-populations = ["P_6_6", "P_7_7"]
-formalization_id = "arrhenius-2000.schema/v0-unreviewed"
-explanation = "dominance instance over ['P_7_7', 'P_6_6']"
-
 [[groups]]
 id = "mnep"
 principle_id = "mnep"
 
 [[groups.constraints]]
-id = "mnep:3"
-formula = { kind = "atom", left = "P_m1_8", relation = "weak", right = "P_7_7" }
-populations = ["P_7_7", "P_m1_8"]
+id = "mnep:2"
+formula = { kind = "atom", left = "P_m1_8", relation = "weak", right = "P_6_6" }
+populations = ["P_6_6", "P_m1_8"]
 formalization_id = "arrhenius-2000.schema/v0-unreviewed"
-explanation = "mnep instance over ['P_m1_8', 'P_7_7']"
+explanation = "mnep instance over ['P_m1_8', 'P_6_6']"
 
 [[groups]]
 id = "non-anti-egalitarianism"
 principle_id = "non-anti-egalitarianism"
 
 [[groups.constraints]]
-id = "non-anti-egalitarianism:2"
+id = "non-anti-egalitarianism:1"
 formula = { kind = "not", operand = { kind = "and", operands = [{ kind = "atom", left = "P_m1_8", relation = "weak", right = "P_5_5" }, { kind = "not", operand = { kind = "atom", left = "P_5_5", relation = "weak", right = "P_m1_8" } }] } }
 populations = ["P_5_5", "P_m1_8"]
 formalization_id = "arrhenius-2000.schema/v0-unreviewed"

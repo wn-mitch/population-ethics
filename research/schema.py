@@ -45,6 +45,13 @@ SHAPE = {
     "non-sadism": "N",
     "mnep": "W",  # X ⪰ Y
     "addition": "I",  # (X ≻ Y) → (Y ⪰ Z)
+    # Arrhenius (1999), frozen in research/p7_arrhenius1999.py; every condition but
+    # Egalitarian Dominance is stated in at-least-as-good form.
+    "arrhenius-1999:egalitarian-dominance": "S",
+    "arrhenius-1999:minimal-inequality-aversion": "W",
+    "arrhenius-1999:quality-addition": "W",
+    "arrhenius-1999:non-sadism": "W",
+    "arrhenius-1999:minimal-non-extreme-priority": "W",
 }
 
 

@@ -328,8 +328,8 @@ contradiction, which is propositional.
   schema, for a fixed witness W.
 - **Evidence.** Three decision procedures:
   - Z3 with rank encoding;
-  - the production CLI with atom encoding (`research/experiments/schema-gapped-p1q1-N7-skeleton0.toml`,
-    verify accepted);
+  - the production CLI with atom encoding (`research/experiments/r6-gapped-p1q1.toml`,
+    written by Phase 7; verify accepted);
   - exhaustive enumeration of all 545,835 complete preorders on its 8 relata, none of which
     satisfy the core.
 
@@ -340,8 +340,10 @@ contradiction, which is propositional.
   - Is 7 "very low" when 14 is "very high"? (The grid is still a sensitivity choice.)
 - **Escape structure.** Minimum incomparability is 5, and the minimum escape again isolates the
   population where Non-Sadism and Non-Anti-Egalitarianism meet, (1⁵,14,14). This supports U3.
-- **Status.** Partial collision, pending fidelity review. The outer frame is Arrhenius 1999; only
-  the closing link is unrecorded.
+- **Status.** Partial collision, pending fidelity review. Phase 7 embeds 4 of the 5 edges of the
+  1999 skeleton and 5 of the 7 edges of the 2000 skeleton into R6. Only two instances lie outside
+  every maximum embedding of a published skeleton: the MNEP bridge on the 6⁵ background and the
+  dominance step 7⁷ ≻ 6⁷.
 
 ### R5. Triangle gap condition
 
@@ -448,6 +450,45 @@ Formalization: `arrhenius-2000.schema/v0-unreviewed` (`research/schema.py`).
 - **Bounded negative result.** On the baseline grid no skeleton of any shape fits within 8 lives.
   This is a finite computational result under the unreviewed schema.
 
+## Phase 7: Arrhenius 1999 and known-ground filtering
+
+Formalization: `arrhenius-1999.selected-witness/v1` (`corpus/sources.toml`), agent-read and not
+human-reviewed. Witnesses p = q = 1, r = 5 on the gapped grid give five populations:
+(−1,14,14), (7,7,14), 7⁷, 5⁷, and (1⁵,14,14).
+
+- **Reproduction.** The five instances are inconsistent with any preorder. No completeness is
+  used. Z3, DPLL, and the production CLI agree, and none of the 6,942 preorders on the five
+  relata satisfies them. Dropping any one principle is SAT. Every instance passes an
+  applicability audit written against the 1999 wording.
+- **Transitivity.** The minimum transitivity core has 3 instances, with 5 minimum cores.
+  Suzumura consistency alone is enough for the contradiction, because the proof is one weak
+  cycle closed by one strict link. Quasi-transitivity and strict acyclicity escape, with or
+  without completeness. Arrhenius's own remark that the cycles are not strict (thesis
+  pp. 182–183) already implies the acyclicity half.
+- **Known-ground matcher** (`research/known.py`). Catalogued skeletons: the 2000 witness, the
+  1999 theorem (shared by thesis Theorem 3, the 2001 paper, 2009 Lemma 4, 2011 Lemma 1.4, and
+  Thomas's Theorem 3), and the project's own R5 and R6. Principles map to shared roles.
+  Shapes are normalized for the complete branch. A core's `uncovered_by_published` lists the
+  instances that no maximum embedding of a published skeleton covers.
+- **Search filtering.** Phase 6 records the known-ground analysis for every skeleton it finds and
+  spends its three verifications in this order:
+  - cores with at least one instance outside every catalogued embedding;
+  - cores covered piecewise by catalogued fragments;
+  - cores isomorphic to a catalogued skeleton, which also stay out of the ledger's candidate
+    rows.
+
+  R6 itself is now catalogued, so Phase 7 re-verifies it and holds its CLI evidence.
+- **What the filtered search found.** On the gapped grid at p = q = 1, every one of the 6 distinct
+  skeletons in the capped core set embeds R6 or the 1999 and 2000 skeletons almost entirely. The
+  top three have one or two instances outside the catalogue: a Non-Sadism step that swaps the
+  negative life in Addition's lower group for a positive one, and an MNEP bridge on a 7³
+  background. These are variations on R6, not a new route. The core set is capped at 12, so
+  this is not a claim about all minimal cores.
+- **Role correspondence is a judgment.** Non-Anti-Egalitarianism and Minimal Inequality Aversion
+  share a role but are different conditions. Non-Repugnance is treated as Quality Addition on an
+  empty background. A match says two proofs have the same dependency shape. It does not say the
+  conditions are equivalent.
+
 ## Literature collision
 
 Source: `corpus/literature.toml`, which records each work, what was read firsthand, and a
@@ -463,8 +504,12 @@ and Arrhenius (2016, Theoria) were not obtained.
 - **R6 reuses the 1999 frame.** At p = q = 1, r = 5 the 1999 populations are (−1,14,14),
   (7,7,14), (1⁵,14,14), and 5⁷. The MNEP step, the Non-Sadism step, and the single inequality
   step match R6 exactly. Arrhenius's 2009 and 2011 Lemma 3 already puts negative lives in the
-  added low group and removes them with an MNEP-type bridge. What remains is the closing link:
-  E&P 2000 Addition with a Repugnance case split, in place of Quality Addition.
+  added low group and removes them with an MNEP-type bridge. Phase 7 makes this mechanical: only
+  R6's MNEP bridge on 6⁵ and its 7⁷ ≻ 6⁷ step are outside the published skeletons.
+- **The 2000 proof is the 1999 cycle with one edge replaced.** The 2000 witness skeleton contains
+  4 of the 5 edges of the 1999 skeleton. The missing one is Quality Addition, AB ⪰ AC, which the
+  2000 proof derives from Addition, Repugnance avoidance, Non-Anti-Egalitarianism, and a
+  completeness case split. This is likely known to Arrhenius (1999, p. 12).
 - **No prior computational analysis of Arrhenius was found.** The nearest is Parent & Benzmüller
   (2024), an Isabelle/HOL treatment of Parfit's three-population Mere Addition Paradox, which
   finds that acyclicity and quasi-transitivity escape it.
@@ -489,9 +534,10 @@ and Arrhenius (2016, Theoria) were not obtained.
    firsthand copies of Blackorby, Bossert & Donaldson (1996, 1997) and check whether
    Critical-Band Utilitarianism satisfies the 2000 conditions; if it does, U2 is settled by a
    known model. The `[[wanted]]` list in `corpus/literature.toml` names the rest.
-4. **Encode the 1999 theorem and thesis Theorem 3** as frozen instances. R6 should then appear as
-   a hybrid of the 1999 and 2000 skeletons, and the escape analysis can be rerun on a theorem
-   that Arrhenius proved without completeness.
+4. **Extend the known-skeleton catalogue.** Thesis Theorems 1, 2 and 4, the 2003 theorem, and
+   the 2009/2011 theorem are not matchable because their conditions have no v0 counterpart
+   (`research/known.py`, `UNCATALOGUED`). Adding those conditions to the schema would let the
+   search see them as known ground.
 
 ## Ledger
 
@@ -530,16 +576,21 @@ Machine-readable: `research/ledger.json`. The rows below are rendered from it by
 | P6-baseline-p1q2 | confirmed | finite computational result | unreviewed schema generalization | SAT for every N <= 8 (3002 populations, 341831 instances at N=8); every SAT rank model checked against all instances; triangle closed form predicts firing: False |
 | P6-gapped-p1q1 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | smallest UNSAT N = 7; 7 cores, 6 distinct skeletons; smallest: ['dominance(P_6_6_6_6_6_6_6, P_5_5_5_5_5_5_5)', 'dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)', 'non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5... |
 | P6-gapped-p1q2 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | SAT for every N <= 8 (3002 populations, 342300 instances at N=8); every SAT rank model checked against all instances; triangle closed form predicts firing: False |
-| P6-relaxed-p1q1 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | smallest UNSAT N = 2; 4 cores, 2 distinct skeletons; smallest: ['dominance(P_6_6, P_5_5)', 'non-anti-egalitarianism(P_m1_8, P_5_5)', 'mnep(P_m1_8, P_6_6)'] (CLI unsat, enumerator models 0); triangle closed form predic... |
-| P6-relaxed-p1q2 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | smallest UNSAT N = 3; 2 cores, 2 distinct skeletons; smallest: ['dominance(P_7_7_7, P_6_6_6)', 'non-anti-egalitarianism(P_m1_8_8, P_6_6_6)', 'mnep(P_m1_8_8, P_7_7_7)'] (CLI unsat, enumerator models 0); triangle closed... |
+| P6-relaxed-p1q1 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | smallest UNSAT N = 2; 4 cores, 2 distinct skeletons; smallest: ['dominance(P_6_6, P_5_5)', 'dominance(P_7_7, P_6_6)', 'non-anti-egalitarianism(P_m1_8, P_5_5)', 'mnep(P_m1_8, P_7_7)'] (CLI unsat, enumerator models 0); ... |
+| P6-relaxed-p1q2 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | smallest UNSAT N = 3; 2 cores, 2 distinct skeletons; smallest: ['dominance(P_7_7_7, P_6_6_6)', 'non-anti-egalitarianism(P_1_8_8, P_6_6_6)', 'non-sadism(P_m1_8_8, P_1_8_8)', 'mnep(P_m1_8_8, P_7_7_7)'] (CLI unsat, enume... |
 | P6-relaxed-p1q3 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | smallest UNSAT N = 4; 1 cores, 1 distinct skeletons; smallest: ['dominance(P_7_7_7_7, P_6_6_6_6)', 'non-anti-egalitarianism(P_m1_8_8_8, P_6_6_6_6)', 'mnep(P_m1_8_8_8, P_7_7_7_7)'] (CLI unsat, enumerator models 0); tri... |
 | P6-relaxed-p1q4 | confirmed | finite computational result | unreviewed schema generalization + rational-cardinal spacing sensitivity | SAT for every N <= 6 (923 populations, 46118 instances at N=6); every SAT rank model checked against all instances; triangle closed form predicts firing: False |
-| P6-skeleton-gapped-p1q1-0 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 8 instances over 8 relata ({'addition': 1, 'dominance': 2, 'mnep': 2, 'non-anti-egalitarianism': 1, 'non-repugnance': 1, 'non-sadism': 1}); largest population 7; CLI unsat, enumerator models 0, completeness MUS sizes ... |
-| P6-skeleton-gapped-p1q1-1 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 8 instances over 8 relata ({'addition': 1, 'dominance': 2, 'mnep': 2, 'non-anti-egalitarianism': 1, 'non-repugnance': 1, 'non-sadism': 1}); largest population 7; CLI unsat, enumerator models 0, completeness MUS sizes ... |
-| P6-skeleton-gapped-p1q1-2 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 9 instances over 9 relata ({'addition': 1, 'dominance': 2, 'mnep': 2, 'non-anti-egalitarianism': 1, 'non-repugnance': 1, 'non-sadism': 2}); largest population 7; CLI unsat, enumerator models None, completeness MUS siz... |
-| P6-skeleton-gapped-p1q1-3 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 10 instances over 10 relata ({'addition': 1, 'dominance': 2, 'mnep': 2, 'non-anti-egalitarianism': 2, 'non-repugnance': 1, 'non-sadism': 2}); largest population 7; not re-verified (ranked below top 3); core: ['dominan... |
-| P6-skeleton-gapped-p1q1-4 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 14 instances over 14 relata ({'addition': 1, 'dominance': 2, 'mnep': 4, 'non-anti-egalitarianism': 3, 'non-repugnance': 1, 'non-sadism': 3}); largest population 7; not re-verified (ranked below top 3); core: ['dominan... |
+| P6-skeleton-gapped-p1q1-0 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 9 instances over 9 relata ({'addition': 1, 'dominance': 2, 'mnep': 2, 'non-anti-egalitarianism': 1, 'non-repugnance': 1, 'non-sadism': 2}); largest population 7; CLI unsat, enumerator models None, completeness MUS siz... |
+| P6-skeleton-gapped-p1q1-1 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 14 instances over 14 relata ({'addition': 1, 'dominance': 2, 'mnep': 4, 'non-anti-egalitarianism': 3, 'non-repugnance': 1, 'non-sadism': 3}); largest population 7; CLI unsat, enumerator models None, completeness MUS s... |
+| P6-skeleton-gapped-p1q1-2 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 15 instances over 15 relata ({'addition': 1, 'dominance': 2, 'mnep': 4, 'non-anti-egalitarianism': 3, 'non-repugnance': 1, 'non-sadism': 4}); largest population 7; CLI unsat, enumerator models None, completeness MUS s... |
+| P6-skeleton-gapped-p1q1-3 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 8 instances over 8 relata ({'addition': 1, 'dominance': 2, 'mnep': 2, 'non-anti-egalitarianism': 1, 'non-repugnance': 1, 'non-sadism': 1}); largest population 7; not re-verified (ranked below top 3); core: ['dominance... |
+| P6-skeleton-gapped-p1q1-4 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 10 instances over 10 relata ({'addition': 1, 'dominance': 2, 'mnep': 2, 'non-anti-egalitarianism': 2, 'non-repugnance': 1, 'non-sadism': 2}); largest population 7; not re-verified (ranked below top 3); core: ['dominan... |
 | P6-skeleton-gapped-p1q1-5 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 15 instances over 15 relata ({'addition': 1, 'dominance': 2, 'mnep': 4, 'non-anti-egalitarianism': 3, 'non-repugnance': 1, 'non-sadism': 4}); largest population 7; not re-verified (ranked below top 3); core: ['dominan... |
+| P6-skeleton-relaxed-p1q1-0 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 4 instances over 4 relata ({'dominance': 2, 'mnep': 1, 'non-anti-egalitarianism': 1}); largest population 2; CLI unsat, enumerator models 0, completeness MUS sizes {0: 1}, escape k_min None; core: ['dominance(P_6_6, P... |
 | P6-skeleton-relaxed-p1q1-1 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 4 instances over 4 relata ({'dominance': 2, 'mnep': 1, 'non-anti-egalitarianism': 1}); largest population 2; CLI unsat, enumerator models 0, completeness MUS sizes {0: 1}, escape k_min None; core: ['dominance(P_6_6, P... |
+| P6-skeleton-relaxed-p1q2-0 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 4 instances over 4 relata ({'dominance': 1, 'mnep': 1, 'non-anti-egalitarianism': 1, 'non-sadism': 1}); largest population 3; CLI unsat, enumerator models 0, completeness MUS sizes {1: 3}, escape k_min 3; core: ['domi... |
 | P6-skeleton-relaxed-p1q2-1 | confirmed | finite computational result | solver-discovered proof skeleton (unreviewed schema) | 4 instances over 4 relata ({'dominance': 1, 'mnep': 1, 'non-anti-egalitarianism': 1, 'non-sadism': 1}); largest population 3; CLI unsat, enumerator models 0, completeness MUS sizes {1: 3}, escape k_min 3; core: ['domi... |
+| P7-arrhenius-1999-baseline | confirmed | finite computational result | frozen agent-read witness (not human-reviewed) | unsat; CLI unsat (verify accepted: True); 0 of 6942 preorders satisfy the instances; dropping any one principle: ['sat']; transitivity MUS sizes {3: 5, 8: 10, 10: 4, 11: 6, 12: 5, 13: 2, 14: 2}; weakenings {'quasi-tra... |
+| P7-known-ground-R6 | confirmed | finite computational result | role correspondence (project judgment) | audit True, rank engine unsat; per known skeleton {'arrhenius-2000-ep': '5/7', 'arrhenius-1999': '4/5', 'project-r5-triangle': '2/3', 'project-r6-gapped': '8/8'}; uncovered by published: ['dominance([7, 7, 7, 7, 7, 7,... |
+| P7-known-ground-baseline-2000 | confirmed | finite computational result | role correspondence (project judgment) | per known skeleton {'arrhenius-1999': '4/5', 'project-r5-triangle': '2/3', 'project-r6-gapped': '5/8'}; uncovered by published: ['non-repugnance([5], [0])', 'non-anti-egalitarianism([2], [5])', 'addition([0], [1], [2])'] |
 <!-- ledger:end -->

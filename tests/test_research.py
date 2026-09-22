@@ -5,6 +5,7 @@ import re
 import tomllib
 from dataclasses import replace
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -32,7 +33,15 @@ from research.lab import (
     total_preorders,
 )
 from research.p4_mutations import AVOID_PAIRS, AVOIDANCE, Theory, build_chain_certificate
-from research.schema import Grid, RankEngine, check_instance, domain, instances
+from research.schema import (
+    BASELINE_SKELETON,
+    Grid,
+    Instance,
+    RankEngine,
+    check_instance,
+    domain,
+    instances,
+)
 
 RELAXED = Grid(
     "relaxed", (-1, 1, 5, 6, 7, 8), frozenset({8}), frozenset({1, 5, 6, 7}), frozenset({-1})
@@ -232,3 +241,73 @@ def test_literature_corpus_references_resolve_and_every_report_result_has_a_verd
     for collision in verdicts.values():
         assert collision["verdict"] in {"collides", "partial", "none-found"}
         assert collision["sources"] and set(collision["sources"]) <= known
+
+
+def test_arrhenius_1999_witness_needs_every_principle_and_no_completeness() -> None:
+    from research.p4_mutations import quasi_transitivity, suzumura
+    from research.p7_arrhenius1999 import CORE, GRID, _decide, _names, _principle_constraints, audit
+
+    names = _names()
+    bg = background(names)
+    principles = _principle_constraints()
+    assert all(audit(i, GRID) for i in CORE)
+    assert _decide([*bg["reflexivity"], *bg["transitivity"], *principles], names) == "unsat"
+    for dropped in principles:
+        rest = [c for c in principles if c.id != dropped.id]
+        assert _decide([*bg["reflexivity"], *bg["transitivity"], *rest], names) == "sat"
+    # One weak cycle closed by one strict link: Suzumura consistency forbids exactly that,
+    # while quasi-transitivity constrains only strict chains.
+    assert _decide([*bg["reflexivity"], *suzumura(names), *principles], names) == "unsat"
+    assert _decide([*bg["reflexivity"], *quasi_transitivity(names), *principles], names) == "sat"
+
+
+def test_arrhenius_1999_audit_rejects_misapplied_conditions() -> None:
+    from research.p7_arrhenius1999 import CORE, GRID, audit
+
+    by_name = {i.principle.removeprefix("arrhenius-1999:"): i for i in CORE}
+    qa = by_name["quality-addition"]
+    # The added group must be the declared very-high witness, not an extra low life.
+    assert not audit(replace(qa, args=(qa.args[0] + (1,), qa.args[1])), GRID)
+    mia = by_name["minimal-inequality-aversion"]
+    # MIA's witness m = r fixes the number of worst-off lives.
+    assert not audit(replace(mia, args=(mia.args[0][:-1], mia.args[1][1:])), GRID)
+    ed = by_name["egalitarian-dominance"]
+    # Egalitarian Dominance needs the better population to be perfectly equal.
+    assert not audit(replace(ed, args=((6,) + ed.args[0][1:], ed.args[1])), GRID)
+
+
+def test_known_ground_isolates_r6_new_steps_and_ignores_relabeling() -> None:
+    from research.known import known_ground, novelty_rank
+    from research.p7_arrhenius1999 import R6_CORE
+
+    kg = known_ground(R6_CORE)
+    assert kg["exact_known"] == "project-r6-gapped"
+    assert kg["uncovered_by_catalogue"] == []
+    assert kg["per_known"]["arrhenius-1999"] == "4/5"
+    # Two maximum embeddings of the 2000 skeleton exist; together they cover Addition and
+    # Repugnance avoidance, leaving only the second MNEP bridge and the 7⁷ ≻ 6⁷ step.
+    assert sorted(kg["uncovered_by_published"]) == [
+        "dominance([7, 7, 7, 7, 7, 7, 7], [6, 6, 6, 6, 6, 6, 6])",
+        "mnep([-1, 6, 6, 6, 6, 6, 14], [6, 6, 6, 6, 6, 6, 6])",
+    ]
+
+    perm = list(range(7))
+    random.Random(7).shuffle(perm)
+    relabeled = [replace(i, args=tuple((perm[x[0]],) for x in i.args)) for i in BASELINE_SKELETON]
+    assert known_ground(relabeled)["exact_known"] == "arrhenius-2000-ep"
+    # Same shape after normalization, different role: must not count as the known skeleton.
+    swapped = [
+        Instance("non-sadism", (i.args[1], i.args[0])) if i.principle == "mnep" else i
+        for i in BASELINE_SKELETON
+    ]
+    assert known_ground(swapped)["exact_known"] is None
+
+    def entry(exact: str | None, uncovered: list[str], size: int) -> dict[str, Any]:
+        kg = {"exact_known": exact, "uncovered_by_catalogue": uncovered}
+        return {"known_ground": kg, "instances": size, "relata": size}
+
+    small_known = entry("x", [], 3)
+    small_covered = entry(None, [], 4)
+    large_new = entry(None, ["step"], 9)
+    order = sorted([small_known, small_covered, large_new], key=novelty_rank)
+    assert order == [large_new, small_covered, small_known]

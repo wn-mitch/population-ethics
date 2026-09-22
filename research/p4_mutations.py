@@ -100,7 +100,7 @@ def replaced(constraint: GroundConstraint, formula: Formula, tag: str) -> Ground
     )
 
 
-def quasi_transitivity() -> list[GroundConstraint]:
+def quasi_transitivity(nodes: tuple[str, ...] = ACTIVE) -> list[GroundConstraint]:
     return [
         ground(
             f"quasi-transitivity:{x}:{y}:{z}",
@@ -109,14 +109,14 @@ def quasi_transitivity() -> list[GroundConstraint]:
             MID,
             "Strict preference is transitive.",
         )
-        for x in ACTIVE
-        for y in ACTIVE
-        for z in ACTIVE
+        for x in nodes
+        for y in nodes
+        for z in nodes
         if len({x, y, z}) == 3
     ]
 
 
-def acyclicity() -> list[GroundConstraint]:
+def acyclicity(nodes: tuple[str, ...] = ACTIVE) -> list[GroundConstraint]:
     return [
         ground(
             "acyclic:" + ":".join(c),
@@ -125,13 +125,13 @@ def acyclicity() -> list[GroundConstraint]:
             MID,
             "No cycle of strict preferences.",
         )
-        for c in simple_cycles(ACTIVE)
+        for c in simple_cycles(nodes)
     ]
 
 
-def suzumura() -> list[GroundConstraint]:
+def suzumura(nodes: tuple[str, ...] = ACTIVE) -> list[GroundConstraint]:
     out = []
-    for c in simple_cycles(ACTIVE):
+    for c in simple_cycles(nodes):
         k = len(c)
         for s in range(k):  # the edge c[s] -> c[s+1] is the strict one, the rest weak
             edges = [

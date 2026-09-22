@@ -86,3 +86,31 @@ lessons = [
   "Local value, symbol, and proof-step edits must change the formalization or fail validation rather than silently reverting.",
   "Evaluate source faithfulness independently from proof-checker acceptance.",
 ]
+
+[[sources]]
+id = "arrhenius-1999"
+kind = "primary-authority"
+citation = "Gustaf Arrhenius, An Impossibility Theorem in Population Axiology with Weak Ordering Assumptions, in R. Sliwinski (ed.), Philosophical Crumbs, Uppsala Philosophical Studies 49, 11–21 (1999)."
+stable_url = "https://philpapers.org/rec/ARRAIT-2"
+pdf_url = "https://www.iffs.se/media/2265/an-impossibility-theorem-in-population-axiology-with-weak-ordering-assumptions-i-henschens-festskrift.pdf"
+pdf_sha256 = "771c224a983c2e09d19d91b1dddfcab09a70487d434b3025a1218d3ff1fd7b3b"
+page_section_locator = "pp. 14–19: ordering assumptions, the five conditions, the theorem, and its proof"
+source_wording = [
+  "A population axiology is an at-least-as-good-as quasi-ordering: reflexive, transitive, but not necessarily complete.",
+  "Quality Addition: there is an A_n of very high welfare such that for all very-low B_m, A_n ∪ C_k is at least as good as B_m ∪ C_k.",
+  "Minimal Inequality Aversion: for any equal A_n there is an m > n such that, with B_m equal, C_{m+n} equal, and a_i and c_j above b_k, C_{m+n} is at least as good as A_n ∪ B_m.",
+  "Non-Sadism: if A_n are positive and B_m negative lives, A_n ∪ C_k is at least as good as B_m ∪ C_k.",
+  "Minimal Non-Extreme Priority: there is an n such that n very-high lives plus one slightly negative life, with any D_k, are at least as good as n+1 very-low lives with D_k.",
+  "Egalitarian Dominance: if the a_i are equal and each a_i is above each b_j, A_n is better than B_n.",
+]
+symbol_mapping = { weak = "is at least as good as", strict = "is better than", AAE = "A_p ∪ A'_q ∪ E_1", AB = "A_p ∪ B_{q+1}", BC = "B_{q+1} ∪ C_{p+r-1}", G = "G_{p+q+r}", AAF = "A_p ∪ A'_q ∪ F_r" }
+domain_assumptions = [
+  "Populations are finite and anonymous; welfare is integer-valued.",
+  "Very-low levels vlp1 < vlp2 < vlp3 are 1 < 5 < 7; very high is 14; slightly negative is −1 (the gapped grid of research/p6_schema.py).",
+  "Existential witnesses are fixed at p = q = 1 and r = 5.",
+]
+measurement_assumptions = "Only the order of levels and category membership are used; the source states the theorem holds on ordinal, interval, or ratio scales (p. 19)."
+completeness_dependency = "Not assumed. The proof uses transitivity twice and no completeness."
+translation_revision = "arrhenius-1999.selected-witness/v1"
+review_state = "agent-source-read; not human-reviewed"
+fidelity = "selected finite witness instance; not the unrestricted theorem"

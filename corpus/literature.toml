@@ -493,4 +493,4 @@ result = "R6"
 verdict = "partial"
 sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "arrhenius-2003-vrc"]
 known = "The outer frame is the 1999 theorem (thesis Theorem 3) at p = q = 1, r = 5: MNEP on (14) gives (−1,14,14) ⪰ (7,7,14); Non-Sadism on (14,14) gives (1⁵,14,14) ⪰ (−1,14,14); the single inequality step compares 5⁷ with (1⁵,14,14). Putting the negative life inside the added low group and removing it with an MNEP-type bridge on a very-low background is the Lemma 3 device of 2009 and Lemma 1.3 of 2011."
-open = "The closing link: E&P 2000 Addition with a Non-Repugnance case split on A ≻ AB, followed by a two-step dominance ladder, in place of Quality Addition plus one Egalitarian Dominance step."
+open = "Two instances: the MNEP bridge on the very-low background 6⁵ and the dominance step 7⁷ ≻ 6⁷. research/known.py finds every other R6 instance inside a maximum embedding of the 1999 or 2000 skeleton."
