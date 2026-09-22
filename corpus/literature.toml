@@ -395,6 +395,18 @@ notes = [
 ]
 
 [[works]]
+id = "voigt-2026-theory-x"
+kind = "computational"
+citation = "Julian L. Voigt, Theory X Cannot Exist: Machine-Verified Impossibility Theorems in Population Ethics (manuscript, PhilArchive, uploaded 2026-04-01)."
+stable_url = "https://philarchive.org/versions/VOITXC"
+read = "not-obtained"
+notes = [
+  "Existence and date confirmed from the PhilArchive index; PhilArchive refused automated fetches, so the text is unread.",
+  "An external summary reports fifteen Isabelle/HOL-verified results over Mere Addition, non-repugnance, non-sadism, and transitivity axioms, checked with several ATP/SMT backends. Unverified here.",
+  "Machine-verified population-ethics impossibility results therefore predate this project; do not describe it as the first.",
+]
+
+[[works]]
 id = "budolfson-spears-rc"
 kind = "related-impossibility"
 citation = "Mark Budolfson & Dean Spears, Why the Repugnant Conclusion is Inescapable (draft)."
@@ -430,6 +442,8 @@ notes = [
   "p. 264 and fn 31: the theorem does not work without completeness, which enters in Repugnance avoidance, the reductio, and the Anti-Egalitarian and Sadistic applications.",
   "p. 265 fn 33: Blackorby, Bossert & Donaldson (1997) avoid the Sadistic Conclusion through incommensurability.",
   "p. 265 fn 34: points to arrhenius-1999-weak-ordering for a theorem without completeness.",
+  "p. 261, formal Addition: A_k better than A_k ∪ B_n, a_i > b_j > c_h, and m > n imply A_k ∪ B_n ⪰ A_k ∪ C_m. No positivity condition on C_m.",
+  "p. 261, formal MNEP: the same background D_k, k ≥ 0, is appended to both sides.",
 ]
 
 # Known to exist and relevant, not yet obtained.

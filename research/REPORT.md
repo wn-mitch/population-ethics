@@ -334,13 +334,19 @@ contradiction, which is propositional.
     satisfy the core.
 
   Every instance passes the independent applicability audit.
-- **Fidelity questions** that decide whether this is an Arrhenius proof at all:
-  - Does Arrhenius's Addition allow the "even lower" group to contain a negative life?
-  - Does MNEP quantify over arbitrary backgrounds?
-  - Is 7 "very low" when 14 is "very high"? (The grid is still a sensitivity choice.)
+- **Fidelity** against the formal statements in Arrhenius (2000, p. 261):
+  - Addition: source-supported. The formal condition requires only that the original lives
+    exceed the first added group, that group exceeds the lower group, and the lower group is
+    larger. Nothing requires the lower group to be positive, so it may contain the slightly
+    negative life. `research/schema.py` implements the same three conditions.
+  - MNEP over backgrounds: source-supported. The formal condition appends the same D_k, k ≥ 0,
+    to both sides.
+  - Is 7 "very low" when 14 is "very high"? Open. The paper declares the categories and requires
+    four ordered very-low levels but sets no minimum gap between very low and very high, so the
+    grid is formally admissible. Whether it is a fair reading is the R5 sensitivity question.
 - **Escape structure.** Minimum incomparability is 5, and the minimum escape again isolates the
   population where Non-Sadism and Non-Anti-Egalitarianism meet, (1⁵,14,14). This supports U3.
-- **Status.** Partial collision, pending fidelity review. Phase 7 embeds 4 of the 5 edges of the
+- **Status.** Partial collision; two of three fidelity questions settled. Phase 7 embeds 4 of the 5 edges of the
   1999 skeleton and 5 of the 7 edges of the 2000 skeleton into R6. Only two instances lie outside
   every maximum embedding of a published skeleton: the MNEP bridge on the 6⁵ background and the
   dominance step 7⁷ ≻ 6⁷.
@@ -519,8 +525,8 @@ and Arrhenius (2016, Theoria) were not obtained.
 
 ## Next research turn
 
-1. **Gap-constrained schema v1 on larger domains**, plus fidelity review of R6's two
-   quantifier readings.
+1. **Gap-constrained schema v1 on larger domains.** R6's Addition and MNEP readings are
+   source-supported (see R6); the category-gap question remains.
    - Add an explicit, source-justified gap axiom.
    - Generate instances lazily so N can reach 10–15; Non-Sadism instances dominate the counts.
    - Test whether any skeleton smaller than the baseline exists once the triangle is blocked.
@@ -538,6 +544,11 @@ and Arrhenius (2016, Theoria) were not obtained.
    the 2009/2011 theorem are not matchable because their conditions have no v0 counterpart
    (`research/known.py`, `UNCATALOGUED`). Adding those conditions to the schema would let the
    search see them as known ground.
+5. **Classify the whole family, not one more member.** With the Arrhenius theorems catalogued as
+   known ground, enumerate the equivalence classes of minimal skeletons that the shared roles
+   generate, and test whether every class factors through a small number of motifs, such as the
+   1999 weak cycle closed by one strict link. A structural regularity of that kind would be new;
+   another recombination of the same roles would not.
 
 ## Ledger
 
