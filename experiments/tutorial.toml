@@ -1,0 +1,62 @@
+schema = "population-ethics.experiment/v2"
+id = "tutorial-aggregation-pathologies"
+kind = "evaluation"
+claim_kind = "pedagogical"
+source_fidelity = "context-only"
+source_ids = ["parfit-reasons-and-persons-1984"]
+formalization_id = "tutorial.aggregation/v1"
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "two_excellent"
+values = [100, 100]
+
+[[domain.populations]]
+name = "three_mixed"
+values = [90, 100, 100]
+
+[[domain.populations]]
+name = "three_excellent"
+values = [100, 100, 100]
+
+[[domain.populations]]
+name = "many_barely_good"
+groups = [{ welfare = 1, count = 301 }]
+
+[[comparisons]]
+id = "average-versus-total"
+left = "two_excellent"
+right = "three_mixed"
+
+[[comparisons.evaluators]]
+id = "total"
+theory = "total"
+
+[[comparisons.evaluators]]
+id = "average"
+theory = "average"
+
+[[comparisons.evaluators]]
+id = "critical-level-95"
+theory = "critical-level"
+critical_level = { numerator = 95, denominator = 1 }
+
+[[comparisons]]
+id = "repugnant-conclusion-shape"
+left = "three_excellent"
+right = "many_barely_good"
+
+[[comparisons.evaluators]]
+id = "total"
+theory = "total"
+
+[[comparisons.evaluators]]
+id = "average"
+theory = "average"
+
+[[comparisons.evaluators]]
+id = "critical-level-1"
+theory = "critical-level"
+critical_level = { numerator = 1, denominator = 1 }

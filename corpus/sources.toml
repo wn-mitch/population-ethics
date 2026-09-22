@@ -1,0 +1,88 @@
+schema = "population-ethics.sources/v1"
+
+[[sources]]
+id = "arrhenius-2000"
+kind = "primary-authority"
+citation = "Gustaf Arrhenius, An Impossibility Theorem for Welfarist Axiologies, Economics & Philosophy 16(2), 247–266 (2000)."
+doi = "10.1017/S0266267100000249"
+stable_url = "https://doi.org/10.1017/S0266267100000249"
+pdf_url = "https://www.iffs.se/media/2264/an-impossibility-theorem-for-welfarist-axiologies-in-ep-2000.pdf"
+pdf_sha256 = "9cca623722ea09f2944bfbd8f2c3f5efe9aa58420b4aedfc0ef75a929a3edcd6"
+page_section_locator = "pp. 257–264, especially sections 5–7 and the proof on pp. 261–263"
+source_wording = [
+  "A welfarist axiology is an at-least-as-good-as ordering of all logically possible populations, assumed reflexive, transitive, and complete.",
+  "Dominance: for equal-size populations, if every life in one has higher welfare than every life in the other, the former is better.",
+  "Addition: if adding a lower-welfare group is bad, adding a larger group at an even lower welfare is at least as bad.",
+  "Minimal Non-Extreme Priority supplies an existential number of very-high-welfare lives that can offset one slightly negative life against the same number of very-low-positive lives.",
+  "The theorem says no welfarist axiology satisfies Dominance, Addition, and Minimal Non-Extreme Priority while avoiding the Repugnant, Sadistic, and Anti-Egalitarian conclusions.",
+]
+symbol_mapping = { weak = "is at least as good as", strict = "is better than", A = "very-high-positive witness population", B = "very-low-positive w4 population", C = "very-low-positive w3 dilution population", D = "equal w4 comparison population", E = "one slightly-negative life", F = "very-low-positive w1 dilution population", G = "equal w2 comparison population" }
+domain_assumptions = [
+  "Populations are finite and anonymous in the executable reconstruction.",
+  "Welfare is integer-valued and linearly ordered for this selected finite representation.",
+  "The source assumes positive, negative, very-high-positive, very-low-positive, and slightly-negative lives, with at least four very-low-positive levels.",
+  "Average comparisons require an interval-scale representation; category membership is declared rather than derived from the integers.",
+]
+measurement_assumptions = "The integers preserve only the selected ordering, average inequalities, and category declarations needed by this finite instance. The value 8 is a declared very-high-positive representative, not a universal cutoff."
+completeness_dependency = "Completeness is used to turn avoidance of strict-better conclusions into weak comparisons and in the reductio establishing AB weakly above AC. It is separately selectable."
+translation_revision = "arrhenius-2000.selected-witness/v1"
+review_state = "human-source-reviewed"
+fidelity = "selected finite witness instance; not the unrestricted theorem"
+
+[[sources]]
+id = "thomas-reconstructing-arrhenius"
+kind = "related-comparative-work"
+citation = "Teruji Thomas, Reconstructing Arrhenius’s Impossibility Theorems (2016 manuscript)."
+stable_url = "https://users.ox.ac.uk/~mert2060/webfiles/Reconstructing-Arrhenius-for-web.pdf"
+relation = "Comparative reconstruction of several Arrhenius results. It is not authority for this fixture and its discussion of a later sixth theorem is not evidence of an error in the 2000 journal theorem reconstructed here."
+
+[[methodologies]]
+id = "alphaproof-family"
+title = "AlphaProof and AlphaProof Nexus"
+urls = [
+  "https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/",
+  "https://arxiv.org/abs/2605.22763",
+]
+lessons = [
+  "Freeze the formal target before proof search.",
+  "Treat kernel-checked proofs as stronger evidence than generated explanations.",
+  "Record the attempted problem set and cost, not only successful proofs.",
+]
+
+[[methodologies]]
+id = "leandojo"
+title = "LeanDojo: Theorem Proving with Retrieval-Augmented Language Models"
+url = "https://arxiv.org/abs/2306.15626"
+lessons = [
+  "Represent premise dependencies explicitly.",
+  "Partition held-out evaluation by premise family rather than nearby random examples.",
+]
+
+[[methodologies]]
+id = "deepseek-prover-v2"
+title = "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition"
+url = "https://arxiv.org/abs/2504.21801"
+lessons = [
+  "Expose subgoal decomposition as an auditable dependency graph.",
+  "Keep informal reasoning separate from formal proof acceptance.",
+]
+
+[[methodologies]]
+id = "conjecturing-proving-loop"
+title = "Discovering New Theorems via LLMs with In-Context Proof Learning in Lean"
+url = "https://arxiv.org/abs/2509.14274"
+lessons = [
+  "Separate conjecturing from proving.",
+  "Feed back only checker-accepted artifacts into reusable context.",
+  "Retain all attempts and evaluate at a fixed attempt budget.",
+]
+
+[[methodologies]]
+id = "autoformalization-robustness-2026"
+title = "Evaluating the Robustness of Proof Autoformalization in Lean 4"
+url = "https://arxiv.org/abs/2606.14867"
+lessons = [
+  "Semantic-preserving prose and alias perturbations must preserve formal identity.",
+  "Local value, symbol, and proof-step edits must change the formalization or fail validation rather than silently reverting.",
+  "Evaluate source faithfulness independently from proof-checker acceptance.",
+]

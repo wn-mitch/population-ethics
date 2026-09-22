@@ -1,0 +1,37 @@
+schema = "population-ethics.experiment/v2"
+id = "entailment-inconsistent"
+kind = "entailment"
+claim_kind = "bounded-proof-instance"
+source_fidelity = "synthetic-negative-control"
+formalization_id = "controls.entailment-inconsistent/v1"
+selected_groups = ["inconsistent-premises"]
+goal = { kind = "atom", relation = "weak", left = "B", right = "A" }
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "A"
+values = [1]
+
+[[domain.populations]]
+name = "B"
+values = [2]
+
+[[groups]]
+id = "inconsistent-premises"
+principle_id = "synthetic-inconsistency"
+
+[[groups.constraints]]
+id = "premise:A-weak-B"
+formula = { kind = "atom", relation = "weak", left = "A", right = "B" }
+populations = ["A", "B"]
+formalization_id = "controls.entailment-inconsistent/v1"
+explanation = "Positive half of an intentional contradiction."
+
+[[groups.constraints]]
+id = "premise:not-A-weak-B"
+formula = { kind = "not", operand = { kind = "atom", relation = "weak", left = "A", right = "B" } }
+populations = ["A", "B"]
+formalization_id = "controls.entailment-inconsistent/v1"
+explanation = "Negative half of an intentional contradiction."

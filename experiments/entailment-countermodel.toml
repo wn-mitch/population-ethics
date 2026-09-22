@@ -1,0 +1,30 @@
+schema = "population-ethics.experiment/v2"
+id = "entailment-countermodel"
+kind = "entailment"
+claim_kind = "bounded-proof-instance"
+source_fidelity = "synthetic-negative-control"
+formalization_id = "controls.entailment-countermodel/v1"
+selected_groups = ["premises"]
+goal = { kind = "atom", relation = "weak", left = "B", right = "A" }
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "A"
+values = [1]
+
+[[domain.populations]]
+name = "B"
+values = [2]
+
+[[groups]]
+id = "premises"
+principle_id = "synthetic-premise"
+
+[[groups.constraints]]
+id = "premise:A-weak-B"
+formula = { kind = "atom", relation = "weak", left = "A", right = "B" }
+populations = ["A", "B"]
+formalization_id = "controls.entailment-countermodel/v1"
+explanation = "A is weakly at least as good as B; the converse remains unconstrained."

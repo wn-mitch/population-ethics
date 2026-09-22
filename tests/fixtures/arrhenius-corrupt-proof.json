@@ -1,0 +1,139 @@
+{
+  "artifact_id": "900718ed589b16c8462434e31fc87b1680d6047576cd93ee5f35c6d57249f501",
+  "claim_kind": "bounded-proof-instance",
+  "evidence": [
+    {
+      "decision": "unsat",
+      "grounded_core": [
+        "p",
+        "not-p"
+      ],
+      "grounded_input": [
+        {
+          "explanation": "Positive premise.",
+          "formalization_id": "fixture/v1",
+          "formula": {
+            "kind": "atom",
+            "left": "A",
+            "relation": "weak",
+            "right": "B"
+          },
+          "id": "p",
+          "populations": [
+            "A",
+            "B"
+          ],
+          "principle_id": "test",
+          "source_locator": null
+        },
+        {
+          "explanation": "Negative premise.",
+          "formalization_id": "fixture/v1",
+          "formula": {
+            "kind": "not",
+            "operand": {
+              "kind": "atom",
+              "left": "A",
+              "relation": "weak",
+              "right": "B"
+            }
+          },
+          "id": "not-p",
+          "populations": [
+            "A",
+            "B"
+          ],
+          "principle_id": "test",
+          "source_locator": null
+        }
+      ],
+      "kind": "solver-report",
+      "minimality": "verified",
+      "raw_core": [
+        "p",
+        "not-p"
+      ],
+      "reason_unknown": null,
+      "strength": "solver-reported",
+      "trace": [],
+      "unresolved_obligations": []
+    },
+    {
+      "certificate": {
+        "nodes": [
+          {
+            "discharged_assumptions": [],
+            "explanation": "Positive premise.",
+            "formula": {
+              "kind": "atom",
+              "left": "A",
+              "relation": "weak",
+              "right": "B"
+            },
+            "id": "node-p",
+            "premises": [
+              "p"
+            ],
+            "rule": "premise",
+            "scope": []
+          },
+          {
+            "discharged_assumptions": [],
+            "explanation": "Negative premise.",
+            "formula": {
+              "kind": "not",
+              "operand": {
+                "kind": "atom",
+                "left": "A",
+                "relation": "weak",
+                "right": "B"
+              }
+            },
+            "id": "node-not-p",
+            "premises": [
+              "not-p"
+            ],
+            "rule": "premise",
+            "scope": []
+          },
+          {
+            "discharged_assumptions": [],
+            "explanation": "Contradiction.",
+            "formula": {
+              "kind": "atom",
+              "left": "A",
+              "relation": "weak",
+              "right": "B"
+            },
+            "id": "contradiction",
+            "premises": [
+              "node-p",
+              "node-not-p"
+            ],
+            "rule": "contradiction",
+            "scope": []
+          }
+        ],
+        "problem_id": "fixture-problem",
+        "root_node_id": "contradiction"
+      },
+      "checker_version": "population-ethics.proofs/v1",
+      "kind": "checked-proof",
+      "strength": "checked-proof"
+    }
+  ],
+  "execution_configuration": {},
+  "experiment_id": "proof-fixture",
+  "normalized_problem": {},
+  "outcome": {
+    "decision": "unsat",
+    "kind": "compatibility"
+  },
+  "problem_id": "fixture-problem",
+  "provenance": null,
+  "run_key": "fixture-run",
+  "schema": "population-ethics.result/v2",
+  "source_fidelity": "synthetic-negative-control",
+  "unresolved_obligations": [],
+  "usage_observations": {}
+}
