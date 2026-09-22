@@ -516,9 +516,15 @@ and Arrhenius (2016, Theoria) were not obtained.
   4 of the 5 edges of the 1999 skeleton. The missing one is Quality Addition, AB ⪰ AC, which the
   2000 proof derives from Addition, Repugnance avoidance, Non-Anti-Egalitarianism, and a
   completeness case split. This is likely known to Arrhenius (1999, p. 12).
-- **No prior computational analysis of Arrhenius was found.** The nearest is Parent & Benzmüller
-  (2024), an Isabelle/HOL treatment of Parfit's three-population Mere Addition Paradox, which
-  finds that acyclicity and quasi-transitivity escape it.
+- **Machine-verified population ethics already exists, but not for these conditions.**
+  - Parent & Benzmüller (2024) treat Parfit's three-population Mere Addition Paradox in
+    Isabelle/HOL and find that acyclicity and quasi-transitivity escape it.
+  - Voigt (2026 manuscript) machine-verifies fifteen results. Its "Arrhenius Impossibility" is a
+    three-world Mere Addition cycle, and its Same-Number Restriction leaves every cross-number
+    pair unranked.
+  - Neither uses the 2000 conditions, computes minimal cores, or counts the incomparabilities an
+    escape needs. So R1, R2's different-number bound, R4, and R6 do not collide with them. The
+    project should not be described as the first machine-verified work in the area.
 - **R2 may have a known model.** Critical-Band Utilitarianism is complete within each size and is
   reported to avoid the Repugnant and Sadistic Conclusions. A research agent derived that it
   satisfies all five 2000 conditions. That derivation has not been verified.

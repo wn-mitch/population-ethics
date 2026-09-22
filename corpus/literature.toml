@@ -397,12 +397,17 @@ notes = [
 [[works]]
 id = "voigt-2026-theory-x"
 kind = "computational"
-citation = "Julian L. Voigt, Theory X Cannot Exist: Machine-Verified Impossibility Theorems in Population Ethics (manuscript, PhilArchive, uploaded 2026-04-01)."
+citation = "Julian L. Voigt, Theory X Cannot Exist: Machine-Verified Impossibility Theorems in Population Ethics (manuscript v1, PhilArchive VOITXC, created 2026-03-31, 71 pp.)."
 stable_url = "https://philarchive.org/versions/VOITXC"
-read = "not-obtained"
+pdf_sha256 = "0257ac74652b5079c769ca17d123d6b0a12ed04b323c5481470f70017e2dedc7"
+read = "partial"
+page_note = "Read: abstract and theorem list (pp. 1–4), §5 Arrhenius (pp. 21–23), §7.1 transitivity weakenings, §11 Same-Number Restriction (pp. 33–34)."
 notes = [
-  "Existence and date confirmed from the PhilArchive index; PhilArchive refused automated fetches, so the text is unread.",
-  "An external summary reports fifteen Isabelle/HOL-verified results over Mere Addition, non-repugnance, non-sadism, and transitivity axioms, checked with several ATP/SMT backends. Unverified here.",
+  "Fifteen Isabelle/HOL results discharged by several ATP/SMT backends; the author discloses LLM assistance with the formalizations.",
+  "Theorem 3, labelled 'Arrhenius Impossibility' (§5), is a three-world Mere Addition cycle: at-least-as-good(A+, A), better(Z, A+), not better(Z, A), plus transitivity. Weak betterness is defined as better-or-identical, so the relation is not a general preorder. It uses none of the E&P 2000 conditions (no MNEP, Non-Anti-Egalitarianism, or Addition) and no welfare levels.",
+  "§7.1 treats quasi-transitivity and acyclicity on that three-world model only.",
+  "§11 treats a Same-Number Restriction that is silent on every cross-number pair; it does not ask how many cross-number pairs must be left unresolved.",
+  "No minimal cores, incomparability counts, or proof-skeleton comparisons.",
   "Machine-verified population-ethics impossibility results therefore predate this project; do not describe it as the first.",
 ]
 
@@ -491,8 +496,8 @@ open = "Only the four-pair partial-completeness version for the exact E&P 2000 c
 [[collisions]]
 result = "R4"
 verdict = "partial"
-sources = ["arrhenius-2000-thesis", "arrhenius-2022-without-transitivity", "parent-benzmuller-2024-hol", "bossert-cato-kamaga-2022-suzumura"]
-known = "Suzumura consistency equals transitivity under completeness (standard). Acyclicity and quasi-transitivity escape Parfit's Mere Addition Paradox (Parent & Benzmüller). Arrhenius concedes the weak-link cycles are not strict and moves to acyclicity, Maximality, or normative versions."
+sources = ["arrhenius-2000-thesis", "arrhenius-2022-without-transitivity", "parent-benzmuller-2024-hol", "voigt-2026-theory-x", "bossert-cato-kamaga-2022-suzumura"]
+known = "Suzumura consistency equals transitivity under completeness (standard). Acyclicity and quasi-transitivity escape Parfit's Mere Addition Paradox (Parent & Benzmüller; Voigt §7 on a three-world model). Arrhenius concedes the weak-link cycles are not strict and moves to acyclicity, Maximality, or normative versions."
 open = "Minimum transitivity-core sizes (5 and 7) and their counts."
 
 [[collisions]]
