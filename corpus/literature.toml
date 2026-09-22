@@ -1,0 +1,496 @@
+schema = "population-ethics.literature/v1"
+
+# Prior work checked against the breakthrough-search results in research/REPORT.md.
+# Kept apart from sources.toml because that file's hash is recorded in run provenance.
+#
+# read: "firsthand" (full text read), "partial" (named sections read),
+# "secondary" (content known only through the works cited in `via`), "not-obtained".
+# Page numbers are printed pagination unless a note says otherwise.
+
+# ---------------------------------------------------------------------------
+# Arrhenius's own theorem family
+# ---------------------------------------------------------------------------
+
+[[works]]
+id = "arrhenius-1999-weak-ordering"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, An Impossibility Theorem in Population Axiology with Weak Ordering Assumptions, in R. Sliwinski (ed.), Philosophical Crumbs, Uppsala Philosophical Studies 49, 11–21 (1999)."
+stable_url = "https://philpapers.org/rec/ARRAIT-2"
+pdf_url = "https://www.iffs.se/media/2265/an-impossibility-theorem-in-population-axiology-with-weak-ordering-assumptions-i-henschens-festskrift.pdf"
+pdf_sha256 = "771c224a983c2e09d19d91b1dddfcab09a70487d434b3025a1218d3ff1fd7b3b"
+read = "firsthand"
+ordering = "Quasi-ordering: reflexive, transitive, not necessarily complete (p. 14)."
+conditions = [
+  "Quality Addition (p. 15): some very-high A_n makes A_n ∪ C_k at least as good as B_m ∪ C_k for every very-low B_m.",
+  "Minimal Inequality Aversion (p. 15): an ordinal, at-least-as-good replacement for Non-Anti-Egalitarianism.",
+  "Non-Sadism (p. 16): adding positive lives is at least as good as adding negative lives, on any background.",
+  "Minimal Non-Extreme Priority (p. 16): n very-high lives plus one slightly negative life are at least as good as n+1 very-low lives, on any background D_k.",
+  "Egalitarian Dominance (p. 17): the only strict condition.",
+]
+theorem = "There is no population axiology which satisfies the Dominance, the Minimal Inequality Aversion, the Minimal Non-Extreme Priority, the Non-Sadism, and the Quality Addition Condition. (p. 17)"
+proof_skeleton = [
+  "MNEP on background A_p: A_p ∪ A'_q ∪ E_1 ⪰ A_p ∪ B_{q+1}.",
+  "Quality Addition on background B_{q+1}: A_p ∪ B_{q+1} ⪰ B_{q+1} ∪ C_{p+r-1}.",
+  "Egalitarian Dominance: B_{q+1} ∪ C_{p+r-1} ≻ G_{p+q+r}; transitivity gives A_p ∪ A'_q ∪ E_1 ≻ G.",
+  "Minimal Inequality Aversion: G ⪰ A_p ∪ A'_q ∪ F_r.",
+  "Non-Sadism on background A_p ∪ A'_q: A_p ∪ A'_q ∪ F_r ⪰ A_p ∪ A'_q ∪ E_1; transitivity contradicts step 3.",
+  "No completeness; transitivity twice. Diagram 1 misprints C_{p+r-1} as C_{q+r-1}.",
+]
+notes = [
+  "p. 12 names the complete-comparability assumption of the 1998 mimeo (the E&P 2000 theorem) as a drawback and presents this theorem as leaving room for incomparability.",
+  "fn 3 (p. 11) restates E&P Non-Anti-Egalitarianism in positive at-least-as-good form.",
+  "p. 19: holds on ordinal, interval, or ratio scales as long as very-high and very-low lives are ordered.",
+]
+
+[[works]]
+id = "arrhenius-2000-thesis"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, Future Generations: A Challenge for Moral Theory, PhD dissertation, Uppsala University (2000)."
+stable_url = "https://philpapers.org/rec/ARRFGA"
+pdf_url = "https://www.iffs.se/media/23529/fulltext01.pdf"
+pdf_sha256 = "3b3a12c25cf33611726bfd4197cafb99a26c179ca6583c8ecfda8e8c4e7f28b0"
+errata_url = "https://www.iffs.se/media/2267/errata.pdf"
+errata_sha256 = "542fcc8c054d093c11476db3acd81ae588efb550d147f892d5272584046c543b"
+read = "firsthand"
+ordering = "Quasi-ordering of populations and of lives (§2.4 pp. 36–37, §10.2 p. 152). Discreteness supplies consecutive levels; very high and very low are non-fixed ranges R(u,v) and R(1,y), u > y (pp. 153–157)."
+theorems = [
+  "Theorem 1 (§10.4, p. 157): Egalitarian Dominance + Quantity + Quality are inconsistent. A one-level-at-a-time Quantity chain closed by Egalitarian Dominance.",
+  "Theorem 2 (§10.6, pp. 159–161): Dominance Addition + Inequality Aversion + Egalitarian Dominance + Quality are inconsistent.",
+  "Theorem 3 (§10.8, pp. 163–165): Egalitarian Dominance + Inequality Aversion + Non-Sadism + Non-Extreme Priority + Weak Quality Addition are inconsistent. Same skeleton as the 1999 theorem, with populations A, H, E, B, F, G, C.",
+  "Theorem 4 (§10.10, pp. 167–180): Egalitarian Dominance + Non-Elitism + General Non-Extreme Priority + Weak Non-Sadism + Weak Quality Addition are inconsistent. Lemma 5.1 (Non-Elitism implies background-robust Inequality Aversion) and Lemma 5.2 (GNEP implies Condition δ) chain small steps; Lemma 5.3 reruns the Theorem 3 skeleton with m negative lives.",
+  "Theorems 5 and 6 (§11.3–11.6, pp. 191–198): normative versions of Theorems 2 and 3 using Separate Satisfiability; no transitivity or completeness.",
+]
+notes = [
+  "No theorem in chapters 10–11 uses completeness; all conditions except Egalitarian Dominance are in at-least-as-good form.",
+  "pp. 182–183: the cycles are weak links closed by one strict link; stating the conditions with better-than yields strict cycles, so consequentialism needs some acyclicity (fn 3).",
+  "pp. 200–201: rejects Parfit's proposal to quarantine the theorems to different-number cases.",
+]
+
+[[works]]
+id = "arrhenius-2001-osterberg"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, What Österberg's Population Theory Has in Common with Plato's, in E. Carlson & R. Sliwinski (eds.), Omnium-gatherum, Uppsala Philosophical Studies 50, 29–44 (2001)."
+pdf_url = "http://web.archive.org/web/20060506080142id_/http://people.su.se:80/~guarr/Texter/What%20%d6sterbergs%20Population%20Theory%20Has%20in%20Common%20With%20Platos%20i%20%d6sterbergs%20festskrift.pdf"
+pdf_sha256 = "0008644762553cd1f1306340b2844c3e2332691da36a544a3798e9fd0960336c"
+read = "firsthand"
+ordering = "Quasi-ordering of lives and populations (fn 3, p. 29)."
+theorem = "Thesis Theorem 4: Egalitarian Dominance, Non-Elitism, GNEP, Weak Non-Sadism, and Weak Quality Addition (with no negative lives) are inconsistent (p. 33)."
+notes = ["Published source for the Non-Elitism and GNEP lemma proofs that the 2003 and 2009 papers cite; Lemma 3 (pp. 41–43) is thesis Lemma 5.3."]
+
+[[works]]
+id = "arrhenius-2003-vrc"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, The Very Repugnant Conclusion, in K. Segerberg & R. Sliwinski (eds.), Logic, Law, Morality, Uppsala Philosophical Studies 51, 167–180 (2003)."
+stable_url = "https://philpapers.org/rec/ARRTVR"
+pdf_url = "http://web.archive.org/web/20060506080047id_/http://people.su.se:80/~guarr/Texter/The%20Very%20Repugnant%20Conclusion%20i%20%c5kvists%20festskrift.pdf"
+pdf_sha256 = "9522c09e45c6f527b1d27dddfd8498fc74e8ac58ca13bc9da2a28619a86c56da"
+read = "firsthand"
+ordering = "Quasi-ordering (p. 169)."
+theorem = "There is no population axiology which satisfies the Egalitarian Dominance, the Non-Elitism, the General Non-Extreme Priority, Avoidance of the Very Repugnant Conclusion, and the Dominance Addition Condition. (p. 173)"
+proof_skeleton = [
+  "Egalitarian Dominance: A2 ≻ A1.",
+  "Dominance Addition: A3 ∪ B1 ∪ C1 ∪ D1 ⪰ A2.",
+  "Condition δ (from GNEP) on background A3 ∪ C1: A3 ∪ B2 ∪ C1 ∪ D2 ⪰ A3 ∪ B1 ∪ C1 ∪ D1, where D2 is m negative lives.",
+  "Condition β (from Non-Elitism): A4 ∪ B3 ∪ C2 ∪ D2 ⪰ A3 ∪ B2 ∪ C1 ∪ D2.",
+  "Avoidance of the VRC: A1 ⪰ A4 ∪ B3 ∪ C2 ∪ D2; transitivity closes the cycle. No completeness.",
+]
+notes = ["The negative lives D2 stay inside the low side of the quality-type condition, as in R6's Addition instance."]
+
+[[works]]
+id = "arrhenius-2004-paradoxes"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, The Paradoxes of Future Generations and Normative Theory, in J. Ryberg & T. Tännsjö (eds.), The Repugnant Conclusion, Kluwer, 201–218 (2004)."
+doi = "10.1007/978-1-4020-2473-3_11"
+pdf_url = "http://web.archive.org/web/20110819175201id_/http://people.su.se/~guarr/Texter/The%20Paradoxes%20of%20Future%20Generations%20and%20Normative%20Theory%20in%20The%20Repugnant%20Conclusion.pdf"
+pdf_sha256 = "8819ea2f28301098823bd47a88970218dc2af21fc30e44079fcb6503196b8efa"
+read = "firsthand"
+page_note = "Page numbers refer to the preprint's own pagination (1–22)."
+theorem = "There is no separately satisfiable population morality which satisfies the normative version of the Quality Condition, the Non-Anti Egalitarianism Condition, the Egalitarian Dominance Condition, and the Dominance Addition Condition. (p. 17)"
+notes = [
+  "Proof uses the choice set {A, A' ∪ B, C, D} and no transitivity or completeness (pp. 17–18).",
+  "pp. 6–8 and fn 13: rejecting transitivity does not rescue consequentialism, which needs acyclicity.",
+]
+
+[[works]]
+id = "arrhenius-2005-superiority"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius, Superiority in Value, Philosophical Studies 123, 97–114 (2005)."
+doi = "10.1007/s11098-005-5223-8"
+pdf_url = "https://www.iffs.se/media/2292/superiority-in-value-ps-2005.pdf"
+pdf_sha256 = "345a56b99a76cc11168298ad655d4717e9f2b4f28eca7c7d5726219ba8c6e1d3"
+read = "firsthand"
+notes = ["Scanned PDF, read via OCR. Finite descending sequences with weak superiority between endpoints force superiority between some adjacent pair (p. 106): the fine-grainedness mechanism, with no population theorem. The DOI is as printed in the scan header; a web index gives s11098-004-5223-0."]
+
+[[works]]
+id = "arrhenius-2009-one-more"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, One More Axiological Impossibility Theorem, in L.-G. Johansson, J. Österberg & R. Sliwinski (eds.), Logic, Ethics and All That Jazz, Uppsala Philosophical Studies 57, 23–37 (2009)."
+stable_url = "https://philpapers.org/rec/ARROMA"
+pdf_url = "https://www.iffs.se/media/2279/one-more-axiological-impossibility-theorem-in-logic-ethics-and-all-that-jazz-2009.pdf"
+pdf_sha256 = "f853953feaabd1a1767ba88cc4417db54f03dab3f76cafe45ead1662da9da41f"
+read = "firsthand"
+ordering = "Quasi-ordering; welfare levels form completely ordered threads (p. 26, fn 8)."
+theorem = "There is no population axiology which satisfies the Egalitarian Dominance, the General Non-Extreme Priority, the Non-Elitism, the Weak Non-Sadism, and the Weak Quality Addition Condition. (p. 30)"
+proof_skeleton = [
+  "Lemma 3 (pp. 31–33): Weak Quality Addition puts m negative lives C inside the low added group (A1 A2 X ⪰ A1 B2 C X); Condition δ on a background of low lives B2 converts them (A1 B2 C X ⪰ B1 B2 B3 X); transitivity gives Restricted Quality Addition.",
+  "Lemma 4 (pp. 33–36): the thesis Theorem 3 skeleton (δ, β, Weak Non-Sadism, Restricted Quality Addition, Egalitarian Dominance). No completeness.",
+]
+notes = [
+  "Text extraction drops ⊂ and ∪; statements were cross-checked against the 2011 version.",
+  "Thomas (manuscript p. 11) reports an error: only the weaker VRA*, with background P depending on z and m, follows.",
+]
+
+[[works]]
+id = "arrhenius-2011-impossibility"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, The Impossibility of a Satisfactory Population Ethics, in E. N. Dzhafarov & L. Perry (eds.), Descriptive and Normative Approaches to Human Behavior, World Scientific, 1–26 (2011)."
+doi = "10.1142/9789814368018_0001"
+pdf_url = "https://www.iffs.se/media/2286/the-impossibility-of-a-satisfactory-population-ethics-in-descriptive-and-normative-approaches-to-human-behavior-2011.pdf"
+pdf_sha256 = "c3f126534d441960aee4f59ebb071a538da6c131ccfad1a44fedcf9be66c35c2"
+read = "firsthand"
+theorem = "Identical to arrhenius-2009-one-more (p. 9), with all lemma proofs in full (Lemmas 1.1–1.4, pp. 10–22)."
+notes = [
+  "Lemma 1.3 (pp. 18–19) is the negative-lives-in-the-added-group device later seen in R6.",
+  "p. 23: transitivity is presupposed; the theorems can be rebuilt at the normative level without it.",
+  "p. 24: holds even with ratio-scale interpersonal comparability.",
+]
+
+[[works]]
+id = "arrhenius-2009-egalitarianism"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius, Egalitarianism and Population Change, in A. Gosseries & L. Meyer (eds.), Intergenerational Justice, OUP, ch. 12 (2009)."
+pdf_sha256 = "9381942177db36cffe9a7d204e14ac34ef6b035f4ee907a066e3e76158766ba6"
+read = "partial"
+notes = ["§6 (pp. 339–341) defends Weak Quality Addition and Weak Non-Sadism informally; no new theorem."]
+
+[[works]]
+id = "arrhenius-2016-imprecision"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius, Population Ethics and Different-Number-Based Imprecision, Theoria 82(2), 166–181 (2016)."
+doi = "10.1111/theo.12094"
+read = "secondary"
+via = ["arrhenius-2022-conflict-imprecision", "arrhenius-stefansson-2024-degrees"]
+notes = ["Paywalled; no repository copy found. Argues against Parfit's Different-Number-Based Imprecision. The main unread collision risk for R2."]
+
+[[works]]
+id = "arrhenius-2022-conflict-imprecision"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius, Population Ethics and Conflict-of-Value Imprecision, in J. McMahan et al. (eds.), Ethics and Existence: The Legacy of Derek Parfit, OUP, ch. 16 (2022)."
+doi = "10.1093/oso/9780192894250.003.0017"
+pdf_url = "https://www.iffs.se/media/23556/population_ethics_and_conflictofvalue_imprecision.pdf"
+pdf_sha256 = "71a48a94376cdb6e8e4220d1253bce7c9d79689cb09b09cb356df4086c672491"
+read = "firsthand"
+notes = [
+  "pp. 463–464: Parfit dropped Different-Number-Based Imprecision after Arrhenius (2016).",
+  "p. 466: Different-Number-Based Imprecision leaves the same-number conditions (Non-Elitism, Non-Extreme Priority) intact; Conflict-of-Value Imprecision can undermine them.",
+  "pp. 467, 474: states Finite Fine-grainedness.",
+]
+
+[[works]]
+id = "arrhenius-2022-without-transitivity"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, Population Paradoxes without Transitivity, in G. Arrhenius, K. Bykvist, T. Campbell & E. Finneron-Burns (eds.), The Oxford Handbook of Population Ethics, OUP, ch. 8 (2022)."
+doi = "10.1093/oxfordhb/9780190907686.013.11"
+pdf_url = "https://www.iffs.se/media/23552/population-paradoxes-without-transitivity.pdf"
+pdf_sha256 = "a57863fe55c42def309cc2381dae749eaa07e2488ef78efe9d0c433384a77e0d"
+read = "firsthand"
+theorem = "There is no weak population axiology which satisfies Quality, Non-Anti Egalitarianism, Dominance Addition, and Maximality. (§7, pp. 194–195)"
+notes = [
+  "A weak population axiology is a reflexive at-least-as-good ordering on each finite set, with no transitivity.",
+  "fn 41: with a rich domain Maximality implies acyclicity; the adequacy conditions induce a top-cycle.",
+  "fn 14: the earlier theorems use weaker at-least-as-good conditions with the same structure.",
+  "No quasi-transitivity or Suzumura-consistency analysis.",
+]
+
+[[works]]
+id = "arrhenius-2022-vagueness"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius, Incommensurability and Vagueness in Population Axiology, in H. Andersson & A. Herlitz (eds.), Value Incommensurability, Routledge, ch. 6 (2022)."
+pdf_sha256 = "bb295802f5c812421d3ed25705bf7412ae387f3199f29c887bc6ef8e1024dfd2"
+read = "firsthand"
+notes = ["Critiques Incomplete and Vague Critical-Level Utilitarianism: they avoid the Repugnant Conclusion but violate Quality and Weak Non-Sadism. No new theorem."]
+
+[[works]]
+id = "arrhenius-stefansson-2024-degrees"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius & H. Orri Stefánsson, Degrees of Incommensurability and the Sequence Argument, Institute for Futures Studies Working Paper 2024:11."
+pdf_url = "https://www.iffs.se/media/24248/11_arrhenius-stef%C3%A1nsson.pdf"
+pdf_sha256 = "933a36b23d4d1954b9c9e1b22d934451731d0d8ceb7e588ee1ce74e50f6a49d8"
+read = "partial"
+notes = ["pp. 52–53 and fn 24: calls 'populations of different sizes are always incommensurable' very implausible."]
+
+[[works]]
+id = "arrhenius-book-manuscript"
+kind = "arrhenius-theorem"
+citation = "Gustaf Arrhenius, Population Ethics: The Challenge of Future Generations, Oxford University Press (forthcoming; manuscript versions 2013 and 2015)."
+read = "secondary"
+via = ["thomas-2016-reconstructing", "suzuki-2017-review"]
+notes = [
+  "Six axiological theorems (ch. 11) and two normative theorems (ch. 12).",
+  "Book theorems 1–4 are thesis Theorems 1–4; theorem 5 is arrhenius-2003-vrc; theorem 6 is arrhenius-2009-one-more.",
+  "None uses the E&P 2000 Addition condition or strict Non-Anti-Egalitarianism.",
+]
+
+[[works]]
+id = "arrhenius-2017-precis"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius, précis of Population Ethics, Ars Vivendi 8/9, 3–6 (2017)."
+pdf_sha256 = "d20bf07b4a03b2f5e0f0f1f93b58c0184f4a9b9cc7140bce3291aad215572560"
+read = "firsthand"
+notes = ["Four pages; no theorems."]
+
+# ---------------------------------------------------------------------------
+# Reconstructions, critiques, and the incompleteness literature
+# ---------------------------------------------------------------------------
+
+[[works]]
+id = "thomas-2016-reconstructing"
+kind = "reconstruction"
+citation = "Teruji Thomas, Reconstructing Arrhenius's Impossibility Theorems (manuscript, April 2016)."
+stable_url = "https://users.ox.ac.uk/~mert2060/webfiles/Reconstructing-Arrhenius-for-web.pdf"
+pdf_sha256 = "78bc3339933551219748f437d2434698627719dc0805cb4c85122b30293c3127"
+read = "firsthand"
+notes = [
+  "Reconstructs the six book theorems from the 2013 manuscript over a transitive, reflexive relation, with positive-form conditions (p. 2).",
+  "Shared lemmas: General Non-Elitism implies Generalized Inequality-Averse Addition (pp. 6–8); GNEP implies Sufficient Tradeoffs (pp. 8–9).",
+  "pp. 4–5, 10: negative-form Dominance Addition yields only 'not at least as good'.",
+  "Theorem 3 (p. 6) is the closest reconstructed skeleton to R6.",
+  "Does not reconstruct the E&P 2000 theorem.",
+]
+
+[[works]]
+id = "suzuki-2017-review"
+kind = "reconstruction"
+citation = "Suzuki, Arrhenius' Population Ethics, Ars Vivendi 8/9, 7–23 (2017)."
+pdf_url = "https://www.ritsumei-arsvi.org/uploads/publications_en/39/Suzuki.pdf"
+pdf_sha256 = "6da140fee4b5df34f32d3a89bca31a6d530dfd59ad8cf2e7fe0e0f2d9093d6ac"
+read = "firsthand"
+notes = ["Reviews the July 2015 book manuscript; gives chapter and page locations for its theorems and conditions."]
+
+[[works]]
+id = "thomas-2018-possibilities"
+kind = "critique"
+citation = "Teruji Thomas, Some Possibilities in Population Axiology, Mind 127(507), 807–832 (2018)."
+doi = "10.1093/mind/fzx047"
+pdf_sha256 = "d387430bdcc98b5ee09863a5045cabeaebd6a6e1f016245a77717bee1c455d61"
+read = "firsthand"
+page_note = "Accepted-manuscript pagination (1–18)."
+notes = [
+  "Small Steps (Arrhenius's Finite Fine-grainedness, fn 13) drives Theorems 1, 4, 5, 6; Inequality Aversion drives Theorems 2 and 3 (p. 2).",
+  "Total lexic utilitarianism satisfies every adequacy condition of Theorems 1, 4, 5, 6 except Small Steps (p. 8).",
+  "pp. 11–12, fn 29–30: Non-Anti-Egalitarianism entails Inequality Aversion only under an Archimedean total.",
+  "fn 31: the Small Steps argument fails if the welfare scale has gaps.",
+  "DOI not re-verified against the publisher.",
+]
+
+[[works]]
+id = "thornley-2022-prospect"
+kind = "critique"
+citation = "Elliott Thornley, The impossibility of a satisfactory population prospect axiology (independently of Finite Fine-Grainedness), Philosophical Studies (2022)."
+doi = "10.1007/s11098-021-01621-4"
+pdf_url = "https://d-nb.info/1241023689/34"
+pdf_sha256 = "e987cec4ffac4da656dc80493941006437be8c11a3594b1d1ac1a47b2bc04796"
+read = "partial"
+notes = ["Lexical Totalism with Carlson's category definitions defeats Theorems 1, 4, 5, 6; for Theorems 2 and 3 only Inequality Aversion fails (pp. 7–9)."]
+
+[[works]]
+id = "carlson-1998-trilemmas"
+kind = "critique"
+citation = "Erik Carlson, Mere Addition and Two Trilemmas of Population Ethics, Economics & Philosophy 14(2), 283–306 (1998)."
+doi = "10.1017/S0266267100003862"
+read = "secondary"
+via = ["arrhenius-2000-ep", "thomas-2018-possibilities"]
+
+[[works]]
+id = "carlson-2022-handbook"
+kind = "critique"
+citation = "Erik Carlson, On Some Impossibility Theorems in Population Ethics, in The Oxford Handbook of Population Ethics (2022)."
+doi = "10.1093/oxfordhb/9780190907686.013.14"
+read = "secondary"
+via = ["thornley-2022-prospect"]
+notes = ["Shows Lexical Totalism satisfies the conditions of Theorems 1, 4, 5, 6. No evidence it analyzes completeness."]
+
+[[works]]
+id = "ng-1989-theory-x"
+kind = "predecessor"
+citation = "Yew-Kwang Ng, What Should We Do About Future Generations? Impossibility of Parfit's Theory X, Economics & Philosophy 5(2), 235–253 (1989)."
+doi = "10.1017/S0266267100002406"
+read = "secondary"
+via = ["arrhenius-2000-ep", "thomas-2018-possibilities"]
+
+[[works]]
+id = "bbd-1996-quasi-orderings"
+kind = "incompleteness"
+citation = "Charles Blackorby, Walter Bossert & David Donaldson, Quasi-orderings and population ethics, Social Choice and Welfare 13(2), 129–150 (1996)."
+doi = "10.1007/BF00183348"
+read = "secondary"
+via = ["gustafsson-2020-fourth", "bossert-cato-kamaga-2025-thresholds"]
+notes = ["Introduces Incomplete Critical-Level (later Critical-Band) Utilitarianism: complete on same-number pairs, incomplete across sizes."]
+
+[[works]]
+id = "bbd-2005-population-issues"
+kind = "incompleteness"
+citation = "Charles Blackorby, Walter Bossert & David Donaldson, Population Issues in Social Choice Theory, Welfare Economics, and Ethics, Cambridge University Press (2005)."
+read = "secondary"
+via = ["gustafsson-2020-fourth", "lts-2024-incompleteness"]
+notes = ["Critical-Band Utilitarianism named at p. 252; critical-band generalized utilitarianism at p. 250."]
+
+[[works]]
+id = "bossert-cato-kamaga-2025-thresholds"
+kind = "incompleteness"
+citation = "Walter Bossert, Susumu Cato & Kohei Kamaga, threshold quasi-orderings in population ethics, Global Priorities Institute Working Paper 3-2025."
+pdf_sha256 = "2660c23d82f6d45c4eaaa89722434cab7a21642a01ca18fe2f7451489df6ab58"
+read = "partial"
+notes = ["Same-number restrictions assumed complete; Critical-Band Utilitarianism is the only incomplete approach previously examined axiomatically (pp. 1–3)."]
+
+[[works]]
+id = "lts-2024-incompleteness"
+kind = "incompleteness"
+citation = "Harvey Lederman, Christian Tarsney & Dean Spears, What Forms for Incomplete Population Ethics Does Social Expected Multi-Utility Permit?, PWI Working Paper w2402 (2024)."
+pdf_url = "https://sites.utexas.edu/pwi/files/2024/05/LTS_Incompleteness.pdf"
+pdf_sha256 = "2021a6aecb6078e5c1c145c3f0b5ff040c9b5e2076751ff51638584505f31409"
+read = "partial"
+notes = ["Same-number completeness assumed (pp. 2–3); the critical set can make every different-number comparison incomparable (p. 7)."]
+
+[[works]]
+id = "tls-dominance-against-incompleteness"
+kind = "incompleteness"
+citation = "Christian Tarsney, Harvey Lederman & Dean Spears, A Dominance Argument Against Incompleteness, Philosophical Review (forthcoming); arXiv 2403.17641."
+pdf_sha256 = "91041dbef8b42da2298aebde2fad36d8925187f57871106830254bf49066852f"
+read = "partial"
+notes = ["pp. 22–23: critical-range utilitarianism avoids the Repugnant and Sadistic Conclusions of Arrhenius (2000)."]
+
+[[works]]
+id = "gustafsson-2020-fourth"
+kind = "incompleteness"
+citation = "Johan E. Gustafsson, Population axiology and the possibility of a fourth category of absolute value, Economics & Philosophy 36(1), 81–110 (2020)."
+doi = "10.1017/S0266267119000087"
+pdf_sha256 = "239ccc44a25f5c33f191b267f7f4c1033c73a10e416374e8d41ac826b5ecab41"
+read = "partial"
+notes = ["p. 86: Standard Critical-Range Utilitarianism avoids the Repugnant and Sadistic Conclusions but entails the Weak Sadistic Conclusion."]
+
+[[works]]
+id = "bossert-cato-kamaga-2022-suzumura"
+kind = "relation-theory"
+citation = "Walter Bossert, Susumu Cato & Kohei Kamaga, Independent, neutral, and monotonic collective choice: the role of Suzumura consistency, ISS Tokyo Discussion Paper E-22-005 (2022)."
+pdf_sha256 = "804724f8755dc05b32c7f3c8a91dab06120a87329b12b7fb2cbd16fd8eca9b39"
+read = "partial"
+notes = [
+  "p. 3: Suzumura consistency is necessary and sufficient for an ordering extension and coincides with transitivity under completeness.",
+  "p. 5: quasi-transitivity and Suzumura consistency are independent unless the relation is complete.",
+  "Stands in for Suzumura (1976, Economica 43) and Bossert & Suzumura (2010), not obtained.",
+]
+
+[[works]]
+id = "parent-benzmuller-2024-hol"
+kind = "computational"
+citation = "Xavier Parent & Christoph Benzmüller, Conditional normative reasoning as a fragment of HOL, Journal of Applied Non-Classical Logics 34(4) (2024); arXiv 2308.10686."
+doi = "10.1080/11663081.2024.2386917"
+pdf_sha256 = "14316bb14fc30a365e851af6555fb72e97e0286a1587a8b75b255a6482c5c36d"
+read = "partial"
+notes = [
+  "The only machine-reasoning treatment of a population paradox found: Parfit's three-population Mere Addition Paradox in Isabelle/HOL (§5, arXiv pp. 22–28).",
+  "Nitpick finds models under acyclicity and quasi-transitivity; interval order does not escape (p. 25, Table 4 p. 26).",
+  "Not Arrhenius; no minimal cores or incomparability counts.",
+]
+
+[[works]]
+id = "budolfson-spears-rc"
+kind = "related-impossibility"
+citation = "Mark Budolfson & Dean Spears, Why the Repugnant Conclusion is Inescapable (draft)."
+pdf_url = "https://budolfson.github.io/files/RC.pdf"
+pdf_sha256 = "d7741c2a3aa7e94930da32fd5cf3bd886cbe6d0a8b9bd5e19e2cb5f9859b5744"
+read = "partial"
+notes = ["Theorem 1* (p. 14) needs no complete ordering; p. 25: the XVRC follows from a same-number comparison alone."]
+
+[[works]]
+id = "spears-budolfson-2021-scw"
+kind = "related-impossibility"
+citation = "Dean Spears & Mark Budolfson, Repugnant conclusions, Social Choice and Welfare (2021)."
+doi = "10.1007/s00355-021-01321-2"
+pdf_sha256 = "ac7f93eef9e4f92e5c2dd18f9f57ed2a69d162dca3840abb49daecd1332623e9"
+read = "partial"
+notes = ["Assumes a complete ordering (Axiom 1)."]
+
+[[works]]
+id = "greaves-2017-survey"
+kind = "survey"
+citation = "Hilary Greaves, Population axiology, Philosophy Compass 12(11) (2017)."
+pdf_sha256 = "9f7af88f6538ac90875de4b481271b4aa61740f9d24167e713184c7c80baed3f"
+read = "not-obtained"
+notes = ["PDF downloaded but not read."]
+
+[[works]]
+id = "arrhenius-2000-ep"
+kind = "primary-authority"
+citation = "See sources.toml id arrhenius-2000."
+pdf_sha256 = "9cca623722ea09f2944bfbd8f2c3f5efe9aa58420b4aedfc0ef75a929a3edcd6"
+read = "firsthand"
+notes = [
+  "p. 264 and fn 31: the theorem does not work without completeness, which enters in Repugnance avoidance, the reductio, and the Anti-Egalitarian and Sadistic applications.",
+  "p. 265 fn 33: Blackorby, Bossert & Donaldson (1997) avoid the Sadistic Conclusion through incommensurability.",
+  "p. 265 fn 34: points to arrhenius-1999-weak-ordering for a theorem without completeness.",
+]
+
+# Known to exist and relevant, not yet obtained.
+[[wanted]]
+citations = [
+  "Blackorby, Bossert & Donaldson (1997), Critical-level utilitarianism and the population-ethics dilemma, Economics & Philosophy 13, 197–230.",
+  "Parfit (2016), Can We Avoid the Repugnant Conclusion?, Theoria 82, 110–127. DOI 10.1111/theo.12097.",
+  "Chang (2016), Parity, imprecise comparability, and the repugnant conclusion, Theoria 82, 183–215.",
+  "Arrhenius & Rabinowicz (2005), Millian Superiorities, Utilitas 17, 127–146; (2015) Value Superiority, Oxford Handbook of Value Theory.",
+  "Carlson (2007), Higher values and non-Archimedean additivity, Theoria 73.",
+  "Handfield & Rabinowicz (2018), Incommensurability and vagueness in spectrum arguments, Philosophical Studies 175, 2373–2387.",
+  "Kitcher (2000), Parfit's puzzle, Noûs 34.",
+  "Nebel (2022), Totalism without repugnance, in Ethics and Existence.",
+  "Thornley (2022), A dilemma for lexical and Archimedean views in population axiology, Economics & Philosophy.",
+  "Baker (2025), Non-Archimedean population axiologies, Economics & Philosophy 41(1), 24–45. Open access.",
+  "Arrhenius (1999b), Population Axiology, Toronto dissertation mimeo.",
+]
+
+# ---------------------------------------------------------------------------
+# Collision verdicts for research/REPORT.md results
+# ---------------------------------------------------------------------------
+# verdict: "collides", "partial", or "none-found". none-found covers the sources above only.
+
+[[collisions]]
+result = "R1"
+verdict = "partial"
+sources = ["arrhenius-2000-ep", "arrhenius-1999-weak-ordering"]
+known = "The E&P 2000 theorem fails without completeness, and Arrhenius names where completeness enters (2000 p. 264, fn 31; 1999 p. 12)."
+open = "No source counts or locates the incomparabilities. The minimum of 4 pairs and the unique AAF star appear nowhere."
+
+[[collisions]]
+result = "R2"
+verdict = "partial"
+sources = ["bbd-1996-quasi-orderings", "bbd-2005-population-issues", "lts-2024-incompleteness", "tls-dominance-against-incompleteness", "gustafsson-2020-fourth", "arrhenius-2022-conflict-imprecision", "arrhenius-2000-thesis"]
+known = "Same-number-complete, different-number-incomplete axiologies (Critical-Band Utilitarianism) are an established program and are reported to avoid the Repugnant and Sadistic Conclusions of Arrhenius 2000. Parfit's quarantine and Different-Number-Based Imprecision are the same idea informally."
+open = "The different-number-only UNSAT half and the 'at least two different-number pairs unresolved' bound appear nowhere. A literature agent derived, but did not find stated, that Critical-Band Utilitarianism satisfies all E&P 2000 conditions; unverified here. arrhenius-2016-imprecision is unread."
+
+[[collisions]]
+result = "R3"
+verdict = "collides"
+sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2003-vrc", "arrhenius-2009-one-more", "thomas-2016-reconstructing"]
+known = "Positive at-least-as-good avoidance conditions over a quasi-ordering, with no completeness, is Arrhenius's own method from 1999 on; fn 3 of the 1999 paper restates E&P Non-Anti-Egalitarianism in that form."
+open = "Only the four-pair partial-completeness version for the exact E&P 2000 condition set."
+
+[[collisions]]
+result = "R4"
+verdict = "partial"
+sources = ["arrhenius-2000-thesis", "arrhenius-2022-without-transitivity", "parent-benzmuller-2024-hol", "bossert-cato-kamaga-2022-suzumura"]
+known = "Suzumura consistency equals transitivity under completeness (standard). Acyclicity and quasi-transitivity escape Parfit's Mere Addition Paradox (Parent & Benzmüller). Arrhenius concedes the weak-link cycles are not strict and moves to acyclicity, Maximality, or normative versions."
+open = "Minimum transitivity-core sizes (5 and 7) and their counts."
+
+[[collisions]]
+result = "R5"
+verdict = "partial"
+sources = ["thomas-2018-possibilities", "thornley-2022-prospect", "arrhenius-2000-thesis"]
+known = "Whether category gaps and Archimedean structure hold decides whether Non-Anti-Egalitarianism-based derivations go through; Arrhenius replaces the categories with ranges R(u,v), R(1,y), u > y."
+open = "The three-condition triangle itself; it remains a formalization diagnostic."
+
+[[collisions]]
+result = "R6"
+verdict = "partial"
+sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "arrhenius-2003-vrc"]
+known = "The outer frame is the 1999 theorem (thesis Theorem 3) at p = q = 1, r = 5: MNEP on (14) gives (−1,14,14) ⪰ (7,7,14); Non-Sadism on (14,14) gives (1⁵,14,14) ⪰ (−1,14,14); the single inequality step compares 5⁷ with (1⁵,14,14). Putting the negative life inside the added low group and removing it with an MNEP-type bridge on a very-low background is the Lemma 3 device of 2009 and Lemma 1.3 of 2011."
+open = "The closing link: E&P 2000 Addition with a Non-Repugnance case split on A ≻ AB, followed by a two-step dominance ladder, in place of Quality Addition plus one Egalitarian Dominance step."

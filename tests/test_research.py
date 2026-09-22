@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import random
+import re
+import tomllib
 from dataclasses import replace
+from pathlib import Path
 
 import pytest
 
@@ -210,3 +213,22 @@ def test_schema_instances_pass_the_independent_audit_and_corruptions_fail() -> N
         if i.principle == "addition"
     ]
     assert not any(check_instance(i, RELAXED, 1, 1) for i in shrunk)
+
+
+def test_literature_corpus_references_resolve_and_every_report_result_has_a_verdict() -> None:
+    corpus = tomllib.loads(Path("corpus/literature.toml").read_text())
+    ids = [work["id"] for work in corpus["works"]]
+    assert len(ids) == len(set(ids))
+    known = set(ids)
+    for work in corpus["works"]:
+        assert work["read"] in {"firsthand", "partial", "secondary", "not-obtained"}, work["id"]
+        assert set(work.get("via", ())) <= known, work["id"]
+        assert (work["read"] == "secondary") == bool(work.get("via")), work["id"]
+        for key in ("pdf_sha256", "errata_sha256"):
+            if key in work:
+                assert re.fullmatch(r"[0-9a-f]{64}", work[key]), work["id"]
+    verdicts = {c["result"]: c for c in corpus["collisions"]}
+    assert set(verdicts) == {f"R{i}" for i in range(1, 7)}
+    for collision in verdicts.values():
+        assert collision["verdict"] in {"collides", "partial", "none-found"}
+        assert collision["sources"] and set(collision["sources"]) <= known

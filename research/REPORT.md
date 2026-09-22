@@ -9,9 +9,8 @@ The labels follow the plan:
   - rational-cardinal spacing sensitivity;
   - logical mutation;
   - unreviewed schema generalization.
-- **Novelty.** Every novelty status is `candidate-new-result`; no literature review has been
-  done. The primary paper discusses incompleteness on pp. 264–265, and Arrhenius's later work
-  states related theorems without completeness. Some items below may therefore be known.
+- **Novelty.** Ledger rows carry the solver-side status `candidate-new-result`. The literature
+  verdicts in `corpus/literature.toml` override it; see "Literature collision" below.
 
 Unless a result says otherwise, it is about the frozen instance `arrhenius-2000.selected-witness/v1`
 (problem `eef25016…`) restricted to its seven active relata:
@@ -234,7 +233,8 @@ contradiction, which is propositional.
 - **Falsification attempts.** Incomparability-graph connectivity fails. "AAF is always involved"
   fails. Both were recorded.
 - **Gap.** This is one skeleton. Whether other skeletons have a similar unique star is open.
-- **Status.** candidate-new-result.
+- **Status.** Partial collision. The qualitative point is Arrhenius's own; the count and the
+  unique pattern were not found in prior work.
 
 ### R2. Different-number comparability drives the contradiction
 
@@ -251,7 +251,8 @@ contradiction, which is propositional.
 - **Gap.** Unrestricted form: "Arrhenius's conditions plus same-number completeness are
   consistent" is an unrestricted conjecture. Proving it needs an explicit model on all
   populations. It is untested.
-- **Status.** candidate-new-result.
+- **Status.** Partial collision. The same-number-complete escape is an established program; the
+  different-number-only UNSAT half was not found.
 
 ### R3. Weaker sufficient assumptions (C1)
 
@@ -272,7 +273,8 @@ contradiction, which is propositional.
   - weak Dominance.
 - **Gap.** The positive form of the avoidance conditions (M2) needs no completeness at all.
   Arrhenius's later theorems may already be stated in that form, so novelty is doubtful.
-- **Status.** candidate-new-result, likely known in substance.
+- **Status.** Collides. The no-completeness positive form is Arrhenius's method from 1999 on; only
+  the four-pair version for the exact 2000 condition set is unrecorded.
 
 ### R4. The minimum transitivity core depends on completeness
 
@@ -284,7 +286,8 @@ contradiction, which is propositional.
   - Suzumura consistency does not escape with full completeness (it is equivalent to
     transitivity there), but escapes under the four-pair restriction.
 - **Evidence.** Implicit-hitting-set minimum cores (complete enumeration); Z3 plus DPLL.
-- **Status.** Finite computational result, candidate-new-result.
+- **Status.** Finite computational result. Partial collision: the qualitative relation theory is
+  standard; the core sizes and counts were not found.
 
 ### R6. A second proof skeleton using Non-Anti-Egalitarianism once
 
@@ -337,7 +340,8 @@ contradiction, which is propositional.
   - Is 7 "very low" when 14 is "very high"? (The grid is still a sensitivity choice.)
 - **Escape structure.** Minimum incomparability is 5, and the minimum escape again isolates the
   population where Non-Sadism and Non-Anti-Egalitarianism meet, (1⁵,14,14). This supports U3.
-- **Status.** candidate-new-result, pending fidelity review.
+- **Status.** Partial collision, pending fidelity review. The outer frame is Arrhenius 1999; only
+  the closing link is unrecorded.
 
 ### R5. Triangle gap condition
 
@@ -444,6 +448,30 @@ Formalization: `arrhenius-2000.schema/v0-unreviewed` (`research/schema.py`).
 - **Bounded negative result.** On the baseline grid no skeleton of any shape fits within 8 lives.
   This is a finite computational result under the unreviewed schema.
 
+## Literature collision
+
+Source: `corpus/literature.toml`, which records each work, what was read firsthand, and a
+verdict per result. The check covered Arrhenius's theorem papers from 1999 to 2022, his thesis,
+Thomas's reconstruction of the book theorems, Thomas 2018, Thornley, the critical-band and
+critical-range literature, and a search for machine-reasoning treatments. The book manuscript
+and Arrhenius (2016, Theoria) were not obtained.
+
+- **Arrhenius had already moved past completeness.** The 2000 paper says the theorem fails
+  without completeness (p. 264, fn 31) and points to the 1999 theorem. Every Arrhenius theorem
+  from 1999 on is stated over a quasi-ordering, with at-least-as-good conditions and one strict
+  Egalitarian Dominance step.
+- **R6 reuses the 1999 frame.** At p = q = 1, r = 5 the 1999 populations are (−1,14,14),
+  (7,7,14), (1⁵,14,14), and 5⁷. The MNEP step, the Non-Sadism step, and the single inequality
+  step match R6 exactly. Arrhenius's 2009 and 2011 Lemma 3 already puts negative lives in the
+  added low group and removes them with an MNEP-type bridge. What remains is the closing link:
+  E&P 2000 Addition with a Repugnance case split, in place of Quality Addition.
+- **No prior computational analysis of Arrhenius was found.** The nearest is Parent & Benzmüller
+  (2024), an Isabelle/HOL treatment of Parfit's three-population Mere Addition Paradox, which
+  finds that acyclicity and quasi-transitivity escape it.
+- **R2 may have a known model.** Critical-Band Utilitarianism is complete within each size and is
+  reported to avoid the Repugnant and Sadistic Conclusions. A research agent derived that it
+  satisfies all five 2000 conditions. That derivation has not been verified.
+
 ## Next research turn
 
 1. **Gap-constrained schema v1 on larger domains**, plus fidelity review of R6's two
@@ -457,9 +485,13 @@ Formalization: `arrhenius-2000.schema/v0-unreviewed` (`research/schema.py`).
 2. **Uniform model for U2.** Look for a closed-form relation, for example lexicographic by
    population size, that is complete within each size. Test it against the v0 schema on bounded
    domains before attempting a proof.
-3. **Human fidelity review and literature check** for R1–R3 before any claim beyond
-   `candidate-new-result`: Arrhenius's later incompleteness discussions, Thomas 2016, and the
-   incomparability literature.
+3. **Remaining literature gaps.** Read Arrhenius (2016, Theoria) before any R2 claim. Get
+   firsthand copies of Blackorby, Bossert & Donaldson (1996, 1997) and check whether
+   Critical-Band Utilitarianism satisfies the 2000 conditions; if it does, U2 is settled by a
+   known model. The `[[wanted]]` list in `corpus/literature.toml` names the rest.
+4. **Encode the 1999 theorem and thesis Theorem 3** as frozen instances. R6 should then appear as
+   a hybrid of the 1999 and 2000 skeletons, and the escape analysis can be rerun on a theorem
+   that Arrhenius proved without completeness.
 
 ## Ledger
 
