@@ -1,0 +1,657 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "0092e326eac65d719baf0a69af5a85ec5f6f6b87543d43d1f20ac746facf34e5",
+    "z3_version": "5.1.0"
+  },
+  "name": "p5_sat_structure",
+  "observations": {
+    "wall_time_s": 33.37
+  },
+  "result": {
+    "escape_conjectures": {
+      "E1: some population is incomparable to at least two others": {
+        "counterexamples": 0,
+        "holds_on_all_escapes": true,
+        "smallest_counterexample": null
+      },
+      "E2: A or AAF is incomparable to at least one other population": {
+        "counterexamples": 0,
+        "holds_on_all_escapes": true,
+        "smallest_counterexample": null
+      },
+      "E3: the incomparability graph is connected (on non-isolated vertices)": {
+        "counterexamples": 4,
+        "holds_on_all_escapes": false,
+        "smallest_counterexample": {
+          "AAE|AAF": "||",
+          "AAE|AB": "~",
+          "AAE|AC": "~",
+          "AAE|D": "<",
+          "AAE|G": ">",
+          "AAF|AB": "||",
+          "AAF|AC": "||",
+          "AAF|D": "<",
+          "AAF|G": "||",
+          "AB|AC": "~",
+          "AB|D": "<",
+          "AB|G": ">",
+          "AC|D": "<",
+          "AC|G": ">",
+          "A|AAE": ">",
+          "A|AAF": ">",
+          "A|AB": ">",
+          "A|AC": ">",
+          "A|D": "||",
+          "A|G": ">",
+          "D|G": ">"
+        }
+      },
+      "E4: some different-number comparison is unresolved": {
+        "counterexamples": 0,
+        "holds_on_all_escapes": true,
+        "smallest_counterexample": null
+      },
+      "E5: some avoidance comparison is unresolved (A:D, AC:D, AAE:AAF, AAF:G)": {
+        "counterexamples": 0,
+        "holds_on_all_escapes": true,
+        "smallest_counterexample": null
+      },
+      "E6: AAF is incomparable to G or to AAE": {
+        "counterexamples": 134,
+        "holds_on_all_escapes": false,
+        "smallest_counterexample": {
+          "AAE|AAF": "~",
+          "AAE|AB": "~",
+          "AAE|AC": "<",
+          "AAE|D": "||",
+          "AAE|G": "~",
+          "AAF|AB": "~",
+          "AAF|AC": "<",
+          "AAF|D": "||",
+          "AAF|G": "~",
+          "AB|AC": "<",
+          "AB|D": "||",
+          "AB|G": "~",
+          "AC|D": "||",
+          "AC|G": ">",
+          "A|AAE": "~",
+          "A|AAF": "~",
+          "A|AB": "~",
+          "A|AC": "<",
+          "A|D": "||",
+          "A|G": "~",
+          "D|G": "||"
+        }
+      },
+      "E7: the strict chain AC ≻ G and AAE ⪰ AB both hold": {
+        "counterexamples": 0,
+        "holds_on_all_escapes": true,
+        "smallest_counterexample": null
+      }
+    },
+    "maximal_sat_census": {
+      "drop addition": {
+        "forced_pairs": {
+          "AAE|AC": "<",
+          "AAE|D": "<",
+          "AAF|AC": "<",
+          "AAF|D": "<",
+          "AB|AC": "<",
+          "AB|D": "<",
+          "AC|G": ">",
+          "A|AAE": ">",
+          "A|AAF": ">",
+          "A|AB": ">",
+          "A|G": ">",
+          "D|G": ">"
+        },
+        "free_pairs": {
+          "AAE|AAF": {
+            "<": 16,
+            "~": 16
+          },
+          "AAE|AB": {
+            ">": 16,
+            "~": 16
+          },
+          "AAE|G": {
+            "<": 24,
+            "~": 8
+          },
+          "AAF|AB": {
+            ">": 24,
+            "~": 8
+          },
+          "AAF|G": {
+            "<": 16,
+            "~": 16
+          },
+          "AB|G": {
+            "<": 28,
+            "~": 4
+          },
+          "AC|D": {
+            "<": 16,
+            "~": 16
+          },
+          "A|AC": {
+            ">": 24,
+            "~": 8
+          },
+          "A|D": {
+            ">": 16,
+            "~": 16
+          }
+        },
+        "models": 32
+      },
+      "drop anti-egalitarianism-avoidance": {
+        "forced_pairs": {
+          "AC|G": ">"
+        },
+        "free_pairs": {
+          "AAE|AAF": {
+            "<": 404,
+            "~": 220
+          },
+          "AAE|AB": {
+            ">": 404,
+            "~": 220
+          },
+          "AAE|AC": {
+            "<": 208,
+            ">": 326,
+            "~": 90
+          },
+          "AAE|D": {
+            "<": 40,
+            ">": 546,
+            "~": 38
+          },
+          "AAE|G": {
+            "<": 48,
+            ">": 544,
+            "~": 32
+          },
+          "AAF|AB": {
+            ">": 554,
+            "~": 70
+          },
+          "AAF|AC": {
+            "<": 112,
+            ">": 426,
+            "~": 86
+          },
+          "AAF|D": {
+            "<": 16,
+            ">": 589,
+            "~": 19
+          },
+          "AAF|G": {
+            "<": 16,
+            ">": 592,
+            "~": 16
+          },
+          "AB|AC": {
+            "<": 288,
+            ">": 204,
+            "~": 132
+          },
+          "AB|D": {
+            "<": 72,
+            ">": 472,
+            "~": 80
+          },
+          "AB|G": {
+            "<": 96,
+            ">": 480,
+            "~": 48
+          },
+          "AC|D": {
+            "<": 112,
+            ">": 472,
+            "~": 40
+          },
+          "A|AAE": {
+            "<": 404,
+            ">": 136,
+            "~": 84
+          },
+          "A|AAF": {
+            "<": 488,
+            ">": 72,
+            "~": 64
+          },
+          "A|AB": {
+            "<": 272,
+            ">": 192,
+            "~": 160
+          },
+          "A|AC": {
+            "<": 352,
+            ">": 240,
+            "~": 32
+          },
+          "A|D": {
+            ">": 440,
+            "~": 184
+          },
+          "A|G": {
+            "<": 160,
+            ">": 400,
+            "~": 64
+          },
+          "D|G": {
+            "<": 264,
+            ">": 256,
+            "~": 104
+          }
+        },
+        "models": 624
+      },
+      "drop completeness": {
+        "forced_pairs": {
+          "AC|G": ">"
+        },
+        "free_pairs": {
+          "AAE|AAF": {
+            "<": 1409,
+            "||": 18212,
+            "~": 548
+          },
+          "AAE|AB": {
+            ">": 17075,
+            "~": 3094
+          },
+          "AAE|AC": {
+            "<": 4737,
+            ">": 4047,
+            "||": 10720,
+            "~": 665
+          },
+          "AAE|D": {
+            "<": 2963,
+            ">": 5301,
+            "||": 11347,
+            "~": 558
+          },
+          "AAE|G": {
+            "<": 818,
+            ">": 11285,
+            "||": 7754,
+            "~": 312
+          },
+          "AAF|AB": {
+            ">": 5791,
+            "||": 14236,
+            "~": 142
+          },
+          "AAF|AC": {
+            "<": 6626,
+            "||": 13543
+          },
+          "AAF|D": {
+            "<": 4660,
+            ">": 3188,
+            "||": 11655,
+            "~": 666
+          },
+          "AAF|G": {
+            "<": 1303,
+            "||": 18318,
+            "~": 548
+          },
+          "AB|AC": {
+            "<": 11329,
+            ">": 1033,
+            "||": 7344,
+            "~": 463
+          },
+          "AB|D": {
+            "<": 8243,
+            ">": 1361,
+            "||": 10139,
+            "~": 426
+          },
+          "AB|G": {
+            "<": 3874,
+            ">": 4898,
+            "||": 10758,
+            "~": 639
+          },
+          "AC|D": {
+            "<": 1925,
+            "||": 17587,
+            "~": 657
+          },
+          "A|AAE": {
+            "<": 6890,
+            ">": 190,
+            "||": 12911,
+            "~": 178
+          },
+          "A|AAF": {
+            "<": 4078,
+            ">": 3740,
+            "||": 11705,
+            "~": 646
+          },
+          "A|AB": {
+            "<": 1960,
+            ">": 394,
+            "||": 17174,
+            "~": 641
+          },
+          "A|AC": {
+            "<": 8432,
+            ">": 1588,
+            "||": 9757,
+            "~": 392
+          },
+          "A|D": {
+            ">": 2208,
+            "||": 17304,
+            "~": 657
+          },
+          "A|G": {
+            "<": 2401,
+            ">": 6298,
+            "||": 10948,
+            "~": 522
+          },
+          "D|G": {
+            ">": 7843,
+            "||": 12326
+          }
+        },
+        "models": 20169
+      },
+      "drop dominance": {
+        "forced_pairs": {},
+        "free_pairs": {
+          "AAE|AAF": {
+            "<": 264,
+            "~": 152
+          },
+          "AAE|AB": {
+            ">": 264,
+            "~": 152
+          },
+          "AAE|AC": {
+            ">": 364,
+            "~": 52
+          },
+          "AAE|D": {
+            "<": 144,
+            ">": 208,
+            "~": 64
+          },
+          "AAE|G": {
+            "<": 364,
+            "~": 52
+          },
+          "AAF|AB": {
+            ">": 364,
+            "~": 52
+          },
+          "AAF|AC": {
+            ">": 400,
+            "~": 16
+          },
+          "AAF|D": {
+            "<": 80,
+            ">": 288,
+            "~": 48
+          },
+          "AAF|G": {
+            "<": 264,
+            "~": 152
+          },
+          "AB|AC": {
+            ">": 264,
+            "~": 152
+          },
+          "AB|D": {
+            "<": 224,
+            ">": 112,
+            "~": 80
+          },
+          "AB|G": {
+            "<": 400,
+            "~": 16
+          },
+          "AC|D": {
+            "<": 320,
+            "~": 96
+          },
+          "AC|G": {
+            "<": 412,
+            "~": 4
+          },
+          "A|AAE": {
+            "<": 80,
+            ">": 288,
+            "~": 48
+          },
+          "A|AAF": {
+            "<": 144,
+            ">": 208,
+            "~": 64
+          },
+          "A|AB": {
+            "<": 32,
+            ">": 352,
+            "~": 32
+          },
+          "A|AC": {
+            ">": 400,
+            "~": 16
+          },
+          "A|D": {
+            ">": 320,
+            "~": 96
+          },
+          "A|G": {
+            "<": 224,
+            ">": 112,
+            "~": 80
+          },
+          "D|G": {
+            "<": 352,
+            ">": 32,
+            "~": 32
+          }
+        },
+        "models": 416
+      },
+      "drop minimal-non-extreme-priority": {
+        "forced_pairs": {
+          "AAE|AB": "<",
+          "AAE|AC": "<",
+          "AAE|D": "<",
+          "AAF|AB": "<",
+          "AAF|AC": "<",
+          "AAF|D": "<",
+          "AB|G": ">",
+          "AC|G": ">",
+          "A|AAE": ">",
+          "A|AAF": ">",
+          "A|G": ">",
+          "D|G": ">"
+        },
+        "free_pairs": {
+          "AAE|AAF": {
+            "<": 32,
+            "~": 32
+          },
+          "AAE|G": {
+            "<": 48,
+            "~": 16
+          },
+          "AAF|G": {
+            "<": 32,
+            "~": 32
+          },
+          "AB|AC": {
+            ">": 48,
+            "~": 16
+          },
+          "AB|D": {
+            "<": 16,
+            ">": 32,
+            "~": 16
+          },
+          "AC|D": {
+            "<": 40,
+            "~": 24
+          },
+          "A|AB": {
+            "<": 16,
+            ">": 32,
+            "~": 16
+          },
+          "A|AC": {
+            ">": 56,
+            "~": 8
+          },
+          "A|D": {
+            ">": 40,
+            "~": 24
+          }
+        },
+        "models": 64
+      },
+      "drop repugnance-avoidance": {
+        "forced_pairs": {
+          "AAE|AC": "<",
+          "AAE|D": "<",
+          "AAF|AC": "<",
+          "AAF|D": "<",
+          "AB|AC": "<",
+          "AB|D": "<",
+          "AC|G": ">",
+          "A|AC": "<",
+          "A|D": "<",
+          "D|G": ">"
+        },
+        "free_pairs": {
+          "AAE|AAF": {
+            "<": 16,
+            "~": 16
+          },
+          "AAE|AB": {
+            ">": 16,
+            "~": 16
+          },
+          "AAE|G": {
+            "<": 24,
+            "~": 8
+          },
+          "AAF|AB": {
+            ">": 24,
+            "~": 8
+          },
+          "AAF|G": {
+            "<": 16,
+            "~": 16
+          },
+          "AB|G": {
+            "<": 28,
+            "~": 4
+          },
+          "AC|D": {
+            "<": 16,
+            "~": 16
+          },
+          "A|AAE": {
+            "<": 24,
+            "~": 8
+          },
+          "A|AAF": {
+            "<": 28,
+            "~": 4
+          },
+          "A|AB": {
+            "<": 16,
+            "~": 16
+          },
+          "A|G": {
+            "<": 30,
+            "~": 2
+          }
+        },
+        "models": 32
+      },
+      "drop sadism-avoidance": {
+        "forced_pairs": {
+          "AAE|AAF": ">",
+          "AAE|G": ">",
+          "AAF|AB": "<",
+          "AAF|AC": "<",
+          "AAF|D": "<",
+          "AB|G": ">",
+          "AC|G": ">",
+          "A|AAF": ">",
+          "A|G": ">",
+          "D|G": ">"
+        },
+        "free_pairs": {
+          "AAE|AB": {
+            ">": 72,
+            "~": 32
+          },
+          "AAE|AC": {
+            ">": 96,
+            "~": 8
+          },
+          "AAE|D": {
+            "<": 16,
+            ">": 72,
+            "~": 16
+          },
+          "AAF|G": {
+            "<": 52,
+            "~": 52
+          },
+          "AB|AC": {
+            ">": 72,
+            "~": 32
+          },
+          "AB|D": {
+            "<": 40,
+            ">": 40,
+            "~": 24
+          },
+          "AC|D": {
+            "<": 72,
+            "~": 32
+          },
+          "A|AAE": {
+            "<": 40,
+            ">": 40,
+            "~": 24
+          },
+          "A|AB": {
+            "<": 16,
+            ">": 72,
+            "~": 16
+          },
+          "A|AC": {
+            ">": 96,
+            "~": 8
+          },
+          "A|D": {
+            ">": 72,
+            "~": 32
+          }
+        },
+        "models": 104
+      }
+    }
+  },
+  "result_sha256": "f002ce3e413eeef1993e62bef5d30a6b2e98c64910349438334448235d035a27",
+  "schema": "population-ethics.research-result/v1"
+}

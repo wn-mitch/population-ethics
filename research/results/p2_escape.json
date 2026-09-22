@@ -1,0 +1,4998 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "0092e326eac65d719baf0a69af5a85ec5f6f6b87543d43d1f20ac746facf34e5",
+    "z3_version": "5.1.0"
+  },
+  "name": "p2_escape",
+  "observations": {
+    "wall_time_s": 91.56
+  },
+  "result": {
+    "H_plus_all_21_pairs": "unsat",
+    "H_sat": "sat",
+    "automorphisms": [
+      {
+        "A": "A",
+        "AAE": "AAE",
+        "AAF": "AAF",
+        "AB": "AB",
+        "AC": "AC",
+        "D": "D",
+        "G": "G"
+      }
+    ],
+    "avoidance_pairs": [
+      "completeness:A:D",
+      "completeness:AAE:AAF",
+      "completeness:AAF:G",
+      "completeness:AC:D"
+    ],
+    "avoidance_pairs_form_a_mus": true,
+    "curated_certificate_pairs_form_a_mus": false,
+    "enumeration": {
+      "distinct_incomparability_patterns": 9093,
+      "escape_models": 20169,
+      "forced_comparable": [
+        "completeness:AAE:AB",
+        "completeness:AC:G"
+      ],
+      "forced_incomparable": [],
+      "inclusion_minimal_patterns_equal_mcses": true,
+      "k_distribution_models": {
+        "4": 8,
+        "5": 22,
+        "6": 135,
+        "7": 153,
+        "8": 457,
+        "9": 1094,
+        "10": 2468,
+        "11": 3169,
+        "12": 4135,
+        "13": 3600,
+        "14": 2697,
+        "15": 1426,
+        "16": 613,
+        "17": 160,
+        "18": 30,
+        "19": 2
+      },
+      "k_max": 19,
+      "k_min": 4,
+      "preorders_scanned": 9535241
+    },
+    "full_domain_66_pairs": {
+      "k_min": 4,
+      "mcs_count": 110,
+      "mcses_equal_active": true,
+      "mus_count": 339,
+      "muses_equal_active": true,
+      "z3_calls": 10366
+    },
+    "k_max": 19,
+    "k_min": 4,
+    "mcs_by_unresolved_avoidance_pairs": {
+      "completeness:A:D": 1,
+      "completeness:A:D|completeness:AAE:AAF": 5,
+      "completeness:A:D|completeness:AAE:AAF|completeness:AAF:G": 15,
+      "completeness:A:D|completeness:AAE:AAF|completeness:AAF:G|completeness:AC:D": 26,
+      "completeness:A:D|completeness:AAE:AAF|completeness:AC:D": 10,
+      "completeness:A:D|completeness:AAF:G": 5,
+      "completeness:A:D|completeness:AAF:G|completeness:AC:D": 10,
+      "completeness:A:D|completeness:AC:D": 5,
+      "completeness:AAE:AAF": 1,
+      "completeness:AAE:AAF|completeness:AAF:G": 3,
+      "completeness:AAE:AAF|completeness:AAF:G|completeness:AC:D": 13,
+      "completeness:AAE:AAF|completeness:AC:D": 7,
+      "completeness:AAF:G": 1,
+      "completeness:AAF:G|completeness:AC:D": 7,
+      "completeness:AC:D": 1
+    },
+    "mcs_count": 110,
+    "mcs_size_distribution": {
+      "4": 1,
+      "6": 6,
+      "7": 12,
+      "8": 26,
+      "9": 33,
+      "10": 18,
+      "11": 6,
+      "12": 8
+    },
+    "mcses": [
+      {
+        "degree": {
+          "A": 6,
+          "AAE": 1,
+          "AAF": 1,
+          "AB": 1,
+          "AC": 1,
+          "D": 1,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G"
+        ],
+        "size": 6,
+        "star_center": "A"
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 1,
+          "D": 1,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAF|G",
+          "AB|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 1,
+          "D": 1,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|G",
+          "AAF|G",
+          "AB|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 2,
+          "D": 5,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|D",
+          "AAF|D",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 2,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 11,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 4,
+          "D": 3,
+          "G": 4
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 3,
+          "D": 4,
+          "G": 4
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 2,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|D",
+          "AAE|G",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 11,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 1,
+          "AAF": 1,
+          "AB": 1,
+          "AC": 1,
+          "D": 2,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AC|D"
+        ],
+        "size": 6,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 2,
+          "D": 1,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 1,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAF|G",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 3,
+          "D": 1,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 1,
+          "D": 2,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|G",
+          "AAF|G",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 1,
+          "AAF": 1,
+          "AB": 1,
+          "AC": 1,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 6,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 4,
+          "AAF": 4,
+          "AB": 4,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "AAE|AC",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AB|D",
+          "AB|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 4,
+          "D": 2,
+          "G": 4
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 11,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 1,
+          "D": 1,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AB"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 1,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 2,
+          "AB": 3,
+          "AC": 1,
+          "D": 1,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAE|G",
+          "AAF|AB",
+          "AB|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 1,
+          "D": 1,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AB",
+          "AAF|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 4,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 3,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AB",
+          "AAF|D",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 2,
+          "AB": 3,
+          "AC": 2,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AB",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 3,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|D",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 4,
+          "AAF": 3,
+          "AB": 4,
+          "AC": 3,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AB",
+          "AAF|D",
+          "AB|D",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 3,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AC|D"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 4,
+          "AAF": 2,
+          "AB": 4,
+          "AC": 2,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AB",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 2,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AB",
+          "AAF|G",
+          "AB|D",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 1,
+          "D": 2,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AB",
+          "AC|D"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 1,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 1,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAF|D",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 4,
+          "AAF": 2,
+          "AB": 4,
+          "AC": 2,
+          "D": 1,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AB",
+          "AB|AC",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 2,
+          "D": 1,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|G",
+          "AB|AC"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 2,
+          "AB": 3,
+          "AC": 1,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|G",
+          "AAF|AB",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 1,
+          "D": 2,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AB",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 1,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AB",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 2,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "AAF|AC",
+          "AAF|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 1,
+          "AB": 1,
+          "AC": 1,
+          "D": 4,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "A|D",
+          "AAF|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 6,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 5,
+          "AAF": 2,
+          "AB": 5,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AB",
+          "AB|AC",
+          "AB|D",
+          "AB|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 4,
+          "AAF": 3,
+          "AB": 4,
+          "AC": 2,
+          "D": 2,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAF|AB",
+          "AAF|G",
+          "AB|AC",
+          "AB|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 4,
+          "AAF": 3,
+          "AB": 4,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AB",
+          "AAF|D",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 11,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 3,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 3,
+          "D": 2,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AB",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 4,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAE|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAF|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 5,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 1,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AC",
+          "AAF|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 2,
+          "D": 2,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAF|AB",
+          "AAF|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAF|G",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AC",
+          "AAF|G",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 1,
+          "AAF": 5,
+          "AB": 2,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 3,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|D",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 11,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 3,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 11,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 5,
+          "AB": 3,
+          "AC": 3,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AC|D"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 3,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 5,
+          "AB": 3,
+          "AC": 3,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 1,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAE|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 1,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 5,
+          "AB": 2,
+          "AC": 2,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 2,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 1,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AB",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 1,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|G",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 1,
+          "D": 4,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 5,
+          "AB": 3,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 5,
+          "AB": 2,
+          "AC": 2,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 1,
+          "AAF": 5,
+          "AB": 4,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AB|D",
+          "AB|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 3,
+          "D": 2,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AB",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 4,
+          "AAF": 3,
+          "AB": 4,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AB",
+          "AB|AC",
+          "AB|D",
+          "AB|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 3,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AC",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|D",
+          "AAF|AB",
+          "AAF|G",
+          "AB|AC",
+          "AB|D"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 4,
+          "D": 3,
+          "G": 4
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AC",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AB",
+          "AAF|D",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 5,
+          "AB": 2,
+          "AC": 4,
+          "D": 2,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|AC",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 1,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AAF",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AB",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 5,
+          "AB": 2,
+          "AC": 3,
+          "D": 3,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 5,
+          "AB": 2,
+          "AC": 2,
+          "D": 4,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 1,
+          "D": 4,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|D",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AB",
+          "AAF|G",
+          "AB|D",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 1,
+          "D": 5,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAF",
+          "A|D",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AB",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 1,
+          "AC": 2,
+          "D": 2,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 4,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AC",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 4,
+          "D": 3,
+          "G": 4
+        },
+        "pairs": [
+          "A|AB",
+          "A|AC",
+          "A|G",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 2,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|D",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 1,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|D",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 1,
+          "AC": 2,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 1,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "A|G",
+          "AAE|D",
+          "AAE|G",
+          "AAF|D",
+          "AAF|G",
+          "AC|D"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 3,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 2,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 2,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|D",
+          "AAF|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 1,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 2,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 1,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 2,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "AAE|D",
+          "AAF|AC",
+          "AAF|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 1,
+          "AAF": 1,
+          "AB": 1,
+          "AC": 1,
+          "D": 5,
+          "G": 1
+        },
+        "pairs": [
+          "A|AB",
+          "A|D",
+          "AAE|D",
+          "AAF|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 6,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 3,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AB|D",
+          "AB|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 3,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 4,
+          "D": 4,
+          "G": 4
+        },
+        "pairs": [
+          "A|AC",
+          "A|D",
+          "A|G",
+          "AAE|AC",
+          "AAE|D",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AB|D",
+          "AB|G"
+        ],
+        "size": 12,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 1,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 4,
+          "D": 2,
+          "G": 4
+        },
+        "pairs": [
+          "A|AC",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 5,
+          "D": 2,
+          "G": 5
+        },
+        "pairs": [
+          "A|AC",
+          "A|G",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 3,
+          "D": 3,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 2,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 2,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 1,
+          "D": 5,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 1,
+          "D": 5,
+          "G": 3
+        },
+        "pairs": [
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAE|D",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 2,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|D",
+          "A|G",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 2,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 1,
+          "D": 5,
+          "G": 4
+        },
+        "pairs": [
+          "A|D",
+          "A|G",
+          "AAE|D",
+          "AAE|G",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AB|G",
+          "AC|D"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 3,
+          "AAF": 3,
+          "AB": 3,
+          "AC": 3,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AB",
+          "AAF|D",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 10,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 3,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 2,
+          "D": 5,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|D",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 2,
+          "AAF": 4,
+          "AB": 2,
+          "AC": 3,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|AB",
+          "AAF|D",
+          "AAF|G",
+          "AB|AC",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 2,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 2,
+          "D": 5,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AAF",
+          "AAE|AC",
+          "AAF|D",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 1,
+          "AAF": 3,
+          "AB": 2,
+          "AC": 3,
+          "D": 3,
+          "G": 3
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 1,
+          "AAF": 3,
+          "AB": 1,
+          "AC": 2,
+          "D": 4,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AAF",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 2,
+          "AC": 4,
+          "D": 3,
+          "G": 4
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|AC",
+          "AB|G",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 9,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 2,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 3,
+          "D": 4,
+          "G": 3
+        },
+        "pairs": [
+          "A|D",
+          "AAE|AC",
+          "AAE|G",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 8,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 1,
+          "AAF": 2,
+          "AB": 1,
+          "AC": 2,
+          "D": 5,
+          "G": 2
+        },
+        "pairs": [
+          "A|D",
+          "AAE|D",
+          "AAF|AC",
+          "AAF|G",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 7,
+        "star_center": null
+      },
+      {
+        "degree": {
+          "A": 1,
+          "AAE": 1,
+          "AAF": 1,
+          "AB": 1,
+          "AC": 1,
+          "D": 6,
+          "G": 1
+        },
+        "pairs": [
+          "A|D",
+          "AAE|D",
+          "AAF|D",
+          "AB|D",
+          "AC|D",
+          "D|G"
+        ],
+        "size": 6,
+        "star_center": "D"
+      },
+      {
+        "degree": {
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 1,
+          "AC": 1,
+          "G": 1
+        },
+        "pairs": [
+          "AAE|AAF",
+          "AAF|AB",
+          "AAF|AC",
+          "AAF|G"
+        ],
+        "size": 4,
+        "star_center": "AAF"
+      }
+    ],
+    "min_k_with_same_number_complete": 6,
+    "min_unresolved_different_number_pairs": 2,
+    "minimum_models": [
+      "A: above=[] tied=['D'] incomparable=[]; AAE: above=['A', 'D'] tied=['AB', 'AC'] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'D'] tied=['AAE', 'AC'] incomparable=['AAF']; AC: above=['A', 'D'] tied=['AAE', 'AB'] incomparable=['AAF']; D: above=[] tied=['A'] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']",
+      "A: above=[] tied=[] incomparable=[]; AAE: above=['A', 'D'] tied=['AB', 'AC'] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'D'] tied=['AAE', 'AC'] incomparable=['AAF']; AC: above=['A', 'D'] tied=['AAE', 'AB'] incomparable=['AAF']; D: above=['A'] tied=[] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']",
+      "A: above=[] tied=['D'] incomparable=[]; AAE: above=['A', 'D'] tied=['AB'] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'D'] tied=['AAE'] incomparable=['AAF']; AC: above=['A', 'AAE', 'AB', 'D'] tied=[] incomparable=['AAF']; D: above=[] tied=['A'] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']",
+      "A: above=[] tied=[] incomparable=[]; AAE: above=['A', 'D'] tied=['AB'] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'D'] tied=['AAE'] incomparable=['AAF']; AC: above=['A', 'AAE', 'AB', 'D'] tied=[] incomparable=['AAF']; D: above=['A'] tied=[] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']",
+      "A: above=[] tied=['D'] incomparable=[]; AAE: above=['A', 'D'] tied=[] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'AAE', 'D'] tied=['AC'] incomparable=['AAF']; AC: above=['A', 'AAE', 'D'] tied=['AB'] incomparable=['AAF']; D: above=[] tied=['A'] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']",
+      "A: above=[] tied=[] incomparable=[]; AAE: above=['A', 'D'] tied=[] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'AAE', 'D'] tied=['AC'] incomparable=['AAF']; AC: above=['A', 'AAE', 'D'] tied=['AB'] incomparable=['AAF']; D: above=['A'] tied=[] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']",
+      "A: above=[] tied=['D'] incomparable=[]; AAE: above=['A', 'D'] tied=[] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'AAE', 'D'] tied=[] incomparable=['AAF']; AC: above=['A', 'AAE', 'AB', 'D'] tied=[] incomparable=['AAF']; D: above=[] tied=['A'] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']",
+      "A: above=[] tied=[] incomparable=[]; AAE: above=['A', 'D'] tied=[] incomparable=['AAF']; AAF: above=['A', 'D'] tied=[] incomparable=['AAE', 'AB', 'AC', 'G']; AB: above=['A', 'AAE', 'D'] tied=[] incomparable=['AAF']; AC: above=['A', 'AAE', 'AB', 'D'] tied=[] incomparable=['AAF']; D: above=['A'] tied=[] incomparable=[]; G: above=['A', 'AAE', 'AB', 'AC', 'D'] tied=[] incomparable=['AAF']"
+    ],
+    "minimum_patterns": [
+      {
+        "degree": {
+          "AAE": 1,
+          "AAF": 4,
+          "AB": 1,
+          "AC": 1,
+          "G": 1
+        },
+        "pairs": [
+          "AAE|AAF",
+          "AAF|AB",
+          "AAF|AC",
+          "AAF|G"
+        ],
+        "size": 4,
+        "star_center": "AAF"
+      }
+    ],
+    "mus_count": 339,
+    "mus_intersection": [],
+    "mus_size_distribution": {
+      "4": 335,
+      "5": 4
+    },
+    "muses": [
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:A:G",
+        "completeness:AAF:AC",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AAF",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AC",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:AC",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAE:AAF"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AAE:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAE:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AC",
+        "completeness:AAE:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AC",
+        "completeness:AAE:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:AC",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:D",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAE",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:A:G",
+        "completeness:AAF:AC",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AB"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:AC",
+        "completeness:AAF:AB",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAE:AAF"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAF:AB"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AAF",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AB"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:AAF:AB",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:AC",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAE:AAF"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAF:AB"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AAE:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAE:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AB:D",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AB:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AAF",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AC",
+        "completeness:AAE:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AC",
+        "completeness:AAE:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AC",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:AC",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:D",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:D",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:D",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:D",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:D",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AB:D",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AB:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AB",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AC",
+        "completeness:AAF:D",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AC",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AC",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:AC",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:D",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AB:D",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AB:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AB",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:AC"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AAF",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:AC",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAF:AB",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAF:AB",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAF:AC",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAF:G",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:AC",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAE:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AAE:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAE:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:D",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAE:D",
+        "completeness:AAF:AC"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAE:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:AC",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:D",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:D",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:D",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:D",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:D",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AAF:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:AAF:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:D",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AB",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AAF:D",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:AC",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:D",
+        "completeness:AAF:G",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:AC",
+        "completeness:AB:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:D",
+        "completeness:AB:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:D",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:D",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:D",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AAE:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:AAF",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAE:G",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AAF:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAF:AB",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:AC:D"
+      ],
+      [
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ]
+    ],
+    "pair_classification": {
+      "completeness:A:AAE": "free",
+      "completeness:A:AAF": "free",
+      "completeness:A:AB": "free",
+      "completeness:A:AC": "free",
+      "completeness:A:D": "free",
+      "completeness:A:G": "free",
+      "completeness:AAE:AAF": "free",
+      "completeness:AAE:AB": "forced-comparable",
+      "completeness:AAE:AC": "free",
+      "completeness:AAE:D": "free",
+      "completeness:AAE:G": "free",
+      "completeness:AAF:AB": "free",
+      "completeness:AAF:AC": "free",
+      "completeness:AAF:D": "free",
+      "completeness:AAF:G": "free",
+      "completeness:AB:AC": "free",
+      "completeness:AB:D": "free",
+      "completeness:AB:G": "free",
+      "completeness:AC:D": "free",
+      "completeness:AC:G": "forced-comparable",
+      "completeness:D:G": "free"
+    },
+    "pair_frequency_in_mcses": {
+      "completeness:A:AAE": 40,
+      "completeness:A:AAF": 50,
+      "completeness:A:AB": 79,
+      "completeness:A:AC": 44,
+      "completeness:A:D": 77,
+      "completeness:A:G": 39,
+      "completeness:AAE:AAF": 80,
+      "completeness:AAE:AB": 0,
+      "completeness:AAE:AC": 46,
+      "completeness:AAE:D": 39,
+      "completeness:AAE:G": 34,
+      "completeness:AAF:AB": 38,
+      "completeness:AAF:AC": 38,
+      "completeness:AAF:D": 50,
+      "completeness:AAF:G": 80,
+      "completeness:AB:AC": 28,
+      "completeness:AB:D": 44,
+      "completeness:AB:G": 46,
+      "completeness:AC:D": 79,
+      "completeness:AC:G": 0,
+      "completeness:D:G": 40
+    },
+    "same_number_complete_minimum_patterns": [
+      {
+        "degree": {
+          "A": 6,
+          "AAE": 1,
+          "AAF": 1,
+          "AB": 1,
+          "AC": 1,
+          "D": 1,
+          "G": 1
+        },
+        "pairs": [
+          "A|AAE",
+          "A|AAF",
+          "A|AB",
+          "A|AC",
+          "A|D",
+          "A|G"
+        ],
+        "size": 6,
+        "star_center": "A"
+      }
+    ],
+    "same_number_pairs": [
+      "completeness:AAE:AB",
+      "completeness:AAF:AC",
+      "completeness:AAF:D",
+      "completeness:AAF:G",
+      "completeness:AC:D",
+      "completeness:AC:G",
+      "completeness:D:G"
+    ],
+    "single_route_mcses": {
+      "completeness:A:D": [
+        {
+          "degree": {
+            "A": 6,
+            "AAE": 1,
+            "AAF": 1,
+            "AB": 1,
+            "AC": 1,
+            "D": 1,
+            "G": 1
+          },
+          "pairs": [
+            "A|AAE",
+            "A|AAF",
+            "A|AB",
+            "A|AC",
+            "A|D",
+            "A|G"
+          ],
+          "size": 6,
+          "star_center": "A"
+        }
+      ],
+      "completeness:AAE:AAF": [
+        {
+          "degree": {
+            "A": 2,
+            "AAE": 5,
+            "AAF": 2,
+            "AB": 5,
+            "AC": 2,
+            "D": 2,
+            "G": 2
+          },
+          "pairs": [
+            "A|AAE",
+            "A|AB",
+            "AAE|AAF",
+            "AAE|AC",
+            "AAE|D",
+            "AAE|G",
+            "AAF|AB",
+            "AB|AC",
+            "AB|D",
+            "AB|G"
+          ],
+          "size": 10,
+          "star_center": null
+        }
+      ],
+      "completeness:AAF:G": [
+        {
+          "degree": {
+            "A": 3,
+            "AAE": 4,
+            "AAF": 4,
+            "AB": 4,
+            "AC": 3,
+            "D": 3,
+            "G": 3
+          },
+          "pairs": [
+            "A|AAE",
+            "A|AAF",
+            "A|AB",
+            "AAE|AC",
+            "AAE|D",
+            "AAE|G",
+            "AAF|AC",
+            "AAF|D",
+            "AAF|G",
+            "AB|AC",
+            "AB|D",
+            "AB|G"
+          ],
+          "size": 12,
+          "star_center": null
+        }
+      ],
+      "completeness:AC:D": [
+        {
+          "degree": {
+            "A": 5,
+            "AAE": 2,
+            "AAF": 2,
+            "AB": 2,
+            "AC": 2,
+            "D": 5,
+            "G": 2
+          },
+          "pairs": [
+            "A|AAE",
+            "A|AAF",
+            "A|AB",
+            "A|AC",
+            "A|G",
+            "AAE|D",
+            "AAF|D",
+            "AB|D",
+            "AC|D",
+            "D|G"
+          ],
+          "size": 10,
+          "star_center": null
+        }
+      ]
+    },
+    "single_route_min_k": {
+      "completeness:A:D": 6,
+      "completeness:AAE:AAF": 10,
+      "completeness:AAF:G": 12,
+      "completeness:AC:D": 10
+    },
+    "z3_calls": 6599
+  },
+  "result_sha256": "2a574199aea561c0e4a742e9061f78e23d2667509385e83dbb7efeb4db84983d",
+  "schema": "population-ethics.research-result/v1"
+}

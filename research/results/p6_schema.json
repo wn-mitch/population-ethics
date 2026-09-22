@@ -1,0 +1,1274 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "0092e326eac65d719baf0a69af5a85ec5f6f6b87543d43d1f20ac746facf34e5",
+    "z3_version": "5.1.0"
+  },
+  "name": "p6_schema",
+  "observations": {
+    "step_seconds": {
+      "baseline-p1q1-N2": 0.0,
+      "baseline-p1q1-N3": 0.0,
+      "baseline-p1q1-N4": 0.2,
+      "baseline-p1q1-N5": 0.7,
+      "baseline-p1q1-N6": 2.9,
+      "baseline-p1q1-N7": 13.3,
+      "baseline-p1q1-N8": 92.7,
+      "baseline-p1q2-N2": 0.0,
+      "baseline-p1q2-N3": 0.1,
+      "baseline-p1q2-N4": 0.3,
+      "baseline-p1q2-N5": 1.0,
+      "baseline-p1q2-N6": 3.6,
+      "baseline-p1q2-N7": 14.6,
+      "baseline-p1q2-N8": 97.1,
+      "gapped-p1q1-N2": 0.0,
+      "gapped-p1q1-N3": 0.1,
+      "gapped-p1q1-N4": 0.3,
+      "gapped-p1q1-N5": 1.0,
+      "gapped-p1q1-N6": 3.8,
+      "gapped-p1q1-N7": 365.2,
+      "gapped-p1q2-N2": 0.0,
+      "gapped-p1q2-N3": 0.1,
+      "gapped-p1q2-N4": 0.3,
+      "gapped-p1q2-N5": 1.0,
+      "gapped-p1q2-N6": 3.8,
+      "gapped-p1q2-N7": 15.6,
+      "gapped-p1q2-N8": 91.6,
+      "relaxed-p1q1-N2": 3.1,
+      "relaxed-p1q2-N2": 0.0,
+      "relaxed-p1q2-N3": 3.1,
+      "relaxed-p1q3-N2": 0.0,
+      "relaxed-p1q3-N3": 0.1,
+      "relaxed-p1q3-N4": 1.8,
+      "relaxed-p1q4-N2": 0.0,
+      "relaxed-p1q4-N3": 0.1,
+      "relaxed-p1q4-N4": 0.3,
+      "relaxed-p1q4-N5": 1.0,
+      "relaxed-p1q4-N6": 3.7
+    },
+    "wall_time_s": 724.5
+  },
+  "result": {
+    "baseline_skeleton_logical": "(7, (('I', '', (0, 1, 2)), ('N', '', (2, 3)), ('N', '', (3, 0)), ('N', '', (4, 5)), ('N', '', (5, 6)), ('S', '', (2, 6)), ('W', '', (4, 1))))",
+    "grids": {
+      "baseline": {
+        "levels": [
+          -1,
+          1,
+          2,
+          3,
+          4,
+          8
+        ],
+        "slightly_negative": [
+          -1
+        ],
+        "very_high": [
+          8
+        ],
+        "very_low": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "gapped": {
+        "levels": [
+          -1,
+          1,
+          5,
+          6,
+          7,
+          14
+        ],
+        "slightly_negative": [
+          -1
+        ],
+        "very_high": [
+          14
+        ],
+        "very_low": [
+          1,
+          5,
+          6,
+          7
+        ]
+      },
+      "relaxed": {
+        "levels": [
+          -1,
+          1,
+          5,
+          6,
+          7,
+          8
+        ],
+        "slightly_negative": [
+          -1
+        ],
+        "very_high": [
+          8
+        ],
+        "very_low": [
+          1,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    "runs": [
+      {
+        "N_max": 8,
+        "grid": "baseline",
+        "p": 1,
+        "q": 1,
+        "smallest_unsat_N": null,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "mnep": 10,
+              "non-anti-egalitarianism": 41,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "decision": "sat",
+            "instances": 220,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 27
+          },
+          {
+            "N": 3,
+            "by_principle": {
+              "addition": 35,
+              "dominance": 295,
+              "mnep": 70,
+              "non-anti-egalitarianism": 176,
+              "non-repugnance": 34,
+              "non-sadism": 510
+            },
+            "decision": "sat",
+            "instances": 1120,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 83
+          },
+          {
+            "N": 4,
+            "by_principle": {
+              "addition": 231,
+              "dominance": 790,
+              "mnep": 280,
+              "non-anti-egalitarianism": 500,
+              "non-repugnance": 69,
+              "non-sadism": 2610
+            },
+            "decision": "sat",
+            "instances": 4480,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 209
+          },
+          {
+            "N": 5,
+            "by_principle": {
+              "addition": 888,
+              "dominance": 1791,
+              "mnep": 840,
+              "non-anti-egalitarianism": 1165,
+              "non-repugnance": 125,
+              "non-sadism": 10590
+            },
+            "decision": "sat",
+            "instances": 15399,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 461
+          },
+          {
+            "N": 6,
+            "by_principle": {
+              "addition": 2589,
+              "dominance": 3611,
+              "mnep": 2100,
+              "non-anti-egalitarianism": 2396,
+              "non-repugnance": 209,
+              "non-sadism": 36336
+            },
+            "decision": "sat",
+            "instances": 47241,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 923
+          },
+          {
+            "N": 7,
+            "by_principle": {
+              "addition": 6335,
+              "dominance": 6671,
+              "mnep": 4620,
+              "non-anti-egalitarianism": 4519,
+              "non-repugnance": 329,
+              "non-sadism": 109668
+            },
+            "decision": "sat",
+            "instances": 132142,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 1715
+          },
+          {
+            "N": 8,
+            "by_principle": {
+              "addition": 13706,
+              "dominance": 11516,
+              "mnep": 9240,
+              "non-anti-egalitarianism": 7979,
+              "non-repugnance": 494,
+              "non-sadism": 298896
+            },
+            "decision": "sat",
+            "instances": 341831,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 3002
+          }
+        ]
+      },
+      {
+        "N_max": 8,
+        "grid": "baseline",
+        "p": 1,
+        "q": 2,
+        "smallest_unsat_N": null,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "non-anti-egalitarianism": 41,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "decision": "sat",
+            "instances": 210,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 27
+          },
+          {
+            "N": 3,
+            "by_principle": {
+              "addition": 35,
+              "dominance": 295,
+              "mnep": 20,
+              "non-anti-egalitarianism": 176,
+              "non-repugnance": 34,
+              "non-sadism": 510
+            },
+            "decision": "sat",
+            "instances": 1070,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 83
+          },
+          {
+            "N": 4,
+            "by_principle": {
+              "addition": 231,
+              "dominance": 790,
+              "mnep": 140,
+              "non-anti-egalitarianism": 500,
+              "non-repugnance": 69,
+              "non-sadism": 2610
+            },
+            "decision": "sat",
+            "instances": 4340,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 209
+          },
+          {
+            "N": 5,
+            "by_principle": {
+              "addition": 888,
+              "dominance": 1791,
+              "mnep": 560,
+              "non-anti-egalitarianism": 1165,
+              "non-repugnance": 125,
+              "non-sadism": 10590
+            },
+            "decision": "sat",
+            "instances": 15119,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 461
+          },
+          {
+            "N": 6,
+            "by_principle": {
+              "addition": 2589,
+              "dominance": 3611,
+              "mnep": 1680,
+              "non-anti-egalitarianism": 2396,
+              "non-repugnance": 209,
+              "non-sadism": 36336
+            },
+            "decision": "sat",
+            "instances": 46821,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 923
+          },
+          {
+            "N": 7,
+            "by_principle": {
+              "addition": 6335,
+              "dominance": 6671,
+              "mnep": 4200,
+              "non-anti-egalitarianism": 4519,
+              "non-repugnance": 329,
+              "non-sadism": 109668
+            },
+            "decision": "sat",
+            "instances": 131722,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 1715
+          },
+          {
+            "N": 8,
+            "by_principle": {
+              "addition": 13706,
+              "dominance": 11516,
+              "mnep": 9240,
+              "non-anti-egalitarianism": 7979,
+              "non-repugnance": 494,
+              "non-sadism": 298896
+            },
+            "decision": "sat",
+            "instances": 341831,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 3002
+          }
+        ]
+      },
+      {
+        "N_max": 6,
+        "grid": "relaxed",
+        "p": 1,
+        "q": 1,
+        "smallest_unsat_N": 2,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "mnep": 10,
+              "non-anti-egalitarianism": 48,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "cores_found": 4,
+            "coverage": "diversified search, cap 12; not all MUSes",
+            "decision": "unsat",
+            "distinct_logical_skeletons": 2,
+            "distinct_semantic_skeletons": 2,
+            "instances": 227,
+            "nested_in_next": true,
+            "populations": 27,
+            "skeletons": [
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_6_6, P_5_5)",
+                  "non-anti-egalitarianism(P_m1_8, P_5_5)",
+                  "mnep(P_m1_8, P_6_6)"
+                ],
+                "instances": 3,
+                "largest_population": 2,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 3,
+                "principles": {
+                  "dominance": 1,
+                  "mnep": 1,
+                  "non-anti-egalitarianism": 1
+                },
+                "relata": 3,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 6,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "0": 1
+                  },
+                  "escape_k_min": null,
+                  "escape_minimum_patterns": [],
+                  "escape_without_completeness": "unsat",
+                  "relata": 3,
+                  "toml": "research/experiments/schema-relaxed-p1q1-N2-skeleton0.toml"
+                }
+              },
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_6_6, P_5_5)",
+                  "dominance(P_7_7, P_6_6)",
+                  "non-anti-egalitarianism(P_m1_8, P_5_5)",
+                  "mnep(P_m1_8, P_7_7)"
+                ],
+                "instances": 4,
+                "largest_population": 2,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "dominance": 2,
+                  "mnep": 1,
+                  "non-anti-egalitarianism": 1
+                },
+                "relata": 4,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 8,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "0": 1
+                  },
+                  "escape_k_min": null,
+                  "escape_minimum_patterns": [],
+                  "escape_without_completeness": "unsat",
+                  "relata": 4,
+                  "toml": "research/experiments/schema-relaxed-p1q1-N2-skeleton1.toml"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "N_max": 6,
+        "grid": "relaxed",
+        "p": 1,
+        "q": 2,
+        "smallest_unsat_N": 3,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "non-anti-egalitarianism": 48,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "decision": "sat",
+            "instances": 217,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 27
+          },
+          {
+            "N": 3,
+            "by_principle": {
+              "addition": 35,
+              "dominance": 295,
+              "mnep": 20,
+              "non-anti-egalitarianism": 211,
+              "non-repugnance": 34,
+              "non-sadism": 510
+            },
+            "cores_found": 2,
+            "coverage": "diversified search, cap 12; not all MUSes",
+            "decision": "unsat",
+            "distinct_logical_skeletons": 2,
+            "distinct_semantic_skeletons": 2,
+            "instances": 1105,
+            "nested_in_next": true,
+            "populations": 83,
+            "skeletons": [
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_7_7_7, P_6_6_6)",
+                  "non-anti-egalitarianism(P_m1_8_8, P_6_6_6)",
+                  "mnep(P_m1_8_8, P_7_7_7)"
+                ],
+                "instances": 3,
+                "largest_population": 3,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "dominance": 1,
+                  "mnep": 1,
+                  "non-anti-egalitarianism": 1
+                },
+                "relata": 3,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 9,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "0": 1
+                  },
+                  "escape_k_min": null,
+                  "escape_minimum_patterns": [],
+                  "escape_without_completeness": "unsat",
+                  "relata": 3,
+                  "toml": "research/experiments/schema-relaxed-p1q2-N3-skeleton0.toml"
+                }
+              },
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_7_7_7, P_6_6_6)",
+                  "non-anti-egalitarianism(P_1_8_8, P_6_6_6)",
+                  "non-sadism(P_m1_8_8, P_1_8_8)",
+                  "mnep(P_m1_8_8, P_7_7_7)"
+                ],
+                "instances": 4,
+                "largest_population": 3,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "dominance": 1,
+                  "mnep": 1,
+                  "non-anti-egalitarianism": 1,
+                  "non-sadism": 1
+                },
+                "relata": 4,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 12,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "1": 3
+                  },
+                  "escape_k_min": 3,
+                  "escape_minimum_patterns": [
+                    [
+                      "P_1_8_8|P_6_6_6",
+                      "P_1_8_8|P_7_7_7",
+                      "P_1_8_8|P_m1_8_8"
+                    ]
+                  ],
+                  "escape_without_completeness": "sat",
+                  "relata": 4,
+                  "toml": "research/experiments/schema-relaxed-p1q2-N3-skeleton1.toml"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "N_max": 6,
+        "grid": "relaxed",
+        "p": 1,
+        "q": 3,
+        "smallest_unsat_N": 4,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "non-anti-egalitarianism": 48,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "decision": "sat",
+            "instances": 217,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 27
+          },
+          {
+            "N": 3,
+            "by_principle": {
+              "addition": 35,
+              "dominance": 295,
+              "non-anti-egalitarianism": 211,
+              "non-repugnance": 34,
+              "non-sadism": 510
+            },
+            "decision": "sat",
+            "instances": 1085,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 83
+          },
+          {
+            "N": 4,
+            "by_principle": {
+              "addition": 231,
+              "dominance": 790,
+              "mnep": 35,
+              "non-anti-egalitarianism": 609,
+              "non-repugnance": 69,
+              "non-sadism": 2610
+            },
+            "cores_found": 1,
+            "coverage": "diversified search, cap 12; not all MUSes",
+            "decision": "unsat",
+            "distinct_logical_skeletons": 1,
+            "distinct_semantic_skeletons": 1,
+            "instances": 4344,
+            "nested_in_next": true,
+            "populations": 209,
+            "skeletons": [
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_7_7_7_7, P_6_6_6_6)",
+                  "non-anti-egalitarianism(P_m1_8_8_8, P_6_6_6_6)",
+                  "mnep(P_m1_8_8_8, P_7_7_7_7)"
+                ],
+                "instances": 3,
+                "largest_population": 4,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "dominance": 1,
+                  "mnep": 1,
+                  "non-anti-egalitarianism": 1
+                },
+                "relata": 3,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 12,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "0": 1
+                  },
+                  "escape_k_min": null,
+                  "escape_minimum_patterns": [],
+                  "escape_without_completeness": "unsat",
+                  "relata": 3,
+                  "toml": "research/experiments/schema-relaxed-p1q3-N4-skeleton0.toml"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "N_max": 6,
+        "grid": "relaxed",
+        "p": 1,
+        "q": 4,
+        "smallest_unsat_N": null,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "non-anti-egalitarianism": 48,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "decision": "sat",
+            "instances": 217,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 27
+          },
+          {
+            "N": 3,
+            "by_principle": {
+              "addition": 35,
+              "dominance": 295,
+              "non-anti-egalitarianism": 211,
+              "non-repugnance": 34,
+              "non-sadism": 510
+            },
+            "decision": "sat",
+            "instances": 1085,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 83
+          },
+          {
+            "N": 4,
+            "by_principle": {
+              "addition": 231,
+              "dominance": 790,
+              "non-anti-egalitarianism": 609,
+              "non-repugnance": 69,
+              "non-sadism": 2610
+            },
+            "decision": "sat",
+            "instances": 4309,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 209
+          },
+          {
+            "N": 5,
+            "by_principle": {
+              "addition": 888,
+              "dominance": 1791,
+              "mnep": 56,
+              "non-anti-egalitarianism": 1436,
+              "non-repugnance": 125,
+              "non-sadism": 10590
+            },
+            "decision": "sat",
+            "instances": 14886,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 461
+          },
+          {
+            "N": 6,
+            "by_principle": {
+              "addition": 2589,
+              "dominance": 3611,
+              "mnep": 392,
+              "non-anti-egalitarianism": 2981,
+              "non-repugnance": 209,
+              "non-sadism": 36336
+            },
+            "decision": "sat",
+            "instances": 46118,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 923
+          }
+        ]
+      },
+      {
+        "N_max": 8,
+        "grid": "gapped",
+        "p": 1,
+        "q": 1,
+        "smallest_unsat_N": 7,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "mnep": 10,
+              "non-anti-egalitarianism": 42,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "decision": "sat",
+            "instances": 221,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 27
+          },
+          {
+            "N": 3,
+            "by_principle": {
+              "addition": 35,
+              "dominance": 295,
+              "mnep": 70,
+              "non-anti-egalitarianism": 184,
+              "non-repugnance": 34,
+              "non-sadism": 510
+            },
+            "decision": "sat",
+            "instances": 1128,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 83
+          },
+          {
+            "N": 4,
+            "by_principle": {
+              "addition": 231,
+              "dominance": 790,
+              "mnep": 280,
+              "non-anti-egalitarianism": 526,
+              "non-repugnance": 69,
+              "non-sadism": 2610
+            },
+            "decision": "sat",
+            "instances": 4506,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 209
+          },
+          {
+            "N": 5,
+            "by_principle": {
+              "addition": 888,
+              "dominance": 1791,
+              "mnep": 840,
+              "non-anti-egalitarianism": 1227,
+              "non-repugnance": 125,
+              "non-sadism": 10590
+            },
+            "decision": "sat",
+            "instances": 15461,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 461
+          },
+          {
+            "N": 6,
+            "by_principle": {
+              "addition": 2589,
+              "dominance": 3611,
+              "mnep": 2100,
+              "non-anti-egalitarianism": 2527,
+              "non-repugnance": 209,
+              "non-sadism": 36336
+            },
+            "decision": "sat",
+            "instances": 47372,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 923
+          },
+          {
+            "N": 7,
+            "by_principle": {
+              "addition": 6335,
+              "dominance": 6671,
+              "mnep": 4620,
+              "non-anti-egalitarianism": 4774,
+              "non-repugnance": 329,
+              "non-sadism": 109668
+            },
+            "cores_found": 7,
+            "coverage": "diversified search, cap 12; not all MUSes",
+            "decision": "unsat",
+            "distinct_logical_skeletons": 5,
+            "distinct_semantic_skeletons": 6,
+            "instances": 132397,
+            "nested_in_next": true,
+            "populations": 1715,
+            "skeletons": [
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_6_6_6_6_6_6_6, P_5_5_5_5_5_5_5)",
+                  "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_6)",
+                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                ],
+                "instances": 8,
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 2,
+                  "non-anti-egalitarianism": 1,
+                  "non-repugnance": 1,
+                  "non-sadism": 1
+                },
+                "relata": 8,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 42,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "3": 119,
+                    "4": 16
+                  },
+                  "escape_k_min": 5,
+                  "escape_minimum_patterns": [
+                    [
+                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
+                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_6",
+                      "P_1_1_1_1_1_14_14|P_7_7_14",
+                      "P_1_1_1_1_1_14_14|P_m1_14_14",
+                      "P_1_1_1_1_1_14_14|P_m1_6_6_6_6_6_14"
+                    ]
+                  ],
+                  "escape_without_completeness": "sat",
+                  "relata": 8,
+                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton0.toml"
+                }
+              },
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
+                  "dominance(P_7_7_7_7_7_7_7, P_5_5_5_5_5_5_5)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
+                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                ],
+                "instances": 8,
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 2,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 2,
+                  "non-anti-egalitarianism": 1,
+                  "non-repugnance": 1,
+                  "non-sadism": 1
+                },
+                "relata": 8,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 42,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": 0,
+                  "completeness_mus_sizes": {
+                    "3": 61,
+                    "4": 27
+                  },
+                  "escape_k_min": 5,
+                  "escape_minimum_patterns": [
+                    [
+                      "P_14|P_1_1_1_1_1_14_14",
+                      "P_14|P_5_5_5_5_5_5_5",
+                      "P_14|P_7_7_14",
+                      "P_14|P_7_7_7_7_7_7_7",
+                      "P_14|P_m1_14_14"
+                    ],
+                    [
+                      "P_14|P_1_1_1_1_1_14_14",
+                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
+                      "P_1_1_1_1_1_14_14|P_7_7_14",
+                      "P_1_1_1_1_1_14_14|P_7_7_7_7_7_7_7",
+                      "P_1_1_1_1_1_14_14|P_m1_14_14"
+                    ],
+                    [
+                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
+                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_7",
+                      "P_1_1_1_1_1_14_14|P_7_7_14",
+                      "P_1_1_1_1_1_14_14|P_m1_14_14",
+                      "P_1_1_1_1_1_14_14|P_m1_6_6_6_6_6_14"
+                    ]
+                  ],
+                  "escape_without_completeness": "sat",
+                  "relata": 8,
+                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton1.toml"
+                }
+              },
+              {
+                "canonical_form_exact": true,
+                "example": [
+                  "dominance(P_6_6_6_6_6_6_6, P_5_5_5_5_5_5_5)",
+                  "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "non-sadism(P_m1_6_6_6_6_6_14, P_1_6_6_6_6_6_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_6)",
+                  "addition(P_14, P_7_7_14, P_1_6_6_6_6_6_14)"
+                ],
+                "instances": 9,
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 2,
+                  "non-anti-egalitarianism": 1,
+                  "non-repugnance": 1,
+                  "non-sadism": 2
+                },
+                "relata": 9,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 49,
+                "verification": {
+                  "all_instances_pass_applicability_audit": true,
+                  "cli_decision": "unsat",
+                  "cli_verify_accepted": true,
+                  "complete_preorders_satisfying_core": null,
+                  "completeness_mus_sizes": {},
+                  "escape_k_min": 6,
+                  "escape_minimum_patterns": [
+                    [
+                      "P_14|P_1_1_1_1_1_14_14",
+                      "P_14|P_5_5_5_5_5_5_5",
+                      "P_14|P_6_6_6_6_6_6_6",
+                      "P_14|P_7_7_14",
+                      "P_14|P_7_7_7_7_7_7_7",
+                      "P_14|P_m1_14_14"
+                    ],
+                    [
+                      "P_14|P_1_1_1_1_1_14_14",
+                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
+                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_6",
+                      "P_1_1_1_1_1_14_14|P_7_7_14",
+                      "P_1_1_1_1_1_14_14|P_7_7_7_7_7_7_7",
+                      "P_1_1_1_1_1_14_14|P_m1_14_14"
+                    ],
+                    [
+                      "P_1_1_1_1_1_14_14|P_1_6_6_6_6_6_14",
+                      "P_1_1_1_1_1_14_14|P_5_5_5_5_5_5_5",
+                      "P_1_1_1_1_1_14_14|P_6_6_6_6_6_6_6",
+                      "P_1_1_1_1_1_14_14|P_7_7_14",
+                      "P_1_1_1_1_1_14_14|P_m1_14_14",
+                      "P_1_1_1_1_1_14_14|P_m1_6_6_6_6_6_14"
+                    ]
+                  ],
+                  "escape_without_completeness": "sat",
+                  "relata": 9,
+                  "toml": "research/experiments/schema-gapped-p1q1-N7-skeleton2.toml"
+                }
+              },
+              {
+                "canonical_form_exact": false,
+                "example": [
+                  "dominance(P_7_7_7_7_7_7, P_6_6_6_6_6_6)",
+                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
+                  "non-anti-egalitarianism(P_1_1_1_1_14_14, P_6_6_6_6_6_6)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-repugnance(P_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_14_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
+                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                ],
+                "instances": 10,
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 2,
+                  "non-anti-egalitarianism": 2,
+                  "non-repugnance": 1,
+                  "non-sadism": 2
+                },
+                "relata": 10,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 53
+              },
+              {
+                "canonical_form_exact": false,
+                "example": [
+                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
+                  "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
+                  "non-anti-egalitarianism(P_1_1_1_14_14, P_7_7_7_7_7)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-anti-egalitarianism(P_m1_1_1_1_7_14_14, P_6_6_6_6_6_6_6)",
+                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_14_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "non-sadism(P_m1_m1_7_14_14, P_m1_1_1_1_7_14_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_m1_7_14_14, P_m1_7_7_7_14)",
+                  "mnep(P_m1_7_7_7_14, P_7_7_7_7_7)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
+                  "addition(P_14, P_7_7_14, P_m1_6_6_6_6_6_14)"
+                ],
+                "instances": 14,
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 4,
+                  "non-anti-egalitarianism": 3,
+                  "non-repugnance": 1,
+                  "non-sadism": 3
+                },
+                "relata": 14,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 76
+              },
+              {
+                "canonical_form_exact": false,
+                "example": [
+                  "dominance(P_6_6_6_6_6_6_7, P_5_5_5_5_5_5_5)",
+                  "dominance(P_7_7_7_7_7_7_7, P_6_6_6_6_6_6_6)",
+                  "non-anti-egalitarianism(P_1_1_1_14_14, P_7_7_7_7_7)",
+                  "non-anti-egalitarianism(P_1_1_1_1_1_14_14, P_5_5_5_5_5_5_5)",
+                  "non-anti-egalitarianism(P_m1_1_1_1_7_14_14, P_6_6_6_6_6_6_6)",
+                  "non-repugnance(P_7_7_7_7_7_7_7, P_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_14_14)",
+                  "non-sadism(P_m1_14_14, P_1_1_1_1_1_14_14)",
+                  "non-sadism(P_m1_m1_7_14_14, P_m1_1_1_1_7_14_14)",
+                  "non-sadism(P_m1_6_6_6_6_6_14, P_1_6_6_6_6_6_14)",
+                  "mnep(P_m1_14_14, P_7_7_14)",
+                  "mnep(P_m1_m1_7_14_14, P_m1_7_7_7_14)",
+                  "mnep(P_m1_7_7_7_14, P_7_7_7_7_7)",
+                  "mnep(P_m1_6_6_6_6_6_14, P_6_6_6_6_6_6_7)",
+                  "addition(P_14, P_7_7_14, P_1_6_6_6_6_6_14)"
+                ],
+                "instances": 15,
+                "largest_population": 7,
+                "logically_isomorphic_to_baseline": false,
+                "occurrences": 1,
+                "principles": {
+                  "addition": 1,
+                  "dominance": 2,
+                  "mnep": 4,
+                  "non-anti-egalitarianism": 3,
+                  "non-repugnance": 1,
+                  "non-sadism": 4
+                },
+                "relata": 15,
+                "semantically_isomorphic_to_baseline": false,
+                "total_distinct_lives": 83
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "N_max": 8,
+        "grid": "gapped",
+        "p": 1,
+        "q": 2,
+        "smallest_unsat_N": null,
+        "steps": [
+          {
+            "N": 2,
+            "by_principle": {
+              "dominance": 85,
+              "non-anti-egalitarianism": 42,
+              "non-repugnance": 14,
+              "non-sadism": 70
+            },
+            "decision": "sat",
+            "instances": 211,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 27
+          },
+          {
+            "N": 3,
+            "by_principle": {
+              "addition": 35,
+              "dominance": 295,
+              "mnep": 20,
+              "non-anti-egalitarianism": 184,
+              "non-repugnance": 34,
+              "non-sadism": 510
+            },
+            "decision": "sat",
+            "instances": 1078,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 83
+          },
+          {
+            "N": 4,
+            "by_principle": {
+              "addition": 231,
+              "dominance": 790,
+              "mnep": 140,
+              "non-anti-egalitarianism": 526,
+              "non-repugnance": 69,
+              "non-sadism": 2610
+            },
+            "decision": "sat",
+            "instances": 4366,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 209
+          },
+          {
+            "N": 5,
+            "by_principle": {
+              "addition": 888,
+              "dominance": 1791,
+              "mnep": 560,
+              "non-anti-egalitarianism": 1227,
+              "non-repugnance": 125,
+              "non-sadism": 10590
+            },
+            "decision": "sat",
+            "instances": 15181,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 461
+          },
+          {
+            "N": 6,
+            "by_principle": {
+              "addition": 2589,
+              "dominance": 3611,
+              "mnep": 1680,
+              "non-anti-egalitarianism": 2527,
+              "non-repugnance": 209,
+              "non-sadism": 36336
+            },
+            "decision": "sat",
+            "instances": 46952,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 923
+          },
+          {
+            "N": 7,
+            "by_principle": {
+              "addition": 6335,
+              "dominance": 6671,
+              "mnep": 4200,
+              "non-anti-egalitarianism": 4774,
+              "non-repugnance": 329,
+              "non-sadism": 109668
+            },
+            "decision": "sat",
+            "instances": 131977,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 1715
+          },
+          {
+            "N": 8,
+            "by_principle": {
+              "addition": 13706,
+              "dominance": 11516,
+              "mnep": 9240,
+              "non-anti-egalitarianism": 8448,
+              "non-repugnance": 494,
+              "non-sadism": 298896
+            },
+            "decision": "sat",
+            "instances": 342300,
+            "model_checked_all_instances": true,
+            "nested_in_next": true,
+            "populations": 3002
+          }
+        ]
+      }
+    ],
+    "schema": "arrhenius-2000.schema/v0-unreviewed",
+    "transfer": "UNSAT over D_N refutes v0 schema + W(p,q) (universal instances over D_N are consequences of the unrestricted v0 schema; W is fixed inside D_N). It does not refute Arrhenius's principles, nor v0 with other witnesses."
+  },
+  "result_sha256": "4a06334dab5f90846ee85f6e8f8fd8e58fa38fadfc886300a739301bf4e52085",
+  "schema": "population-ethics.research-result/v1"
+}

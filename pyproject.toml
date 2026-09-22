@@ -28,9 +28,14 @@ target-version = "py314"
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
+[tool.ruff.lint.per-file-ignores]
+# Phase scripts carry long human-readable ledger prose in string literals.
+"research/p*_*.py" = ["E501"]
+
 [tool.mypy]
 python_version = "3.14"
 strict = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]

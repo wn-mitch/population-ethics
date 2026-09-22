@@ -1,0 +1,449 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "0092e326eac65d719baf0a69af5a85ec5f6f6b87543d43d1f20ac746facf34e5",
+    "z3_version": "5.1.0"
+  },
+  "name": "p4_mutations",
+  "observations": {
+    "wall_time_s": 194.58
+  },
+  "result": {
+    "catalogue_ids": [
+      "M1-local-completeness-avoidance",
+      "M1b-curated-completeness",
+      "M1c-same-number-completeness",
+      "M1d-different-number-completeness",
+      "M2-reverse-weak-avoidance-all",
+      "M2s-reverse-weak-avoidance-single",
+      "M3-transitivity-minimum",
+      "M3q-quasi-transitivity",
+      "M3a-acyclicity",
+      "M3s-suzumura",
+      "M4-weak-dominance",
+      "M5-weak-addition-consequent",
+      "M6-weak-mnep",
+      "C1-combined-weakening"
+    ],
+    "catalogue_version": 1,
+    "certificates": {
+      "C1-combined-weakening": {
+        "certificate_sha256": "e3f69cd2f5abf0e546c42fb6e4af920c9d58b372ec192ce716578edd7a0453c6",
+        "checked_by": "research/p4_mutations.py via population_ethics.proofs.check_proof",
+        "checker": "population-ethics.proof-checker/v1",
+        "declared_premises_used": [
+          "addition:A-AB-implies-AB-AC~weak-consequent",
+          "avoid-anti-egalitarianism:AAF-not-strict-G",
+          "avoid-anti-egalitarianism:AC-not-strict-D",
+          "avoid-repugnance:D-not-strict-A",
+          "avoid-sadism:AAE-not-strict-AAF",
+          "completeness:A:D",
+          "completeness:AAE:AAF",
+          "completeness:AAF:G",
+          "completeness:AC:D",
+          "dominance:AC-strict-G",
+          "minimal-priority:AAE-weak-AB",
+          "transitivity:A:AC:G",
+          "transitivity:A:D:AC",
+          "transitivity:A:G:AB",
+          "transitivity:AC:G:AB",
+          "transitivity:G:A:AC",
+          "transitivity:G:AAE:AB",
+          "transitivity:G:AAF:AAE",
+          "transitivity:G:AB:A",
+          "transitivity:G:AB:AC"
+        ],
+        "nodes": 78,
+        "theory_id": "c33f6f3d76a6cffe18e870d0c0e66ea06abc1c79f5e156ddd2630f711869d1b6"
+      },
+      "M1-local-completeness-avoidance": {
+        "certificate_sha256": "2e3434be8fb091d809c10b031488bd116e44446796802bdbf257fb9cdaf39081",
+        "checked_by": "research/p4_mutations.py via population_ethics.proofs.check_proof",
+        "checker": "population-ethics.proof-checker/v1",
+        "declared_premises_used": [
+          "addition:A-AB-implies-AB-AC",
+          "avoid-anti-egalitarianism:AAF-not-strict-G",
+          "avoid-anti-egalitarianism:AC-not-strict-D",
+          "avoid-repugnance:D-not-strict-A",
+          "avoid-sadism:AAE-not-strict-AAF",
+          "completeness:A:D",
+          "completeness:AAE:AAF",
+          "completeness:AAF:G",
+          "completeness:AC:D",
+          "dominance:AC-strict-G",
+          "minimal-priority:AAE-weak-AB",
+          "transitivity:A:AC:G",
+          "transitivity:A:D:AC",
+          "transitivity:A:G:AB",
+          "transitivity:G:A:AC",
+          "transitivity:G:AAE:AB",
+          "transitivity:G:AAF:AAE",
+          "transitivity:G:AB:A",
+          "transitivity:G:AB:AC"
+        ],
+        "nodes": 71,
+        "theory_id": "714a71e7e500069ab939626b3d6cafbf53e3aa7fb781e79f9017c1fafae4cb30"
+      },
+      "M2-reverse-weak-avoidance-all": {
+        "certificate_sha256": "e0546d8aafefa013c780360cf7771f0883e36cadb2cc2ecae29b595b43e3c0fc",
+        "checked_by": "research/p4_mutations.py via population_ethics.proofs.check_proof",
+        "checker": "population-ethics.proof-checker/v1",
+        "declared_premises_used": [
+          "addition:A-AB-implies-AB-AC",
+          "avoid-anti-egalitarianism:AAF-not-strict-G~positive",
+          "avoid-anti-egalitarianism:AC-not-strict-D~positive",
+          "avoid-repugnance:D-not-strict-A~positive",
+          "avoid-sadism:AAE-not-strict-AAF~positive",
+          "dominance:AC-strict-G",
+          "minimal-priority:AAE-weak-AB",
+          "transitivity:A:AC:G",
+          "transitivity:A:D:AC",
+          "transitivity:A:G:AB",
+          "transitivity:G:A:AC",
+          "transitivity:G:AAE:AB",
+          "transitivity:G:AAF:AAE",
+          "transitivity:G:AB:A",
+          "transitivity:G:AB:AC"
+        ],
+        "nodes": 39,
+        "theory_id": "56a609a257f78e7daab04cb7cb44eb8cb770344e6afb7538ed205846fbc9c2b5"
+      }
+    },
+    "results": {
+      "C1-combined-weakening": {
+        "decision": "unsat",
+        "hard_constraints": 361,
+        "independent_dpll": "unsat"
+      },
+      "C1-local-irreducibility": {
+        "drop one avoidance completeness pair": [
+          {
+            "decision": "sat",
+            "hard_constraints": 360,
+            "independent_dpll": "sat"
+          },
+          {
+            "decision": "sat",
+            "hard_constraints": 360,
+            "independent_dpll": "sat"
+          },
+          {
+            "decision": "sat",
+            "hard_constraints": 360,
+            "independent_dpll": "sat"
+          },
+          {
+            "decision": "sat",
+            "hard_constraints": 360,
+            "independent_dpll": "sat"
+          }
+        ],
+        "drop reflexivity": {
+          "decision": "unsat",
+          "hard_constraints": 354,
+          "independent_dpll": "unsat"
+        },
+        "quasi-transitivity instead of transitivity": {
+          "decision": "sat",
+          "hard_constraints": 228,
+          "independent_dpll": "sat"
+        },
+        "suzumura instead of transitivity": {
+          "decision": "sat",
+          "hard_constraints": 13710,
+          "independent_dpll": "sat"
+        },
+        "weak Dominance": {
+          "decision": "sat",
+          "hard_constraints": 361,
+          "independent_dpll": "sat"
+        },
+        "weak MNEP": {
+          "decision": "sat",
+          "hard_constraints": 361,
+          "independent_dpll": "sat"
+        }
+      },
+      "M1-local-completeness-avoidance": {
+        "decision": "unsat",
+        "hard_constraints": 361,
+        "independent_dpll": "unsat"
+      },
+      "M1b-curated-completeness": {
+        "decision": "unsat",
+        "hard_constraints": 362,
+        "independent_dpll": "unsat"
+      },
+      "M1c-same-number-completeness": {
+        "decision": "sat",
+        "hard_constraints": 364,
+        "independent_dpll": "sat"
+      },
+      "M1d-different-number-completeness": {
+        "decision": "unsat",
+        "hard_constraints": 371,
+        "independent_dpll": "unsat"
+      },
+      "M2-reverse-weak-avoidance-all": {
+        "decision": "unsat",
+        "hard_constraints": 357,
+        "independent_dpll": "unsat"
+      },
+      "M2s-reverse-weak-avoidance-single": {
+        "avoid-anti-egalitarianism:AAF-not-strict-G": {
+          "decision": "unsat",
+          "hard_constraints": 360,
+          "independent_dpll": "unsat"
+        },
+        "avoid-anti-egalitarianism:AAF-not-strict-G (no completeness)": {
+          "decision": "sat",
+          "hard_constraints": 357,
+          "independent_dpll": "sat"
+        },
+        "avoid-anti-egalitarianism:AC-not-strict-D": {
+          "decision": "unsat",
+          "hard_constraints": 360,
+          "independent_dpll": "unsat"
+        },
+        "avoid-anti-egalitarianism:AC-not-strict-D (no completeness)": {
+          "decision": "sat",
+          "hard_constraints": 357,
+          "independent_dpll": "sat"
+        },
+        "avoid-repugnance:D-not-strict-A": {
+          "decision": "unsat",
+          "hard_constraints": 360,
+          "independent_dpll": "unsat"
+        },
+        "avoid-repugnance:D-not-strict-A (no completeness)": {
+          "decision": "sat",
+          "hard_constraints": 357,
+          "independent_dpll": "sat"
+        },
+        "avoid-sadism:AAE-not-strict-AAF": {
+          "decision": "unsat",
+          "hard_constraints": 360,
+          "independent_dpll": "unsat"
+        },
+        "avoid-sadism:AAE-not-strict-AAF (no completeness)": {
+          "decision": "sat",
+          "hard_constraints": 357,
+          "independent_dpll": "sat"
+        }
+      },
+      "M3-transitivity-minimum": {
+        "M1-completeness": {
+          "count_minimum_cores": 4,
+          "min_transitivity_instances": 7,
+          "minimum_cores": [
+            [
+              "transitivity:A:AC:AB",
+              "transitivity:A:D:AC",
+              "transitivity:AAF:AAE:AB",
+              "transitivity:AB:A:AC",
+              "transitivity:AC:G:AB",
+              "transitivity:G:AAF:AB",
+              "transitivity:G:AB:AC"
+            ],
+            [
+              "transitivity:A:AC:AB",
+              "transitivity:A:D:AC",
+              "transitivity:AB:A:AC",
+              "transitivity:AC:G:AB",
+              "transitivity:G:AAE:AB",
+              "transitivity:G:AAF:AAE",
+              "transitivity:G:AB:AC"
+            ],
+            [
+              "transitivity:A:AC:G",
+              "transitivity:A:D:AC",
+              "transitivity:A:G:AB",
+              "transitivity:AAF:AAE:AB",
+              "transitivity:AB:A:AC",
+              "transitivity:G:AAF:AB",
+              "transitivity:G:AB:AC"
+            ],
+            [
+              "transitivity:A:AC:G",
+              "transitivity:A:D:AC",
+              "transitivity:A:G:AB",
+              "transitivity:AB:A:AC",
+              "transitivity:G:AAE:AB",
+              "transitivity:G:AAF:AAE",
+              "transitivity:G:AB:AC"
+            ]
+          ]
+        },
+        "full-completeness": {
+          "count_minimum_cores": 10,
+          "min_transitivity_instances": 5,
+          "minimum_cores": [
+            [
+              "transitivity:A:D:AC",
+              "transitivity:AAE:AB:AC",
+              "transitivity:AAF:AAE:AC",
+              "transitivity:AB:A:AC",
+              "transitivity:G:AAF:AC"
+            ],
+            [
+              "transitivity:A:D:AC",
+              "transitivity:AAE:AB:AC",
+              "transitivity:AB:A:AC",
+              "transitivity:G:AAE:AC",
+              "transitivity:G:AAF:AAE"
+            ],
+            [
+              "transitivity:A:D:AC",
+              "transitivity:AAF:AAE:AB",
+              "transitivity:AAF:AB:AC",
+              "transitivity:AB:A:AC",
+              "transitivity:G:AAF:AC"
+            ],
+            [
+              "transitivity:A:D:AC",
+              "transitivity:AAF:AAE:AB",
+              "transitivity:AB:A:AC",
+              "transitivity:G:AAF:AB",
+              "transitivity:G:AB:AC"
+            ],
+            [
+              "transitivity:A:D:AC",
+              "transitivity:AB:A:AC",
+              "transitivity:G:AAE:AB",
+              "transitivity:G:AAF:AAE",
+              "transitivity:G:AB:AC"
+            ],
+            [
+              "transitivity:AAE:AB:AC",
+              "transitivity:AAF:AAE:AC",
+              "transitivity:AB:A:D",
+              "transitivity:AB:D:AC",
+              "transitivity:G:AAF:AC"
+            ],
+            [
+              "transitivity:AAE:AB:AC",
+              "transitivity:AB:A:D",
+              "transitivity:AB:D:AC",
+              "transitivity:G:AAE:AC",
+              "transitivity:G:AAF:AAE"
+            ],
+            [
+              "transitivity:AAF:AAE:AB",
+              "transitivity:AAF:AB:AC",
+              "transitivity:AB:A:D",
+              "transitivity:AB:D:AC",
+              "transitivity:G:AAF:AC"
+            ],
+            [
+              "transitivity:AAF:AAE:AB",
+              "transitivity:AB:A:D",
+              "transitivity:AB:D:AC",
+              "transitivity:G:AAF:AB",
+              "transitivity:G:AB:AC"
+            ],
+            [
+              "transitivity:AB:A:D",
+              "transitivity:AB:D:AC",
+              "transitivity:G:AAE:AB",
+              "transitivity:G:AAF:AAE",
+              "transitivity:G:AB:AC"
+            ]
+          ]
+        }
+      },
+      "M3a-acyclicity/M1": {
+        "decision": "sat",
+        "hard_constraints": 2383,
+        "independent_dpll": "sat"
+      },
+      "M3a-acyclicity/full": {
+        "decision": "sat",
+        "hard_constraints": 2400,
+        "independent_dpll": "sat"
+      },
+      "M3a-acyclicity/none": {
+        "decision": "sat",
+        "hard_constraints": 2379,
+        "independent_dpll": "sat"
+      },
+      "M3q-quasi-transitivity/M1": {
+        "decision": "sat",
+        "hard_constraints": 228,
+        "independent_dpll": "sat"
+      },
+      "M3q-quasi-transitivity/full": {
+        "decision": "sat",
+        "hard_constraints": 245,
+        "independent_dpll": "sat"
+      },
+      "M3q-quasi-transitivity/none": {
+        "decision": "sat",
+        "hard_constraints": 224,
+        "independent_dpll": "sat"
+      },
+      "M3s-suzumura/M1": {
+        "decision": "sat",
+        "hard_constraints": 13710,
+        "independent_dpll": "sat"
+      },
+      "M3s-suzumura/full": {
+        "decision": "unsat",
+        "hard_constraints": 13727,
+        "independent_dpll": "unsat"
+      },
+      "M3s-suzumura/none": {
+        "decision": "sat",
+        "hard_constraints": 13706,
+        "independent_dpll": "sat"
+      },
+      "M4-weak-dominance": {
+        "decision": "sat",
+        "hard_constraints": 378,
+        "independent_dpll": "sat"
+      },
+      "M5-weak-addition-consequent/M1": {
+        "decision": "unsat",
+        "hard_constraints": 361,
+        "independent_dpll": "unsat"
+      },
+      "M5-weak-addition-consequent/full": {
+        "decision": "unsat",
+        "hard_constraints": 378,
+        "independent_dpll": "unsat"
+      },
+      "M5-weak-addition-consequent/none": {
+        "decision": "sat",
+        "hard_constraints": 357,
+        "independent_dpll": "sat"
+      },
+      "M6-weak-mnep/M1": {
+        "decision": "sat",
+        "hard_constraints": 361,
+        "independent_dpll": "sat"
+      },
+      "M6-weak-mnep/M1+AAE:AB": {
+        "decision": "unsat",
+        "hard_constraints": 362,
+        "independent_dpll": "unsat"
+      },
+      "M6-weak-mnep/full": {
+        "decision": "unsat",
+        "hard_constraints": 378,
+        "independent_dpll": "unsat"
+      }
+    },
+    "same_number_pairs": [
+      "completeness:AAE:AB",
+      "completeness:AAF:AC",
+      "completeness:AAF:D",
+      "completeness:AAF:G",
+      "completeness:AC:D",
+      "completeness:AC:G",
+      "completeness:D:G"
+    ]
+  },
+  "result_sha256": "af8816670e02ac7430848c94771087e8e4eb0864d176f2ad9f15dfcab4b6b34a",
+  "schema": "population-ethics.research-result/v1"
+}

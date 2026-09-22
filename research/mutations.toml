@@ -1,0 +1,147 @@
+# Frozen mutation catalogue for breakthrough-search turn 1.
+# Written before any mutation was run. Each entry changes one concept relative to the frozen
+# baseline (arrhenius-2000.selected-witness/v1) unless it is explicitly a combination step.
+# "strength" is relative to the baseline clause, per relation class:
+#   arbitrary = any binary relation, preorder = reflexive+transitive, complete = total preorder.
+schema = "population-ethics.research-mutations/v1"
+version = 1
+
+[[mutation]]
+id = "M1-local-completeness-avoidance"
+source_principle = "background completeness"
+changed_clause = "global completeness over all pairs"
+formal_definition = "completeness only on {A,D}, {AC,D}, {AAE,AAF}, {AAF,G}"
+interpretation = "Only the comparisons an avoidance principle speaks about must be settled."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "Completeness is used only to turn 'not better' into 'at least as good' at the four avoidance sites."
+expected = "UNSAT (Phase 2 MUS); certificate without the AB:AC reductio"
+
+[[mutation]]
+id = "M1b-curated-completeness"
+source_principle = "background completeness"
+changed_clause = "global completeness"
+formal_definition = "completeness only on the five pairs used by the curated certificate"
+interpretation = "Exactly what the published-style proof uses."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "Control: the curated proof's own premises."
+expected = "UNSAT, non-minimal"
+
+[[mutation]]
+id = "M1c-same-number-completeness"
+source_principle = "background completeness"
+changed_clause = "global completeness"
+formal_definition = "completeness only between populations with the same number of lives"
+interpretation = "Same-number comparisons are settled; different-number comparisons may be incomparable."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "A recognized restriction: many views accept same-number comparability but doubt different-number comparability."
+expected = "unknown"
+
+[[mutation]]
+id = "M1d-different-number-completeness"
+source_principle = "background completeness"
+changed_clause = "global completeness"
+formal_definition = "completeness only between populations with different numbers of lives"
+interpretation = "Complement of M1c."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "Tests which half of completeness carries the contradiction."
+expected = "unknown"
+
+[[mutation]]
+id = "M2-reverse-weak-avoidance-all"
+source_principle = "the four avoidance principles"
+changed_clause = "not(X better than Y)"
+formal_definition = "Y at least as good as X, for all four avoidance instances; completeness removed"
+interpretation = "Avoidance stated positively ('at least as good') rather than negatively ('not worse')."
+strength = { arbitrary = "stronger", preorder = "stronger", complete = "equivalent" }
+rationale = "Arrhenius-style conditions are sometimes stated in 'at least as good' form; the forms differ only without completeness."
+expected = "UNSAT without any completeness"
+
+[[mutation]]
+id = "M2s-reverse-weak-avoidance-single"
+source_principle = "one avoidance principle at a time"
+changed_clause = "not(X better than Y)"
+formal_definition = "one avoidance instance in positive form; completeness only on the other three avoidance pairs"
+interpretation = "Positive form substitutes for exactly one completeness pair."
+strength = { arbitrary = "stronger", preorder = "stronger", complete = "equivalent" }
+rationale = "Localizes the role of completeness per principle."
+expected = "UNSAT for each of the four"
+
+[[mutation]]
+id = "M3-transitivity-minimum"
+source_principle = "background transitivity"
+changed_clause = "transitivity on all 343 active triples"
+formal_definition = "minimum-cardinality subset of transitivity instances that keeps UNSAT (full completeness)"
+interpretation = "Which chains of weak comparisons the contradiction actually uses."
+strength = { arbitrary = "weaker", preorder = "equivalent", complete = "equivalent" }
+rationale = "Replace a global principle by the exact local instances used."
+expected = "a small set, around 6 instances"
+
+[[mutation]]
+id = "M3q-quasi-transitivity"
+source_principle = "background transitivity"
+changed_clause = "transitivity of weak preference"
+formal_definition = "only the strict part is transitive: xPy and yPz imply xPz"
+interpretation = "Sen-style quasi-transitivity; indifference may be intransitive."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "weaker" }
+rationale = "Recognized weakening in social choice."
+expected = "SAT (the proof chains weak comparisons)"
+
+[[mutation]]
+id = "M3a-acyclicity"
+source_principle = "background transitivity"
+changed_clause = "transitivity"
+formal_definition = "the strict part has no cycles of any length"
+interpretation = "Only strict cycles are forbidden."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "weaker" }
+rationale = "Recognized weakening; weaker than quasi-transitivity."
+expected = "SAT"
+
+[[mutation]]
+id = "M3s-suzumura"
+source_principle = "background transitivity"
+changed_clause = "transitivity"
+formal_definition = "no weak path from x to y together with y strictly better than x"
+interpretation = "Suzumura consistency."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "Under completeness Suzumura consistency is equivalent to transitivity; without it, strictly weaker."
+expected = "UNSAT with completeness; test with M1 local completeness"
+
+[[mutation]]
+id = "M4-weak-dominance"
+source_principle = "Dominance"
+changed_clause = "AC strictly better than G"
+formal_definition = "AC at least as good as G"
+interpretation = "Weak dominance."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "weaker" }
+rationale = "Positive control: the all-tied relation satisfies everything."
+expected = "SAT"
+
+[[mutation]]
+id = "M5-weak-addition-consequent"
+source_principle = "Addition"
+changed_clause = "consequent: AB at least as good as AC"
+formal_definition = "consequent: not(AC strictly better than AB)"
+interpretation = "Adding the larger lower group is 'not better', rather than 'at least as bad'."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "Same move as the avoidance conditions, applied to Addition."
+expected = "UNSAT under M1 local completeness"
+
+[[mutation]]
+id = "M6-weak-mnep"
+source_principle = "Minimal Non-Extreme Priority"
+changed_clause = "AAE at least as good as AB"
+formal_definition = "not(AB strictly better than AAE)"
+interpretation = "The high-plus-slightly-negative addition is 'not worse'."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "Same move for MNEP."
+expected = "SAT under M1; UNSAT if {AB,AAE} is added to local completeness"
+
+[[mutation]]
+id = "C1-combined-weakening"
+source_principle = "combination"
+changed_clause = "M1 + M5"
+formal_definition = "completeness on the four avoidance pairs; Addition consequent not(AC better than AB)"
+interpretation = "Candidate locally minimal statement."
+strength = { arbitrary = "weaker", preorder = "weaker", complete = "equivalent" }
+rationale = "Combine every single-step weakening that survives."
+expected = "UNSAT; then test each further single step from this catalogue"

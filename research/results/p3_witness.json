@@ -1,0 +1,913 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "0092e326eac65d719baf0a69af5a85ec5f6f6b87543d43d1f20ac746facf34e5",
+    "z3_version": "5.1.0"
+  },
+  "name": "p3_witness",
+  "observations": {
+    "wall_time_s": 212.52
+  },
+  "result": {
+    "baseline_all_clauses": true,
+    "baseline_applicability": {
+      "addition:max(B)<min(A)": true,
+      "addition:max(C)<min(B)": true,
+      "addition:|C|>|B|": true,
+      "anti-egal:AAF-unequal": true,
+      "anti-egal:AC-unequal": true,
+      "anti-egal:D-equal": true,
+      "anti-egal:G-equal": true,
+      "anti-egal:avg(AAF)<avg(G)": true,
+      "anti-egal:avg(AC)<avg(D)": true,
+      "anti-egal:|AAF|=|G|": true,
+      "anti-egal:|AC|=|D|": true,
+      "categories:ordered": true,
+      "dominance:min(AC)>max(G)": true,
+      "dominance:|AC|=|G|": true,
+      "mnep:A_prime-q-very-high": true,
+      "mnep:B-q+1-very-low": true,
+      "mnep:E-single-slightly-negative": true,
+      "repugnance:A-equal-very-high": true,
+      "repugnance:D-very-low": true,
+      "roles:B,C,F,G-very-low": true,
+      "sadism:E-nonempty-negative": true,
+      "sadism:F-nonempty-positive": true
+    },
+    "fixed_by_construction": {
+      "active_relata": 7,
+      "curated_certificate_nodes": 75,
+      "ground_constraints": 1813,
+      "relation_atoms": 144,
+      "substantive_instances": 7
+    },
+    "grid": [
+      {
+        "closed_form_largest": 15,
+        "closed_form_m_min": 13,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 15,
+        "min_total_block_lives": 62,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 1,
+              "A_prime": 1,
+              "B": 2,
+              "C": 14,
+              "D": 15,
+              "E": 1,
+              "F": 13,
+              "G": 15
+            }
+          }
+        ],
+        "p": 1,
+        "pareto_front": [
+          [
+            62,
+            15,
+            6
+          ]
+        ],
+        "q": 1,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 48
+      },
+      {
+        "closed_form_largest": 22,
+        "closed_form_m_min": 19,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 22,
+        "min_total_block_lives": 91,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 1,
+              "A_prime": 2,
+              "B": 3,
+              "C": 21,
+              "D": 22,
+              "E": 1,
+              "F": 19,
+              "G": 22
+            }
+          }
+        ],
+        "p": 1,
+        "pareto_front": [
+          [
+            91,
+            22,
+            6
+          ]
+        ],
+        "q": 2,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 42
+      },
+      {
+        "closed_form_largest": 29,
+        "closed_form_m_min": 25,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 29,
+        "min_total_block_lives": 120,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 1,
+              "A_prime": 3,
+              "B": 4,
+              "C": 28,
+              "D": 29,
+              "E": 1,
+              "F": 25,
+              "G": 29
+            }
+          }
+        ],
+        "p": 1,
+        "pareto_front": [
+          [
+            120,
+            29,
+            6
+          ]
+        ],
+        "q": 3,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 36
+      },
+      {
+        "closed_form_largest": 36,
+        "closed_form_m_min": 31,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 36,
+        "min_total_block_lives": 149,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 1,
+              "A_prime": 4,
+              "B": 5,
+              "C": 35,
+              "D": 36,
+              "E": 1,
+              "F": 31,
+              "G": 36
+            }
+          }
+        ],
+        "p": 1,
+        "pareto_front": [
+          [
+            149,
+            36,
+            6
+          ]
+        ],
+        "q": 4,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 30
+      },
+      {
+        "closed_form_largest": 43,
+        "closed_form_m_min": 37,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 43,
+        "min_total_block_lives": 178,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 1,
+              "A_prime": 5,
+              "B": 6,
+              "C": 42,
+              "D": 43,
+              "E": 1,
+              "F": 37,
+              "G": 43
+            }
+          }
+        ],
+        "p": 1,
+        "pareto_front": [
+          [
+            178,
+            43,
+            6
+          ]
+        ],
+        "q": 5,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 24
+      },
+      {
+        "closed_form_largest": 22,
+        "closed_form_m_min": 19,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 22,
+        "min_total_block_lives": 89,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 2,
+              "A_prime": 1,
+              "B": 2,
+              "C": 20,
+              "D": 22,
+              "E": 1,
+              "F": 19,
+              "G": 22
+            }
+          }
+        ],
+        "p": 2,
+        "pareto_front": [
+          [
+            89,
+            22,
+            6
+          ]
+        ],
+        "q": 1,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 42
+      },
+      {
+        "closed_form_largest": 29,
+        "closed_form_m_min": 25,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 29,
+        "min_total_block_lives": 118,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 2,
+              "A_prime": 2,
+              "B": 3,
+              "C": 27,
+              "D": 29,
+              "E": 1,
+              "F": 25,
+              "G": 29
+            }
+          }
+        ],
+        "p": 2,
+        "pareto_front": [
+          [
+            118,
+            29,
+            6
+          ]
+        ],
+        "q": 2,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 36
+      },
+      {
+        "closed_form_largest": 36,
+        "closed_form_m_min": 31,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 36,
+        "min_total_block_lives": 147,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 2,
+              "A_prime": 3,
+              "B": 4,
+              "C": 34,
+              "D": 36,
+              "E": 1,
+              "F": 31,
+              "G": 36
+            }
+          }
+        ],
+        "p": 2,
+        "pareto_front": [
+          [
+            147,
+            36,
+            6
+          ]
+        ],
+        "q": 3,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 30
+      },
+      {
+        "closed_form_largest": 43,
+        "closed_form_m_min": 37,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 43,
+        "min_total_block_lives": 176,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 2,
+              "A_prime": 4,
+              "B": 5,
+              "C": 41,
+              "D": 43,
+              "E": 1,
+              "F": 37,
+              "G": 43
+            }
+          }
+        ],
+        "p": 2,
+        "pareto_front": [
+          [
+            176,
+            43,
+            6
+          ]
+        ],
+        "q": 4,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 24
+      },
+      {
+        "closed_form_largest": 50,
+        "closed_form_m_min": 43,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 50,
+        "min_total_block_lives": 205,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 2,
+              "A_prime": 5,
+              "B": 6,
+              "C": 48,
+              "D": 50,
+              "E": 1,
+              "F": 43,
+              "G": 50
+            }
+          }
+        ],
+        "p": 2,
+        "pareto_front": [
+          [
+            205,
+            50,
+            6
+          ]
+        ],
+        "q": 5,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 18
+      },
+      {
+        "closed_form_largest": 29,
+        "closed_form_m_min": 25,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 29,
+        "min_total_block_lives": 116,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 3,
+              "A_prime": 1,
+              "B": 2,
+              "C": 26,
+              "D": 29,
+              "E": 1,
+              "F": 25,
+              "G": 29
+            }
+          }
+        ],
+        "p": 3,
+        "pareto_front": [
+          [
+            116,
+            29,
+            6
+          ]
+        ],
+        "q": 1,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 36
+      },
+      {
+        "closed_form_largest": 36,
+        "closed_form_m_min": 31,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 36,
+        "min_total_block_lives": 145,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 3,
+              "A_prime": 2,
+              "B": 3,
+              "C": 33,
+              "D": 36,
+              "E": 1,
+              "F": 31,
+              "G": 36
+            }
+          }
+        ],
+        "p": 3,
+        "pareto_front": [
+          [
+            145,
+            36,
+            6
+          ]
+        ],
+        "q": 2,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 30
+      },
+      {
+        "closed_form_largest": 43,
+        "closed_form_m_min": 37,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 43,
+        "min_total_block_lives": 174,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 3,
+              "A_prime": 3,
+              "B": 4,
+              "C": 40,
+              "D": 43,
+              "E": 1,
+              "F": 37,
+              "G": 43
+            }
+          }
+        ],
+        "p": 3,
+        "pareto_front": [
+          [
+            174,
+            43,
+            6
+          ]
+        ],
+        "q": 3,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 24
+      },
+      {
+        "closed_form_largest": 50,
+        "closed_form_m_min": 43,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 50,
+        "min_total_block_lives": 203,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 3,
+              "A_prime": 4,
+              "B": 5,
+              "C": 47,
+              "D": 50,
+              "E": 1,
+              "F": 43,
+              "G": 50
+            }
+          }
+        ],
+        "p": 3,
+        "pareto_front": [
+          [
+            203,
+            50,
+            6
+          ]
+        ],
+        "q": 4,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 18
+      },
+      {
+        "closed_form_largest": 57,
+        "closed_form_m_min": 49,
+        "distinct_levels_in_all_solutions": [
+          6
+        ],
+        "min_largest_population": 57,
+        "min_total_block_lives": 232,
+        "minimal_witnesses": [
+          {
+            "levels": {
+              "A": 8,
+              "A_prime": 8,
+              "B": 4,
+              "C": 3,
+              "D": 4,
+              "E": -1,
+              "F": 1,
+              "G": 2
+            },
+            "sizes": {
+              "A": 3,
+              "A_prime": 5,
+              "B": 6,
+              "C": 54,
+              "D": 57,
+              "E": 1,
+              "F": 49,
+              "G": 57
+            }
+          }
+        ],
+        "p": 3,
+        "pareto_front": [
+          [
+            232,
+            57,
+            6
+          ]
+        ],
+        "q": 5,
+        "valid_level_assignments": 64,
+        "valid_witnesses_in_bounds": 12
+      }
+    ],
+    "grid_closed_form_agrees": true,
+    "grid_search_bounds": {
+      "B": 8,
+      "C": 80,
+      "E": 2,
+      "F": 60
+    },
+    "materialized": {
+      "grid-p1-q1": {
+        "decision": "unsat",
+        "evidence": [
+          "checked-proof",
+          "solver-report"
+        ],
+        "guard_probes": {
+          "comparison_symbol_edit_changes_identity": true,
+          "proof_step_edit_rejected": true,
+          "prose_preserves_problem_id": true,
+          "unused_alias_preserves_problem_id": true,
+          "welfare_edit_changes_identity": true
+        },
+        "levels": {
+          "A": 8,
+          "A_prime": 8,
+          "B": 4,
+          "C": 3,
+          "D": 4,
+          "E": -1,
+          "F": 1,
+          "G": 2
+        },
+        "problem_id": "731ad84cb84efc2437da95dbdd148c4446be1f6d52983c53cafaa7cf19ec8a6a",
+        "sizes": {
+          "A": 1,
+          "A_prime": 1,
+          "B": 2,
+          "C": 14,
+          "D": 15,
+          "E": 1,
+          "F": 13,
+          "G": 15
+        },
+        "toml": "research/experiments/fixed-skeleton-p1-q1.toml",
+        "verify_accepted": true
+      },
+      "regenerated-baseline": {
+        "decision": "unsat",
+        "evidence": [
+          "checked-proof",
+          "solver-report"
+        ],
+        "guard_probes": {
+          "comparison_symbol_edit_changes_identity": true,
+          "proof_step_edit_rejected": true,
+          "prose_preserves_problem_id": true,
+          "unused_alias_preserves_problem_id": true,
+          "welfare_edit_changes_identity": true
+        },
+        "levels": {
+          "A": 8,
+          "A_prime": 8,
+          "B": 4,
+          "C": 3,
+          "D": 4,
+          "E": -1,
+          "F": 1,
+          "G": 2
+        },
+        "problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+        "sizes": {
+          "A": 1,
+          "A_prime": 2,
+          "B": 3,
+          "C": 21,
+          "D": 22,
+          "E": 1,
+          "F": 19,
+          "G": 22
+        },
+        "toml": "research/experiments/fixed-skeleton-p1-q2.toml",
+        "verify_accepted": true
+      },
+      "spacing-p1-q1": {
+        "decision": "unsat",
+        "evidence": [
+          "checked-proof",
+          "solver-report"
+        ],
+        "guard_probes": {
+          "comparison_symbol_edit_changes_identity": true,
+          "proof_step_edit_rejected": true,
+          "prose_preserves_problem_id": true,
+          "unused_alias_preserves_problem_id": true,
+          "welfare_edit_changes_identity": true
+        },
+        "levels": {
+          "A": 8,
+          "A_prime": 8,
+          "B": 7,
+          "C": 6,
+          "D": 7,
+          "E": -1,
+          "F": 1,
+          "G": 5
+        },
+        "problem_id": "f8fc290217b56ca8d8d0fb355f045ab931a6d30d2b8d8a8835153f01dec1c74c",
+        "sizes": {
+          "A": 1,
+          "A_prime": 1,
+          "B": 2,
+          "C": 3,
+          "D": 4,
+          "E": 1,
+          "F": 2,
+          "G": 4
+        },
+        "toml": "research/experiments/spacing-sensitivity-p1-q1.toml",
+        "verify_accepted": true
+      }
+    },
+    "regenerated_baseline_populations_equal": true,
+    "spacing": {
+      "closed_form_all_agree": true,
+      "closed_form_checks": 858,
+      "collapse_examples": {
+        "p=1,q=2": {
+          "all_clauses_hold": true,
+          "largest_population": 5,
+          "levels": {
+            "A": 16,
+            "A_prime": 16,
+            "B": 15,
+            "C": 14,
+            "D": 15,
+            "E": -1,
+            "F": 1,
+            "G": 13
+          },
+          "m": 2,
+          "ratio_(a-g)/(g-f)": "1/4"
+        },
+        "p=q=1": {
+          "all_clauses_hold": true,
+          "largest_population": 4,
+          "levels": {
+            "A": 8,
+            "A_prime": 8,
+            "B": 7,
+            "C": 6,
+            "D": 7,
+            "E": -1,
+            "F": 1,
+            "G": 5
+          },
+          "m": 2,
+          "ratio_(a-g)/(g-f)": "3/4"
+        }
+      },
+      "ratio_table": [
+        {
+          "largest(p=1,q=2)": 5,
+          "m_min(p=1,q=2)": 2,
+          "ratio": "1/4"
+        },
+        {
+          "largest(p=1,q=2)": 5,
+          "m_min(p=1,q=2)": 2,
+          "ratio": "1/2"
+        },
+        {
+          "largest(p=1,q=2)": 6,
+          "m_min(p=1,q=2)": 3,
+          "ratio": "2/3"
+        },
+        {
+          "largest(p=1,q=2)": 7,
+          "m_min(p=1,q=2)": 4,
+          "ratio": "1/1"
+        },
+        {
+          "largest(p=1,q=2)": 10,
+          "m_min(p=1,q=2)": 7,
+          "ratio": "2/1"
+        },
+        {
+          "largest(p=1,q=2)": 13,
+          "m_min(p=1,q=2)": 10,
+          "ratio": "3/1"
+        },
+        {
+          "largest(p=1,q=2)": 22,
+          "m_min(p=1,q=2)": 19,
+          "ratio": "6/1"
+        },
+        {
+          "largest(p=1,q=2)": 40,
+          "m_min(p=1,q=2)": 37,
+          "ratio": "12/1"
+        }
+      ],
+      "universal_lower_bound": "|D|=|G|=|AC|=|AAF|=p+q+m with m>=2 (Addition |C|>|B|)"
+    }
+  },
+  "result_sha256": "1230e5e72d4f5573623166b327244b61b1a52ea5ec5c7ba2e4fca6a12974c26a",
+  "schema": "population-ethics.research-result/v1"
+}

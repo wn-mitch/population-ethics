@@ -1,0 +1,70 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "0092e326eac65d719baf0a69af5a85ec5f6f6b87543d43d1f20ac746facf34e5",
+    "z3_version": "5.1.0"
+  },
+  "name": "p0_baseline",
+  "observations": {
+    "wall_time_s": 12.15
+  },
+  "result": {
+    "curated_certificate": {
+      "completeness_premises": [
+        "completeness:A:D",
+        "completeness:AAE:AAF",
+        "completeness:AAF:G",
+        "completeness:AB:AC",
+        "completeness:AC:D"
+      ],
+      "nodes": 75
+    },
+    "labels": {
+      "claim_kind": "bounded-proof-instance",
+      "formalization_id": "arrhenius-2000.selected-witness/v1",
+      "source_fidelity": "human-reviewed-selected-instance"
+    },
+    "problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "rerun_matches": {
+      "artifact_id (expected to differ: hashes wall time)": false,
+      "checked_proof": true,
+      "claim_kind": true,
+      "grounded_core": true,
+      "outcome": true,
+      "problem_id": true,
+      "run_key": true,
+      "source_fidelity": true
+    },
+    "stored_artifact_id": "a60498f92972f46d58b43a9ab6f429f48dba8602b2bd4297887aec7c042f361d",
+    "stored_artifact_sha256": "e2798da6d59b94ad8edcad8ce8434c30198bee40ef995cb521a69d9924b56359",
+    "stored_solver_core": {
+      "completeness": [
+        "completeness:A:G",
+        "completeness:AAF:G",
+        "completeness:AB:G",
+        "completeness:D:G"
+      ],
+      "minimality": "verified",
+      "size": 22,
+      "transitivity": [
+        "transitivity:A:G:AB",
+        "transitivity:AAE:AB:G",
+        "transitivity:AAE:G:AAF",
+        "transitivity:AC:G:D",
+        "transitivity:D:G:A",
+        "transitivity:G:A:D",
+        "transitivity:G:AAE:AB",
+        "transitivity:G:AAF:AAE",
+        "transitivity:G:AB:A",
+        "transitivity:G:AB:AC",
+        "transitivity:G:D:AC"
+      ]
+    },
+    "verify_rerun_accepted": true,
+    "verify_stored_accepted": true
+  },
+  "result_sha256": "99af76a41aed834184da55b2ca4dad5109a8618bab6619097295919002ffbe3b",
+  "schema": "population-ethics.research-result/v1"
+}

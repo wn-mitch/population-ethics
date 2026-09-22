@@ -1,0 +1,233 @@
+schema = "population-ethics.experiment/v2"
+id = "spacing-sensitivity-p1-q1"
+kind = "compatibility"
+claim_kind = "bounded-proof-instance"
+source_fidelity = "rational-cardinal spacing sensitivity; NOT a source-faithful witness (7 declared very low, 8 declared very high)"
+source_ids = ["arrhenius-2000"]
+formalization_id = "arrhenius-2000.spacing-sensitivity-p1-q1/v1"
+fixed_groups = ["reflexivity", "transitivity"]
+candidate_groups = ["completeness", "repugnance-avoidance", "anti-egalitarianism-avoidance", "sadism-avoidance", "minimal-non-extreme-priority", "dominance", "addition"]
+
+[resource_policy]
+max_populations = 100
+max_expanded_lives = 5000
+max_relation_atoms = 1000
+max_ground_constraints = 5000
+max_subsets = 256
+timeout_ms = 0
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "A"
+groups = [{ welfare = 8, count = 1 }]
+
+[[domain.populations]]
+name = "B"
+groups = [{ welfare = 7, count = 2 }]
+
+[[domain.populations]]
+name = "C"
+groups = [{ welfare = 6, count = 3 }]
+
+[[domain.populations]]
+name = "D"
+groups = [{ welfare = 7, count = 4 }]
+
+[[domain.populations]]
+name = "A_prime"
+groups = [{ welfare = 8, count = 1 }]
+
+[[domain.populations]]
+name = "E"
+groups = [{ welfare = -1, count = 1 }]
+
+[[domain.populations]]
+name = "F"
+groups = [{ welfare = 1, count = 2 }]
+
+[[domain.populations]]
+name = "G"
+groups = [{ welfare = 5, count = 4 }]
+
+[[domain.populations]]
+name = "AB"
+values = [8, 7, 7]
+parts = ["A", "B"]
+
+[[domain.populations]]
+name = "AC"
+values = [8, 6, 6, 6]
+parts = ["A", "C"]
+
+[[domain.populations]]
+name = "AAF"
+values = [8, 8, 1, 1]
+parts = ["A", "A_prime", "F"]
+
+[[domain.populations]]
+name = "AAE"
+values = [8, 8, -1]
+parts = ["A", "A_prime", "E"]
+
+[categories]
+slightly_negative = [-1]
+very_low_positive = [1, 5, 6, 7]
+very_high_positive = [8]
+
+[role_bindings]
+source_A = "A"
+source_B = "B"
+source_C = "C"
+source_D = "D"
+source_A_prime = "A_prime"
+source_E = "E"
+source_F = "F"
+source_G = "G"
+
+[witness_bindings]
+p = 1
+q = 1
+m = 2
+
+[[side_conditions]]
+id = "large-population-cardinality"
+kind = "cardinality-equal"
+data = { populations = ["AC", "AAF", "D", "G"], expected = 4 }
+
+[[side_conditions]]
+id = "small-population-cardinality"
+kind = "cardinality-equal"
+data = { populations = ["AB", "AAE"], expected = 3 }
+
+[[side_conditions]]
+id = "anti-egalitarian-average-ac"
+kind = "average-less"
+data = { population = "AC", expected = { numerator = 13, denominator = 2 }, bound = { numerator = 7, denominator = 1 } }
+
+[[side_conditions]]
+id = "anti-egalitarian-average-aaf"
+kind = "average-less"
+data = { population = "AAF", expected = { numerator = 9, denominator = 2 }, bound = { numerator = 5, denominator = 1 } }
+
+[[side_conditions]]
+id = "addition-size-gap"
+kind = "integer-greater"
+data = { left = 3, right = 2 }
+
+[[side_conditions]]
+id = "category-representatives"
+kind = "category-membership"
+data = { bindings = [{ category = "slightly_negative", welfare = -1 }, { category = "very_low_positive", welfare = 1 }, { category = "very_low_positive", welfare = 5 }, { category = "very_low_positive", welfare = 6 }, { category = "very_low_positive", welfare = 7 }, { category = "very_high_positive", welfare = 8 }] }
+
+[[side_conditions]]
+id = "declared-composites"
+kind = "role-disjoint-union"
+data = { composites = ["AB", "AC", "AAF", "AAE"] }
+
+[[side_conditions]]
+id = "selected-witnesses"
+kind = "witness-binding"
+data = { bindings = { p = 1, q = 1, m = 2 } }
+
+[[groups]]
+id = "reflexivity"
+principle_id = "reflexivity"
+compiler = "reflexivity"
+populations = ["A", "B", "C", "D", "A_prime", "E", "F", "G", "AB", "AC", "AAF", "AAE"]
+
+[[groups]]
+id = "transitivity"
+principle_id = "transitivity"
+compiler = "transitivity"
+populations = ["A", "B", "C", "D", "A_prime", "E", "F", "G", "AB", "AC", "AAF", "AAE"]
+
+[[groups]]
+id = "completeness"
+principle_id = "completeness"
+compiler = "completeness"
+populations = ["A", "B", "C", "D", "A_prime", "E", "F", "G", "AB", "AC", "AAF", "AAE"]
+
+[[groups]]
+id = "repugnance-avoidance"
+principle_id = "avoid-repugnance"
+
+[[groups.constraints]]
+id = "avoid-repugnance:D-not-strict-A"
+formula = { kind = "not", operand = { kind = "strict", left = "D", right = "A" } }
+populations = ["D", "A"]
+source_locator = "Arrhenius 2000, pp. 261–262, proof steps (1)–(2)"
+formalization_id = "arrhenius-2000.avoid-repugnance/v1"
+explanation = "The selected low-welfare D population is not strictly better than A."
+
+[[groups]]
+id = "anti-egalitarianism-avoidance"
+principle_id = "avoid-anti-egalitarianism"
+
+[[groups.constraints]]
+id = "avoid-anti-egalitarianism:AC-not-strict-D"
+formula = { kind = "not", operand = { kind = "strict", left = "AC", right = "D" } }
+populations = ["AC", "D"]
+source_locator = "Arrhenius 2000, p. 262, proof step (3)"
+formalization_id = "arrhenius-2000.avoid-anti-egalitarianism/v1"
+explanation = "The unequal lower-average AC population is not strictly better than equal D."
+
+[[groups.constraints]]
+id = "avoid-anti-egalitarianism:AAF-not-strict-G"
+formula = { kind = "not", operand = { kind = "strict", left = "AAF", right = "G" } }
+populations = ["AAF", "G"]
+source_locator = "Arrhenius 2000, p. 263, proof step (10)"
+formalization_id = "arrhenius-2000.avoid-anti-egalitarianism/v1"
+explanation = "The unequal lower-average AAF population is not strictly better than equal G."
+
+[[groups]]
+id = "sadism-avoidance"
+principle_id = "avoid-sadism"
+
+[[groups.constraints]]
+id = "avoid-sadism:AAE-not-strict-AAF"
+formula = { kind = "not", operand = { kind = "strict", left = "AAE", right = "AAF" } }
+populations = ["AAE", "AAF"]
+source_locator = "Arrhenius 2000, p. 263, proof step (9)"
+formalization_id = "arrhenius-2000.avoid-sadism/v1"
+explanation = "Adding one slightly negative life is not strictly better than adding positive F lives."
+
+[[groups]]
+id = "minimal-non-extreme-priority"
+principle_id = "minimal-non-extreme-priority"
+
+[[groups.constraints]]
+id = "minimal-priority:AAE-weak-AB"
+formula = { kind = "atom", relation = "weak", left = "AAE", right = "AB" }
+populations = ["AAE", "AB"]
+source_locator = "Arrhenius 2000, pp. 259–260 and p. 263, proof step (12)"
+formalization_id = "arrhenius-2000.minimal-priority/v1"
+explanation = "The selected witness q=2 makes AAE at least as good as AB."
+
+[[groups]]
+id = "dominance"
+principle_id = "dominance"
+
+[[groups.constraints]]
+id = "dominance:AC-strict-G"
+formula = { kind = "strict", left = "AC", right = "G" }
+populations = ["AC", "G"]
+source_locator = "Arrhenius 2000, p. 263, proof step (13)"
+formalization_id = "arrhenius-2000.dominance/v1"
+explanation = "Every life in AC has welfare above every life in equal-size G."
+
+[[groups]]
+id = "addition"
+principle_id = "addition"
+
+[[groups.constraints]]
+id = "addition:A-AB-implies-AB-AC"
+formula = { kind = "implies", antecedent = { kind = "strict", left = "A", right = "AB" }, consequent = { kind = "atom", relation = "weak", left = "AB", right = "AC" } }
+populations = ["A", "AB", "AC"]
+source_locator = "Arrhenius 2000, pp. 257–258 and p. 262, proof steps (6)–(8)"
+formalization_id = "arrhenius-2000.addition/v1"
+explanation = "If adding B is bad, adding the larger and lower C is at least as bad."
+
+[proof]
+builder = "arrhenius-2000/v1"
