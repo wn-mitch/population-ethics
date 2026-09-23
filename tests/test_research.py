@@ -877,3 +877,54 @@ def test_certifier_proves_the_vrc_gap_consistent_and_never_a_known_theorem() -> 
     assert cert.axiology == "total"
     for name, theorem in KNOWN_THEOREMS.items():
         assert certifier.certify(theorem) is None, name
+
+
+def test_component_restriction_reduces_to_the_full_and_the_empty_check() -> None:
+    from itertools import combinations
+
+    from research.ladder import Ladder
+    from research.lexadd import Restriction, battery, check_at, check_restricted
+
+    ladder = Ladder(1, 6)
+    levels = tuple(ladder.levels)
+    every = [frozenset(c) for k in range(1, len(levels) + 1) for c in combinations(levels, k)]
+    one = {s: 0 for s in every}
+    apart = {s: i for i, s in enumerate(every)}
+    axes = {a.id: a for a in battery(ladder)}
+    cases = [
+        ("thesis:non-sadism", "critical-level-3", None, None),
+        ("thesis:quantity", "threshold-4", (), None),
+        ("thesis:inequality-aversion", "threshold-4", (), None),
+        ("thesis:quality", "total", (), {"u": 4, "v": 6, "y": 3}),
+        ("thesis:non-extreme-priority", "negative-then-total", None, {"x": 4, "y": -1, "z": 3}),
+    ]
+    for principle, ax_id, bg, lv in cases:
+        full = check_at(principle, axes[ax_id], ladder, lv)
+        assert full is not None, (principle, ax_id)  # each case is a real violation
+        same = check_restricted(principle, axes[ax_id], ladder, lv, Restriction(one, levels, bg))
+        assert same is not None, principle
+        none = check_restricted(principle, axes[ax_id], ladder, lv, Restriction(apart, levels, bg))
+        # Distinct components for distinct supports leave only instances with equal supports,
+        # which a background-free condition never has.
+        if bg == ():
+            assert none is None, principle
+
+
+def test_hybrid_certifier_keeps_plain_certificates_and_rejects_theorem_1() -> None:
+    from research.certify import HybridCertifier
+    from research.ladder import Ladder
+    from research.lexadd import battery
+    from research.possibility import KNOWN_THEOREMS
+
+    ladder = Ladder(2, 7)
+    models = [a for a in battery(ladder) if a.id in {"total", "negative-then-total"}]
+    hybrid = HybridCertifier(ladder, models, per_gap=2)
+    gap = [
+        "thesis:egalitarian-dominance",
+        "thesis:non-extreme-priority",
+        "thesis:quantity",
+        "arrhenius-2003:vrc-avoidance",
+    ]
+    cert = hybrid.certify(gap)
+    assert cert is not None and "arrhenius-2003:vrc-avoidance" in cert.inert
+    assert hybrid.certify(KNOWN_THEOREMS["thesis-theorem-1"]) is None

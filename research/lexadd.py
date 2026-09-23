@@ -152,11 +152,74 @@ def _plus(*cs: Counts) -> Counts:
 # Violation otherwise. Witness-bounded checkers try every grid witness and fail only if all fail.
 
 
+@dataclass(frozen=True)
+class Restriction:
+    """Check only instances whose two supports lie in the same component (research/certify.py).
+
+    ``component`` maps a support (set of occupied levels) to its component; ``background`` is
+    the set of levels the current condition's shared background may occupy (``()`` for none,
+    ``None`` for any). A background is modelled by one presence bit per allowed level: it
+    changes supports but, every tier being additive, never the comparison.
+    """
+
+    component: Mapping[frozenset[int], int]
+    levels: tuple[int, ...]
+    background: tuple[int, ...] | None
+
+    def allowed(self) -> tuple[int, ...]:
+        if self.background == ():
+            return ()
+        return self.levels if self.background is None else self.background
+
+    def constraint(self, left: Counts, right: Counts) -> z3.BoolRef:
+        bits = {lvl: z3.Bool(f"d{lvl}".replace("-", "m")) for lvl in self.allowed()}
+
+        def index(side: Counts) -> z3.ArithRef:
+            terms = []
+            for i, lvl in enumerate(self.levels):
+                present = [side[lvl] > 0] if lvl in side else []
+                if lvl in bits:
+                    present.append(bits[lvl])
+                if present:
+                    terms.append(z3.If(z3.Or(*present), 2**i, 0))
+            return z3.Sum(terms) if terms else z3.IntVal(0)
+
+        def code(s: frozenset[int]) -> int:
+            return sum(2**i for i, lvl in enumerate(self.levels) if lvl in s)
+
+        il, ir = index(left), index(right)
+        groups: dict[int, list[int]] = {}
+        for s, c in self.component.items():
+            groups.setdefault(c, []).append(code(s))
+        return z3.Or(
+            *[
+                z3.And(z3.Or(*[il == k for k in ks]), z3.Or(*[ir == k for k in ks]))
+                for ks in groups.values()
+            ]
+        )
+
+    def intra(self, left: frozenset[int], right: frozenset[int]) -> bool:
+        """Can a background make these core supports land in one component?"""
+        from itertools import combinations as comb
+
+        allowed = self.allowed()
+        for k in range(len(allowed) + 1):
+            for bg in comb(allowed, k):
+                a, b = left | set(bg), right | set(bg)
+                if a in self.component and self.component.get(a) == self.component.get(b):
+                    return True
+        return False
+
+
+_RESTRICTION: Restriction | None = None
+
+
 def _universal(
     ax: LexAxiology, shape: str, spaces: Iterator[tuple[Counts, Counts, list[z3.BoolRef], str]]
 ) -> Violation | None:
     for left, right, side, note in spaces:
-        m = _find(z3.And(*side, _violates(shape, _diff(ax, left, right))))
+        extra = [_RESTRICTION.constraint(left, right)] if _RESTRICTION is not None else []
+        m = _find(z3.And(*side, *extra, _violates(shape, _diff(ax, left, right))))
         if m is not None:
             lvl, r = _pops(m, left, right)
             return Violation(lvl, r, shape, note)
@@ -232,6 +295,10 @@ def _forall_exists_m(
             out.append(total)
         return out
 
+    if _RESTRICTION is not None:
+        l1, r1 = make(1, 2)
+        if not _RESTRICTION.intra(frozenset(l1), frozenset(r1)):
+            return None
     d01, d10 = diff(0, 1), diff(1, 0)  # a = d(0, 1), −b = d(1, 0)
     bad = forall_exists_m(d01, [-x for x in d10])
     if bad is None:
@@ -273,6 +340,10 @@ def non_elitism(ax: LexAxiology, ladder: Ladder) -> Violation | None:
     lv = ladder.levels
     for x, y in product(lv, lv):
         if ladder.has(x - 1) and x - 1 > y:
+            if _RESTRICTION is not None and not _RESTRICTION.intra(
+                frozenset({x - 1}), frozenset({x, y})
+            ):
+                continue
             n = z3.Int("n")
             left, right = _const(x - 1, n + 1), _plus(_const(x, 1), _const(y, n))
             ok = z3.Not(_violates("W", _diff(ax, left, right)))
@@ -574,3 +645,19 @@ def from_additive(ladder: Ladder, name: str, g: Mapping[Any, str]) -> LexAxiolog
     level or, after a JSON round trip, by the level's string."""
     values = {v: Fraction(g[v] if v in g else g[str(v)]) for v in ladder.levels}
     return LexAxiology(name, "additive V = Σ g(w)", (values,))
+
+
+def check_restricted(
+    principle: str,
+    ax: LexAxiology,
+    ladder: Ladder,
+    levels: Mapping[str, int] | None,
+    restriction: Restriction,
+) -> Violation | None:
+    """``check_at`` over only the instances whose supports share a component."""
+    global _RESTRICTION
+    previous, _RESTRICTION = _RESTRICTION, restriction
+    try:
+        return check_at(principle, ax, ladder, levels)
+    finally:
+        _RESTRICTION = previous

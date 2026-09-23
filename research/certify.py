@@ -22,7 +22,7 @@ A certificate names the level witnesses, the inert conditions, and the axiology.
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Iterator, Mapping
+from collections.abc import Iterable, Iterator, Mapping, Sequence
 from dataclasses import dataclass
 from itertools import combinations, product
 from typing import Any
@@ -293,4 +293,95 @@ class Certifier:
                     for p in live
                 ):
                     return Certificate(conds, levels, inert, ax.id)
+        return None
+
+
+NO_BACKGROUND = {
+    "egalitarian-dominance",
+    "quantity",
+    "quality",
+    "dominance-addition-not-worse",
+    "dominance-addition-weak",
+    "inequality-aversion",
+    "vrc-avoidance",
+}
+
+
+def component_order(
+    comp: Mapping[Support, int], edges: Iterable[tuple[Support, Support, bool]]
+) -> dict[int, int]:
+    """σ per component: every edge between components goes from higher σ to lower σ."""
+    succ: dict[int, set[int]] = {c: set() for c in set(comp.values())}
+    for a, b, _ in edges:
+        if comp[a] != comp[b]:
+            succ[comp[a]].add(comp[b])
+    rank: dict[int, int] = {}
+
+    def depth(c: int) -> int:  # longest path to a sink; the condensation is acyclic
+        stack = [(c, iter(sorted(succ[c])))]
+        while stack:
+            node, it = stack[-1]
+            nxt = next((d for d in it if d not in rank), None)
+            if nxt is not None:
+                stack.append((nxt, iter(sorted(succ[nxt]))))
+                continue
+            stack.pop()
+            rank[node] = 1 + max((rank[d] for d in succ[node]), default=0)
+        return rank[c]
+
+    for c in succ:
+        if c not in rank:
+            depth(c)
+    return rank
+
+
+class HybridCertifier(Certifier):
+    """Certificates whose key is (component rank, axiology): the axiology need only satisfy the
+    instances whose two supports share a component (docs/decisions.md D-020)."""
+
+    def __init__(self, ladder: Ladder, axiologies: Iterable[Any], per_gap: int = 8) -> None:
+        super().__init__(ladder, axiologies)
+        self.per_gap = per_gap  # axiologies tried per condition set, most promising first
+
+    def _ranked(self, conds: Sequence[str]) -> list[Any]:
+
+        def score(ax: Any) -> int:
+            return sum(1 for p in conds if self._cached_full(p, ax))
+
+        return sorted(self.axiologies, key=lambda ax: -score(ax))[: self.per_gap]
+
+    def _cached_full(self, p: str, ax: Any) -> bool:
+        from research.lexadd import CHECKS
+
+        key = (p, ax.id, ())
+        if key not in self._checks:
+            self._checks[key] = CHECKS[p](ax, self.ladder) is None
+        return self._checks[key]
+
+    def certify(self, conditions: Iterable[str]) -> Certificate | None:
+        from research.lexadd import Restriction, check_restricted
+
+        conds = tuple(sorted(conditions))
+        candidates = self._ranked(conds)
+        families = sorted({f for p in conds if (f := WITNESS_OF.get(FORM[p])) is not None})
+        for choice in product(*[level_options(f, self.ladder) for f in families]):
+            levels = dict(zip(families, choice, strict=True))
+            lv_of = {p: levels.get(WITNESS_OF.get(FORM[p]) or "", {}) for p in conds}
+            per = {p: self._edges_of(p, lv_of[p]) for p in conds}
+            comp = _components(e for es in per.values() for e in es)
+            inside = {p: [e for e in es if comp[e[0]] == comp[e[1]]] for p, es in per.items()}
+            inert = tuple(p for p in conds if not inside[p])
+            if not any(s for es in inside.values() for _, _, s in es):
+                return Certificate(conds, levels, inert, None)
+            live = [p for p in conds if p not in inert]
+            for ax in candidates:
+                ok = True
+                for p in live:
+                    bg = () if FORM[p] in NO_BACKGROUND else None
+                    r = Restriction(comp, tuple(self.ladder.levels), bg)
+                    if check_restricted(p, ax, self.ladder, lv_of[p], r) is not None:
+                        ok = False
+                        break
+                if ok:
+                    return Certificate(conds, levels, inert, f"component-rank then {ax.id}")
         return None

@@ -140,6 +140,13 @@ delete it.
 - **Still open: 29.** Twenty-six contain a background-carrying quality condition (5 thesis Weak
   Quality Addition, 21 2009 Weak Quality Addition), so a certificate needs a background-sensitive
   axiology. The other three are Q-011.
+- **Why they resist (D-020):** a certificate's axiology must be background-sensitive, because
+  every lexicographic-additive tier cancels backgrounds. Worked case: {Egalitarian Dominance,
+  GNEP, Quantity, 2009 Weak Quality Addition}. GNEP yields δ (2009 Lemma 2), and δ with Weak
+  Quality Addition yields Restricted Quality Addition (2009 Lemma 3). That looks as if it should
+  drive Theorem 1's Quantity chain, but Restricted Quality Addition covers only low populations of
+  at least m lives, with m chosen by the axiology. The Quantity chain ends near n plus the number
+  of levels, so a large m escapes. A model would need to disregard small low populations.
 - **Settles it:** an exact check of a background-sensitive axiology class that realizes a gap, or
   a proof. Each proof would be a new impossibility theorem strictly stronger than a known one.
 

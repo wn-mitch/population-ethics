@@ -215,3 +215,21 @@ every one resolves.
 - **Consequences:** N-shaped conditions are normalized to ⪰ (the complete-branch reading). That
   normalization only strengthens the conditions, so certificates remain valid for the source.
   Certificates are ladder-relative (W_−2 … W_7).
+
+## D-020. Hybrid certificates rank by component, then by axiology
+
+- **Status:** settled.
+- **Sources:** `research/certify.py`, `research/lexadd.py`.
+- **Decision:** the key (σ(component of support), V) is an admissible axiology. σ is a
+  topological rank of the support graph's condensation, so every edge between components
+  already goes strictly downward. V then needs to satisfy only the instances whose two supports
+  share a component. `lexadd.check_restricted` checks exactly those: supports come from presence
+  bits for the core counts and for a background, and backgrounds are over-approximated to any
+  levels, which only adds checks. A test checks that the restriction reduces to the full check
+  when one component holds everything, and to nothing for background-free conditions when every
+  support has its own component.
+- **Consequences:** this generalizes D-019's certificates. On the 2009 Weak Quality Addition gaps
+  it found nothing in the first two runs (452 s and 727 s each), and the pass was stopped. On
+  intra-component instances a lexicographic-additive tier still cancels backgrounds, so 2009 Weak
+  Quality Addition behaves like VRC avoidance and the additive conflicts return. Those gaps need a
+  background-sensitive axiology (Q-010).
