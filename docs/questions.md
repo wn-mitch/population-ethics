@@ -41,12 +41,13 @@ delete it.
 - **Question:** the 2000 paper declares the categories and requires four ordered very-low levels
   but sets no minimum gap between very low and very high. Is 7 a fair very-low level when 14 is
   very high (the gapped grid, R6)? Order-only categories admit the R5 triangle.
-- **Settles it:** a source-justified gap axiom. Thesis §10.2 (pp. 153–157) replaces the
-  categories with ranges R(u,v) and R(1,y), u > y, and is the first place to look.
+- **Settles it:** a source-justified gap axiom. The thesis replaces the categories with ranges
+  R(u,v) above R(1,y), each at least three consecutive levels (D-014). That settles the gap for
+  the thesis family; the 1999 and 2000 statements still set none.
 
 ## Q-005. MNEP wording: n or n+1 very-low lives
 
-- **Status:** open; resolve in the schema v1 reading of MNEP.
+- **Status:** closed by D-012: the formal statements say n+1.
 - **Question:** the paraphrase in `corpus/sources.toml` (source_wording, 2000) and
   `SOURCE_CLAUSES["mnep"]` in `research/schema.py` say one slightly negative life is offset
   "against the same number of very-low-positive lives". The generator in `research/schema.py`

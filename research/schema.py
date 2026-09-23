@@ -1,7 +1,8 @@
 """Schema v0 (``arrhenius-2000.schema/v0-unreviewed``): principle schemas over bounded domains.
 
-Every predicate below is this turn's own formalization of a source clause (quoted from the
-reconstruction in ``corpus/sources.toml``); none is human-reviewed. Existential principles are
+Every predicate below formalizes a source clause whose cross-read reading, with verbatim excerpt
+and recorded deviations, is in ``corpus/readings.toml`` (docs/decisions.md D-013); generation
+refuses principles that have not passed that gate. Existential principles are
 fixed by an explicit witness W = (A = p·a, MNEP n = q); universal principles are instantiated
 over every population in the bounded domain D_N (all nonempty multisets of at most N lives over
 the declared levels). A finite UNSAT result therefore refutes "v0 schema + W" only.
@@ -17,6 +18,8 @@ from itertools import combinations_with_replacement, permutations
 
 import z3  # type: ignore[import-untyped]
 
+from research.readings import require_reviewed
+
 Pop = tuple[int, ...]  # sorted multiset of welfare levels
 
 SCHEMA_ID = "arrhenius-2000.schema/v0-unreviewed"
@@ -26,9 +29,9 @@ SOURCE_CLAUSES = {
     "welfare than every life in the other, the former is better.",
     "addition": "Addition: if adding a lower-welfare group is bad, adding a larger group at an "
     "even lower welfare is at least as bad.",
-    "mnep": "Minimal Non-Extreme Priority supplies an existential number of very-high-welfare "
-    "lives that can offset one slightly negative life against the same number of very-low-"
-    "positive lives.",
+    "mnep": "Minimal Non-Extreme Priority: there is an n such that n very-high lives plus one "
+    "slightly negative life, with any background, are at least as good as n+1 very-low-positive "
+    "lives with the same background.",
     "non-sadism": "Avoid the Sadistic Conclusion: adding negative lives is not better than "
     "adding positive lives.",
     "non-anti-egalitarianism": "Avoid the Anti-Egalitarian Conclusion: a population with "
@@ -94,8 +97,27 @@ def _multisets(levels: list[int], size: int) -> list[Pop]:
     return [tuple(c) for c in combinations_with_replacement(sorted(levels), size)] if size else [()]
 
 
+V0_PRINCIPLES = (
+    "dominance",
+    "non-anti-egalitarianism",
+    "non-repugnance",
+    "non-sadism",
+    "mnep",
+    "addition",
+)
+
+
 def instances(grid: Grid, max_lives: int, p: int, q: int) -> Iterator[Instance]:
-    """Every v0 instance over D_N for witness W = (A = p lives at max VH, MNEP n = q)."""
+    """Every v0 instance over D_N for witness W = (A = p lives at max VH, MNEP n = q).
+
+    Raises UnreviewedPrinciple before generating anything if a v0 principle has not passed the
+    review-first gate (corpus/readings.toml).
+    """
+    require_reviewed(V0_PRINCIPLES)
+    return _instances(grid, max_lives, p, q)
+
+
+def _instances(grid: Grid, max_lives: int, p: int, q: int) -> Iterator[Instance]:
     pops = domain(grid, max_lives)
     in_d = set(pops)
     by_size: dict[int, list[Pop]] = {}

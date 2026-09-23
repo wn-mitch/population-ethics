@@ -29,3 +29,7 @@ research:
 # Regenerate docs/results.md from the ledger and literature verdicts.
 docs:
     uv run python -m research.render_ledger
+
+# Download source PDFs into corpus/cache/ and verify their hashes.
+fetch-sources *works:
+    uv run python -m research.fetch {{works}}

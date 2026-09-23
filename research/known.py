@@ -21,6 +21,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Any
 
+from research.readings import require_reviewed
 from research.schema import BASELINE_SKELETON, Instance, Pop
 
 Edge = tuple[str, str, tuple[int, ...]]  # (role, shape, relata indices)
@@ -58,9 +59,8 @@ def normalize(core: Sequence[Instance]) -> tuple[list[Pop], list[Edge]]:
 @dataclass(frozen=True)
 class KnownSkeleton:
     id: str
-    sources: tuple[
-        str, ...
-    ]  # corpus/literature.toml work ids, or docs/journal/2026-09-22-turn-1.md results
+    # corpus/literature.toml work ids, or docs/journal/2026-09-22-turn-1.md results
+    sources: tuple[str, ...]
     relata: tuple[str, ...]
     edges: tuple[Edge, ...]
     note: str
@@ -69,6 +69,7 @@ class KnownSkeleton:
 def _from_instances(
     identifier: str, sources: tuple[str, ...], names: Sequence[str], core: list[Instance], note: str
 ) -> KnownSkeleton:
+    require_reviewed(i.principle for i in core)
     nodes, edges = normalize(core)
     if len(names) != len(nodes):
         raise ValueError(f"{identifier}: {len(names)} names for {len(nodes)} relata")

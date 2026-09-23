@@ -109,3 +109,41 @@ every one resolves.
 - **Decision:** a judgment that a lemma chain realizes an abstract edge (for example, 2009
   Lemma 3 realizing Restricted Quality Addition) is recorded once, with source and reason, and
   verified by test for entailment and realizability. It is never re-judged per session.
+
+## D-012. MNEP adds n very-high lives and one slightly negative life against n+1 very-low lives
+
+- **Status:** settled.
+- **Sources:** `arrhenius-2000-ep` (p. 261), `arrhenius-1999-weak-ordering` (p. 16),
+  `corpus/readings.toml`.
+- **Decision:** both formal statements compare A_n ∪ B_1 ∪ D_k with C_{n+1} ∪ D_k. The
+  informal "the same number of people" means the n+1 added lives on each side. The generator in
+  `research/schema.py` already encodes n+1; the paraphrases in `corpus/sources.toml` and
+  `SOURCE_CLAUSES` were ambiguous, not the code. Closes Q-005.
+
+## D-013. The v0 and 1999 encodings match their formal statements
+
+- **Status:** settled; agent-cross-read.
+- **Sources:** `corpus/readings.toml`.
+- **Decision:** every v0 principle and every 1999 principle matches its cross-read formal
+  statement. The encodings deviate in two ways. They drop instances where the source is
+  silent (empty populations, an empty Addition base), which only weakens the encoded theory.
+  They fix each existential by the witness W, which strengthens it, so an UNSAT result still
+  refutes "source conditions + W" only (D-005). Each reading's `deviations` field records the
+  specifics.
+- **Consequences:** supersedes D-005's "v0 is unreviewed"; the v0 principles are now
+  agent-cross-read.
+
+## D-014. Thesis-family conditions are ordinal over a ladder of consecutive levels
+
+- **Status:** settled.
+- **Sources:** `arrhenius-2000-thesis` (pp. 152–157), `arrhenius-2003-vrc` (pp. 169–172),
+  `arrhenius-2009-one-more` (pp. 25–30).
+- **Decision:** from the thesis on, the formal conditions refer to indexed consecutive levels
+  (W_{x−1}, W_{z+1}, W_3) and to ranges R(x, y) of at least three consecutive levels; "very
+  high" and "very low" are replaced by non-fixed ranges R(u, v) above R(1, y), and no condition
+  uses averages. Schema v1 therefore represents a grid for these principles as a finite ladder
+  of consecutive levels W_{−a} … W_{−1}, W_1 … W_b, and only its index order matters. The 1999
+  and 2000 conditions keep numeric levels because Non-Anti-Egalitarianism compares averages.
+- **Consequences:** a thesis-family instance needs enough consecutive positive levels for
+  R(1, y) and R(u, v) to hold at least three levels each, so b ≥ 6. The single very-high level
+  of the gapped grid does not form a range (see Q-004).

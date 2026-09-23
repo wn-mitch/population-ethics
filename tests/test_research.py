@@ -343,3 +343,37 @@ def test_known_ground_isolates_r6_new_steps_and_ignores_relabeling() -> None:
     large_new = entry(None, ["step"], 9)
     order = sorted([small_known, small_covered, large_new], key=novelty_rank)
     assert order == [large_new, small_covered, small_known]
+
+
+def test_review_gate_rejects_missing_and_unreviewed_readings_and_blocks_generation(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import research.schema as schema
+    from research.readings import UnreviewedPrinciple, load, parse, require_reviewed
+
+    readings = load()
+    assert set(schema.SHAPE) <= set(readings), "every schema principle needs a reading"
+    require_reviewed(schema.SHAPE)
+    downgraded = {**readings, "mnep": replace(readings["mnep"], review_state="agent-read")}
+    with pytest.raises(UnreviewedPrinciple, match="mnep"):
+        require_reviewed(["dominance", "mnep"], downgraded)
+    with pytest.raises(UnreviewedPrinciple, match="no reading"):
+        require_reviewed(["not-a-principle"], readings)
+    monkeypatch.setattr(schema, "require_reviewed", lambda ps: require_reviewed(ps, downgraded))
+    with pytest.raises(UnreviewedPrinciple):
+        schema.instances(RELAXED, 2, 1, 1)
+    row = {
+        "principle": "x",
+        "work": "w",
+        "printed_page": "1",
+        "name": "X",
+        "excerpt": "e",
+        "formal_reading": "f",
+        "deviations": "",
+        "reader": "a",
+        "cross_reader": "b",
+        "cross_verdict": "disagree: scope",
+        "review_state": "agent-cross-read",
+    }
+    with pytest.raises(ValueError, match="without cross-reader agreement"):
+        parse({"readings": [row]})
