@@ -240,7 +240,7 @@ def test_literature_corpus_references_resolve_and_every_report_result_has_a_verd
             if key in work:
                 assert re.fullmatch(r"[0-9a-f]{64}", work[key]), work["id"]
     verdicts = {c["result"]: c for c in corpus["collisions"]}
-    assert set(verdicts) == {f"R{i}" for i in range(1, 7)}
+    assert {f"R{i}" for i in range(1, 7)} <= set(verdicts)
     ledger = {
         e["candidate_id"] for e in json.loads(Path("research/ledger.json").read_text())["entries"]
     }

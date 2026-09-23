@@ -61,6 +61,7 @@ theorems = [
   "Theorems 5 and 6 (§11.3–11.6, pp. 191–198): normative versions of Theorems 2 and 3 using Separate Satisfiability; no transitivity or completeness.",
 ]
 notes = [
+  "Bounce theorem (P13) check, 2026-09: partial. Appendix B (pp. 205–206): 'given full comparability, a theory which avoids the Repugnant Conclusion and satisfies the Egalitarian Dominance Condition implies the Quality Condition', where the avoidance is size-restricted ('at least as good as any larger population with very low positive welfare'). So under completeness the bounce theorem is Theorem 1 plus Appendix B; the thesis gives no completeness-free version.",
   "No theorem in chapters 10–11 uses completeness; all conditions except Egalitarian Dominance are in at-least-as-good form.",
   "pp. 182–183: the cycles are weak links closed by one strict link; stating the conditions with better-than yields strict cycles, so consequentialism needs some acyclicity (fn 3).",
   "pp. 200–201: rejects Parfit's proposal to quarantine the theorems to different-number cases.",
@@ -170,7 +171,8 @@ citation = "Gustaf Arrhenius, Population Ethics and Different-Number-Based Impre
 doi = "10.1111/theo.12094"
 read = "secondary"
 via = ["arrhenius-2022-conflict-imprecision", "arrhenius-stefansson-2024-degrees"]
-notes = ["Paywalled; no repository copy found. Argues against Parfit's Different-Number-Based Imprecision. The main unread collision risk for R2."]
+notes = [
+  "Bounce theorem (P13) check, 2026-09: still not obtained (Wiley, PhilPapers, ResearchGate returned 403); the abstract concerns different-number imprecision.","Paywalled; no repository copy found. Argues against Parfit's Different-Number-Based Imprecision. The main unread collision risk for R2."]
 
 [[works]]
 id = "arrhenius-2022-conflict-imprecision"
@@ -251,6 +253,7 @@ stable_url = "https://users.ox.ac.uk/~mert2060/webfiles/Reconstructing-Arrhenius
 pdf_sha256 = "78bc3339933551219748f437d2434698627719dc0805cb4c85122b30293c3127"
 read = "firsthand"
 notes = [
+  "Bounce theorem (P13) check, 2026-09: none-found. Theorem 1 (p. 4) is 'ED and Q jointly entail RC' with unrestricted Quality; the closest size device is Restricted Repugnant Addition (p. 11), whose large N comes from Weak Non-Sadism's free parameter, not a bounce.",
   "Reconstructs the six book theorems from the 2013 manuscript over a transitive, reflexive relation, with positive-form conditions (p. 2).",
   "Shared lemmas: General Non-Elitism implies Generalized Inequality-Averse Addition (pp. 6–8); GNEP implies Sufficient Tradeoffs (pp. 8–9).",
   "pp. 4–5, 10: negative-form Dominance Addition yields only 'not at least as good'.",
@@ -276,6 +279,7 @@ pdf_sha256 = "d387430bdcc98b5ee09863a5045cabeaebd6a6e1f016245a77717bee1c455d61"
 read = "firsthand"
 page_note = "Accepted-manuscript pagination (1–18)."
 notes = [
+  "Bounce theorem (P13) check, 2026-09: none-found. fn. 4 (p. 2): 'the proof of his favoured sixth theorem contains an error in the derivation of the \"Restricted Quality Addition Condition\" (Arrhenius, 2011, Lemma 1.3)'.",
   "Small Steps (Arrhenius's Finite Fine-grainedness, fn 13) drives Theorems 1, 4, 5, 6; Inequality Aversion drives Theorems 2 and 3 (p. 2).",
   "Total lexic utilitarianism satisfies every adequacy condition of Theorems 1, 4, 5, 6 except Small Steps (p. 8).",
   "pp. 11–12, fn 29–30: Non-Anti-Egalitarianism entails Inequality Aversion only under an Archimedean total.",
@@ -291,7 +295,8 @@ doi = "10.1007/s11098-021-01621-4"
 pdf_url = "https://d-nb.info/1241023689/34"
 pdf_sha256 = "e987cec4ffac4da656dc80493941006437be8c11a3594b1d1ac1a47b2bc04796"
 read = "partial"
-notes = ["Lexical Totalism with Carlson's category definitions defeats Theorems 1, 4, 5, 6; for Theorems 2 and 3 only Inequality Aversion fails (pp. 7–9)."]
+notes = [
+  "Bounce theorem (P13) check, 2026-09: none-found. fn. 7 (pdf p. 3): 'Arrhenius has the first two quantifiers the other way around, so that the condition begins \"For any population X, there is…\" (2011, 9). As Thomas's manuscript notes, the Sixth Impossibility Theorem actually requires the slightly stronger condition stated here.'","Lexical Totalism with Carlson's category definitions defeats Theorems 1, 4, 5, 6; for Theorems 2 and 3 only Inequality Aversion fails (pp. 7–9)."]
 
 [[works]]
 id = "carlson-1998-trilemmas"
@@ -452,18 +457,141 @@ notes = [
 ]
 
 # Known to exist and relevant, not yet obtained.
+[[works]]
+id = "thornley-2022-dilemma"
+kind = "related-critique"
+citation = "Elliott Thornley, A Dilemma for Lexical and Archimedean Views in Population Axiology, Economics & Philosophy 38(3), 395–415 (2022)."
+doi = "10.1017/S0266267121000213"
+pdf_url = "https://philpapers.org/archive/THOADF-4.pdf"
+pdf_sha256 = "b476b7b7f85991ac7d754143fd9922f474aeaa172ff7639ae2b984997bba8ed3"
+read = "firsthand"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found. Chain arguments grow populations by Separability and Transitivity, e.g. 'Transitivity then implies that each number of lives at ⟦a1⟧ is worse than some number of lives at ⟦an⟧' (ms p. 11); no Quantity/Egalitarian Dominance bounce and no size-restricted Quality."]
+
+[[works]]
+id = "baker-2025-non-archimedean"
+kind = "related-critique"
+citation = "Calvin Baker, Non-Archimedean Population Axiologies, Economics & Philosophy 41(1), 24–45 (2025). Open access."
+doi = "10.1017/S0266267124000099"
+pdf_sha256 = "097f94432a125ce25a644b1e828c81d680d5b208e506c8228e239bd6eb218dfb"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found (§3.2 read, rest searched). The Simple Additive Picture's Addition condition supplies the monotonicity that the bounce reconstructs from Egalitarian Dominance and Quantity; it cites Handfield & Rabinowicz (2018) and Rabinowicz (2022) for the Trilemma (p. 33)."]
+
+[[works]]
+id = "nebel-2022-totalism"
+kind = "related-critique"
+citation = "Jacob M. Nebel, Totalism without Repugnance, in J. McMahan et al. (eds.), Ethics and Existence: The Legacy of Derek Parfit, OUP, 200–231 (2022)."
+pdf_sha256 = "16b1d4b51aa1ea67093e996507f72bd4dafa6622f96b299db6a4e7af49c51766"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found (§8.3, pp. 209–214). 'We can show by induction that, for any natural number q, qm mediocre lives would be better than qn excellent lives' (pp. 212–213) uses a scaling assumption, not a bounce. Read in a browser; not in corpus/cache."]
+
+[[works]]
+id = "thornley-2023-thesis"
+kind = "related-critique"
+citation = "Elliott Thornley, Papers in Population Ethics, DPhil thesis, University of Oxford (2023)."
+pdf_url = "https://philpapers.org/archive/THOPIP-4.pdf"
+pdf_sha256 = "11472ddc6f173ca2c371cbbcf9f683549fa297e95c4ed9d740c7f41c14e9f7be"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found. Chapters 1–2 are thornley-2022-dilemma and thornley-2022-prospect; Quantity and Egalitarian Dominance occur only there."]
+
+[[works]]
+id = "arrhenius-stefansson-2025-risk"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius & H. Orri Stefánsson, Population Ethics under Risk, Social Choice and Welfare 65(4), 829–852 (2025). Open access."
+doi = "10.1007/s00355-023-01452-8"
+pdf_url = "https://d-nb.info/1298603277/34"
+pdf_sha256 = "89e9d18f599d280f5a14de660fc157c5e1dc1e1f8f0cef1255a18f7ca5cedb03"
+read = "firsthand"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found. 'Simple Impossibility Theorem (SIT) No social welfare relation ≾ on X satisfies Egalitarian Dominance, Quality, and Quantity' (p. 845) with unrestricted Quality ('for any y ∈ 𝕃 and any m ∈ ℕ'); the only mention of a weaker Quality is 'by weakening Quality (see, e.g., Arrhenius 2011, forthcoming)' (p. 844). Its Dominance Theorem (p. 847) would lift the bounce theorem to prospects."]
+
+[[works]]
+id = "moberger-2024-impossible"
+kind = "related-critique"
+citation = "Victor Moberger, Impossible Ethics: Do Population Ethical Impossibility Results Support Moral Skepticism and/or Anti-Realism?, Pacific Philosophical Quarterly (2024)."
+doi = "10.1111/papq.12462"
+pdf_sha256 = "396d64a21c688b96078a6d622c574fb79f34aabd7c8c92ad7340b067f83e92d4"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found; restates Arrhenius's theorems (p. 10). Read in a browser; not in corpus/cache."]
+
+[[works]]
+id = "barta-2025-loopholes"
+kind = "related-critique"
+citation = "Walter Barta, Some Potential Loopholes in the Impossibility Theorem for Welfarist Axiology (PhilArchive, 2025)."
+stable_url = "https://philarchive.org/rec/BARSPL-4"
+pdf_sha256 = "cf03d309e4e6e2a22190ae313ad380bd931e0067d6db5f378c3265b397500a91"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found; concerns the 2000 E&P proof. Read in a browser; not in corpus/cache."]
+
+[[works]]
+id = "moreno-2025-prudence"
+kind = "related-critique"
+citation = "Marina Moreno, The (Im)possibility of Prudence: Population Ethics for Person-Stages, Economics & Philosophy (2025)."
+doi = "10.1017/S0266267125100643"
+pdf_sha256 = "3fccaa878fc8d1496447c35125a6ba6947dc861eae91f4bfd4f90156b1bcbf9e"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found; applies the 2003/2009 condition sets to person-stages."]
+
+[[works]]
+id = "cowie-error-theoretic"
+kind = "related-critique"
+citation = "Christopher Cowie, An Error-Theoretic Response to the Axiological Impossibility Results (draft, 2021)."
+pdf_url = "https://christophercowie.com/wp-content/uploads/2021/04/an-error-theoretic-response-to-the-axiological-impossibility-results.pdf"
+pdf_sha256 = "c65cbed5c6ed468cc94b8efd69354d87de877ec3638daa5e350795670fd106ac"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found; metaethical, restates the sixth theorem's conditions."]
+
+[[works]]
+id = "sakamoto-2024-avoid-rc-sc"
+kind = "related-model"
+citation = "Norihito Sakamoto, How to Avoid Both the Repugnant and Sadistic Conclusions without Dropping Standard Axioms in Population Economics, arXiv:2501.09981 (2024)."
+pdf_url = "https://arxiv.org/pdf/2501.09981"
+pdf_sha256 = "f22fd73919fabf20386b30205b781aabbbfd88f9774880b9541f3e8c07d6c205"
+read = "partial"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found; complete social welfare orderings with continuity, no Quantity or Egalitarian Dominance."]
+
+[[works]]
+id = "jensen-2008-millian"
+kind = "related-critique"
+citation = "Karsten Klint Jensen, Millian Superiorities and the Repugnant Conclusion, Utilitas 20(3), 279–300 (2008); also Weak Superiority, Imprecise Equality and the Repugnant Conclusion, Utilitas (2020)."
+read = "not-obtained"
+notes = ["Bounce theorem (P13) check, 2026-09: not obtained (paywalled); Nebel 2022 and Thornley 2022 describe its arguments as superiority collapse under Addition/Separability, not a bounce."]
+
+[[works]]
+id = "handfield-rabinowicz-2018-spectrum"
+kind = "related-critique"
+citation = "Toby Handfield & Wlodek Rabinowicz, Incommensurability and Vagueness in Spectrum Arguments: Options for Saving Transitivity of Betterness, Philosophical Studies 175(9), 2373–2387 (2018)."
+doi = "10.1007/s11098-017-0963-9"
+read = "secondary"
+via = ["baker-2025-non-archimedean", "thornley-2022-dilemma"]
+notes = ["Bounce theorem (P13) check, 2026-09: not obtained; judged from Baker 2025 p. 33 and Thornley 2022 as a spectrum/Trilemma result assuming 'more is better'."]
+
+[[works]]
+id = "arrhenius-rabinowicz-2005-millian"
+kind = "arrhenius-related"
+citation = "Gustaf Arrhenius & Wlodek Rabinowicz, Millian Superiorities, Utilitas 17(2), 127–146 (2005)."
+doi = "10.1017/S0953820805001494"
+read = "secondary"
+via = ["baker-2025-non-archimedean", "thornley-2022-dilemma"]
+notes = ["Bounce theorem (P13) check, 2026-09: not obtained (paywalled; Lund copy blocked); abstract and later descriptions concern weak versus strong superiority under additivity. Should be read firsthand."]
+
+[[works]]
+id = "knutsson-answers"
+kind = "related-critique"
+citation = "Simon Knutsson, Answers in Population Ethics Were Published Long Ago (essay, n.d.)."
+stable_url = "https://www.simonknutsson.com/answers-in-population-ethics-were-published-long-ago/"
+read = "firsthand"
+notes = ["Bounce theorem (P13) check, 2026-09: none-found; restates Theorem 1 and rejects the Quantity Condition."]
+
 [[wanted]]
 citations = [
+  "Arrhenius & Rabinowicz (2015), Value Superiority, Oxford Handbook of Value Theory.",
+  "Economics Letters (2023), A new result on the impossibility of avoiding both the repugnant and sadistic conclusions (pii S0165176523003312).",
+  "Synthese (2025), A radical rejection of spectrum arguments (doi 10.1007/s11229-025-05417-5).",
+  "Arrhenius, Population Ethics: The Challenge of Future Generations (OUP, forthcoming; unpublished as of 2026-09).",
   "Blackorby, Bossert & Donaldson (1997), Critical-level utilitarianism and the population-ethics dilemma, Economics & Philosophy 13, 197–230.",
   "Parfit (2016), Can We Avoid the Repugnant Conclusion?, Theoria 82, 110–127. DOI 10.1111/theo.12097.",
   "Chang (2016), Parity, imprecise comparability, and the repugnant conclusion, Theoria 82, 183–215.",
-  "Arrhenius & Rabinowicz (2005), Millian Superiorities, Utilitas 17, 127–146; (2015) Value Superiority, Oxford Handbook of Value Theory.",
   "Carlson (2007), Higher values and non-Archimedean additivity, Theoria 73.",
-  "Handfield & Rabinowicz (2018), Incommensurability and vagueness in spectrum arguments, Philosophical Studies 175, 2373–2387.",
   "Kitcher (2000), Parfit's puzzle, Noûs 34.",
-  "Nebel (2022), Totalism without repugnance, in Ethics and Existence.",
-  "Thornley (2022), A dilemma for lexical and Archimedean views in population axiology, Economics & Philosophy.",
-  "Baker (2025), Non-Archimedean population axiologies, Economics & Philosophy 41(1), 24–45. Open access.",
   "Arrhenius (1999b), Population Axiology, Toronto dissertation mimeo.",
 ]
 
@@ -519,3 +647,11 @@ verdict = "partial"
 sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "arrhenius-2003-vrc"]
 known = "The outer frame is the 1999 theorem (thesis Theorem 3) at p = q = 1, r = 5: MNEP on (14) gives (−1,14,14) ⪰ (7,7,14); Non-Sadism on (14,14) gives (1⁵,14,14) ⪰ (−1,14,14); the single inequality step compares 5⁷ with (1⁵,14,14). Putting the negative life inside the added low group and removing it with an MNEP-type bridge on a very-low background is the Lemma 3 device of 2009 and Lemma 1.3 of 2011."
 open = "Two instances: the MNEP bridge on the very-low background 6⁵ and the dominance step 7⁷ ≻ 6⁷. research/known.py finds every other R6 instance inside a maximum embedding of the 1999 or 2000 skeleton."
+
+[[collisions]]
+result = "P13"
+ledger = ["P13-bounce-theorem"]
+verdict = "partial"
+sources = ["arrhenius-2000-thesis", "thomas-2016-reconstructing", "thomas-2018-possibilities", "thornley-2022-prospect", "thornley-2022-dilemma", "arrhenius-stefansson-2025-risk", "arrhenius-2011-impossibility", "baker-2025-non-archimedean", "nebel-2022-totalism"]
+known = "Under full comparability the bounce theorem is thesis Theorem 1 plus Appendix B (pp. 205–206), which derives Quality from Egalitarian Dominance and a size-restricted avoidance of the Repugnant Conclusion. Every restatement of Theorem 1 checked keeps unrestricted Quality (Thomas 2016 p. 4; Thomas 2018 pp. 6–7; Thornley 2022; Arrhenius & Stefánsson 2025 p. 845). Chain arguments in the superiority literature grow populations by Addition, Separability or Scaling, not by alternating Quantity and Egalitarian Dominance. Arrhenius's derivation of Restricted Quality Addition (2011 Lemma 1.3) contains an error (Thomas 2018 fn. 4); Thornley 2022 fn. 7 repairs Weak Quality Addition by making its witnesses independent of the background."
+open = "The completeness-free result: the Quantity/Egalitarian Dominance bounce that grows the low population past the size threshold without full comparability, found in none of the works checked. The corollary (Egalitarian Dominance, GNEP, Quantity, 2009 Weak Quality Addition) holds for Weak Quality Addition in Thornley's repaired form, which is the ladder's encoding; the source's form inherits the Lemma 1.3 gap. Not read: Arrhenius's forthcoming book, Arrhenius 2016 (Theoria), Jensen 2008/2020, Handfield & Rabinowicz 2018, Arrhenius & Rabinowicz 2005."

@@ -519,7 +519,7 @@
       "minimal": "principle-minimal on the instance",
       "counterexample_if_false": "n/a",
       "generalization_status": "not generalized",
-      "novelty_status": "candidate-new-result (literature unchecked)",
+      "novelty_status": "partial collision (see corpus collision P13)",
       "interpretation": "Theorem 1 survives weakening Quality to a size-restricted quality condition, because an Egalitarian Dominance bounce inside the Quantity chain makes the low population arbitrarily large. The corollary is a 4-condition impossibility from the 2009 conditions without Non-Elitism or Weak Non-Sadism.",
       "next_experiment": "literature check; look for the bounce in other open gaps",
       "result_scope": "checked theorem",

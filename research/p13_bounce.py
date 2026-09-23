@@ -20,10 +20,16 @@ needs Quantity's own witness at W_1 and step 3 only needs the sizes to be unboun
 
 Corollary. With 2009 Lemma 2 (GNEP ⇒ δ) and Lemma 3 (Weak Quality Addition ∧ δ ⇒ Restricted
 Quality Addition), {Egalitarian Dominance, GNEP, Quantity, 2009 Weak Quality Addition} is
-inconsistent. The possibility map's gap of that name is thereby explained.
+inconsistent, for Weak Quality Addition in Thornley's repaired form (its negative level and
+number fixed before the background; Thornley 2022 fn. 7). Arrhenius's own derivation of Lemma 3
+has an error (Thomas 2018 fn. 4). The ladder encodes the repaired form, so the possibility map's
+gap of that name is explained under that reading.
+
+Literature (corpus/literature.toml, collision P13): under full comparability the theorem is
+thesis Theorem 1 plus Appendix B; the completeness-free bounce was not found.
 
 This phase freezes one instance (m = 5, Quantity's witness m' = n + 1), verifies it like
-Phase 8, and records the result. The literature check is outstanding.
+Phase 8, and records the result.
 """
 
 from __future__ import annotations
@@ -134,7 +140,7 @@ def main() -> None:
                 result_scope="checked theorem",
                 formalization_tier="written proof over cross-read conditions",
                 witness_conditions="proof covers every witness; instance uses research/p13_bounce.py WITNESS",
-                novelty_status="candidate-new-result (literature unchecked)",
+                novelty_status="partial collision (see corpus collision P13)",
                 status="confirmed" if ok else "refuted",
             )
         ]

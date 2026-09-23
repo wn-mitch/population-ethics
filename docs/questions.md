@@ -184,7 +184,13 @@ delete it.
 
 ## Q-012. Is the bounce theorem known?
 
-- **Status:** open; literature unchecked.
+- **Status:** closed by collision P13 in `corpus/literature.toml`: partial. Under full
+  comparability it is thesis Theorem 1 plus Appendix B (pp. 205–206). The completeness-free
+  bounce appears in none of the 28 works read firsthand or in part (Arrhenius 1999–2025, Thomas 2016 and 2018,
+  Thornley, Baker, Nebel and others). The corollary needs Weak Quality Addition in Thornley's
+  repaired form, because Arrhenius's Restricted Quality Addition derivation has an error (Thomas
+  2018 fn. 4). Still unread: the forthcoming book, Arrhenius 2016, Jensen 2008/2020, Handfield &
+  Rabinowicz 2018, and Arrhenius & Rabinowicz 2005.
 - **Claim:** Egalitarian Dominance, Quantity and Restricted Quality Addition are jointly
   inconsistent. It suffices that some n lives at one level are at least as good as every
   population of at least m lives in R(1, y). Corollary: Egalitarian Dominance, GNEP, Quantity and
