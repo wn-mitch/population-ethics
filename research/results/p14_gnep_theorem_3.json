@@ -1,0 +1,495 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p14_gnep_theorem_3",
+  "observations": {
+    "wall_time_s": 14.7
+  },
+  "result": {
+    "2009": {
+      "audit": true,
+      "cli_decision": "unsat",
+      "cli_verify_accepted": true,
+      "core": [
+        [
+          "thesis:inequality-aversion",
+          "P0",
+          "P1"
+        ],
+        [
+          "thesis:weak-non-sadism",
+          "P1",
+          "P2"
+        ],
+        [
+          "arrhenius-2009:weak-quality-addition",
+          "P2",
+          "P3"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P3",
+          "P4"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P4",
+          "P5"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P5",
+          "P6"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P6",
+          "P7"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P7",
+          "P8"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P8",
+          "P9"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P9",
+          "P10"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P10",
+          "P11"
+        ],
+        [
+          "thesis:egalitarian-dominance",
+          "P11",
+          "P0"
+        ]
+      ],
+      "decision_without_completeness": "unsat",
+      "drop_one_principle": {
+        "arrhenius-2009:weak-quality-addition": "sat",
+        "thesis:egalitarian-dominance": "sat",
+        "thesis:general-non-extreme-priority": "sat",
+        "thesis:inequality-aversion": "sat",
+        "thesis:weak-non-sadism": "sat"
+      },
+      "populations": {
+        "P0": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "P1": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P10": [
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4
+        ],
+        "P11": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "P2": [
+          -1,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P3": [
+          -1,
+          -1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P4": [
+          -1,
+          0,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P5": [
+          -1,
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P6": [
+          -1,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P7": [
+          -1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P8": [
+          0,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4
+        ],
+        "P9": [
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      },
+      "problem_id": "095096e9e6c950c3a57d510c4369935456adba684383ca6e2d8734e90cd40530"
+    },
+    "thesis": {
+      "audit": true,
+      "cli_decision": "unsat",
+      "cli_verify_accepted": true,
+      "core": [
+        [
+          "thesis:inequality-aversion",
+          "P0",
+          "P1"
+        ],
+        [
+          "thesis:weak-non-sadism",
+          "P1",
+          "P2"
+        ],
+        [
+          "thesis:weak-quality-addition",
+          "P2",
+          "P3"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P3",
+          "P4"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P4",
+          "P5"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P5",
+          "P6"
+        ],
+        [
+          "thesis:general-non-extreme-priority",
+          "P6",
+          "P7"
+        ],
+        [
+          "thesis:egalitarian-dominance",
+          "P7",
+          "P0"
+        ]
+      ],
+      "decision_without_completeness": "unsat",
+      "drop_one_principle": {
+        "thesis:egalitarian-dominance": "sat",
+        "thesis:general-non-extreme-priority": "sat",
+        "thesis:inequality-aversion": "sat",
+        "thesis:weak-non-sadism": "sat",
+        "thesis:weak-quality-addition": "sat"
+      },
+      "populations": {
+        "P0": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "P1": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P2": [
+          -1,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P3": [
+          -1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P4": [
+          0,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4
+        ],
+        "P5": [
+          1,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ],
+        "P6": [
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4
+        ],
+        "P7": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ]
+      },
+      "problem_id": "89ca6cb7dd7db42b67d51b030184e2234a6c3ea8339115782e18a537a8e5e70b"
+    }
+  },
+  "result_sha256": "947e4520b4ee7dd4bb64eda7ebe0366f99331160ddcd472499735b4e861bbd64",
+  "schema": "population-ethics.research-result/v1"
+}

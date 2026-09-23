@@ -8,7 +8,7 @@
   },
   "name": "p12_certificates",
   "observations": {
-    "wall_time_s": 71.3
+    "wall_time_s": 49.8
   },
   "result": {
     "certified": [
@@ -40,59 +40,6 @@
       {
         "axiology": "total",
         "conditions": [
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:non-extreme-priority",
-          "thesis:quantity"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "quantity": {},
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:dominance-addition",
-          "arrhenius-2003:non-elitism",
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:non-extreme-priority"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -1,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
           "arrhenius-2003:dominance-addition",
           "arrhenius-2003:vrc-avoidance",
           "thesis:egalitarian-dominance",
@@ -119,87 +66,6 @@
       {
         "axiology": "total",
         "conditions": [
-          "arrhenius-2003:dominance-addition",
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:inequality-aversion",
-          "thesis:non-extreme-priority"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "inequality-aversion": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:dominance-addition",
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:non-elitism",
-          "thesis:non-extreme-priority"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -1,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:non-elitism",
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:dominance-addition",
-          "thesis:egalitarian-dominance",
-          "thesis:non-extreme-priority"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -1,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
           "arrhenius-2003:non-elitism",
           "arrhenius-2003:vrc-avoidance",
           "thesis:egalitarian-dominance",
@@ -241,63 +107,6 @@
             "y": 3
           },
           "non-elitism": {},
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          },
-          "weak-non-sadism": {
-            "x": -2
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:non-elitism",
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:non-extreme-priority",
-          "thesis:non-sadism"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:non-elitism",
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:non-extreme-priority",
-          "thesis:weak-non-sadism"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
           "vrc-avoidance": {
             "u": 4,
             "v": 6,
@@ -385,35 +194,6 @@
             "u": 4,
             "v": 6,
             "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:non-elitism",
-          "thesis:egalitarian-dominance",
-          "thesis:non-extreme-priority",
-          "thesis:quality",
-          "thesis:weak-non-sadism"
-        ],
-        "inert": [
-          "thesis:quality"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "quality": {
-            "u": 4,
-            "v": 6,
-            "y": 3
-          },
-          "weak-non-sadism": {
-            "x": -2
           }
         }
       },
@@ -447,60 +227,6 @@
         "axiology": "total",
         "conditions": [
           "arrhenius-2003:vrc-avoidance",
-          "thesis:dominance-addition",
-          "thesis:egalitarian-dominance",
-          "thesis:inequality-aversion",
-          "thesis:non-extreme-priority"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "inequality-aversion": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:dominance-addition",
-          "thesis:egalitarian-dominance",
-          "thesis:non-elitism",
-          "thesis:non-extreme-priority"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -1,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:vrc-avoidance",
           "thesis:egalitarian-dominance",
           "thesis:general-non-extreme-priority",
           "thesis:inequality-aversion",
@@ -596,120 +322,6 @@
             "y": 3
           },
           "non-elitism": {},
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          },
-          "weak-non-sadism": {
-            "x": -2
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:inequality-aversion",
-          "thesis:non-extreme-priority",
-          "thesis:non-sadism"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "inequality-aversion": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:inequality-aversion",
-          "thesis:non-extreme-priority",
-          "thesis:weak-non-sadism"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "inequality-aversion": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          },
-          "weak-non-sadism": {
-            "x": -2
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:non-elitism",
-          "thesis:non-extreme-priority",
-          "thesis:non-sadism"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "vrc-avoidance": {
-            "u": 4,
-            "v": 6,
-            "x": -2,
-            "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "arrhenius-2003:vrc-avoidance",
-          "thesis:egalitarian-dominance",
-          "thesis:non-elitism",
-          "thesis:non-extreme-priority",
-          "thesis:weak-non-sadism"
-        ],
-        "inert": [
-          "arrhenius-2003:vrc-avoidance"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
           "vrc-avoidance": {
             "u": 4,
             "v": 6,
@@ -857,35 +469,6 @@
         "axiology": "total",
         "conditions": [
           "thesis:egalitarian-dominance",
-          "thesis:inequality-aversion",
-          "thesis:non-extreme-priority",
-          "thesis:quality",
-          "thesis:weak-non-sadism"
-        ],
-        "inert": [
-          "thesis:quality"
-        ],
-        "levels": {
-          "inequality-aversion": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "quality": {
-            "u": 4,
-            "v": 6,
-            "y": 3
-          },
-          "weak-non-sadism": {
-            "x": -2
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "thesis:egalitarian-dominance",
           "thesis:non-elitism",
           "thesis:non-extreme-priority",
           "thesis:non-sadism",
@@ -905,35 +488,6 @@
             "u": 4,
             "v": 6,
             "y": 3
-          }
-        }
-      },
-      {
-        "axiology": "total",
-        "conditions": [
-          "thesis:egalitarian-dominance",
-          "thesis:non-elitism",
-          "thesis:non-extreme-priority",
-          "thesis:quality",
-          "thesis:weak-non-sadism"
-        ],
-        "inert": [
-          "thesis:quality"
-        ],
-        "levels": {
-          "non-elitism": {},
-          "non-extreme-priority": {
-            "x": 4,
-            "y": -2,
-            "z": 3
-          },
-          "quality": {
-            "u": 4,
-            "v": 6,
-            "y": 3
-          },
-          "weak-non-sadism": {
-            "x": -2
           }
         }
       }
@@ -952,19 +506,6 @@
     },
     "open": [
       [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-extreme-priority",
-        "thesis:quantity"
-      ],
-      [
-        "arrhenius-2003:dominance-addition",
-        "arrhenius-2003:non-elitism",
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-extreme-priority"
-      ],
-      [
         "arrhenius-2003:dominance-addition",
         "arrhenius-2003:vrc-avoidance",
         "thesis:egalitarian-dominance",
@@ -986,20 +527,6 @@
         "thesis:non-elitism"
       ],
       [
-        "arrhenius-2003:dominance-addition",
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:inequality-aversion",
-        "thesis:non-extreme-priority"
-      ],
-      [
-        "arrhenius-2003:dominance-addition",
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-elitism",
-        "thesis:non-extreme-priority"
-      ],
-      [
         "arrhenius-2003:non-elitism",
         "arrhenius-2003:vrc-avoidance",
         "thesis:dominance-addition",
@@ -1012,34 +539,6 @@
         "thesis:dominance-addition",
         "thesis:egalitarian-dominance",
         "thesis:general-non-extreme-priority"
-      ],
-      [
-        "arrhenius-2003:non-elitism",
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:dominance-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-extreme-priority"
-      ],
-      [
-        "arrhenius-2003:non-elitism",
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-extreme-priority",
-        "thesis:non-sadism"
-      ],
-      [
-        "arrhenius-2003:non-elitism",
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-extreme-priority",
-        "thesis:weak-non-sadism"
-      ],
-      [
-        "arrhenius-2003:non-elitism",
-        "thesis:egalitarian-dominance",
-        "thesis:non-extreme-priority",
-        "thesis:weak-non-sadism",
-        "thesis:weak-quality-addition"
       ],
       [
         "arrhenius-2003:vrc-avoidance",
@@ -1061,93 +560,9 @@
         "thesis:egalitarian-dominance",
         "thesis:general-non-extreme-priority",
         "thesis:non-elitism"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:dominance-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:inequality-aversion",
-        "thesis:non-extreme-priority"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:dominance-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-elitism",
-        "thesis:non-extreme-priority"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:general-non-extreme-priority",
-        "thesis:inequality-aversion",
-        "thesis:non-sadism"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:general-non-extreme-priority",
-        "thesis:inequality-aversion",
-        "thesis:weak-non-sadism"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:inequality-aversion",
-        "thesis:non-extreme-priority",
-        "thesis:non-sadism"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:inequality-aversion",
-        "thesis:non-extreme-priority",
-        "thesis:weak-non-sadism"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-elitism",
-        "thesis:non-extreme-priority",
-        "thesis:non-sadism"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
-        "thesis:non-elitism",
-        "thesis:non-extreme-priority",
-        "thesis:weak-non-sadism"
-      ],
-      [
-        "thesis:egalitarian-dominance",
-        "thesis:general-non-extreme-priority",
-        "thesis:inequality-aversion",
-        "thesis:non-sadism",
-        "thesis:weak-quality-addition"
-      ],
-      [
-        "thesis:egalitarian-dominance",
-        "thesis:general-non-extreme-priority",
-        "thesis:inequality-aversion",
-        "thesis:weak-non-sadism",
-        "thesis:weak-quality-addition"
-      ],
-      [
-        "thesis:egalitarian-dominance",
-        "thesis:inequality-aversion",
-        "thesis:non-extreme-priority",
-        "thesis:weak-non-sadism",
-        "thesis:weak-quality-addition"
-      ],
-      [
-        "thesis:egalitarian-dominance",
-        "thesis:non-elitism",
-        "thesis:non-extreme-priority",
-        "thesis:weak-non-sadism",
-        "thesis:weak-quality-addition"
       ]
     ]
   },
-  "result_sha256": "de1309c8373d33472ddb396aaf08ece96cc6070274f27fc8864d37f72d100ace",
+  "result_sha256": "9a1a1b9bf44c8ef7d5a6d0ab1daba3e37180179db1227a57a0fb219a2548ce84",
   "schema": "population-ethics.research-result/v1"
 }

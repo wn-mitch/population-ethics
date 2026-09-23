@@ -1,0 +1,193 @@
+schema = "population-ethics.experiment/v2"
+id = "project-gnep-theorem-3-2009-ladder-1-6"
+kind = "compatibility"
+claim_kind = "bounded-proof-instance"
+source_fidelity = "project theorem instance; conditions read from the sources"
+source_ids = ["arrhenius-2000-thesis", "arrhenius-2009-one-more"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1/project-gnep-theorem-3-2009-ladder-1-6"
+fixed_groups = ["reflexivity", "transitivity"]
+candidate_groups = ["arrhenius-2009:weak-quality-addition", "thesis:egalitarian-dominance", "thesis:general-non-extreme-priority", "thesis:inequality-aversion", "thesis:weak-non-sadism"]
+
+[resource_policy]
+max_populations = 100
+max_expanded_lives = 5000
+max_relation_atoms = 1000
+max_ground_constraints = 5000
+max_subsets = 256
+timeout_ms = 0
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4"
+values = [-1, -1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4"
+values = [-1, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4"
+values = [-1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4"
+values = [-1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4"
+values = [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_m1_4_4_4_4_4_4_4_4_4"
+values = [-1, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4"
+values = [0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4"
+values = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+
+[[domain.populations]]
+name = "P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4"
+values = [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4]
+
+[[domain.populations]]
+name = "P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2"
+values = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+
+[[domain.populations]]
+name = "P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4"
+values = [2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4]
+
+[[domain.populations]]
+name = "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3"
+values = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+
+[categories]
+slightly_negative = [-1]
+very_low_positive = [1, 2, 3]
+very_high_positive = [4, 5, 6]
+
+[witness_bindings]
+ladder_negative = 1
+ladder_positive = 6
+
+[[groups]]
+id = "reflexivity"
+principle_id = "reflexivity"
+compiler = "reflexivity"
+populations = ["P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4", "P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4", "P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4", "P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4", "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4", "P_m1_4_4_4_4_4_4_4_4_4", "P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4", "P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4", "P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4", "P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2", "P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4", "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3"]
+
+[[groups]]
+id = "transitivity"
+principle_id = "transitivity"
+compiler = "transitivity"
+populations = ["P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4", "P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4", "P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4", "P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4", "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4", "P_m1_4_4_4_4_4_4_4_4_4", "P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4", "P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4", "P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4", "P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2", "P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4", "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3"]
+
+[[groups]]
+id = "arrhenius-2009:weak-quality-addition"
+principle_id = "arrhenius-2009:weak-quality-addition"
+
+[[groups.constraints]]
+id = "arrhenius-2009:weak-quality-addition:2"
+formula = { kind = "atom", left = "P_m1_4_4_4_4_4_4_4_4_4", relation = "weak", right = "P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4" }
+populations = ["P_m1_4_4_4_4_4_4_4_4_4", "P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "arrhenius-2009:weak-quality-addition instance over ['P_m1_4_4_4_4_4_4_4_4_4', 'P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4']"
+
+[[groups]]
+id = "thesis:egalitarian-dominance"
+principle_id = "thesis:egalitarian-dominance"
+
+[[groups.constraints]]
+id = "thesis:egalitarian-dominance:11"
+formula = { kind = "and", operands = [{ kind = "atom", left = "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3", relation = "weak", right = "P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2" }, { kind = "not", operand = { kind = "atom", left = "P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2", relation = "weak", right = "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3" } }] }
+populations = ["P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2", "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:egalitarian-dominance instance over ['P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3', 'P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2']"
+
+[[groups]]
+id = "thesis:general-non-extreme-priority"
+principle_id = "thesis:general-non-extreme-priority"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:3"
+formula = { kind = "atom", left = "P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4", relation = "weak", right = "P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4" }
+populations = ["P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4", "P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_m1_m1_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4_4', 'P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:4"
+formula = { kind = "atom", left = "P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4", relation = "weak", right = "P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4" }
+populations = ["P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4", "P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_m1_0_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4_4', 'P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:5"
+formula = { kind = "atom", left = "P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4", relation = "weak", right = "P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4" }
+populations = ["P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4", "P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_m1_1_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4_4', 'P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:6"
+formula = { kind = "atom", left = "P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4", relation = "weak", right = "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4" }
+populations = ["P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4", "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_m1_2_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4_4', 'P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:7"
+formula = { kind = "atom", left = "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4", relation = "weak", right = "P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4" }
+populations = ["P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4", "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4_4', 'P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:8"
+formula = { kind = "atom", left = "P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4", relation = "weak", right = "P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4" }
+populations = ["P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4", "P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_0_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4_4', 'P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:9"
+formula = { kind = "atom", left = "P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4", relation = "weak", right = "P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4" }
+populations = ["P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4", "P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4_4', 'P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:10"
+formula = { kind = "atom", left = "P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4", relation = "weak", right = "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3" }
+populations = ["P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4", "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_2_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_4', 'P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3']"
+
+[[groups]]
+id = "thesis:inequality-aversion"
+principle_id = "thesis:inequality-aversion"
+
+[[groups.constraints]]
+id = "thesis:inequality-aversion:0"
+formula = { kind = "atom", left = "P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2", relation = "weak", right = "P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4" }
+populations = ["P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4", "P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:inequality-aversion instance over ['P_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2', 'P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4']"
+
+[[groups]]
+id = "thesis:weak-non-sadism"
+principle_id = "thesis:weak-non-sadism"
+
+[[groups.constraints]]
+id = "thesis:weak-non-sadism:1"
+formula = { kind = "atom", left = "P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4", relation = "weak", right = "P_m1_4_4_4_4_4_4_4_4_4" }
+populations = ["P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4", "P_m1_4_4_4_4_4_4_4_4_4"]
+formalization_id = "project-gnep-theorem-3-2009.selected-witness/v1"
+explanation = "thesis:weak-non-sadism instance over ['P_1_1_1_1_1_1_1_1_1_1_4_4_4_4_4_4_4_4_4', 'P_m1_4_4_4_4_4_4_4_4_4']"

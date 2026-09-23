@@ -297,7 +297,7 @@ DERIVES: tuple[tuple[frozenset[str], str, str], ...] = (
 )
 
 
-# Impossibility results proved in this project (docs/journal, research/p13_bounce.py), kept
+# Impossibility results proved in this project (research/p13_bounce.py, p14), kept
 # apart from the published theorems that serve as certifier controls.
 PROJECT_THEOREMS: dict[str, frozenset[str]] = {
     "project-bounce-restricted-quality": frozenset(
@@ -305,6 +305,25 @@ PROJECT_THEOREMS: dict[str, frozenset[str]] = {
             "thesis:egalitarian-dominance",
             "thesis:quantity",
             "arrhenius-2009:restricted-quality-addition",
+        }
+    ),
+    # research/p14_gnep_theorem_3.py; Non-Sadism variants follow through Weak Non-Sadism.
+    "project-gnep-theorem-3-thesis": frozenset(
+        {
+            "thesis:egalitarian-dominance",
+            "thesis:inequality-aversion",
+            "thesis:general-non-extreme-priority",
+            "thesis:weak-non-sadism",
+            "thesis:weak-quality-addition",
+        }
+    ),
+    "project-gnep-theorem-3-2009": frozenset(
+        {
+            "thesis:egalitarian-dominance",
+            "thesis:inequality-aversion",
+            "thesis:general-non-extreme-priority",
+            "thesis:weak-non-sadism",
+            "arrhenius-2009:weak-quality-addition",
         }
     ),
 }

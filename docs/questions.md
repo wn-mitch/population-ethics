@@ -113,49 +113,35 @@ delete it.
 
 ## Q-010. Gaps in the possibility map
 
-- **Status:** open.
-- **Setup (P11-possibility-map):** the additive class is decided exactly, and 38
-  lexicographic-additive axiologies are checked exactly. 90 minimal condition sets are realized by
-  none of them. Twenty-seven are explained by a known theorem via the recorded implications; 63
-  are not. Every unexplained set has 4 or 5 conditions.
-- **The leading gaps:**
-  - Theorem 3 with Quality or VRC avoidance in place of Weak Quality Addition.
-  - Theorem 4 with Quality in place of Weak Quality Addition.
-  - The 2003 theorem with NEP or Inequality Aversion in place of GNEP or Non-Elitism.
-  - The 4-set {Egalitarian Dominance, NEP or GNEP, Quantity, VRC avoidance}.
-
-  The census finds no strict cycle for the first and last of these under the Phase 8 witness at
-  ≤ 6 lives.
-- **Reading so far:** most gaps trade a background-sensitive condition for one the
-  lexicographic-additive class cannot distinguish from it. For the 4-set: Quantity with
-  Egalitarian Dominance makes high lives worth finitely many low lives, VRC avoidance makes a few
-  negative lives outweigh any number of low lives, and NEP lets finitely many high lives offset a
-  negative. A contradiction would need to move negatives between levels inside a background,
-  which none of the four conditions provides.
-- **Certificates (P12-gap-certificates, D-019):** 34 of the 63 gaps are proved consistent. Each
-  certificate makes the background-free quality condition (Quality or VRC avoidance) inert and
-  covers the rest with total utilitarianism. So the backgrounds in Weak Quality Addition are
-  load-bearing in thesis Theorems 3 and 4 and the 2009 theorem. That includes the 4-set
-  {Egalitarian Dominance, NEP or GNEP, Quantity, VRC avoidance} and Theorem 3 with Quality.
-- **Still open: 29.** Twenty-six contain a background-carrying quality condition (5 thesis Weak
-  Quality Addition, 21 2009 Weak Quality Addition), so a certificate needs a background-sensitive
-  axiology. The other three are Q-011.
-- **Why they resist (D-020):** a certificate's axiology must be background-sensitive, because
-  every lexicographic-additive tier cancels backgrounds.
-- **One gap was a theorem (P13-bounce-theorem).** {Egalitarian Dominance, GNEP, Quantity, 2009
-  Weak Quality Addition} is inconsistent. GNEP gives δ, and δ with Weak Quality Addition gives
-  Restricted Quality Addition (2009 Lemmas 2–3). Then Egalitarian Dominance, Quantity and
-  Restricted Quality Addition are inconsistent. The size threshold m is defeated by bouncing:
-  q(s) lives at W_1 ⪰ s at W_2 ≻ s at W_1, so the Quantity chain's bottom population grows
-  without bound (research/p13_bounce.py).
-- **Lemma-level probe of the remaining 28.** Derived β, δ and Restricted Quality Addition, safe
-  δ and β witnesses, ≤ 6 lives. Several gaps close cycles, but every one escapes under some
-  misaligned witnesses: Weak Quality Addition's or Weak Non-Sadism's negatives at a level or in a
-  number that NEP or δ cannot absorb. For example, the variant with NEP in place of GNEP escapes
-  under 4 of the 8 witnesses tried. The census therefore gives no robust candidate theorem among
-  them.
-- **Settles it:** an exact check of a background-sensitive axiology class that realizes a gap, or
-  a proof. Each proof would be a new impossibility theorem strictly stronger than a known one.
+- **Status:** open (8 of 58 sets).
+- **Setup (P11-possibility-map):** the additive class is decided exactly, and 57
+  lexicographic-additive axiologies are checked exactly (D-021). 58 minimal condition sets are
+  realized by none of them. 32 are explained by a known or project theorem via the recorded
+  implications; 26 are not. Every unexplained set has 4 or 5 conditions.
+- **Certificates (P12-gap-certificates, D-019):** 18 of the 26 are proved consistent. Two
+  mechanisms cover them. (1) The background-free quality condition (Quality or VRC avoidance)
+  is inert and total utilitarianism covers the rest, so the backgrounds in Weak Quality Addition
+  are load-bearing in thesis Theorems 3 and 4 and the 2009 theorem. (2) With NEP rather than
+  GNEP, a first tier that makes only W_−2 lexically bad separates NEP's single negative life at
+  W_−1, which high lives outweigh, from Weak Quality Addition's negatives at W_−2, which nothing
+  outweighs. That closes {Egalitarian Dominance, NEP, Quantity, 2009 Weak Quality Addition} and
+  the NEP variants of the Dominance Addition and Non-Sadism gaps. GNEP defeats (2): it trades
+  one level at every level, so no level can be lexically bad.
+- **Project theorems explain six former gaps:**
+  - P13-bounce-theorem: {Egalitarian Dominance, GNEP, Quantity, 2009 Weak Quality Addition}
+    (research/p13_bounce.py).
+  - P14-gnep-theorem-3: thesis Theorem 3 with GNEP for NEP, with Weak Non-Sadism or Non-Sadism
+    and either form of Weak Quality Addition (research/p14_gnep_theorem_3.py). GNEP raises each
+    negative life to W_3 one level at a time, and Inequality Aversion supplies enough lives to
+    absorb any witness. The bounded census missed it because the cycle needs more than 6 lives.
+- **Still open: 8.** Each contains GNEP, Egalitarian Dominance and a Dominance Addition form.
+  - Five also contain 2009 Weak Quality Addition and Inequality Aversion or a Non-Elitism form.
+    They have a proof that needs one level above W_h = max(Weak Quality Addition's very high
+    level, GNEP's W_u) (Q-013). On W_−2 … W_7 a witness with W_u at the top escapes that proof.
+  - Three contain VRC avoidance and a Non-Elitism form (Q-011). VRC avoidance has no
+    background, so the Q-013 construction does not apply.
+- **Settles it:** for each of the 8, a certificate from a background-sensitive or
+  count-sensitive model class, or a proof that works when W_u is the top level.
 
 ## Q-011. Is the 2003 theorem stronger than stated?
 
@@ -199,3 +185,30 @@ delete it.
   himself (2009 Lemma 3), and Theorem 1 uses the same chain.
 - **Settles it:** check Arrhenius 2011 (Lemmas 1.1–1.4), the book manuscript, Thomas
   (reconstruction), and later Arrhenius papers for a size-restricted form of Theorem 1.
+
+## Q-013. Do the Dominance Addition gaps close on an unbounded ladder?
+
+- **Status:** open; this is where the possibility map becomes ladder-relative.
+- **Claim:** {Egalitarian Dominance, GNEP, 2009 Weak Quality Addition, Inequality Aversion, a
+  Dominance Addition form} is inconsistent whenever W_{h+1} exists, where W_h = max(Weak
+  Quality Addition's very high level, GNEP's W_u). Non-Elitism implies Inequality Aversion
+  (thesis Lemma 5.1), so the claim covers the five Q-010 gaps with 2009 Weak Quality Addition.
+- **Construction (written, not yet mechanized):** let T be a + |H| lives at W_h, with |H| =
+  n_G·m_W·(3 − q) for Weak Quality Addition's m_W lives at W_q.
+  1. Weak Quality Addition, background H: T ⪰ H ∪ C ∪ (m_W at W_q), with C at W_3.
+  2. GNEP raises each negative life to W_3, spending H.
+  3. The result is K lives at W_3, which Egalitarian Dominance makes ≻ K lives at W_2.
+  4. Inequality Aversion: K at W_2 ⪰ |T| at W_{h+1} ∪ M at W_1.
+  5. Dominance Addition: that is ⪰ T (in the 2003 form; the thesis not-worse form forbids
+     T ≻ it).
+
+  |C| = a + M − m_W > 2a absorbs any Inequality Aversion witness. Completeness is not used.
+- **Why the ladder matters:** step 4 needs a level above W_h. On a finite ladder the witness may
+  put GNEP's W_u at the top level. Then GNEP's high lives sit only at the top, only Inequality
+  Aversion can create lives there, and its M > N lowered lives cannot all be raised again.
+  If the gaps are consistent at W_u = top, the finite-ladder classification differs from the
+  unbounded one.
+- **Settles it:** mechanize the construction (as in `p14_gnep_theorem_3.cycle`) with a
+  headroom precondition. Then either certify the gaps on W_−2 … W_7 at W_u = W_7, or prove them
+  without headroom.
+

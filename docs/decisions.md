@@ -233,3 +233,19 @@ every one resolves.
   intra-component instances a lexicographic-additive tier still cancels backgrounds, so 2009 Weak
   Quality Addition behaves like VRC avoidance and the additive conflicts return. Those gaps need a
   background-sensitive axiology (Q-010).
+
+## D-021. The lexicographic battery includes deep-negative first tiers
+
+- **Status:** settled.
+- **Sources:** `research/lexadd.py`, `research/p11_possibility.py`,
+  `research/p12_certificates.py`.
+- **Decision:** the optional first tier sums the welfare of lives at or below W_k, for every
+  negative level W_k. k = −1 is the earlier all-negatives tier and keeps its ids
+  (`negative-then-…`); deeper k get `below-k-then-…`. On W_−2 … W_7 this gives 57 axiologies.
+  Each is still checked exactly (D-018).
+- **Consequences:** conditions whose existential negative level is witnessed separately (NEP,
+  Weak Non-Sadism, 2009 Weak Quality Addition, VRC avoidance) can put their negatives on
+  different sides of the lexical line. A test pins the split: `below--2-then-total` satisfies NEP
+  at W_−1 and 2009 Weak Quality Addition at W_−2, and `negative-then-total` fails NEP. GNEP trades
+  at every level, so it rules out every such tier.
+

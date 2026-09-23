@@ -879,6 +879,32 @@ def test_certifier_proves_the_vrc_gap_consistent_and_never_a_known_theorem() -> 
         assert certifier.certify(theorem) is None, name
 
 
+def test_deep_negative_tier_splits_nep_from_weak_quality_addition() -> None:
+    from research.certify import Certifier
+    from research.ladder import Ladder
+    from research.lexadd import battery, check_at
+
+    ladder = Ladder(2, 7)
+    axes = {a.id: a for a in battery(ladder)}
+    deep, shallow = axes["below--2-then-total"], axes["negative-then-total"]
+    nep = {"x": 4, "y": -1, "z": 3}
+    wqa = {"x": -2, "u": 4, "v": 6, "y": 3}
+    # NEP's negative life at W_-1 must be outweighable; Weak Quality Addition's at W_-2 must not.
+    assert check_at("thesis:non-extreme-priority", deep, ladder, nep) is None
+    assert check_at("thesis:non-extreme-priority", shallow, ladder, nep) is not None
+    assert check_at("arrhenius-2009:weak-quality-addition", deep, ladder, wqa) is None
+    assert check_at("arrhenius-2009:weak-quality-addition", deep, ladder, {**wqa, "x": -1})
+    gap = [
+        "arrhenius-2009:weak-quality-addition",
+        "thesis:egalitarian-dominance",
+        "thesis:non-extreme-priority",
+        "thesis:quantity",
+    ]
+    assert Certifier(ladder, [shallow, axes["total"]]).certify(gap) is None
+    cert = Certifier(ladder, [deep]).certify(gap)
+    assert cert is not None and cert.axiology == "below--2-then-total"
+
+
 def test_component_restriction_reduces_to_the_full_and_the_empty_check() -> None:
     from itertools import combinations
 
@@ -928,6 +954,64 @@ def test_hybrid_certifier_keeps_plain_certificates_and_rejects_theorem_1() -> No
     cert = hybrid.certify(gap)
     assert cert is not None and "arrhenius-2003:vrc-avoidance" in cert.inert
     assert hybrid.certify(KNOWN_THEOREMS["thesis-theorem-1"]) is None
+
+
+def test_gnep_theorem_3_cycle_is_audited_for_every_witness_in_a_grid() -> None:
+    from itertools import product
+
+    from research.ladder import Ladder, Witness, audit, validate
+    from research.p14_gnep_theorem_3 import ED, cycle
+    from research.schema import Instance
+
+    checked = 0
+    seen = 0
+    for ladder in (Ladder(1, 6), Ladder(2, 7)):
+        pos = [v for v in ladder.levels if v > 0]
+        neg = [v for v in ladder.levels if v < 0]
+        highs = [u for u in pos if u >= 4 and u + 2 <= pos[-1]]
+        for u, ng, (wx, wn), (qx, qn, qm), qu, (mult, step) in product(
+            [u for u in pos if u >= 4],
+            (1, 2),
+            product(neg, (1, 2)),
+            product(neg, (1, 3), (1, 2)),
+            highs,
+            ((1, 1), (2, 3)),
+        ):
+            params = {
+                "inequality-aversion": {"step": step, "mult": mult},
+                "general-non-extreme-priority": {"u": u, "y": 3, "n": ng},
+                "weak-non-sadism": {"x": wx, "n": wn},
+                "weak-quality-addition": {"x": qu, "w": qu + 2, "y": 3, "n": qn},
+                "weak-quality-addition-negative": {
+                    "x": qx,
+                    "u": qu,
+                    "v": qu + 2,
+                    "y": 3,
+                    "n": qn,
+                    "m": qm,
+                },
+            }
+            seen += 1
+            if seen % 7:  # a deterministic spread of the grid keeps the test fast
+                continue
+            for form, p in params.items():
+                validate(form, ladder, p)
+            w = Witness(params)
+            for form in ("thesis", "2009"):
+                steps = cycle(form, ladder, w)
+                assert steps[-1][0] == ED and steps[-1][2] == steps[0][1]
+                assert all(steps[i][2] == steps[i + 1][1] for i in range(len(steps) - 1))
+                for principle, left, right in steps:
+                    assert audit(Instance(principle, (left, right)), ladder, w), (form, principle)
+                checked += 1
+    assert checked > 80
+    # A cycle built with Inequality Aversion's m = n (not > n) must fail the audit.
+    ladder = Ladder(1, 6)
+    good = Witness({**params, "inequality-aversion": {"step": 1}})
+    bad = Witness({**params, "inequality-aversion": {"step": 0}})
+    first = cycle("thesis", ladder, bad)[0]
+    assert first[0] == "thesis:inequality-aversion"
+    assert not audit(Instance(first[0], (first[1], first[2])), ladder, good)
 
 
 def test_bounce_instance_is_audited_inconsistent_and_needs_every_condition() -> None:

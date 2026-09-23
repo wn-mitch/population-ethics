@@ -586,7 +586,10 @@ CHECKS: dict[str, Callable[[LexAxiology, Ladder], Violation | None]] = {
 def battery(ladder: Ladder) -> tuple[LexAxiology, ...]:
     """Lexicographic-additive axiologies built from a small grammar of tiers.
 
-    An optional first tier sums negative welfare (negatives are lexically bad). The next tier is
+    An optional first tier sums the welfare of lives at or below a negative level W_k (those
+    levels are lexically bad; k = −1 makes every negative level lexically bad). Lexically bad
+    deep levels with tradeable shallow ones let NEP's one negative life sit where high lives
+    outweigh it while Weak Quality Addition's negatives sit where nothing does. The next tier is
     total welfare, critical-level welfare Σ(w − c) for c at every half level between the lowest
     and highest positive level, or the welfare of lives at or above a threshold W_h. A final
     total-welfare tier breaks remaining ties.
@@ -607,15 +610,26 @@ def battery(ladder: Ladder) -> tuple[LexAxiology, ...]:
         middles.append((f"critical-level-{c}", f"Σ(w − {c})", critical(c)))
     for h in pos[2:]:
         middles.append((f"threshold-{h}", f"welfare of lives at or above W_{h}", threshold(h)))
+
+    def below(k: int) -> Callable[[int], Fraction | int]:
+        return lambda v: v if v <= k else 0
+
+    firsts: list[tuple[str, str, Callable[[int], Fraction | int] | None]] = [("", "", None)]
+    for k in sorted((v for v in ladder.levels if v < 0), reverse=True):
+        if k == -1:
+            firsts.append(("negative-then-", "total negative welfare, then ", below(k)))
+        else:
+            firsts.append(
+                (f"below-{k}-then-", f"welfare of lives at or below W_{k}, then ", below(k))
+            )
     out = []
-    for negative_first in (False, True):
+    for prefix, lead, first in firsts:
         for name, desc, fn in middles:
             fns: list[Callable[[int], Fraction | int]] = [fn, lambda v: v]
-            label, text = name, desc
-            if negative_first:
-                fns = [lambda v: min(v, 0), *fns]
-                label, text = f"negative-then-{name}", f"total negative welfare, then {desc}"
-            out.append(LexAxiology(label, f"{text}, then total welfare", tiers_of(ladder, *fns)))
+            if first is not None:
+                fns = [first, *fns]
+            text = f"{lead}{desc}, then total welfare"
+            out.append(LexAxiology(f"{prefix}{name}", text, tiers_of(ladder, *fns)))
     return tuple(out)
 
 

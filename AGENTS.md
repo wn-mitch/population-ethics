@@ -34,7 +34,8 @@ searches for proof skeletons, minimal cores and escapes, and compares them with 
   graphs (D-019).
 - `research/pN_*.py`: phase scripts; `just research` reruns them all. Phase 8 freezes and
   verifies every catalogued Arrhenius theorem after 1999; Phase 9 runs the motif census
-  (`research/census.py`).
+  (`research/census.py`). Phases 13 and 14 freeze and verify the project's own theorems
+  (`possibility.PROJECT_THEOREMS`); Phase 14's `cycle` builds its proof for any witness.
 
 ## Rules
 
