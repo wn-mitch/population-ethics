@@ -272,10 +272,20 @@ class Certifier:
             self._checks[key] = check_at(p, ax, self.ladder, levels) is None
         return self._checks[key]
 
-    def certify(self, conditions: Iterable[str]) -> Certificate | None:
+    def certify(
+        self,
+        conditions: Iterable[str],
+        *,
+        level_overrides: Mapping[str, Sequence[dict[str, int]]] | None = None,
+    ) -> Certificate | None:
         conds = tuple(sorted(conditions))
         families = sorted({f for p in conds if (f := WITNESS_OF.get(FORM[p])) is not None})
-        grids = [level_options(f, self.ladder) for f in families]
+        grids = [
+            level_overrides[f]
+            if level_overrides is not None and f in level_overrides
+            else level_options(f, self.ladder)
+            for f in families
+        ]
         for choice in product(*grids):
             levels = dict(zip(families, choice, strict=True))
             per = {
@@ -358,13 +368,24 @@ class HybridCertifier(Certifier):
             self._checks[key] = CHECKS[p](ax, self.ladder) is None
         return self._checks[key]
 
-    def certify(self, conditions: Iterable[str]) -> Certificate | None:
+    def certify(
+        self,
+        conditions: Iterable[str],
+        *,
+        level_overrides: Mapping[str, Sequence[dict[str, int]]] | None = None,
+    ) -> Certificate | None:
         from research.lexadd import Restriction, check_restricted
 
         conds = tuple(sorted(conditions))
         candidates = self._ranked(conds)
         families = sorted({f for p in conds if (f := WITNESS_OF.get(FORM[p])) is not None})
-        for choice in product(*[level_options(f, self.ladder) for f in families]):
+        grids = [
+            level_overrides[f]
+            if level_overrides is not None and f in level_overrides
+            else level_options(f, self.ladder)
+            for f in families
+        ]
+        for choice in product(*grids):
             levels = dict(zip(families, choice, strict=True))
             lv_of = {p: levels.get(WITNESS_OF.get(FORM[p]) or "", {}) for p in conds}
             per = {p: self._edges_of(p, lv_of[p]) for p in conds}

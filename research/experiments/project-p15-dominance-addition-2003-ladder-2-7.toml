@@ -1,0 +1,160 @@
+schema = "population-ethics.experiment/v2"
+id = "project-p15-dominance-addition-2003-ladder-2-7"
+kind = "compatibility"
+claim_kind = "bounded-proof-instance"
+source_fidelity = "conditional headroom construction; checked selected witnesses only"
+source_ids = ["arrhenius-2000-thesis", "arrhenius-2003-vrc", "arrhenius-2009-one-more"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1/project-p15-dominance-addition-2003-ladder-2-7"
+fixed_groups = ["reflexivity", "transitivity"]
+candidate_groups = ["arrhenius-2003:dominance-addition", "arrhenius-2009:weak-quality-addition", "thesis:egalitarian-dominance", "thesis:general-non-extreme-priority", "thesis:inequality-aversion"]
+
+[resource_policy]
+max_populations = 100
+max_expanded_lives = 5000
+max_relation_atoms = 1000
+max_ground_constraints = 5000
+max_subsets = 256
+timeout_ms = 0
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "P_m2_3_3_3_3_3_3_3_6_6_6_6_6"
+values = [-2, 3, 3, 3, 3, 3, 3, 3, 6, 6, 6, 6, 6]
+
+[[domain.populations]]
+name = "P_m1_3_3_3_3_3_3_3_3_6_6_6_6"
+values = [-1, 3, 3, 3, 3, 3, 3, 3, 3, 6, 6, 6, 6]
+
+[[domain.populations]]
+name = "P_0_3_3_3_3_3_3_3_3_3_6_6_6"
+values = [0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 6, 6, 6]
+
+[[domain.populations]]
+name = "P_1_1_1_1_1_1_1_7_7_7_7_7_7"
+values = [1, 1, 1, 1, 1, 1, 1, 7, 7, 7, 7, 7, 7]
+
+[[domain.populations]]
+name = "P_1_3_3_3_3_3_3_3_3_3_3_6_6"
+values = [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 6, 6]
+
+[[domain.populations]]
+name = "P_2_2_2_2_2_2_2_2_2_2_2_2_2"
+values = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+
+[[domain.populations]]
+name = "P_2_3_3_3_3_3_3_3_3_3_3_3_6"
+values = [2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 6]
+
+[[domain.populations]]
+name = "P_3_3_3_3_3_3_3_3_3_3_3_3_3"
+values = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+
+[[domain.populations]]
+name = "P_6_6_6_6_6_6"
+values = [6, 6, 6, 6, 6, 6]
+
+[categories]
+slightly_negative = [-1]
+very_low_positive = [1, 2, 3]
+very_high_positive = [4, 5, 6]
+
+[witness_bindings]
+ladder_negative = 2
+ladder_positive = 7
+
+[[groups]]
+id = "reflexivity"
+principle_id = "reflexivity"
+compiler = "reflexivity"
+populations = ["P_m2_3_3_3_3_3_3_3_6_6_6_6_6", "P_m1_3_3_3_3_3_3_3_3_6_6_6_6", "P_0_3_3_3_3_3_3_3_3_3_6_6_6", "P_1_1_1_1_1_1_1_7_7_7_7_7_7", "P_1_3_3_3_3_3_3_3_3_3_3_6_6", "P_2_2_2_2_2_2_2_2_2_2_2_2_2", "P_2_3_3_3_3_3_3_3_3_3_3_3_6", "P_3_3_3_3_3_3_3_3_3_3_3_3_3", "P_6_6_6_6_6_6"]
+
+[[groups]]
+id = "transitivity"
+principle_id = "transitivity"
+compiler = "transitivity"
+populations = ["P_m2_3_3_3_3_3_3_3_6_6_6_6_6", "P_m1_3_3_3_3_3_3_3_3_6_6_6_6", "P_0_3_3_3_3_3_3_3_3_3_6_6_6", "P_1_1_1_1_1_1_1_7_7_7_7_7_7", "P_1_3_3_3_3_3_3_3_3_3_3_6_6", "P_2_2_2_2_2_2_2_2_2_2_2_2_2", "P_2_3_3_3_3_3_3_3_3_3_3_3_6", "P_3_3_3_3_3_3_3_3_3_3_3_3_3", "P_6_6_6_6_6_6"]
+
+[[groups]]
+id = "arrhenius-2003:dominance-addition"
+principle_id = "arrhenius-2003:dominance-addition"
+
+[[groups.constraints]]
+id = "arrhenius-2003:dominance-addition:8"
+formula = { kind = "atom", left = "P_1_1_1_1_1_1_1_7_7_7_7_7_7", relation = "weak", right = "P_6_6_6_6_6_6" }
+populations = ["P_1_1_1_1_1_1_1_7_7_7_7_7_7", "P_6_6_6_6_6_6"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "arrhenius-2003:dominance-addition instance over ['P_1_1_1_1_1_1_1_7_7_7_7_7_7', 'P_6_6_6_6_6_6']"
+
+[[groups]]
+id = "arrhenius-2009:weak-quality-addition"
+principle_id = "arrhenius-2009:weak-quality-addition"
+
+[[groups.constraints]]
+id = "arrhenius-2009:weak-quality-addition:0"
+formula = { kind = "atom", left = "P_6_6_6_6_6_6", relation = "weak", right = "P_m2_3_3_3_3_3_3_3_6_6_6_6_6" }
+populations = ["P_6_6_6_6_6_6", "P_m2_3_3_3_3_3_3_3_6_6_6_6_6"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "arrhenius-2009:weak-quality-addition instance over ['P_6_6_6_6_6_6', 'P_m2_3_3_3_3_3_3_3_6_6_6_6_6']"
+
+[[groups]]
+id = "thesis:egalitarian-dominance"
+principle_id = "thesis:egalitarian-dominance"
+
+[[groups.constraints]]
+id = "thesis:egalitarian-dominance:6"
+formula = { kind = "and", operands = [{ kind = "atom", left = "P_3_3_3_3_3_3_3_3_3_3_3_3_3", relation = "weak", right = "P_2_2_2_2_2_2_2_2_2_2_2_2_2" }, { kind = "not", operand = { kind = "atom", left = "P_2_2_2_2_2_2_2_2_2_2_2_2_2", relation = "weak", right = "P_3_3_3_3_3_3_3_3_3_3_3_3_3" } }] }
+populations = ["P_2_2_2_2_2_2_2_2_2_2_2_2_2", "P_3_3_3_3_3_3_3_3_3_3_3_3_3"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "thesis:egalitarian-dominance instance over ['P_3_3_3_3_3_3_3_3_3_3_3_3_3', 'P_2_2_2_2_2_2_2_2_2_2_2_2_2']"
+
+[[groups]]
+id = "thesis:general-non-extreme-priority"
+principle_id = "thesis:general-non-extreme-priority"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:1"
+formula = { kind = "atom", left = "P_m2_3_3_3_3_3_3_3_6_6_6_6_6", relation = "weak", right = "P_m1_3_3_3_3_3_3_3_3_6_6_6_6" }
+populations = ["P_m1_3_3_3_3_3_3_3_3_6_6_6_6", "P_m2_3_3_3_3_3_3_3_6_6_6_6_6"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_m2_3_3_3_3_3_3_3_6_6_6_6_6', 'P_m1_3_3_3_3_3_3_3_3_6_6_6_6']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:2"
+formula = { kind = "atom", left = "P_m1_3_3_3_3_3_3_3_3_6_6_6_6", relation = "weak", right = "P_0_3_3_3_3_3_3_3_3_3_6_6_6" }
+populations = ["P_0_3_3_3_3_3_3_3_3_3_6_6_6", "P_m1_3_3_3_3_3_3_3_3_6_6_6_6"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_m1_3_3_3_3_3_3_3_3_6_6_6_6', 'P_0_3_3_3_3_3_3_3_3_3_6_6_6']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:3"
+formula = { kind = "atom", left = "P_0_3_3_3_3_3_3_3_3_3_6_6_6", relation = "weak", right = "P_1_3_3_3_3_3_3_3_3_3_3_6_6" }
+populations = ["P_0_3_3_3_3_3_3_3_3_3_6_6_6", "P_1_3_3_3_3_3_3_3_3_3_3_6_6"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_0_3_3_3_3_3_3_3_3_3_6_6_6', 'P_1_3_3_3_3_3_3_3_3_3_3_6_6']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:4"
+formula = { kind = "atom", left = "P_1_3_3_3_3_3_3_3_3_3_3_6_6", relation = "weak", right = "P_2_3_3_3_3_3_3_3_3_3_3_3_6" }
+populations = ["P_1_3_3_3_3_3_3_3_3_3_3_6_6", "P_2_3_3_3_3_3_3_3_3_3_3_3_6"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_1_3_3_3_3_3_3_3_3_3_3_6_6', 'P_2_3_3_3_3_3_3_3_3_3_3_3_6']"
+
+[[groups.constraints]]
+id = "thesis:general-non-extreme-priority:5"
+formula = { kind = "atom", left = "P_2_3_3_3_3_3_3_3_3_3_3_3_6", relation = "weak", right = "P_3_3_3_3_3_3_3_3_3_3_3_3_3" }
+populations = ["P_2_3_3_3_3_3_3_3_3_3_3_3_6", "P_3_3_3_3_3_3_3_3_3_3_3_3_3"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "thesis:general-non-extreme-priority instance over ['P_2_3_3_3_3_3_3_3_3_3_3_3_6', 'P_3_3_3_3_3_3_3_3_3_3_3_3_3']"
+
+[[groups]]
+id = "thesis:inequality-aversion"
+principle_id = "thesis:inequality-aversion"
+
+[[groups.constraints]]
+id = "thesis:inequality-aversion:7"
+formula = { kind = "atom", left = "P_2_2_2_2_2_2_2_2_2_2_2_2_2", relation = "weak", right = "P_1_1_1_1_1_1_1_7_7_7_7_7_7" }
+populations = ["P_1_1_1_1_1_1_1_7_7_7_7_7_7", "P_2_2_2_2_2_2_2_2_2_2_2_2_2"]
+formalization_id = "project-p15-dominance-addition-2003.selected-witness/v1"
+explanation = "thesis:inequality-aversion instance over ['P_2_2_2_2_2_2_2_2_2_2_2_2_2', 'P_1_1_1_1_1_1_1_7_7_7_7_7_7']"

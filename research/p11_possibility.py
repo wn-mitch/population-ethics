@@ -14,6 +14,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import time
 from typing import Any
@@ -26,7 +27,6 @@ from research.lexadd import CHECKS, battery
 from research.p8_catalogue import WITNESS
 from research.possibility import PRIMITIVE, explained_by, minimal_unrealized
 
-LADDER = Ladder(2, 7)
 PROBES = {
     "theorem-3-with-quality": [
         "thesis:egalitarian-dominance",
@@ -50,18 +50,24 @@ PROBES = {
     ],
 }
 PROBE_LADDER = Ladder(1, 6)
+# Fixed bounded controls: these probes stay on PROBE_LADDER/PROBE_LIVES for every ladder.
 PROBE_LIVES = 6
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--positive", type=int, default=7)
+    args = parser.parse_args()
+    positive = args.positive
+    ladder = Ladder(2, positive)
     started = time.monotonic()
-    additive = classify(LADDER, PRIMITIVE)
+    additive = classify(ladder, PRIMITIVE)
     matrix = {
         ax.id: {
             "description": ax.description,
-            "satisfies": sorted(p for p, fn in CHECKS.items() if fn(ax, LADDER) is None),
+            "satisfies": sorted(p for p, fn in CHECKS.items() if fn(ax, ladder) is None),
         }
-        for ax in battery(LADDER)
+        for ax in battery(ladder)
     }
     realized = [frozenset(r["satisfies"]) for r in matrix.values()] + [
         frozenset(m["conditions"]) for m in additive["maximal_realizable"]
@@ -79,14 +85,16 @@ def main() -> None:
             "cycles_found": len(words),
         }
     data = {
-        "ladder": {"negative": LADDER.negative, "positive": LADDER.positive},
+        "ladder": {"negative": ladder.negative, "positive": ladder.positive},
         "additive": additive,
         "lexicographic_additive": matrix,
         "coverage": coverage,
         "probes": probes,
     }
-    write_result("p11_possibility", data, {"wall_time_s": round(time.monotonic() - started, 1)})
-    _ledger(data)
+    name = "p11_possibility" if positive == 7 else f"p11_possibility_n2_p{positive}"
+    write_result(name, data, {"wall_time_s": round(time.monotonic() - started, 1)})
+    if positive == 7:
+        _ledger(data)
     unexplained = [c for c in coverage if not c["explained_by"]]
     print(
         json.dumps(

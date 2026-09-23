@@ -6,9 +6,9 @@
     "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
     "z3_version": "5.1.0"
   },
-  "name": "p11_possibility",
+  "name": "p11_possibility_n2_p9",
   "observations": {
-    "wall_time_s": 75.1
+    "wall_time_s": 229.3
   },
   "result": {
     "additive": {
@@ -40,7 +40,9 @@
             "4": "0",
             "5": "0",
             "6": "0",
-            "7": "0"
+            "7": "0",
+            "8": "0",
+            "9": "0"
           }
         },
         {
@@ -58,16 +60,18 @@
             "thesis:weak-non-sadism"
           ],
           "g": {
-            "-2": "-1",
+            "-2": "-2",
             "-1": "0",
-            "0": "1/16",
-            "1": "1/8",
-            "2": "3/16",
-            "3": "1/4",
-            "4": "19/64",
-            "5": "11/32",
-            "6": "3/8",
-            "7": "51/128"
+            "0": "1/8",
+            "1": "7/32",
+            "2": "3/8",
+            "3": "1/2",
+            "4": "9/8",
+            "5": "175/128",
+            "6": "51/32",
+            "7": "29/16",
+            "8": "2",
+            "9": "17/8"
           }
         },
         {
@@ -84,16 +88,18 @@
             "thesis:weak-quality-addition"
           ],
           "g": {
-            "-2": "-6293/562933800",
-            "-1": "-6293/675520560",
-            "0": "-6293/844400700",
-            "1": "-6293/1125867600",
-            "2": "-6293/1688801400",
-            "3": "-6293/3377602800",
-            "4": "0",
-            "5": "6293/1125867600",
-            "6": "6293/562933800",
-            "7": "6293/375289200"
+            "-2": "-6",
+            "-1": "-5",
+            "0": "-9/2",
+            "1": "-4",
+            "2": "-3",
+            "3": "-2",
+            "4": "-1",
+            "5": "1/32",
+            "6": "1/16",
+            "7": "3/32",
+            "8": "1/4",
+            "9": "3/8"
           }
         }
       ],
@@ -850,7 +856,7 @@
     ],
     "ladder": {
       "negative": 2,
-      "positive": 7
+      "positive": 9
     },
     "lexicographic_additive": {
       "below--2-then-critical-level-1": {
@@ -886,6 +892,36 @@
       },
       "below--2-then-critical-level-13/2": {
         "description": "welfare of lives at or below W_-2, then Σ(w − 13/2), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "below--2-then-critical-level-15/2": {
+        "description": "welfare of lives at or below W_-2, then Σ(w − 15/2), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "below--2-then-critical-level-17/2": {
+        "description": "welfare of lives at or below W_-2, then Σ(w − 17/2), then total welfare",
         "satisfies": [
           "arrhenius-2003:non-elitism",
           "arrhenius-2003:vrc-avoidance",
@@ -1028,6 +1064,36 @@
           "thesis:weak-quality-addition"
         ]
       },
+      "below--2-then-critical-level-8": {
+        "description": "welfare of lives at or below W_-2, then Σ(w − 8), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "below--2-then-critical-level-9": {
+        "description": "welfare of lives at or below W_-2, then Σ(w − 9), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
       "below--2-then-critical-level-9/2": {
         "description": "welfare of lives at or below W_-2, then Σ(w − 9/2), then total welfare",
         "satisfies": [
@@ -1096,11 +1162,41 @@
           "thesis:egalitarian-dominance",
           "thesis:non-extreme-priority",
           "thesis:non-sadism",
-          "thesis:weak-non-sadism"
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
         ]
       },
       "below--2-then-threshold-7": {
         "description": "welfare of lives at or below W_-2, then welfare of lives at or above W_7, then total welfare",
+        "satisfies": [
+          "arrhenius-2003:dominance-addition",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:dominance-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:non-extreme-priority",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "below--2-then-threshold-8": {
+        "description": "welfare of lives at or below W_-2, then welfare of lives at or above W_8, then total welfare",
+        "satisfies": [
+          "arrhenius-2003:dominance-addition",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:dominance-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:non-extreme-priority",
+          "thesis:non-sadism",
+          "thesis:weak-non-sadism"
+        ]
+      },
+      "below--2-then-threshold-9": {
+        "description": "welfare of lives at or below W_-2, then welfare of lives at or above W_9, then total welfare",
         "satisfies": [
           "arrhenius-2003:dominance-addition",
           "arrhenius-2003:vrc-avoidance",
@@ -1161,6 +1257,36 @@
       },
       "critical-level-13/2": {
         "description": "Σ(w − 13/2), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:general-non-extreme-priority",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "critical-level-15/2": {
+        "description": "Σ(w − 15/2), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:general-non-extreme-priority",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "critical-level-17/2": {
+        "description": "Σ(w − 17/2), then total welfare",
         "satisfies": [
           "arrhenius-2003:non-elitism",
           "arrhenius-2003:vrc-avoidance",
@@ -1297,6 +1423,36 @@
           "thesis:weak-quality-addition"
         ]
       },
+      "critical-level-8": {
+        "description": "Σ(w − 8), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:general-non-extreme-priority",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "critical-level-9": {
+        "description": "Σ(w − 9), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:general-non-extreme-priority",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-extreme-priority",
+          "thesis:quality",
+          "thesis:weak-quality-addition"
+        ]
+      },
       "critical-level-9/2": {
         "description": "Σ(w − 9/2), then total welfare",
         "satisfies": [
@@ -1344,6 +1500,36 @@
       },
       "negative-then-critical-level-13/2": {
         "description": "total negative welfare, then Σ(w − 13/2), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "negative-then-critical-level-15/2": {
+        "description": "total negative welfare, then Σ(w − 15/2), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "negative-then-critical-level-17/2": {
+        "description": "total negative welfare, then Σ(w − 17/2), then total welfare",
         "satisfies": [
           "arrhenius-2003:non-elitism",
           "arrhenius-2003:vrc-avoidance",
@@ -1486,6 +1672,36 @@
           "thesis:weak-quality-addition"
         ]
       },
+      "negative-then-critical-level-8": {
+        "description": "total negative welfare, then Σ(w − 8), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "negative-then-critical-level-9": {
+        "description": "total negative welfare, then Σ(w − 9), then total welfare",
+        "satisfies": [
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:inequality-aversion",
+          "thesis:non-elitism",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
       "negative-then-critical-level-9/2": {
         "description": "total negative welfare, then Σ(w − 9/2), then total welfare",
         "satisfies": [
@@ -1550,11 +1766,39 @@
           "thesis:dominance-addition",
           "thesis:egalitarian-dominance",
           "thesis:non-sadism",
-          "thesis:weak-non-sadism"
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
         ]
       },
       "negative-then-threshold-7": {
         "description": "total negative welfare, then welfare of lives at or above W_7, then total welfare",
+        "satisfies": [
+          "arrhenius-2003:dominance-addition",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:dominance-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "negative-then-threshold-8": {
+        "description": "total negative welfare, then welfare of lives at or above W_8, then total welfare",
+        "satisfies": [
+          "arrhenius-2003:dominance-addition",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:dominance-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:non-sadism",
+          "thesis:weak-non-sadism"
+        ]
+      },
+      "negative-then-threshold-9": {
+        "description": "total negative welfare, then welfare of lives at or above W_9, then total welfare",
         "satisfies": [
           "arrhenius-2003:dominance-addition",
           "arrhenius-2003:vrc-avoidance",
@@ -1629,6 +1873,38 @@
         "description": "welfare of lives at or above W_6, then total welfare",
         "satisfies": [
           "arrhenius-2003:dominance-addition",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:dominance-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:general-non-extreme-priority",
+          "thesis:non-extreme-priority",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "threshold-7": {
+        "description": "welfare of lives at or above W_7, then total welfare",
+        "satisfies": [
+          "arrhenius-2003:dominance-addition",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2009:weak-quality-addition",
+          "thesis:dominance-addition",
+          "thesis:egalitarian-dominance",
+          "thesis:general-non-extreme-priority",
+          "thesis:non-extreme-priority",
+          "thesis:non-sadism",
+          "thesis:quality",
+          "thesis:weak-non-sadism",
+          "thesis:weak-quality-addition"
+        ]
+      },
+      "threshold-8": {
+        "description": "welfare of lives at or above W_8, then total welfare",
+        "satisfies": [
+          "arrhenius-2003:dominance-addition",
           "thesis:dominance-addition",
           "thesis:egalitarian-dominance",
           "thesis:general-non-extreme-priority",
@@ -1637,8 +1913,8 @@
           "thesis:weak-non-sadism"
         ]
       },
-      "threshold-7": {
-        "description": "welfare of lives at or above W_7, then total welfare",
+      "threshold-9": {
+        "description": "welfare of lives at or above W_9, then total welfare",
         "satisfies": [
           "arrhenius-2003:dominance-addition",
           "thesis:dominance-addition",
@@ -1704,6 +1980,6 @@
       }
     }
   },
-  "result_sha256": "6c959e4c9753ba3158bf4b015c895e0caabd82a9d6f5366417d7d6b80ec8e5b8",
+  "result_sha256": "9bc8e8d427cdb2d0bf106aecf7cf45678bdff38a3bac35eb7d122bd5d073f292",
   "schema": "population-ethics.research-result/v1"
 }

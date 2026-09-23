@@ -65,6 +65,7 @@ notes = [
   "No theorem in chapters 10–11 uses completeness; all conditions except Egalitarian Dominance are in at-least-as-good form.",
   "pp. 182–183: the cycles are weak links closed by one strict link; stating the conditions with better-than yields strict cycles, so consequentialism needs some acyclicity (fn 3).",
   "pp. 200–201: rejects Parfit's proposal to quarantine the theorems to different-number cases.",
+  "P14 check: Theorem 3 (§10.8, pp. 163–165) uses Inequality Aversion and Non-Extreme Priority with Non-Sadism; Theorem 4 (§10.10, pp. 167–180) instead uses Non-Elitism and GNEP, deriving β and δ before Lemma 5.3. At p. 167, β with empty background is Inequality Aversion; Lemma 5.2.1 (pp. 174–175) raises negative welfare one level at a time.",
 ]
 
 [[works]]
@@ -139,6 +140,7 @@ proof_skeleton = [
 notes = [
   "Text extraction drops ⊂ and ∪; statements were cross-checked against the 2011 version.",
   "Thomas (manuscript p. 11) reports an error: only the weaker VRA*, with background P depending on z and m, follows.",
+  "P14 check: The theorem (pp. 30–31) uses Non-Elitism and GNEP; Lemma 3 (pp. 31–33) converts WQA's negative added lives via Condition δ to Restricted Quality Addition, and Lemma 4 (pp. 33–36) closes the derived-condition cycle. WQA at p. 30 quantifies over the background before choosing its witnesses.",
 ]
 
 [[works]]
@@ -154,6 +156,7 @@ notes = [
   "Lemma 1.3 (pp. 18–19) is the negative-lives-in-the-added-group device later seen in R6.",
   "p. 23: transitivity is presupposed; the theorems can be rebuilt at the normative level without it.",
   "p. 24: holds even with ratio-scale interpersonal comparability.",
+  "P14 check: The theorem (p. 9) retains the 2009 conditions; Lemmas 1.1–1.2 (pp. 10–18) derive β and δ, Lemma 1.2.1 (pp. 15–16) raises welfare one level at a time, Lemma 1.3 (pp. 18–19) derives Restricted Quality Addition, and Lemma 1.4 (pp. 20–22) closes the cycle. WQA at p. 9 chooses its witnesses after the background.",
 ]
 
 [[works]]
@@ -284,6 +287,7 @@ notes = [
   "Total lexic utilitarianism satisfies every adequacy condition of Theorems 1, 4, 5, 6 except Small Steps (p. 8).",
   "pp. 11–12, fn 29–30: Non-Anti-Egalitarianism entails Inequality Aversion only under an Archimedean total.",
   "fn 31: the Small Steps argument fails if the welfare scale has gaps.",
+  "P14 check: fn. 4 (p. 2) identifies the error in the 2011 Lemma 1.3 derivation of Restricted Quality Addition. Non-Elitism's implication toward Inequality Aversion depends on Small Steps (pp. 10–11, fn. 25–26), not an equivalence between the conditions.",
   "DOI not re-verified against the publisher.",
 ]
 
@@ -296,7 +300,10 @@ pdf_url = "https://d-nb.info/1241023689/34"
 pdf_sha256 = "e987cec4ffac4da656dc80493941006437be8c11a3594b1d1ac1a47b2bc04796"
 read = "partial"
 notes = [
-  "Bounce theorem (P13) check, 2026-09: none-found. fn. 7 (pdf p. 3): 'Arrhenius has the first two quantifiers the other way around, so that the condition begins \"For any population X, there is…\" (2011, 9). As Thomas's manuscript notes, the Sixth Impossibility Theorem actually requires the slightly stronger condition stated here.'","Lexical Totalism with Carlson's category definitions defeats Theorems 1, 4, 5, 6; for Theorems 2 and 3 only Inequality Aversion fails (pp. 7–9)."]
+  "Bounce theorem (P13) check, 2026-09: none-found. fn. 7 (pdf p. 3): 'Arrhenius has the first two quantifiers the other way around, so that the condition begins \"For any population X, there is…\" (2011, 9). As Thomas's manuscript notes, the Sixth Impossibility Theorem actually requires the slightly stronger condition stated here.'",
+  "Lexical Totalism with Carlson's category definitions defeats Theorems 1, 4, 5, 6; for Theorems 2 and 3 only Inequality Aversion fails (pp. 7–9).",
+  "P14 check: fn. 7 says the Sixth Theorem needs WQA's negative witness fixed before the background, reversing Arrhenius's source order. The repaired condition is the ladder encoding, not the source statement; pp. 7–9 discuss Lexical Totalism rather than the P14 cycle.",
+]
 
 [[works]]
 id = "carlson-1998-trilemmas"
@@ -655,3 +662,19 @@ verdict = "partial"
 sources = ["arrhenius-2000-thesis", "thomas-2016-reconstructing", "thomas-2018-possibilities", "thornley-2022-prospect", "thornley-2022-dilemma", "arrhenius-stefansson-2025-risk", "arrhenius-2011-impossibility", "baker-2025-non-archimedean", "nebel-2022-totalism"]
 known = "Under full comparability the bounce theorem is thesis Theorem 1 plus Appendix B (pp. 205–206), which derives Quality from Egalitarian Dominance and a size-restricted avoidance of the Repugnant Conclusion. Every restatement of Theorem 1 checked keeps unrestricted Quality (Thomas 2016 p. 4; Thomas 2018 pp. 6–7; Thornley 2022; Arrhenius & Stefánsson 2025 p. 845). Chain arguments in the superiority literature grow populations by Addition, Separability or Scaling, not by alternating Quantity and Egalitarian Dominance. Arrhenius's derivation of Restricted Quality Addition (2011 Lemma 1.3) contains an error (Thomas 2018 fn. 4); Thornley 2022 fn. 7 repairs Weak Quality Addition by making its witnesses independent of the background."
 open = "The completeness-free result: the Quantity/Egalitarian Dominance bounce that grows the low population past the size threshold without full comparability, found in none of the works checked. The corollary (Egalitarian Dominance, GNEP, Quantity, 2009 Weak Quality Addition) holds for Weak Quality Addition in Thornley's repaired form, which is the ladder's encoding; the source's form inherits the Lemma 1.3 gap. Not read: Arrhenius's forthcoming book, Arrhenius 2016 (Theoria), Jensen 2008/2020, Handfield & Rabinowicz 2018, Arrhenius & Rabinowicz 2005."
+
+[[collisions]]
+result = "P14"
+ledger = ["P14-gnep-theorem-3"]
+verdict = "partial"
+sources = ["arrhenius-2000-thesis", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "thomas-2018-possibilities", "thornley-2022-prospect"]
+known = "Thesis Theorem 3 uses Egalitarian Dominance, Inequality Aversion, Non-Extreme Priority, Non-Sadism and Weak Quality Addition (§10.8, pp. 163–165). Thesis Theorem 4 and the 2009/2011 theorems instead use Non-Elitism, GNEP and Weak Non-Sadism, deriving β/δ before a Restricted Quality Addition cycle (thesis §10.10, pp. 167–180; 2009 pp. 30–36; 2011 pp. 9–22). Thomas identifies the 2011 Lemma 1.3 derivation error (2018 fn. 4); Thornley repairs the Weak Quality Addition witness order (2022 fn. 7)."
+open = "No checked source states P14's direct Inequality Aversion + GNEP + Weak Non-Sadism cycle, raising negative lives with GNEP instead of deriving δ or invoking the 2009 Lemma 3. The 2009 variant holds for the repaired Weak Quality Addition witness order (negative level and count fixed before any background), not the source's background-first order. Whether the direct combination is independently published remains open; the forthcoming Arrhenius book, Arrhenius 2016 and the Oxford Handbook chapter were not checked."
+
+[[collisions]]
+result = "P16"
+ledger = ["P16-top-gnep-ne-and-ia"]
+verdict = "partial"
+sources = ["arrhenius-2000-thesis", "arrhenius-2003-vrc", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "thomas-2018-possibilities", "thornley-2022-prospect"]
+known = "Thesis Theorem 2 (§10.6, pp. 159–161) uses unrestricted Quality with Inequality Aversion and Dominance Addition, not 2009 Weak Quality Addition. Thesis Theorem 4 (§10.10, pp. 167–180), the 2003 theorem (pp. 5–13), and the 2009/2011 sixth-theorem proofs use Non-Elitism and GNEP, but close via Weak Non-Sadism or VRC avoidance rather than this Dominance Addition cycle. The 2018 critique (fn. 4) identifies an error in deriving Restricted Quality Addition in the 2011 proof; the 2022 critique (fn. 7) explains that the stronger uniform Weak Quality Addition witness order is needed."
+open = "No checked primary source states the unconditional Egalitarian Dominance, GNEP, repaired 2009 Weak Quality Addition, Inequality Aversion and Dominance Addition contradiction or its direct Non-Elitism variants on a top-witness ladder. The finite-ladder result is proved for the repaired uniform Weak Quality Addition reading, not the published background-first existential order. Independent publication of the precise combination remains unchecked."

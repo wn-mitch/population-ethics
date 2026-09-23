@@ -113,12 +113,12 @@ delete it.
 
 ## Q-010. Gaps in the possibility map
 
-- **Status:** open (8 of 58 sets).
+- **Status:** open (3 of 58 sets).
 - **Setup (P11-possibility-map):** the additive class is decided exactly, and 57
   lexicographic-additive axiologies are checked exactly (D-021). 58 minimal condition sets are
-  realized by none of them. 32 are explained by a known or project theorem via the recorded
-  implications; 26 are not. Every unexplained set has 4 or 5 conditions.
-- **Certificates (P12-gap-certificates, D-019):** 18 of the 26 are proved consistent. Two
+  realized by none of them. 37 are explained by a known or project theorem via the recorded
+  implications; 21 are not. Every unexplained set has 4 or 5 conditions.
+- **Certificates (P12-gap-certificates, D-019):** 18 of the 21 are proved consistent. Two
   mechanisms cover them. (1) The background-free quality condition (Quality or VRC avoidance)
   is inert and total utilitarianism covers the rest, so the backgrounds in Weak Quality Addition
   are load-bearing in thesis Theorems 3 and 4 and the 2009 theorem. (2) With NEP rather than
@@ -127,21 +127,21 @@ delete it.
   outweighs. That closes {Egalitarian Dominance, NEP, Quantity, 2009 Weak Quality Addition} and
   the NEP variants of the Dominance Addition and Non-Sadism gaps. GNEP defeats (2): it trades
   one level at every level, so no level can be lexically bad.
-- **Project theorems explain six former gaps:**
+- **Project theorems explain eleven former gaps:**
   - P13-bounce-theorem: {Egalitarian Dominance, GNEP, Quantity, 2009 Weak Quality Addition}
     (research/p13_bounce.py).
   - P14-gnep-theorem-3: thesis Theorem 3 with GNEP for NEP, with Weak Non-Sadism or Non-Sadism
     and either form of Weak Quality Addition (research/p14_gnep_theorem_3.py). GNEP raises each
     negative life to W_3 one level at a time, and Inequality Aversion supplies enough lives to
     absorb any witness. The bounded census missed it because the cycle needs more than 6 lives.
-- **Still open: 8.** Each contains GNEP, Egalitarian Dominance and a Dominance Addition form.
-  - Five also contain 2009 Weak Quality Addition and Inequality Aversion or a Non-Elitism form.
-    They have a proof that needs one level above W_h = max(Weak Quality Addition's very high
-    level, GNEP's W_u) (Q-013). On W_−2 … W_7 a witness with W_u at the top escapes that proof.
-  - Three contain VRC avoidance and a Non-Elitism form (Q-011). VRC avoidance has no
-    background, so the Q-013 construction does not apply.
-- **Settles it:** for each of the 8, a certificate from a background-sensitive or
-  count-sensitive model class, or a proof that works when W_u is the top level.
+  - P16-top-gnep-ne-and-ia: five Dominance Addition gaps with GNEP, repaired 2009 Weak
+    Quality Addition, and Inequality Aversion or either Non-Elitism form. Its audited cycles
+    need no welfare level above the GNEP witness (research/p16_ne_top.py; Q-013).
+- **Still open: 3.** Each contains Egalitarian Dominance, GNEP, VRC avoidance, a Non-Elitism
+  form and a Dominance Addition form (Q-011). VRC avoidance has no arbitrary background,
+  so the P16 Weak Quality Addition construction does not apply.
+- **Settles it:** for each of the three, a certificate from a background-sensitive or
+  count-sensitive model class, or a contradiction for every valid top-level witness.
 
 ## Q-011. Is the 2003 theorem stronger than stated?
 
@@ -188,27 +188,25 @@ delete it.
 
 ## Q-013. Do the Dominance Addition gaps close on an unbounded ladder?
 
-- **Status:** open; this is where the possibility map becomes ladder-relative.
-- **Claim:** {Egalitarian Dominance, GNEP, 2009 Weak Quality Addition, Inequality Aversion, a
-  Dominance Addition form} is inconsistent whenever W_{h+1} exists, where W_h = max(Weak
-  Quality Addition's very high level, GNEP's W_u). Non-Elitism implies Inequality Aversion
-  (thesis Lemma 5.1), so the claim covers the five Q-010 gaps with 2009 Weak Quality Addition.
-- **Construction (written, not yet mechanized):** let T be a + |H| lives at W_h, with |H| =
-  n_G·m_W·(3 − q) for Weak Quality Addition's m_W lives at W_q.
-  1. Weak Quality Addition, background H: T ⪰ H ∪ C ∪ (m_W at W_q), with C at W_3.
-  2. GNEP raises each negative life to W_3, spending H.
-  3. The result is K lives at W_3, which Egalitarian Dominance makes ≻ K lives at W_2.
-  4. Inequality Aversion: K at W_2 ⪰ |T| at W_{h+1} ∪ M at W_1.
-  5. Dominance Addition: that is ⪰ T (in the 2003 form; the thesis not-worse form forbids
-     T ≻ it).
-
-  |C| = a + M − m_W > 2a absorbs any Inequality Aversion witness. Completeness is not used.
-- **Why the ladder matters:** step 4 needs a level above W_h. On a finite ladder the witness may
-  put GNEP's W_u at the top level. Then GNEP's high lives sit only at the top, only Inequality
-  Aversion can create lives there, and its M > N lowered lives cannot all be raised again.
-  If the gaps are consistent at W_u = top, the finite-ladder classification differs from the
-  unbounded one.
-- **Settles it:** mechanize the construction (as in `p14_gnep_theorem_3.cycle`) with a
-  headroom precondition. Then either certify the gaps on W_−2 … W_7 at W_u = W_7, or prove them
-  without headroom.
+- **Status:** closed by the unconditional P16 cycle in `research/p16_ne_top.py`. The five
+  W_-2…W_7 top-GNEP-witness gaps are inconsistent even on that finite ladder; the conditional
+  headroom construction in `research/p15_dominance_addition.py` is not needed.
+- **Claim:** Egalitarian Dominance, GNEP, repaired 2009 Weak Quality Addition, Inequality
+  Aversion and thesis Dominance Addition are inconsistent for every valid fixed witness on a
+  consecutive ladder. The 2003 Dominance Addition form implies the thesis form. The thesis
+  and 2003 Non-Elitism variants supply the needed Inequality Aversion instances; P16 also
+  audits direct Non-Elitism paths. No completeness or level above the GNEP high witness is
+  required.
+- **Cycle:** let h = max(5, GNEP.u, WQA.u), q < 0, and g, a, m be the GNEP high, WQA high
+  and WQA negative counts. Put H = gm(2−q), T = a+H. Choose IA witness M1 > T,
+  K = T+M1, IA witness M2 > K, Q = K+M2 and b = a+M2−m > 0.
+  Egalitarian Dominance gives 4^K ≻ 3^K. IA gives 3^K ⪰ h^T ∪ 2^M1. WQA over
+  h^H ∪ 2^M1 gives h^H ∪ 2^(M1+b) ∪ q^m. Exactly m(2−q) GNEP steps spend H
+  high lives to raise q^m to level 2, yielding 2^Q. IA gives
+  2^Q ⪰ h^K ∪ 1^M2. Thus 4^K ≻ h^K ∪ 1^M2, directly contradicting thesis
+  Dominance Addition's not-better clause. The 2003 form supplies the reverse weak edge.
+- **Scope:** WQA's fixed witnesses and arbitrary background are the repaired uniform
+  reading, stronger than the published background-first quantifier order. The literature
+  collision is partial, not a claim that the exact theorem is printed in a checked source.
+  The three VRC-avoidance gaps remain Q-011.
 

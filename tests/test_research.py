@@ -956,6 +956,30 @@ def test_hybrid_certifier_keeps_plain_certificates_and_rejects_theorem_1() -> No
     assert hybrid.certify(KNOWN_THEOREMS["thesis-theorem-1"]) is None
 
 
+def test_certifier_level_overrides_restrict_one_family_without_mutating_defaults() -> None:
+    from research.certify import Certifier, level_options
+    from research.ladder import Ladder
+    from research.lexadd import battery
+    from research.possibility import KNOWN_THEOREMS
+
+    ladder = Ladder(2, 7)
+    certifier = Certifier(ladder, battery(ladder))
+    family = "general-non-extreme-priority"
+    before = level_options(family, ladder)
+    override = {family: [{"u": 7, "y": 3}]}
+    gap = ["thesis:egalitarian-dominance", "thesis:general-non-extreme-priority"]
+    first = certifier.certify(gap, level_overrides=override)
+    second = certifier.certify(gap, level_overrides=override)
+    assert before == [{"u": u, "y": 3} for u in (4, 5, 6, 7)]
+    assert level_options(family, ladder) == before
+    assert first == second
+    assert first is not None
+    assert first.levels[family] == {"u": 7, "y": 3}
+    theorem = KNOWN_THEOREMS["thesis-theorem-1"]
+    assert certifier.certify(theorem) is None
+    assert certifier.certify(theorem, level_overrides=override) is None
+
+
 def test_gnep_theorem_3_cycle_is_audited_for_every_witness_in_a_grid() -> None:
     from itertools import product
 
@@ -1030,3 +1054,266 @@ def test_bounce_instance_is_audited_inconsistent_and_needs_every_condition() -> 
     assert _decide(hard, names) == "unsat"
     for principle in {c.principle_id for c in constraints}:
         assert _decide([c for c in hard if c.principle_id != principle], names) == "sat"
+
+
+def test_dominance_addition_headroom_cycle_is_audited_and_inconsistent_per_witness() -> None:
+    from itertools import product
+
+    from research.lab import background
+    from research.ladder import Ladder, Witness, audit, validate
+    from research.p6_schema import core_constraints, name_of
+    from research.p8_catalogue import _decide
+    from research.p15_dominance_addition import (
+        DA_2003,
+        DA_THESIS,
+        ED,
+        GNEP,
+        IA,
+        WQA_2009,
+        cycle,
+    )
+    from research.schema import Instance
+
+    checked = 0
+    varying: dict[str, set[int]] = {
+        "x": set(),
+        "a": set(),
+        "m": set(),
+        "n": set(),
+        "g_u": set(),
+        "q_u": set(),
+        "mult": set(),
+    }
+    for ladder in (Ladder(1, 6), Ladder(2, 7)):
+        positive = [v for v in ladder.levels if v > 0]
+        negative = [v for v in ladder.levels if v < 0]
+        q_highs = [u for u in positive if u > 3 and u + 2 <= positive[-1]]
+        g_highs = [u for u in positive if u > 3 and u < positive[-1]]
+        seen = 0
+        for x, a, m_w, n_g, g_u, q_u, (mult, step) in product(
+            negative,
+            (1, 2),
+            (1, 2),
+            (1, 2),
+            g_highs,
+            q_highs,
+            ((1, 1), (2, 3)),
+        ):
+            seen += 1
+            coverage = (
+                a == m_w == n_g == 1
+                and x in {negative[0], negative[-1]}
+                and (g_u, q_u)
+                in {
+                    (g_highs[0], q_highs[0]),
+                    (g_highs[-1], q_highs[-1]),
+                }
+            ) or (
+                x == negative[0]
+                and (g_u, q_u) == (g_highs[0], q_highs[0])
+                and mult == 1
+                and (a, m_w, n_g) in {(2, 1, 1), (1, 2, 1), (1, 1, 2)}
+            )
+            if not (seen % 97 == 0 or coverage):
+                continue
+            params = {
+                "inequality-aversion": {"step": step, "mult": mult},
+                "general-non-extreme-priority": {"u": g_u, "y": 3, "n": n_g},
+                "weak-quality-addition-negative": {
+                    "x": x,
+                    "u": q_u,
+                    "v": q_u + 2,
+                    "y": 3,
+                    "n": a,
+                    "m": m_w,
+                },
+            }
+            for family in (
+                "general-non-extreme-priority",
+                "weak-quality-addition-negative",
+                "inequality-aversion",
+            ):
+                validate(family, ladder, params[family])
+            witness = Witness(params)
+            h = max(g_u, q_u)
+            H = n_g * m_w * (3 - x)
+            N = a + H
+            M = mult * N + step
+            target = tuple(sorted((Counter({h + 1: N}) + Counter({1: M})).elements()))
+            start = tuple(sorted(Counter({h: N}).elements()))
+            for form in ("thesis", "2003"):
+                steps = cycle(form, ladder, witness)
+                assert steps[0].principle == WQA_2009
+                assert steps[1 + m_w * (3 - x)].principle == ED
+                assert steps[2 + m_w * (3 - x)].principle == IA
+                assert all(inst.principle == GNEP for inst in steps[1 : 1 + m_w * (3 - x)])
+                assert all(
+                    steps[i].args[1] == steps[i + 1].args[0]
+                    for i in range(len(steps) - 1)
+                    if form == "2003" or i < len(steps) - 2
+                )
+                if form == "2003":
+                    assert steps[-1].args[1] == steps[0].args[0]
+                else:
+                    # The N-form compares the cycle's start against the IA target,
+                    # rather than representing the closing relation as a weak edge.
+                    assert steps[0].args[0] == start
+                    assert steps[-1].args == (start, target)
+                assert all(audit(inst, ladder, witness) for inst in steps)
+                names = tuple(sorted(name_of(pop) for inst in steps for pop in inst.args))
+                names = tuple(dict.fromkeys(names))
+                bg = background(names)
+                hard = [
+                    *bg["reflexivity"],
+                    *bg["transitivity"],
+                    *core_constraints(steps, f"test/p15/{form}/v1"),
+                ]
+                assert _decide(hard, names) == "unsat"
+                closing = steps[-1]
+                if form == "2003":
+                    assert closing.args == (target, start)
+                if form == "2003":
+                    assert closing.principle == DA_2003
+                else:
+                    assert closing.principle == DA_THESIS and closing.shape == "N"
+                    if checked == 0:
+                        reversed_closing = Instance(DA_THESIS, (target, start))
+                        reversed_core = [*steps[:-1], reversed_closing]
+                        reversed_hard = [
+                            *bg["reflexivity"],
+                            *bg["transitivity"],
+                            *core_constraints(reversed_core, "test/p15/reversed/v1"),
+                        ]
+                        assert _decide(reversed_hard, names) == "sat"
+            checked += 1
+            varying["x"].add(x)
+            varying["a"].add(a)
+            varying["m"].add(m_w)
+            varying["n"].add(n_g)
+            varying["g_u"].add(g_u)
+            varying["q_u"].add(q_u)
+            varying["mult"].add(mult)
+    assert checked > 10
+    assert all(
+        values >= expected
+        for values, expected in (
+            (varying["x"], {-2, -1}),
+            (varying["a"], {1, 2}),
+            (varying["m"], {1, 2}),
+            (varying["n"], {1, 2}),
+            (varying["mult"], {1, 2}),
+        )
+    )
+
+    ladder = Ladder(2, 7)
+    valid = Witness(
+        {
+            "inequality-aversion": {"step": 1},
+            "general-non-extreme-priority": {"u": 7, "y": 3, "n": 1},
+            "weak-quality-addition-negative": {
+                "x": -2,
+                "u": 4,
+                "v": 6,
+                "y": 3,
+                "n": 1,
+                "m": 1,
+            },
+        }
+    )
+    for family in (
+        "general-non-extreme-priority",
+        "weak-quality-addition-negative",
+        "inequality-aversion",
+    ):
+        validate(family, ladder, valid.get(family))
+    with pytest.raises(ValueError):
+        cycle("thesis", ladder, valid)
+
+    no_headroom = Ladder(2, 6)
+    valid_no_headroom = Witness(
+        {
+            "inequality-aversion": {"step": 1},
+            "general-non-extreme-priority": {"u": 6, "y": 3, "n": 1},
+            "weak-quality-addition-negative": {
+                "x": -2,
+                "u": 4,
+                "v": 6,
+                "y": 3,
+                "n": 1,
+                "m": 1,
+            },
+        }
+    )
+    for family in (
+        "general-non-extreme-priority",
+        "weak-quality-addition-negative",
+        "inequality-aversion",
+    ):
+        validate(family, no_headroom, valid_no_headroom.get(family))
+    with pytest.raises(ValueError, match=r"W_7"):
+        cycle("thesis", no_headroom, valid_no_headroom)
+    with pytest.raises(ValueError):
+        cycle("invalid", no_headroom, valid_no_headroom)
+
+
+def test_headroom_free_top_gnep_cycles_cover_ia_and_non_elitism_forms() -> None:
+    from itertools import product
+
+    from research.ladder import Ladder, Witness, validate
+    from research.p16_ne_top import (
+        _audit_all,
+        cycle_ia,
+        cycle_ne,
+        decide_without_completeness,
+    )
+
+    ladder = Ladder(2, 7)
+    variants = (
+        # negative level, WQA high range/low bound, GNEP high/low bound, counts, IA step/mult
+        (-2, 4, 6, 3, 7, 3, 1, 1, 1, 1, 1),
+        (-1, 5, 7, 3, 6, 3, 2, 2, 2, 2, 2),
+        (-1, 5, 7, 4, 4, 3, 1, 1, 1, 1, 1),
+    )
+    for x, q_u, q_v, q_y, g_u, g_y, q_n, q_m, g_n, ia_step, ia_mult in variants:
+        witness = Witness(
+            {
+                "general-non-extreme-priority": {"u": g_u, "y": g_y, "n": g_n},
+                "weak-quality-addition-negative": {
+                    "x": x,
+                    "u": q_u,
+                    "v": q_v,
+                    "y": q_y,
+                    "n": q_n,
+                    "m": q_m,
+                },
+                "non-elitism": {"n": 1},
+                "inequality-aversion": {"step": ia_step, "mult": ia_mult},
+            }
+        )
+        for family in (
+            "general-non-extreme-priority",
+            "weak-quality-addition-negative",
+            "non-elitism",
+            "inequality-aversion",
+        ):
+            validate(family, ladder, witness.get(family))
+
+        for da_form, ne_form in product(
+            ("thesis", "2003"),
+            ("thesis", "2003"),
+        ):
+            # Only the three sets present in Q-013 need the corresponding
+            # source pair: 2003 DA+thesis NE, thesis DA+2003 NE, and thesis
+            # DA+thesis NE.
+            if da_form == "2003" and ne_form == "2003":
+                continue
+            steps = cycle_ne(da_form, ne_form, ladder, witness)
+            assert _audit_all(steps, ladder, witness)
+            assert decide_without_completeness(steps, f"test/p16/ne/{da_form}/{ne_form}") == "unsat"
+            assert steps[-1].shape == ("W" if da_form == "2003" else "N")
+
+        for da_form in ("thesis", "2003"):
+            steps = cycle_ia(da_form, ladder, witness)
+            assert _audit_all(steps, ladder, witness)
+            assert decide_without_completeness(steps, f"test/p16/ia/{da_form}") == "unsat"
+            assert steps[-1].shape == ("W" if da_form == "2003" else "N")

@@ -13,6 +13,7 @@ mean the certifier is unsound.
 
 from __future__ import annotations
 
+import argparse
 import json
 import time
 from dataclasses import asdict
@@ -20,20 +21,31 @@ from typing import Any
 
 from research.certify import Certifier
 from research.lab import ROOT, LedgerEntry, record, write_result
+from research.ladder import Ladder
 from research.lexadd import battery, from_additive
-from research.p11_possibility import LADDER
 from research.possibility import KNOWN_THEOREMS
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--positive", type=int, default=7)
+    args = parser.parse_args()
+    positive = args.positive
+    ladder = Ladder(2, positive)
     started = time.monotonic()
-    p11 = json.loads((ROOT / "research" / "results" / "p11_possibility.json").read_text())["result"]
+    p11_name = "p11_possibility" if positive == 7 else f"p11_possibility_n2_p{positive}"
+    p11_path = ROOT / "research" / "results" / f"{p11_name}.json"
+    if not p11_path.exists():
+        raise SystemExit(
+            f"missing P11 result for positive={positive}: {p11_path}; run research.p11_possibility first"
+        )
+    p11 = json.loads(p11_path.read_text())["result"]
     gaps = [c["conditions"] for c in p11["coverage"] if not c["explained_by"]]
-    axiologies = list(battery(LADDER)) + [
-        from_additive(LADDER, f"additive-{i}", m["g"])
+    axiologies = list(battery(ladder)) + [
+        from_additive(ladder, f"additive-{i}", m["g"])
         for i, m in enumerate(p11["additive"]["maximal_realizable"])
     ]
-    certifier = Certifier(LADDER, axiologies)
+    certifier = Certifier(ladder, axiologies)
     certified: list[dict[str, Any]] = []
     still_open: list[list[str]] = []
     for gap in sorted(gaps, key=lambda g: (len(g), g)):
@@ -44,13 +56,15 @@ def main() -> None:
             still_open.append(gap)
     controls = {name: certifier.certify(t) is None for name, t in KNOWN_THEOREMS.items()}
     data = {
-        "ladder": {"negative": LADDER.negative, "positive": LADDER.positive},
+        "ladder": {"negative": ladder.negative, "positive": ladder.positive},
         "certified": certified,
         "open": still_open,
         "controls_uncertified": controls,
     }
-    write_result("p12_certificates", data, {"wall_time_s": round(time.monotonic() - started, 1)})
-    _ledger(data)
+    name = "p12_certificates" if positive == 7 else f"p12_certificates_n2_p{positive}"
+    write_result(name, data, {"wall_time_s": round(time.monotonic() - started, 1)})
+    if positive == 7:
+        _ledger(data)
     print(
         json.dumps(
             {"certified": len(certified), "open": len(still_open), "controls": controls}, indent=1

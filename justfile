@@ -31,6 +31,8 @@ research:
     uv run python -m research.p12_certificates
     uv run python -m research.p13_bounce
     uv run python -m research.p14_gnep_theorem_3
+    uv run python -m research.p15_dominance_addition
+    uv run python -m research.p16_ne_top
     uv run python -m research.render_ledger
 
 # Regenerate docs/results.md from the ledger and literature verdicts.

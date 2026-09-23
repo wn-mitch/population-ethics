@@ -297,8 +297,8 @@ DERIVES: tuple[tuple[frozenset[str], str, str], ...] = (
 )
 
 
-# Impossibility results proved in this project (research/p13_bounce.py, p14), kept
-# apart from the published theorems that serve as certifier controls.
+# Impossibility results proved in this project (research/p13_bounce.py, p14, p16),
+# kept apart from the published theorems that serve as certifier controls.
 PROJECT_THEOREMS: dict[str, frozenset[str]] = {
     "project-bounce-restricted-quality": frozenset(
         {
@@ -324,6 +324,16 @@ PROJECT_THEOREMS: dict[str, frozenset[str]] = {
             "thesis:general-non-extreme-priority",
             "thesis:weak-non-sadism",
             "arrhenius-2009:weak-quality-addition",
+        }
+    ),
+    # research/p16_ne_top.py; NE and the 2003 DA form imply the thesis instances.
+    "project-gnep-dominance-addition": frozenset(
+        {
+            "thesis:egalitarian-dominance",
+            "thesis:inequality-aversion",
+            "thesis:general-non-extreme-priority",
+            "arrhenius-2009:weak-quality-addition",
+            "thesis:dominance-addition",
         }
     ),
 }

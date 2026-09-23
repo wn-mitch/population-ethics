@@ -6,9 +6,9 @@
     "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
     "z3_version": "5.1.0"
   },
-  "name": "p12_certificates",
+  "name": "p12_certificates_n2_p8",
   "observations": {
-    "wall_time_s": 44.6
+    "wall_time_s": 112.4
   },
   "result": {
     "certified": [
@@ -502,7 +502,7 @@
     },
     "ladder": {
       "negative": 2,
-      "positive": 7
+      "positive": 8
     },
     "open": [
       [
@@ -528,6 +528,6 @@
       ]
     ]
   },
-  "result_sha256": "2eda806694f2f1ae2c175928ce44def76f4c54d60a764cca88e5bc16040e0b02",
+  "result_sha256": "791bd7cae450de961b3e8e3597a0eaeca87067b348049e4e48b488ad48dd7d42",
   "schema": "population-ethics.research-result/v1"
 }
