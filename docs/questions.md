@@ -154,5 +154,16 @@ delete it.
   Ranged Non-Elitism only yields β with a background in R(z, y+1), which excludes negatives. The
   proof also chains Dominance Addition's ⪰. The not-worse form gives that only under
   completeness, which is how the census and certifier read it.
-- **Settles it:** a census cycle under every witness family (then a written proof), or a
-  background-sensitive model.
+- **Evidence so far (lemma level, derived β and δ, ≤ 6 lives, δ's n growing by 5 per negative
+  life):**
+  - The control holds: the 2003 conditions reproduce their source word.
+  - With ranged β (the 2009 Lemma 1 form that ranged Non-Elitism yields) there are no cycles at
+    all.
+  - With not-worse Dominance Addition, no cycle uses Dominance Addition. The only cycles are
+    Q-009 exchange-rate cycles over β, δ and Egalitarian Dominance, and those are witness
+    artifacts: total utilitarianism satisfies Egalitarian Dominance, Non-Elitism and GNEP
+    together once δ's base n is at least 4 on this ladder.
+
+  Both weakenings therefore look consistent, not like stronger versions of the 2003 theorem.
+- **Settles it:** a background-sensitive or lexicographic model certified with the certifier's
+  method, which would close them; or a cycle under every witness family.
