@@ -38,6 +38,7 @@ from research.schema import (
     BASELINE_SKELETON,
     Grid,
     Instance,
+    Pop,
     RankEngine,
     check_instance,
     domain,
@@ -510,3 +511,69 @@ def test_frozen_theorems_are_audited_and_match_their_catalogue_entries() -> None
         expected = "arrhenius-1999" if frozen.id in same_as_1999 else frozen.id
         assert expected in ids
         assert known_ground(core)["exact_known"] == expected, frozen.id
+
+
+def test_every_realization_example_is_audited_and_entailed_without_completeness() -> None:
+    from research.realizations import load, verify_example
+
+    checked = 0
+    for realization in load():
+        assert realization.examples, realization.id
+        for variant in realization.variants:
+            for example in realization.examples:
+                result = verify_example(example, variant)
+                assert all(result.values()), (realization.id, variant.target, result)
+                checked += 1
+    assert checked == 7
+
+
+def _chain(principle: str, ends: tuple[Pop, ...], internal: int, tag: int) -> list[Instance]:
+    nodes = [ends[0], *[(1000 * tag + k,) for k in range(internal)], ends[1]]
+    return [Instance(principle, (nodes[k], nodes[k + 1])) for k in range(len(nodes) - 1)]
+
+
+def test_l2_contracts_lemma_chains_back_to_the_lemma_level_skeleton() -> None:
+    from research.canon import canonical, canonical_l2
+    from research.p8_catalogue import THEOREM_4
+
+    core = THEOREM_4.instances()
+    beta = next(i for i in core if i.principle == "thesis:condition-beta")
+    delta = next(i for i in core if i.principle == "thesis:condition-delta")
+    primitive = [i for i in core if i not in (beta, delta)]
+    primitive += _chain("thesis:non-elitism", beta.args, internal=1, tag=1)
+    primitive += _chain("thesis:general-non-extreme-priority", delta.args, internal=3, tag=2)
+    assert canonical(primitive, "L1") != canonical(core, "L1")
+    assert canonical_l2(primitive) == (canonical(core, "L1"),)
+    # A relatum inside the chain that touches another edge blocks contraction there.
+    blocked = [*primitive, Instance("thesis:non-sadism", ((1000,), (4, 4, 4)))]
+    assert canonical(core, "L1") not in canonical_l2(blocked)
+
+
+def test_l2_recovers_the_1999_skeleton_from_the_primitive_2009_proof() -> None:
+    from research.canon import canonical, canonical_l2
+    from research.known import known_ground
+    from research.p8_catalogue import THEOREM_2009
+
+    core = THEOREM_2009.instances()
+    by = {i.principle.split(":")[1]: i for i in core}
+    rqa, delta, beta = (
+        by["restricted-quality-addition"],
+        by["condition-delta"],
+        by["condition-beta"],
+    )
+    middle = (9999,)
+    primitive = [by["weak-non-sadism"], by["egalitarian-dominance"]]
+    primitive += _chain("arrhenius-2009:non-elitism", beta.args, internal=2, tag=3)
+    primitive += _chain(
+        "arrhenius-2009:general-non-extreme-priority", delta.args, internal=2, tag=4
+    )
+    # Lemma 3: Weak Quality Addition to a middle population, then δ (itself a GNEP run).
+    primitive.append(Instance("arrhenius-2009:weak-quality-addition", (rqa.args[0], middle)))
+    primitive += _chain(
+        "arrhenius-2009:general-non-extreme-priority", (middle, rqa.args[1]), internal=3, tag=5
+    )
+    forms = canonical_l2(primitive)
+    # Lemma 3's δ may be taken from either GNEP run, so two contractions exist; the one that
+    # follows the source is the lemma-level skeleton, which is the 1999 skeleton at L1.
+    assert canonical(core, "L1") in forms
+    assert known_ground(core)["exact_known"] == "arrhenius-1999"

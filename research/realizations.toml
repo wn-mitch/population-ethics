@@ -1,0 +1,70 @@
+schema = "population-ethics.realizations/v1"
+
+# Edge realizations (docs/decisions.md D-011): a path of instances of `from` principles
+# realizes one instance of the derived principle `to`, by the source lemma named in `source`
+# (a reading id in corpus/readings.toml). research/canon.py uses them for the L2 form, which
+# contracts such paths. `pattern = "run"` contracts a maximal series run of one or more `from`
+# edges; `pattern = "exact"` contracts a series window whose principles are exactly `from`,
+# in any order.
+#
+# Each `[[realizations.example]]` is a concrete chain found by the solver
+# (research/realizations.py) and re-verified by test: every chain instance and the target pass
+# the ladder audit under the example's witness, and the chain entails the target in every
+# preorder (no completeness).
+
+[[realizations]]
+id = "non-elitism-to-beta"
+pattern = "run"
+reason = "Non-Elitism implies Condition β (thesis Lemma 5.1, 2009 Lemma 1, 2003 Lemma 1); a series run of Non-Elitism steps plays β's inequality-aversion part."
+variants = [
+  { from = ["thesis:non-elitism"], to = "thesis:condition-beta", source = "thesis:lemma-5.1" },
+  { from = ["arrhenius-2009:non-elitism"], to = "arrhenius-2009:condition-beta", source = "arrhenius-2009:lemma-1" },
+  { from = ["arrhenius-2003:non-elitism"], to = "arrhenius-2003:condition-beta", source = "arrhenius-2003:condition-beta" },
+]
+
+[[realizations.example]]
+ladder = { negative = 0, positive = 6, neutral = false }
+witness = { non-elitism = { n = 2 }, condition-beta = { step = 2 } }
+chain = [
+  { principle = "non-elitism", args = [[1, 1, 2, 2, 2, 3], [1, 1, 1, 1, 3, 3]] },
+  { principle = "non-elitism", args = [[2, 2, 2, 2, 2, 2], [1, 1, 2, 2, 2, 3]] },
+]
+target = { principle = "condition-beta", args = [[2, 2, 2, 2, 2, 2], [1, 1, 1, 1, 3, 3]] }
+
+[[realizations]]
+id = "gnep-to-delta"
+pattern = "run"
+reason = "GNEP implies Condition δ (thesis Lemma 5.2, 2009 Lemma 2, 2003 Lemma 2); each GNEP step lifts one life one level, so reaching W_3 from W_z takes a run of steps through W_0."
+variants = [
+  { from = ["thesis:general-non-extreme-priority"], to = "thesis:condition-delta", source = "thesis:lemma-5.2" },
+  { from = ["arrhenius-2009:general-non-extreme-priority"], to = "arrhenius-2009:condition-delta", source = "arrhenius-2009:lemma-2" },
+  { from = ["arrhenius-2003:general-non-extreme-priority"], to = "arrhenius-2003:condition-delta", source = "arrhenius-2003:condition-delta" },
+]
+
+[[realizations.example]]
+ladder = { negative = 1, positive = 6, neutral = true }
+witness = { general-non-extreme-priority = { u = 4, y = 3, n = 1 }, condition-delta = { u = 4, y = 3, n = 4 } }
+chain = [
+  { principle = "general-non-extreme-priority", args = [[-1, 4, 4, 4, 4], [0, 1, 4, 4, 4]] },
+  { principle = "general-non-extreme-priority", args = [[0, 1, 4, 4, 4], [0, 1, 2, 4, 4]] },
+  { principle = "general-non-extreme-priority", args = [[0, 1, 2, 4, 4], [0, 1, 1, 3, 4]] },
+  { principle = "general-non-extreme-priority", args = [[0, 1, 1, 3, 4], [1, 1, 1, 1, 3]] },
+]
+target = { principle = "condition-delta", args = [[-1, 4, 4, 4, 4], [1, 1, 1, 1, 3]] }
+
+[[realizations]]
+id = "wqa-delta-to-rqa"
+pattern = "exact"
+reason = "Weak Quality Addition and Condition δ imply Restricted Quality Addition (2009 Lemma 3): WQA puts m negative lives in the low group, and δ on a low background converts them."
+variants = [
+  { from = ["arrhenius-2009:weak-quality-addition", "arrhenius-2009:condition-delta"], to = "arrhenius-2009:restricted-quality-addition", source = "arrhenius-2009:lemma-3" },
+]
+
+[[realizations.example]]
+ladder = { negative = 1, positive = 6, neutral = false }
+witness = { weak-quality-addition-negative = { x = -1, u = 4, v = 6, y = 3, n = 1, m = 1 }, condition-delta = { u = 4, y = 3, n = 1 }, restricted-quality-addition = { x = 4, y = 3, n = 2, m = 2 } }
+chain = [
+  { principle = "arrhenius-2009:weak-quality-addition", args = [[4, 4], [-1, 1, 4]] },
+  { principle = "arrhenius-2009:condition-delta", args = [[-1, 1, 4], [1, 1, 3]] },
+]
+target = { principle = "arrhenius-2009:restricted-quality-addition", args = [[4, 4], [1, 1, 3]] }

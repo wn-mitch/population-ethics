@@ -2,9 +2,9 @@
 
 From the 2000 thesis on, Arrhenius states his conditions over indexed consecutive welfare levels
 W_x and ranges R(x, y) of at least three consecutive levels, with no averages
-(docs/decisions.md D-014). A ``Ladder`` is a finite chain of such levels, W_−a … W_−1 and
-W_1 … W_b. The neutral level W_0 has no lives here, so an instance that needs one is not
-generated. A population is a sorted tuple of level indices.
+(docs/decisions.md D-014, D-016). A ``Ladder`` is a finite chain of such levels, W_−a … W_b,
+including the neutral level W_0 unless ``neutral=False``. A population is a sorted tuple of
+level indices.
 
 Each principle's cross-read reading is in ``corpus/readings.toml``. Where the source is silent
 about empty populations, the generators require nonempty ones, which only drops instances.
@@ -33,16 +33,18 @@ LADDER_SCHEMA_ID = "arrhenius-thesis-family.schema/v1"
 class Ladder:
     negative: int  # levels W_-negative … W_-1
     positive: int  # levels W_1 … W_positive
+    neutral: bool = True  # whether W_0 carries lives
 
     @property
     def levels(self) -> tuple[int, ...]:
-        return (*range(-self.negative, 0), *range(1, self.positive + 1))
+        zero = (0,) if self.neutral else ()
+        return (*range(-self.negative, 0), *zero, *range(1, self.positive + 1))
 
     def has(self, level: int) -> bool:
-        return level != 0 and -self.negative <= level <= self.positive
+        return -self.negative <= level <= self.positive and (level != 0 or self.neutral)
 
     def range(self, lo: int, hi: int) -> tuple[int, ...]:
-        """Levels of R(lo, hi) present on the ladder (W_0 excluded)."""
+        """Levels of R(lo, hi) present on the ladder."""
         return tuple(v for v in self.levels if lo <= v <= hi)
 
 

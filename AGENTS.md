@@ -19,8 +19,10 @@ searches for proof skeletons, minimal cores and escapes, and compares them with 
   `research.lab.record`.
 - `research/known.py`: the known-skeleton catalogue and the known-ground matcher.
 - `research/roles.toml`: principle id -> proof role, with the reason for each assignment.
-- `research/canon.py`: exact (nauty) canonical forms of skeletons at the motif (L0), role (L1)
-  and principle levels.
+- `research/canon.py`: exact (nauty) canonical forms of skeletons at the motif (L0), role (L1),
+  realization-contracted (L2) and principle levels.
+- `research/realizations.toml`: lemma chains that realize derived-principle edges, with verified
+  solver-found examples (`research/realizations.py`).
 - `corpus/readings.toml`: cross-read source readings; the review-first gate (`research/readings.py`).
 - `research/schema.py`: the 1999/2000 principle schema over numeric grids, instance generation
   and the independent audit.

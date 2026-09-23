@@ -12,6 +12,8 @@ Levels, from coarsest to finest:
   This is the motif level.
 - ``L1``: role and normalized shape (research/roles.toml).
 - ``principle``: principle id and raw shape; used to cross-check the brute-force form.
+- ``L2`` (``canonical_l2``): L1 after contracting recorded edge realizations, such as a run of
+  Non-Elitism steps into one Condition β edge.
 """
 
 from __future__ import annotations
@@ -78,3 +80,13 @@ def canonical_form(relata: int, edges: Sequence[LabelledEdge]) -> Form:
 
 def canonical(core: Sequence[Instance], level: Level = "L1") -> Form:
     return canonical_form(*labelled_edges(core, level))
+
+
+def canonical_l2(core: Sequence[Instance]) -> tuple[Form, ...]:
+    """L2: the L1 forms of every full contraction of the core by the recorded edge realizations
+    (research/realizations.toml). More than one form means contractions overlap ambiguously;
+    all are reported rather than one being picked.
+    """
+    from research.realizations import contractions
+
+    return tuple(sorted({canonical(c, "L1") for c in contractions(core)}))

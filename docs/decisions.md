@@ -158,3 +158,27 @@ every one resolves.
   "covered" its two new steps; with this rule R6 keeps exactly those two uncovered instances.
 - **Consequences:** `uncovered_by_published` no longer shrinks just because the catalogue grows.
   Coverage by a small fragment is still visible in `per_known`.
+
+## D-016. The ladder includes the neutral level W_0
+
+- **Status:** settled; supersedes D-014's "W_−a … W_−1, W_1 … W_b".
+- **Sources:** `arrhenius-2000-thesis` (pp. 152–155).
+- **Decision:** the thesis indexes W_0 as the neutral level and assumes a possible population of
+  n people at every welfare level, so lives at W_0 exist. `research/ladder.py` includes W_0 by
+  default. Without it, GNEP (which moves one life up one level) cannot step from W_−1 to W_1, and
+  Condition δ is underivable from GNEP on any ladder.
+
+## D-017. Realizations contract principle paths, not role paths
+
+- **Status:** settled.
+- **Sources:** `research/realizations.toml`, `research/canon.py`.
+- **Decision:** a realization maps a series path of specific principles to the derived
+  principle its source lemma proves (a run of Non-Elitism steps to Condition β, a run of GNEP
+  steps to δ, Weak Quality Addition plus δ to Restricted Quality Addition). Role-level rules
+  would be wrong: "priority then quality" occurs inside the 1999 cycle itself, and contracting it
+  would merge the 1999 skeleton with a 4-cycle. Only paths whose internal relata touch no other
+  edge are contracted, and every distinct full contraction is reported (L2).
+- **Consequences:** L2 recognizes only recorded realizations. Each realization carries a
+  solver-found example chain that a test re-verifies (audit, and entailment in every preorder).
+  The 2000 derivation of the 1999 Quality Addition edge uses Addition's fork and completeness,
+  so it is not a path and is not yet a realization.
