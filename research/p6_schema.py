@@ -588,7 +588,7 @@ def _ledger(data: dict[str, Any]) -> None:
                     else "Z3 rank encoding",
                     checked=bool(v),
                     minimal="deletion-minimal core",
-                    interpretation="See REPORT.md R6.",
+                    interpretation="See docs/journal/2026-09-22-turn-1.md R6.",
                     next_experiment="human fidelity review of Addition with a negative life in the lower group and MNEP on a nonempty background",
                     result_scope="finite computational result",
                     formalization_tier="solver-discovered proof skeleton (unreviewed schema)",

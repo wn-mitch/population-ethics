@@ -8,7 +8,7 @@
   },
   "name": "p7_arrhenius1999",
   "observations": {
-    "wall_time_s": 12.07
+    "wall_time_s": 12.2
   },
   "result": {
     "frozen": {
@@ -218,18 +218,18 @@
         "project-r5-triangle": {
           "edges": 3,
           "sources": [
-            "REPORT.md#R5"
+            "docs/journal/2026-09-22-turn-1.md#R5"
           ]
         },
         "project-r6-gapped": {
           "edges": 8,
           "sources": [
-            "REPORT.md#R6"
+            "docs/journal/2026-09-22-turn-1.md#R6"
           ]
         }
       }
     }
   },
-  "result_sha256": "b892508338a61436eb065e802dc2cb450d7f7ca0eb739324819c7b222eabd70d",
+  "result_sha256": "a572836a59ad55da75ba7e33dc4211a3a44bb9a2e2c77e5ccd5d8c4335182e43",
   "schema": "population-ethics.research-result/v1"
 }

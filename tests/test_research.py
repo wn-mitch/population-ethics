@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import random
 import re
 import tomllib
@@ -238,9 +239,40 @@ def test_literature_corpus_references_resolve_and_every_report_result_has_a_verd
                 assert re.fullmatch(r"[0-9a-f]{64}", work[key]), work["id"]
     verdicts = {c["result"]: c for c in corpus["collisions"]}
     assert set(verdicts) == {f"R{i}" for i in range(1, 7)}
+    ledger = {
+        e["candidate_id"] for e in json.loads(Path("research/ledger.json").read_text())["entries"]
+    }
+    covered: list[str] = []
     for collision in verdicts.values():
         assert collision["verdict"] in {"collides", "partial", "none-found"}
         assert collision["sources"] and set(collision["sources"]) <= known
+        assert collision["ledger"] and set(collision["ledger"]) <= ledger, collision["result"]
+        covered += collision["ledger"]
+    assert len(covered) == len(set(covered))
+
+
+def test_results_register_is_rendered_from_the_current_ledger() -> None:
+    from research.render_ledger import RESULTS, render
+
+    assert RESULTS.read_text() == render(), "docs/results.md is stale; run `just docs`"
+
+
+@pytest.mark.parametrize(
+    ("path", "prefix"), [("docs/decisions.md", "D"), ("docs/questions.md", "Q")]
+)
+def test_decision_and_question_entries_are_unique_and_cite_resolvable_sources(
+    path: str, prefix: str
+) -> None:
+    text = Path(path).read_text()
+    ids = re.findall(rf"^## ({prefix}-\d{{3}})\. ", text, flags=re.MULTILINE)
+    assert ids and len(ids) == len(set(ids))
+    assert ids == sorted(ids)
+    works = {w["id"] for w in tomllib.loads(Path("corpus/literature.toml").read_text())["works"]}
+    for entry in re.split(rf"^## (?={prefix}-)", text, flags=re.MULTILINE)[1:]:
+        assert re.search(r"^- \*\*Status:\*\* ", entry, flags=re.MULTILINE), entry[:40]
+        for line in re.findall(r"^- \*\*Sources:\*\*(.*)$", entry, flags=re.MULTILINE):
+            for ref in re.findall(r"`([^`]+)`", line):
+                assert ref in works or Path(ref).exists(), f"{entry[:5]} cites unknown {ref}"
 
 
 def test_arrhenius_1999_witness_needs_every_principle_and_no_completeness() -> None:

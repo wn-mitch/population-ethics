@@ -1,6 +1,6 @@
 schema = "population-ethics.literature/v1"
 
-# Prior work checked against the breakthrough-search results in research/REPORT.md.
+# Prior work checked against the breakthrough-search results in docs/journal/2026-09-22-turn-1.md.
 # Kept apart from sources.toml because that file's hash is recorded in run provenance.
 #
 # read: "firsthand" (full text read), "partial" (named sections read),
@@ -468,12 +468,13 @@ citations = [
 ]
 
 # ---------------------------------------------------------------------------
-# Collision verdicts for research/REPORT.md results
+# Collision verdicts for docs/journal/2026-09-22-turn-1.md results
 # ---------------------------------------------------------------------------
 # verdict: "collides", "partial", or "none-found". none-found covers the sources above only.
 
 [[collisions]]
 result = "R1"
+ledger = ["P2-min-incomparability"]
 verdict = "partial"
 sources = ["arrhenius-2000-ep", "arrhenius-1999-weak-ordering"]
 known = "The E&P 2000 theorem fails without completeness, and Arrhenius names where completeness enters (2000 p. 264, fn 31; 1999 p. 12)."
@@ -481,6 +482,7 @@ open = "No source counts or locates the incomparabilities. The minimum of 4 pair
 
 [[collisions]]
 result = "R2"
+ledger = ["M1c-same-number-completeness", "P2-same-number-escape"]
 verdict = "partial"
 sources = ["bbd-1996-quasi-orderings", "bbd-2005-population-issues", "lts-2024-incompleteness", "tls-dominance-against-incompleteness", "gustafsson-2020-fourth", "arrhenius-2022-conflict-imprecision", "arrhenius-2000-thesis"]
 known = "Same-number-complete, different-number-incomplete axiologies (Critical-Band Utilitarianism) are an established program and are reported to avoid the Repugnant and Sadistic Conclusions of Arrhenius 2000. Parfit's quarantine and Different-Number-Based Imprecision are the same idea informally."
@@ -488,6 +490,7 @@ open = "The different-number-only UNSAT half and the 'at least two different-num
 
 [[collisions]]
 result = "R3"
+ledger = ["C1-combined-weakening", "M1-local-completeness-avoidance", "M2-reverse-weak-avoidance"]
 verdict = "collides"
 sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2003-vrc", "arrhenius-2009-one-more", "thomas-2016-reconstructing"]
 known = "Positive at-least-as-good avoidance conditions over a quasi-ordering, with no completeness, is Arrhenius's own method from 1999 on; fn 3 of the 1999 paper restates E&P Non-Anti-Egalitarianism in that form."
@@ -495,6 +498,7 @@ open = "Only the four-pair partial-completeness version for the exact E&P 2000 c
 
 [[collisions]]
 result = "R4"
+ledger = ["M3-transitivity"]
 verdict = "partial"
 sources = ["arrhenius-2000-thesis", "arrhenius-2022-without-transitivity", "parent-benzmuller-2024-hol", "voigt-2026-theory-x", "bossert-cato-kamaga-2022-suzumura"]
 known = "Suzumura consistency equals transitivity under completeness (standard). Acyclicity and quasi-transitivity escape Parfit's Mere Addition Paradox (Parent & Benzmüller; Voigt §7 on a three-world model). Arrhenius concedes the weak-link cycles are not strict and moves to acyclicity, Maximality, or normative versions."
@@ -502,6 +506,7 @@ open = "Minimum transitivity-core sizes (5 and 7) and their counts."
 
 [[collisions]]
 result = "R5"
+ledger = ["P6-relaxed-p1q1", "P6-relaxed-p1q2", "P6-relaxed-p1q3", "P6-relaxed-p1q4"]
 verdict = "partial"
 sources = ["thomas-2018-possibilities", "thornley-2022-prospect", "arrhenius-2000-thesis"]
 known = "Whether category gaps and Archimedean structure hold decides whether Non-Anti-Egalitarianism-based derivations go through; Arrhenius replaces the categories with ranges R(u,v), R(1,y), u > y."
@@ -509,6 +514,7 @@ open = "The three-condition triangle itself; it remains a formalization diagnost
 
 [[collisions]]
 result = "R6"
+ledger = ["P6-gapped-p1q1", "P6-skeleton-gapped-p1q1-0", "P6-skeleton-gapped-p1q1-1", "P6-skeleton-gapped-p1q1-2", "P6-skeleton-gapped-p1q1-3", "P6-skeleton-gapped-p1q1-4", "P6-skeleton-gapped-p1q1-5", "P7-known-ground-R6"]
 verdict = "partial"
 sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "arrhenius-2003-vrc"]
 known = "The outer frame is the 1999 theorem (thesis Theorem 3) at p = q = 1, r = 5: MNEP on (14) gives (−1,14,14) ⪰ (7,7,14); Non-Sadism on (14,14) gives (1⁵,14,14) ⪰ (−1,14,14); the single inequality step compares 5⁷ with (1⁵,14,14). Putting the negative life inside the added low group and removing it with an MNEP-type bridge on a very-low background is the Lemma 3 device of 2009 and Lemma 1.3 of 2011."

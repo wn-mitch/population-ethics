@@ -72,7 +72,7 @@ CORE = [
     Instance("arrhenius-1999:non-sadism", (POPULATIONS["AAF"], POPULATIONS["AAE"])),
 ]
 
-# R6 as found on the gapped grid by Phase 6 (REPORT.md R6).
+# R6 as found on the gapped grid by Phase 6 (docs/journal/2026-09-22-turn-1.md R6).
 R6_CORE = [
     Instance("dominance", (_pop((7, 7)), _pop((6, 7)))),
     Instance("dominance", (_pop((6, 7)), _pop((5, 7)))),

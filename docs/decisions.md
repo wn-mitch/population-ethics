@@ -1,0 +1,111 @@
+# Formalization decisions
+
+Settled and open choices about how the sources are formalized. Each entry has a status
+(settled or open), the sources it rests on, and what depends on it. A decision is changed by
+adding a new entry that supersedes the old one; the old entry stays, marked superseded.
+
+Sources are backticked `corpus/literature.toml` work ids or repository paths. A test checks that
+every one resolves.
+
+## D-001. Result labels and formalization tiers
+
+- **Status:** settled.
+- **Sources:** `docs/journal/2026-09-22-turn-1.md`.
+- **Decision:** every result carries a scope label (finite computational result, bounded
+  conjecture, unrestricted conjecture, checked theorem) and a formalization tier (frozen
+  source-reviewed witness, source-constrained fixed-skeleton generalization, rational-cardinal
+  spacing sensitivity, logical mutation, unreviewed schema generalization).
+- **Consequences:** the ledger has since used tiers outside this list (solver-discovered proof
+  skeleton, frozen agent-read witness, role correspondence). New tiers are allowed but must be
+  named in the ledger row.
+
+## D-002. Literature verdicts override solver-side novelty
+
+- **Status:** settled.
+- **Sources:** `corpus/literature.toml`, `research/render_ledger.py`.
+- **Decision:** ledger rows default to `novelty_status = candidate-new-result`. A
+  `[[collisions]]` entry lists the ledger rows it covers in `ledger`, and its verdict replaces
+  the novelty column in `docs/results.md`.
+
+## D-003. The frozen 2000 witness
+
+- **Status:** settled.
+- **Sources:** `arrhenius-2000-ep`, `corpus/sources.toml`.
+- **Decision:** `arrhenius-2000.selected-witness/v1` (problem `eef25016…`) is the
+  human-source-reviewed finite instance: grid {−1, 1, 2, 3, 4, 8}, very high 8, p=1, q=2, m=19.
+  Turn-1 results are about its seven active relata A, AB, AC, AAE, AAF, D, G unless stated
+  otherwise. The Phase 1 restriction lemma carries them to all 12 names.
+
+## D-004. Category membership is declared, not derived
+
+- **Status:** settled for v0; revisited by Q-004.
+- **Sources:** `arrhenius-2000-ep`, `research/p6_schema.py`.
+- **Decision:** grids declare which levels are very high, very low and slightly negative. The
+  integers carry order, averages and category membership only. The v0 grids are baseline
+  {−1,1,2,3,4,8}, relaxed {−1,1,5,6,7,8} and gapped {−1,1,5,6,7,14}.
+- **Consequences:** order-only categories admit the R5 triangle; the source's implicit gap
+  between very high and very low is not encoded.
+
+## D-005. Schema v0 instantiation and witness
+
+- **Status:** settled for v0; superseded when schema v1 lands.
+- **Sources:** `research/schema.py`, `docs/journal/2026-09-22-turn-1.md`.
+- **Decision:** universal principles are instantiated over D_N, the nonempty multisets of at most
+  N lives over the grid levels. Existentials are fixed by W: the Repugnance witness is one life
+  at the top very-high level, and MNEP uses n = q. UNSAT over D_N refutes "v0 + W" only.
+- **Consequences:** v0 is unreviewed. No v0 result is a claim about Arrhenius's unrestricted
+  theorem.
+
+## D-006. R6 Addition reading
+
+- **Status:** settled.
+- **Sources:** `arrhenius-2000-ep` (p. 261).
+- **Decision:** formal Addition requires a_i > b_j > c_h and m > n, with no positivity condition
+  on the lower group, so it may contain the slightly negative life.
+  `research/schema.py` implements exactly these three conditions.
+
+## D-007. MNEP backgrounds
+
+- **Status:** settled.
+- **Sources:** `arrhenius-2000-ep` (p. 261).
+- **Decision:** formal MNEP appends the same background D_k, k ≥ 0, to both sides, so MNEP
+  instances range over every background, including the empty one.
+
+## D-008. The 1999 witness
+
+- **Status:** settled; agent-read, not human-reviewed.
+- **Sources:** `arrhenius-1999-weak-ordering`, `corpus/sources.toml`, `research/p7_arrhenius1999.py`.
+- **Decision:** `arrhenius-1999.selected-witness/v1` fixes p = q = 1, r = 5 on the gapped grid,
+  with very-low levels 1 < 5 < 7, very high 14 and slightly negative −1. Its five principles
+  exist only as frozen instances with a dedicated audit, not as generators.
+
+## D-009. Role correspondences
+
+- **Status:** settled as a project judgment.
+- **Sources:** `research/known.py`, `arrhenius-1999-weak-ordering`, `arrhenius-2000-ep`.
+- **Decision:** principles from different papers share a role when they occupy the same place
+  in a proof: Non-Anti-Egalitarianism and Minimal Inequality Aversion are
+  `inequality-aversion`; Non-Repugnance is `quality` (Quality Addition on an empty background).
+  Shapes are normalized for the complete branch, where ¬(X ≻ Y) is Y ⪰ X.
+- **Consequences:** a known-ground match says two proofs have the same dependency shape, not
+  that their conditions are equivalent. Matches are meaningful only for complete-branch cores.
+
+## D-010. Principle readings pass a review-first gate
+
+- **Status:** settled.
+- **Sources:** project decision.
+- **Decision:** no principle enters instance generation or the known-ground catalogue until it
+  has a reading in `corpus/readings.toml` with a verbatim source excerpt and page, written by
+  one agent and independently confirmed by a second agent that reads the source cold
+  (`agent-cross-read`). The user may upgrade a reading to `human-reviewed`. Disagreement blocks
+  the reading until a decision entry resolves it.
+- **Consequences:** v0 principles and the five 1999 principles must be re-read under the gate
+  before schema v1 replaces v0.
+
+## D-011. Edge realizations are recorded data
+
+- **Status:** settled.
+- **Sources:** project decision.
+- **Decision:** a judgment that a lemma chain realizes an abstract edge (for example, 2009
+  Lemma 3 realizing Restricted Quality Addition) is recorded once, with source and reason, and
+  verified by test for entailment and realizability. It is never re-judged per session.

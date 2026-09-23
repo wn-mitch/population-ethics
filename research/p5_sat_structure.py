@@ -178,7 +178,7 @@ def _ledger(data: dict[str, Any]) -> None:
             evidence_type="exhaustive enumeration",
             checked=True,
             minimal="n/a",
-            interpretation="See REPORT.md for the backbone of each region.",
+            interpretation="See docs/journal/2026-09-22-turn-1.md for the backbone of each region.",
             next_experiment="characterize backbones as closed-form orders",
             result_scope="finite computational result",
             formalization_tier="frozen source-reviewed witness",

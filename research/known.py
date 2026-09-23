@@ -58,7 +58,9 @@ def normalize(core: Sequence[Instance]) -> tuple[list[Pop], list[Edge]]:
 @dataclass(frozen=True)
 class KnownSkeleton:
     id: str
-    sources: tuple[str, ...]  # corpus/literature.toml work ids, or research/REPORT.md results
+    sources: tuple[
+        str, ...
+    ]  # corpus/literature.toml work ids, or docs/journal/2026-09-22-turn-1.md results
     relata: tuple[str, ...]
     edges: tuple[Edge, ...]
     note: str
@@ -108,7 +110,7 @@ CATALOGUE: tuple[KnownSkeleton, ...] = (
     ),
     _from_instances(
         "project-r5-triangle",
-        ("REPORT.md#R5",),
+        ("docs/journal/2026-09-22-turn-1.md#R5",),
         ("bundle", "(q+1)·b", "(q+1)·c"),
         [
             Instance("mnep", (_p(0), _p(1))),
@@ -119,7 +121,7 @@ CATALOGUE: tuple[KnownSkeleton, ...] = (
     ),
     _from_instances(
         "project-r6-gapped",
-        ("REPORT.md#R6",),
+        ("docs/journal/2026-09-22-turn-1.md#R6",),
         ("A", "AB", "AC'", "AAE", "AAF", "7⁷", "6⁷", "5⁷"),
         [
             Instance("addition", (_p(0), _p(1), _p(2))),
