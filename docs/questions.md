@@ -80,8 +80,14 @@ delete it.
   sets (for example (−1⁵, 4) ⪰_δ 3⁶ ≻_ED (−1³, 0³) ⪰_β (−1⁵, 4)), and the known-ground
   matcher identifies it with the R5 triangle at the role level. So a satisfying axiology must let
   δ's n grow with m, as the GNEP realization of δ does (n = 4 for z = −1).
-- **Settles it:** a general proof of the firing condition for arbitrary witnesses, and a check
-  whether Arrhenius states the growth requirement (thesis Lemma 5.2, 2009 Lemma 2).
+- **Firing condition (P10-triangle-firing-condition).** The only rotation that closes is
+  δ(X ⪰ Y), ED(Y ≻ Z), β(Z ⪰ X). ED forces Y to be n+m lives at W_3 and Z to lie below W_3, so
+  β's background holds only δ's negative lives. The triangle fires iff some m with n = n_δ(m)
+  has m_β(n) ≤ m (= m for Inequality Aversion), within the bound, given a level strictly
+  between the negative level and W_3. The prediction matches the census on all 108 witnesses of
+  the Phase 10 grid (24 fire).
+- **Settles it:** a written proof of necessity at every size, and a check whether Arrhenius
+  states the growth requirement (thesis Lemma 5.2, 2009 Lemma 2).
 
 ## Q-008. The fork motif in general
 
@@ -90,3 +96,17 @@ delete it.
   fork plus two strict paths converging on its middle argument, at any size.
 - **Settles it:** a written proof (each disjunct must close its own strict cycle, and minimality
   forces the union of two such paths), then extension to two forks.
+
+## Q-009. Exchange rates, not growth: repeated δ steps
+
+- **Status:** open.
+- **Observation (P10-safe-census-arrhenius-2003-vrc):** with δ's n growing by 5 per negative
+  life, the triangle disappears, but over {δ, 2003 β, Egalitarian Dominance} a 5-cycle
+  δ, δ, ED, β, β survives with β's step 1:
+  (−1², 3, 4²) ⪰_δ (−1, 3³, 4) ⪰_δ 3⁵ ≻_ED 1⁵ ⪰_β (0³, 4²) ⪰_β (−1², 3, 4²).
+  It applies δ twice with m = 1. Growth in m cannot protect against repeating the cheapest δ
+  step, so the constraint is on the exchange rate δ allows per negative life against the rate β
+  demands. With β's step 2 or 3 no cycle of length ≤ 5 survives at ≤ 6 lives.
+- **Settles it:** a characterization of the cycles δ^a β^b ED in terms of both witnesses'
+  rates, tested against the census over a witness grid; then whether any witness family avoids
+  every such cycle while keeping the source proofs.

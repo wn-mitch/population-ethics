@@ -69,9 +69,9 @@ def _bags(levels: Sequence[int], size: int) -> list[Pop]:
 # them and `validate` checks the constraints the source's quantifier prefix places on them.
 
 WITNESS_FIELDS: dict[str, tuple[str, ...]] = {
-    "quantity": ("step",),  # m = n + step, step >= 1 (∃m > n)
+    "quantity": ("step",),  # m = mult·n + step (∃m > n); optional "mult" >= 1, default 1
     "quality": ("u", "v", "y", "n"),  # R(u, v), R(1, y), u > y, n > 0
-    "inequality-aversion": ("step",),  # m = n + step
+    "inequality-aversion": ("step",),  # m = mult·n + step
     "non-extreme-priority": ("x", "y", "z", "n"),  # W_x, W_y (y < 0), R(1, z), x > z
     "weak-quality-addition": ("x", "w", "y", "n"),  # R(x, w), R(1, y), x > y
     "non-elitism": ("n",),  # n > 0, uniform over (x, y)
@@ -79,10 +79,20 @@ WITNESS_FIELDS: dict[str, tuple[str, ...]] = {
     "weak-non-sadism": ("x", "n"),  # W_x, x < 0
     "vrc-avoidance": ("x", "u", "v", "y", "n", "m"),  # x < 0, R(u, v), R(1, y), u > y
     "weak-quality-addition-negative": ("x", "u", "v", "y", "n", "m"),
-    "condition-beta": ("step",),  # m = n + step
-    "condition-delta": ("u", "y", "n"),  # uniform in (z, m)
+    "condition-beta": ("step",),  # m = mult·n + step
+    "condition-delta": ("u", "y", "n"),  # n(m) = n + n_per_m·(m − 1); optional "n_per_m" >= 0
     "restricted-quality-addition": ("x", "y", "n", "m"),  # W_x, R(1, y), x > y
 }
+
+
+def larger(w: Mapping[str, int], n: int) -> int:
+    """The witness for an "∃ m > n" existential: m = mult·n + step."""
+    return w.get("mult", 1) * n + w["step"]
+
+
+def delta_n(w: Mapping[str, int], m: int) -> int:
+    """Condition δ's n for m negative lives: n + n_per_m·(m − 1), growing with m if n_per_m > 0."""
+    return w["n"] + w.get("n_per_m", 0) * (m - 1)
 
 
 @dataclass(frozen=True)
@@ -111,7 +121,7 @@ def validate(form: str, ladder: Ladder, w: Mapping[str, int]) -> None:
             problems.append(what)
 
     if form in {"quantity", "inequality-aversion", "condition-beta"}:
-        need(w["step"] >= 1, "step >= 1")
+        need(w["step"] >= 1 and w.get("mult", 1) >= 1, "step >= 1, mult >= 1")
     if form == "quality":
         need(_is_range(ladder, w["u"], w["v"]) and w["u"] > 0, "R(u, v) positive range")
         need(_is_range(ladder, 1, w["y"]), "R(1, y) range")
@@ -130,7 +140,7 @@ def validate(form: str, ladder: Ladder, w: Mapping[str, int]) -> None:
     if form in {"general-non-extreme-priority", "condition-delta"}:
         need(ladder.has(w["u"]) and w["u"] > 0, "W_u positive")
         need(_is_range(ladder, 1, w["y"]) and w["u"] > w["y"], "R(1, y) below W_u")
-        need(w["n"] > 0, "n > 0")
+        need(w["n"] > 0 and w.get("n_per_m", 0) >= 0, "n > 0, n_per_m >= 0")
     if form == "weak-non-sadism":
         need(ladder.has(w["x"]) and w["x"] < 0 and w["n"] >= 1, "W_x negative, n >= 1")
     if form in {"vrc-avoidance", "weak-quality-addition-negative"}:
@@ -229,7 +239,7 @@ def _moves(form: str, ladder: Ladder, w: Mapping[str, int], cap: int) -> Iterato
             x = y + 1
             if ladder.has(x):
                 for n in sizes:
-                    m = n + w["step"]
+                    m = larger(w, n)
                     if m <= cap:
                         yield Move((y,) * m, (x,) * n, ())
     elif form == "quality":
@@ -256,7 +266,7 @@ def _moves(form: str, ladder: Ladder, w: Mapping[str, int], cap: int) -> Iterato
         for x, y, z in product(levels, repeat=3):
             if x > y > z:
                 for n in sizes:
-                    m = n + w["step"]
+                    m = larger(w, n)
                     if m + n <= cap:
                         yield Move((y,) * (m + n), _plus((x,) * n, (z,) * m), ())
     elif form == "non-sadism-equal":
@@ -300,14 +310,14 @@ def _moves(form: str, ladder: Ladder, w: Mapping[str, int], cap: int) -> Iterato
         for x, y, z in product(levels, repeat=3):
             if x > y > z:
                 for n in sizes:
-                    m = n + w["step"]
+                    m = larger(w, n)
                     bg = ladder.range(z, y + 1) if form == "condition-beta-ranged" else None
                     yield Move((y,) * (m + n), _plus((x,) * n, (z,) * m), bg)
     elif form == "condition-delta":
-        n = w["n"]
         if ladder.has(3):
             for z in neg:
                 for m in sizes:
+                    n = delta_n(w, m)
                     for x in [v for v in levels if v >= w["u"]]:
                         for b in _bags(ladder.range(1, w["y"]), n):
                             yield Move(_plus((x,) * n, (z,) * m), _plus(b, (3,) * m), None)
@@ -387,7 +397,7 @@ def _added_ok(
     lo = ladder.range
     if form == "quantity":
         y, x = _single(lp), _single(rp)
-        return y is not None and x is not None and y > 0 and x == y + 1 and n_l == n_r + w["step"]
+        return y is not None and x is not None and y > 0 and x == y + 1 and n_l == larger(w, n_r)
     if form == "quality":
         z = _single(lp)
         return (
@@ -402,7 +412,7 @@ def _added_ok(
         if y is None or len(rp) != 2:
             return False
         z, x = sorted(rp)
-        return x > y > z and rp[z] == rp[x] + w["step"] and n_l == rp[x] + rp[z]
+        return x > y > z and rp[z] == larger(w, rp[x]) and n_l == rp[x] + rp[z]
     if form == "non-sadism-equal":
         x, y = _single(lp), _single(rp)
         return x is not None and y is not None and x > 0 and y < 0
@@ -467,9 +477,9 @@ def _added_ok(
             and _levels_in(low, lambda v: v in lo(1, w["y"]))
         )
     if form == "condition-delta":
-        n = w["n"]
         for z in [v for v in lp if v < 0]:
             m = lp[z]
+            n = delta_n(w, m)
             high = lp - Counter({z: m})
             low = rp - Counter({3: m})
             x = _single(high)

@@ -454,12 +454,36 @@ LADDER_WITNESS = {
 }
 
 
-def test_ladder_audit_accepts_exactly_the_generated_instances() -> None:
+GROWING_WITNESS = {
+    **LADDER_WITNESS,
+    "quantity": {"step": 1, "mult": 2},
+    "inequality-aversion": {"step": 1, "mult": 2},
+    "condition-beta": {"step": 2},
+    "condition-delta": {"u": 4, "y": 3, "n": 1, "n_per_m": 1},
+}
+
+
+GROWING_PRINCIPLES = [
+    "thesis:quantity",
+    "thesis:inequality-aversion",
+    "thesis:condition-beta",
+    "arrhenius-2003:condition-beta",
+    "thesis:condition-delta",
+]
+
+
+@pytest.mark.parametrize(
+    ("params", "negative", "lives", "only"),
+    [(LADDER_WITNESS, 2, 3, None), (GROWING_WITNESS, 1, 4, GROWING_PRINCIPLES)],
+)
+def test_ladder_audit_accepts_exactly_the_generated_instances(
+    params: dict[str, Any], negative: int, lives: int, only: list[str] | None
+) -> None:
     from research.ladder import FORM, Ladder, Witness, audit, domain, instances_over
 
-    ladder, witness = Ladder(2, 6), Witness(LADDER_WITNESS)
-    pops = domain(ladder, 3)
-    for principle in FORM:
+    ladder, witness = Ladder(negative, 6), Witness(params)
+    pops = domain(ladder, lives)
+    for principle in only or FORM:
         generated = {i.args for i in instances_over(pops, ladder, witness, [principle])}
         assert generated, f"{principle} generates nothing on this domain"
         audited = {
@@ -687,3 +711,27 @@ def test_cycle_census_agrees_with_marco_and_rediscovers_theorem_1() -> None:
     assert bottom_up == top_down
     source = tuple(i.principle for i in _cycle_order(THEOREM_1.instances()))
     assert min(source[i:] + source[:i] for i in range(5)) in top_down
+
+
+@pytest.mark.parametrize(
+    ("n_per_m", "step", "fires"), [(0, 1, True), (2, 1, False), (0, 3, True), (1, 3, False)]
+)
+def test_triangle_firing_condition_matches_the_census(n_per_m: int, step: int, fires: bool) -> None:
+    from research.census import cycle_words
+    from research.ladder import Witness, domain, instances_over
+    from research.p8_catalogue import LADDER, WITNESS
+    from research.p10_witness_families import triangle_predicted
+
+    delta = {"u": 4, "y": 3, "n": 1, "n_per_m": n_per_m}
+    beta = {"step": step}
+    witness = Witness({**WITNESS.params, "condition-delta": delta, "condition-beta": beta})
+    pops = [p for p in domain(LADDER, 5) if max(p) <= 4]
+    principles = [
+        "arrhenius-2003:condition-delta",
+        "arrhenius-2003:condition-beta",
+        "arrhenius-2003:egalitarian-dominance",
+    ]
+    found = any(
+        len(w.word) == 3 for w in cycle_words(instances_over(pops, LADDER, witness, principles), 3)
+    )
+    assert triangle_predicted(LADDER, delta, beta, "any", 5) == found == fires
