@@ -59,10 +59,34 @@ delete it.
 
 ## Q-006. The cycle/fork hypothesis
 
-- **Status:** open.
+- **Status:** closed by P9-l0-cycle-motif and P9-l0-fork-motif. Fork-free minimal cores are
+  exactly simple strict cycles (a standard difference-constraint fact; enumeration to 6 edges
+  matches the necklace counts). One-fork cores are the fork plus two strict paths converging on
+  its middle argument (enumeration to 5 edges; the general proof is Q-008). Every thesis-family
+  condition is fork-free, so all of its minimal cores are cycles.
 - **Claim:** under completeness every principle shape is a difference constraint over ranks (W,
   S, or the disjunction I), so a skeleton's unsatisfiability depends only on its shape
   hypergraph. Minimal cores are then simple cycles with at least one strict edge (no I edge) or
   forced-comparability forks (with I edges).
 - **Settles it:** exhaustive enumeration of minimal UNSAT shape hypergraphs up to a bound in the
   motif census.
+
+## Q-007. R7: the priority triangle recurs in the thesis family
+
+- **Status:** open; formalization diagnostic, literature unchecked.
+- **Claim:** Condition δ, Condition β (or Inequality Aversion) and Egalitarian Dominance close a
+  3-cycle whenever δ's witness n for (z, m) satisfies m ≥ m_β(n), where m_β(n) is β's witness for
+  n. The census finds it on the Phase 8 witness inside the 2003, Theorem 4 and 2009 condition
+  sets (for example (−1⁵, 4) ⪰_δ 3⁶ ≻_ED (−1³, 0³) ⪰_β (−1⁵, 4)), and the known-ground
+  matcher identifies it with the R5 triangle at the role level. So a satisfying axiology must let
+  δ's n grow with m, as the GNEP realization of δ does (n = 4 for z = −1).
+- **Settles it:** a general proof of the firing condition for arbitrary witnesses, and a check
+  whether Arrhenius states the growth requirement (thesis Lemma 5.2, 2009 Lemma 2).
+
+## Q-008. The fork motif in general
+
+- **Status:** open.
+- **Claim:** every minimal rank-inconsistent hypergraph with exactly one Addition fork is the
+  fork plus two strict paths converging on its middle argument, at any size.
+- **Settles it:** a written proof (each disjunct must close its own strict cycle, and minimality
+  forces the union of two such paths), then extension to two forks.

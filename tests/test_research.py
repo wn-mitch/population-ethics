@@ -4,6 +4,7 @@ import json
 import random
 import re
 import tomllib
+from collections import Counter
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
@@ -632,3 +633,57 @@ def test_ladder_generation_over_a_sparse_universe_keeps_every_instance() -> None
         i for i in instances_over(full, ladder, witness, FORM) if all(x in universe for x in i.args)
     }
     assert set(instances_over(universe, ladder, witness, FORM)) == expected
+
+
+def test_rank_sat_agrees_with_z3_on_random_shape_hypergraphs() -> None:
+    from research.census import rank_sat
+
+    rng = random.Random(21)
+    for trial in range(300):
+        n = rng.randint(3, 5)
+        edges = []
+        for _ in range(rng.randint(1, 6)):
+            shape = rng.choice("WWSI")
+            args = tuple(rng.sample(range(n), 3 if shape == "I" else 2))
+            edges.append((shape, args))
+        pops: list[Pop] = [(k,) for k in range(n)]
+        principle = {"W": "mnep", "S": "dominance", "I": "addition"}
+        insts = [Instance(principle[s], tuple(pops[a] for a in args)) for s, args in edges]
+        expected = RankEngine(pops, insts).check(list(range(len(insts))))[0] == "sat"
+        assert rank_sat(n, edges) == expected, (trial, edges)
+
+
+def test_minimal_cores_are_strict_cycles_and_fork_motifs_with_necklace_counts() -> None:
+    from research.census import is_fork_motif, is_simple_cycle, minimal_cores
+    from research.p9_census import necklaces_with_a_strict_edge
+
+    cycles = minimal_cores(5, frozenset({"W", "S"}))
+    counts = Counter(len(c[1]) for c in cycles.minimal)
+    assert all(is_simple_cycle(c) for c in cycles.minimal)
+    assert [counts[n] for n in range(2, 6)] == [
+        necklaces_with_a_strict_edge(n) for n in range(2, 6)
+    ]
+    assert [necklaces_with_a_strict_edge(n) for n in range(2, 7)] == [2, 3, 5, 7, 13]
+    forks = [c for c in minimal_cores(4, max_forks=1).minimal if any(s == "I" for s, _ in c[1])]
+    assert len(forks) == 36 and all(is_fork_motif(c) for c in forks)
+    # A fork with one strict path only is satisfiable, so it is never reported.
+    assert not is_fork_motif((4, (("I", (0, 1, 2)), ("S", (0, 1)), ("W", (2, 3)))))
+
+
+def test_cycle_census_agrees_with_marco_and_rediscovers_theorem_1() -> None:
+    from research.census import cycle_words
+    from research.ladder import domain as ladder_domain
+    from research.ladder import instances_over as ladder_over
+    from research.p8_catalogue import LADDER, THEOREM_1, WITNESS
+    from research.p9_census import _cycle_order, _mus_words
+
+    principles = sorted({p for p, _, _ in THEOREM_1.core})
+    universe = set(random.Random(8).sample(ladder_domain(LADDER, 4), 80))
+    universe |= set(THEOREM_1.populations.values())
+    insts = ladder_over(universe, LADDER, WITNESS, principles)
+    bottom_up, kinds, count = _mus_words(insts)
+    top_down = {w.word for w in cycle_words(insts, 16)}
+    assert count >= 1 and set(kinds) == {"cycle"}
+    assert bottom_up == top_down
+    source = tuple(i.principle for i in _cycle_order(THEOREM_1.instances()))
+    assert min(source[i:] + source[:i] for i in range(5)) in top_down

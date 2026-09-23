@@ -29,7 +29,8 @@ searches for proof skeletons, minimal cores and escapes, and compares them with 
 - `research/ladder.py`: thesis-family principles (thesis, 2003, 2009) over an ordinal ladder of
   consecutive levels, with validated existential witnesses and an independent audit.
 - `research/pN_*.py`: phase scripts; `just research` reruns them all. Phase 8 freezes and
-  verifies every catalogued Arrhenius theorem after 1999.
+  verifies every catalogued Arrhenius theorem after 1999; Phase 9 runs the motif census
+  (`research/census.py`).
 
 ## Rules
 
