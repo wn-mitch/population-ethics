@@ -27,6 +27,7 @@ research:
     uv run python -m research.p8_catalogue
     uv run python -m research.p9_census
     uv run python -m research.p10_witness_families
+    uv run python -m research.p11_possibility
     uv run python -m research.render_ledger
 
 # Regenerate docs/results.md from the ledger and literature verdicts.

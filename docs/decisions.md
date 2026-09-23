@@ -182,3 +182,19 @@ every one resolves.
   solver-found example chain that a test re-verifies (audit, and entailment in every preorder).
   The 2000 derivation of the 1999 Quality Addition edge uses Addition's fork and completeness,
   so it is not a path and is not yet a realization.
+
+## D-018. Consistency evidence comes only from exact model checks
+
+- **Status:** settled.
+- **Sources:** `research/additive.py`, `research/lexadd.py`, `research/possibility.py`.
+- **Decision:** a condition set counts as realized only when an axiology satisfies it for every
+  population size. Two classes are decided exactly: additive axiologies (quantifiers over sizes
+  eliminated in closed form, every g), and lexicographic-additive axiologies (per axiology, with
+  counterexamples of any size searched by z3; only outer existential witnesses are grid-bounded).
+  Bounded model checking over a finite universe is not used as consistency evidence. Existential
+  witnesses let a condition's hard instances fall outside any finite universe, and in practice it
+  reported total utilitarianism as avoiding the Very Repugnant Conclusion.
+- **Consequences:** the lexicographic-additive class cancels backgrounds, so it cannot separate
+  background-sensitive conditions (Weak Quality Addition, GNEP) from their background-free
+  counterparts. Gaps involving that difference stay open (Q-010) until a background-sensitive
+  class is checked exactly.

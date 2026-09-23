@@ -110,3 +110,28 @@ delete it.
 - **Settles it:** a characterization of the cycles δ^a β^b ED in terms of both witnesses'
   rates, tested against the census over a witness grid; then whether any witness family avoids
   every such cycle while keeping the source proofs.
+
+## Q-010. Gaps in the possibility map
+
+- **Status:** open.
+- **Setup (P11-possibility-map):** the additive class is decided exactly, and 38
+  lexicographic-additive axiologies are checked exactly. 90 minimal condition sets are realized by
+  none of them. Twenty-seven are explained by a known theorem via the recorded implications; 63
+  are not. Every unexplained set has 4 or 5 conditions.
+- **The leading gaps:**
+  - Theorem 3 with Quality or VRC avoidance in place of Weak Quality Addition.
+  - Theorem 4 with Quality in place of Weak Quality Addition.
+  - The 2003 theorem with NEP or Inequality Aversion in place of GNEP or Non-Elitism.
+  - The 4-set {Egalitarian Dominance, NEP or GNEP, Quantity, VRC avoidance}.
+
+  The census finds no strict cycle for the first and last of these under the Phase 8 witness at
+  ≤ 6 lives.
+- **Reading so far:** most gaps trade a background-sensitive condition for one the
+  lexicographic-additive class cannot distinguish from it. For the 4-set: Quantity with
+  Egalitarian Dominance makes high lives worth finitely many low lives, VRC avoidance makes a few
+  negative lives outweigh any number of low lives, and NEP lets finitely many high lives offset a
+  negative. A contradiction would need to move negatives between levels inside a background,
+  which none of the four conditions provides.
+- **Settles it:** an exact check of a background-sensitive axiology class (for example
+  average-weighted or rank-dependent tiers) that realizes a gap, or a proof. Each proof would be a
+  new impossibility theorem strictly stronger than a known one.

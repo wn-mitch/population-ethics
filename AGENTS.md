@@ -28,6 +28,9 @@ searches for proof skeletons, minimal cores and escapes, and compares them with 
   and the independent audit.
 - `research/ladder.py`: thesis-family principles (thesis, 2003, 2009) over an ordinal ladder of
   consecutive levels, with validated existential witnesses and an independent audit.
+- `research/additive.py`, `research/lexadd.py`: exact satisfaction checks for additive and
+  lexicographic-additive axiologies; `research/possibility.py` maps realized condition sets
+  against the known theorems (D-018).
 - `research/pN_*.py`: phase scripts; `just research` reruns them all. Phase 8 freezes and
   verifies every catalogued Arrhenius theorem after 1999; Phase 9 runs the motif census
   (`research/census.py`).

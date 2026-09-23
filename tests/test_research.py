@@ -735,3 +735,103 @@ def test_triangle_firing_condition_matches_the_census(n_per_m: int, step: int, f
         len(w.word) == 3 for w in cycle_words(instances_over(pops, LADDER, witness, principles), 3)
     )
     assert triangle_predicted(LADDER, delta, beta, "any", 5) == found == fires
+
+
+def test_one_tier_lexadd_verdicts_equal_exact_additive_verdicts() -> None:
+    import z3
+
+    from research.additive import CONDITIONS, AdditiveEngine
+    from research.ladder import Ladder
+    from research.lexadd import CHECKS, LexAxiology, tiers_of
+
+    ladder = Ladder(1, 6)
+    for name, g in (("total", lambda v: v), ("critical-level-3", lambda v: v - 3)):
+        ax = LexAxiology(name, name, tiers_of(ladder, g))
+        for principle in CONDITIONS:
+            engine = AdditiveEngine(ladder, [principle])
+            for level, var in engine.g.items():
+                engine.solver.add(var == z3.RealVal(ax.tiers[0][level]))
+            additive = engine.require([principle]).decision == "sat"
+            assert (CHECKS[principle](ax, ladder) is None) == additive, (name, principle)
+
+
+def test_lexadd_counterexamples_are_audited_instances_the_axiology_fails() -> None:
+    from research.ladder import Ladder, Witness, audit
+    from research.lexadd import (
+        LexAxiology,
+        dominance_addition_thesis,
+        egalitarian_dominance,
+        non_sadism,
+        tiers_of,
+    )
+
+    ladder = Ladder(1, 6)
+    cases = [
+        (non_sadism, "thesis:non-sadism", LexAxiology("cl", "", tiers_of(ladder, lambda v: v - 3))),
+        (
+            dominance_addition_thesis,
+            "thesis:dominance-addition",
+            LexAxiology("cl", "", tiers_of(ladder, lambda v: v - 3)),
+        ),
+        (
+            egalitarian_dominance,
+            "thesis:egalitarian-dominance",
+            LexAxiology("flat", "", tiers_of(ladder, lambda v: min(v, 2))),
+        ),
+    ]
+    for check, principle, ax in cases:
+        v = check(ax, ladder)
+        assert v is not None, principle
+        inst = Instance(principle, (v.left, v.right))
+        assert audit(inst, ladder, Witness({})), (principle, v)
+        a, b = ax.key(v.left), ax.key(v.right)
+        holds = {"W": a >= b, "S": a > b, "N": not a > b}[v.shape]
+        assert not holds, (principle, v)
+
+
+def test_additive_classification_is_the_quality_positivity_dichotomy() -> None:
+    from research.additive import classify
+    from research.ladder import Ladder
+    from research.possibility import PRIMITIVE
+
+    quality = {
+        "thesis:quality",
+        "thesis:weak-quality-addition",
+        "arrhenius-2003:vrc-avoidance",
+        "arrhenius-2009:weak-quality-addition",
+    }
+    positivity = {
+        "thesis:quantity",
+        "thesis:dominance-addition",
+        "arrhenius-2003:dominance-addition",
+        "thesis:non-sadism",
+        "thesis:weak-non-sadism",
+    }
+    result = classify(Ladder(1, 6), PRIMITIVE)
+    muses = {frozenset(m) for m in result["minimal_unrealizable"]}
+    expected = {
+        frozenset({"thesis:egalitarian-dominance", q, p}) for q in quality for p in positivity
+    }
+    assert muses == expected
+
+
+def test_negative_then_critical_level_realizes_a_set_no_lexical_threshold_view_does() -> None:
+    from fractions import Fraction
+
+    from research.ladder import Ladder
+    from research.lexadd import CHECKS, LexAxiology, tiers_of
+
+    ladder = Ladder(1, 6)
+    ax = LexAxiology(
+        "nl-cl",
+        "",
+        tiers_of(ladder, lambda v: min(v, 0), lambda v: Fraction(v) - Fraction(7, 2), lambda v: v),
+    )
+    wanted = [
+        "thesis:egalitarian-dominance",
+        "thesis:inequality-aversion",
+        "thesis:non-sadism",
+        "thesis:quality",
+    ]
+    assert all(CHECKS[p](ax, ladder) is None for p in wanted)
+    assert CHECKS["thesis:non-extreme-priority"](ax, ladder) is not None  # the escape from T3
