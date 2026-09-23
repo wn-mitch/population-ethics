@@ -11,13 +11,14 @@ the declared levels). A finite UNSAT result therefore refutes "v0 schema + W" on
 from __future__ import annotations
 
 from collections import Counter
-from collections.abc import Iterator, Mapping
+from collections.abc import Iterable, Iterator, Mapping
 from dataclasses import dataclass
 from fractions import Fraction
-from itertools import combinations_with_replacement, permutations
+from itertools import combinations_with_replacement, permutations, product
 
 import z3  # type: ignore[import-untyped]
 
+from research.lab import Check
 from research.readings import require_reviewed
 
 Pop = tuple[int, ...]  # sorted multiset of welfare levels
@@ -152,14 +153,48 @@ def instances(grid: Grid, max_lives: int, p: int, q: int) -> Iterator[Instance]:
     return _instances(grid, max_lives, p, q)
 
 
-def _instances(grid: Grid, max_lives: int, p: int, q: int) -> Iterator[Instance]:
-    pops = domain(grid, max_lives)
+def sub_bags(pops: Iterable[Pop]) -> list[Pop]:
+    """Every sub-multiset (including the empty one) of some population in ``pops``.
+
+    A shared background only has to be a sub-bag of both compared populations, so generation
+    over a universe must range over these, not over the universe's members.
+    """
+    out: set[Pop] = {()}
+    for pop in set(pops):
+        counts = sorted(Counter(pop).items())
+        for picks in product(*(range(c + 1) for _, c in counts)):
+            out.add(tuple(v for (v, _), k in zip(counts, picks, strict=True) for _ in range(k)))
+    return sorted(out, key=lambda x: (len(x), x))
+
+
+def instances_over(pops: Iterable[Pop], grid: Grid, p: int, q: int) -> list[Instance]:
+    """Every v0 instance whose populations all lie in ``pops`` (the lazy primitive).
+
+    Backgrounds and bases range over ``pops`` only, so the cost follows the universe, not
+    D_N. ``instances(grid, N, p, q)`` equals ``instances_over(domain(grid, N), grid, p, q)``.
+    """
+    require_reviewed(V0_PRINCIPLES)
+    universe = set(pops)
+    max_lives = max((len(x) for x in universe), default=0)
+    return [
+        inst
+        for inst in _instances(grid, max_lives, p, q, universe)
+        if all(x in universe for x in inst.args)
+    ]
+
+
+def _instances(
+    grid: Grid, max_lives: int, p: int, q: int, universe: set[Pop] | None = None
+) -> Iterator[Instance]:
+    pops = (
+        domain(grid, max_lives) if universe is None else sorted(universe, key=lambda x: (len(x), x))
+    )
     in_d = set(pops)
     by_size: dict[int, list[Pop]] = {}
     for pop in pops:
         by_size.setdefault(len(pop), []).append(pop)
     positive = [v for v in grid.levels if v > 0]
-    backgrounds: list[Pop] = [(), *pops]
+    backgrounds: list[Pop] = [(), *pops] if universe is None else sub_bags(pops)
     witness_a: Pop = (max(grid.very_high),) * p
 
     # Dominance (universal): same size, min X > max Y.
@@ -360,6 +395,42 @@ class RankEngine:
             names = {str(g): j for j, g in enumerate(self.guard)}
             return "unsat", sorted(names[str(g)] for g in self.solver.unsat_core()), None
         raise RuntimeError(f"rank engine returned unknown: {self.solver.reason_unknown()}")
+
+    # MARCO interface (research.lab.marco): soft ids are "i<index>" over the instance list.
+
+    @property
+    def soft(self) -> dict[str, Instance]:
+        return {f"i{j}": inst for j, inst in enumerate(self.instances)}
+
+    def require(self, enabled: Iterable[str] = ()) -> Check:
+        decision, core, _ = self.check(sorted(int(cid[1:]) for cid in set(enabled)))
+        return Check(
+            "sat" if decision == "sat" else "unsat",
+            None,
+            tuple(sorted(f"i{j}" for j in core)),
+            None,
+        )
+
+    def shrink(self, enabled: Iterable[str]) -> tuple[str, ...]:
+        """Deletion-based MUS over soft ids, from a known-UNSAT seed, verified minimal."""
+        first = self.require(enabled)
+        if first.decision != "unsat":
+            raise ValueError("shrink requires an UNSAT seed")
+        mus = [f"i{j}" for j in self.minimize([int(c[1:]) for c in first.core])]
+        for cid in mus:
+            if self.require([x for x in mus if x != cid]).decision != "sat":
+                raise AssertionError("shrink produced a non-minimal core")
+        return tuple(sorted(mus))
+
+    def grow(self, enabled: Iterable[str]) -> tuple[str, ...]:
+        """Grow a SAT soft set to a maximal SAT subset, in sorted id order."""
+        current = set(enabled)
+        if self.require(current).decision != "sat":
+            raise ValueError("grow requires a SAT seed")
+        for cid in sorted(self.soft):
+            if cid not in current and self.require(current | {cid}).decision == "sat":
+                current.add(cid)
+        return tuple(sorted(current))
 
     def minimize(self, core: list[int]) -> list[int]:
         current = sorted(core)

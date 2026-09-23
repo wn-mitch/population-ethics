@@ -24,7 +24,7 @@ from dataclasses import dataclass, field
 from itertools import combinations_with_replacement, product
 
 from research.readings import require_reviewed
-from research.schema import Instance, Pop
+from research.schema import Instance, Pop, sub_bags
 
 LADDER_SCHEMA_ID = "arrhenius-thesis-family.schema/v1"
 
@@ -340,7 +340,7 @@ def instances_over(
         if family is not None:
             w = witness.get(family)
             validate(family, ladder, w)
-        backgrounds: list[Pop] = [(), *sorted(universe)]
+        backgrounds = sub_bags(universe)
         seen: set[tuple[Pop, Pop]] = set()
         for move in _moves(form, ladder, w, cap):
             if move.background_levels == ():

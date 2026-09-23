@@ -577,3 +577,58 @@ def test_l2_recovers_the_1999_skeleton_from_the_primitive_2009_proof() -> None:
     # follows the source is the lemma-level skeleton, which is the 1999 skeleton at L1.
     assert canonical(core, "L1") in forms
     assert known_ground(core)["exact_known"] == "arrhenius-1999"
+
+
+def test_universe_generation_matches_domain_generation_and_filters_exactly() -> None:
+    from research.schema import instances_over
+
+    for n in (2, 3):
+        pops = domain(RELAXED, n)
+        assert set(instances_over(pops, RELAXED, 1, 1)) == set(instances(RELAXED, n, 1, 1))
+    rng = random.Random(3)
+    pops = rng.sample(domain(RELAXED, 3), 40)
+    universe = set(pops)
+    expected = {i for i in instances(RELAXED, 3, 1, 1) if all(x in universe for x in i.args)}
+    assert set(instances_over(pops, RELAXED, 1, 1)) == expected
+
+
+def test_marco_over_ranks_finds_exactly_the_brute_force_muses() -> None:
+    from itertools import combinations
+
+    insts = list(instances(RELAXED, 2, 1, 1))
+    rng = random.Random(9)
+    triangle = [
+        i
+        for i in insts
+        if (i.principle, i.args)
+        in {
+            ("dominance", ((6, 6), (5, 5))),
+            ("non-anti-egalitarianism", ((-1, 8), (5, 5))),
+            ("mnep", ((-1, 8), (6, 6))),
+        }
+    ]
+    chosen = triangle + rng.sample([i for i in insts if i not in triangle], 9)
+    pops = sorted({x for i in chosen for x in i.args})
+    engine = RankEngine(pops, chosen)
+    muses, _ = marco(engine)  # type: ignore[arg-type]
+    unsat = {
+        frozenset(s)
+        for k in range(1, len(chosen) + 1)
+        for s in combinations(range(len(chosen)), k)
+        if engine.check(list(s))[0] == "unsat"
+    }
+    brute = {s for s in unsat if not any(t < s for t in unsat)}
+    assert {frozenset(int(c[1:]) for c in m) for m in muses} == brute
+    assert frozenset(chosen.index(i) for i in triangle) in brute
+
+
+def test_ladder_generation_over_a_sparse_universe_keeps_every_instance() -> None:
+    from research.ladder import FORM, Ladder, Witness, domain, instances_over
+
+    ladder, witness = Ladder(1, 6), Witness(LADDER_WITNESS)
+    full = domain(ladder, 4)
+    universe = set(random.Random(4).sample(full, 300))
+    expected = {
+        i for i in instances_over(full, ladder, witness, FORM) if all(x in universe for x in i.args)
+    }
+    assert set(instances_over(universe, ladder, witness, FORM)) == expected
