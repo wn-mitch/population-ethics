@@ -928,3 +928,21 @@ def test_hybrid_certifier_keeps_plain_certificates_and_rejects_theorem_1() -> No
     cert = hybrid.certify(gap)
     assert cert is not None and "arrhenius-2003:vrc-avoidance" in cert.inert
     assert hybrid.certify(KNOWN_THEOREMS["thesis-theorem-1"]) is None
+
+
+def test_bounce_instance_is_audited_inconsistent_and_needs_every_condition() -> None:
+    from research.lab import background
+    from research.ladder import audit
+    from research.p6_schema import core_constraints, name_of
+    from research.p8_catalogue import _decide
+    from research.p13_bounce import BOUNCE, LADDER, WITNESS
+
+    core = BOUNCE.instances()
+    assert all(audit(i, LADDER, WITNESS) for i in core)
+    names = tuple(sorted(name_of(p) for p in BOUNCE.populations.values()))
+    bg = background(names)
+    constraints = core_constraints(core, "test/v1")
+    hard = [*bg["reflexivity"], *bg["transitivity"], *constraints]
+    assert _decide(hard, names) == "unsat"
+    for principle in {c.principle_id for c in constraints}:
+        assert _decide([c for c in hard if c.principle_id != principle], names) == "sat"

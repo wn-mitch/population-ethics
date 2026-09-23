@@ -141,12 +141,19 @@ delete it.
   Quality Addition, 21 2009 Weak Quality Addition), so a certificate needs a background-sensitive
   axiology. The other three are Q-011.
 - **Why they resist (D-020):** a certificate's axiology must be background-sensitive, because
-  every lexicographic-additive tier cancels backgrounds. Worked case: {Egalitarian Dominance,
-  GNEP, Quantity, 2009 Weak Quality Addition}. GNEP yields δ (2009 Lemma 2), and δ with Weak
-  Quality Addition yields Restricted Quality Addition (2009 Lemma 3). That looks as if it should
-  drive Theorem 1's Quantity chain, but Restricted Quality Addition covers only low populations of
-  at least m lives, with m chosen by the axiology. The Quantity chain ends near n plus the number
-  of levels, so a large m escapes. A model would need to disregard small low populations.
+  every lexicographic-additive tier cancels backgrounds.
+- **One gap was a theorem (P13-bounce-theorem).** {Egalitarian Dominance, GNEP, Quantity, 2009
+  Weak Quality Addition} is inconsistent. GNEP gives δ, and δ with Weak Quality Addition gives
+  Restricted Quality Addition (2009 Lemmas 2–3). Then Egalitarian Dominance, Quantity and
+  Restricted Quality Addition are inconsistent. The size threshold m is defeated by bouncing:
+  q(s) lives at W_1 ⪰ s at W_2 ≻ s at W_1, so the Quantity chain's bottom population grows
+  without bound (research/p13_bounce.py).
+- **Lemma-level probe of the remaining 28.** Derived β, δ and Restricted Quality Addition, safe
+  δ and β witnesses, ≤ 6 lives. Several gaps close cycles, but every one escapes under some
+  misaligned witnesses: Weak Quality Addition's or Weak Non-Sadism's negatives at a level or in a
+  number that NEP or δ cannot absorb. For example, the variant with NEP in place of GNEP escapes
+  under 4 of the 8 witnesses tried. The census therefore gives no robust candidate theorem among
+  them.
 - **Settles it:** an exact check of a background-sensitive axiology class that realizes a gap, or
   a proof. Each proof would be a new impossibility theorem strictly stronger than a known one.
 
@@ -174,3 +181,15 @@ delete it.
   Both weakenings therefore look consistent, not like stronger versions of the 2003 theorem.
 - **Settles it:** a background-sensitive or lexicographic model certified with the certifier's
   method, which would close them; or a cycle under every witness family.
+
+## Q-012. Is the bounce theorem known?
+
+- **Status:** open; literature unchecked.
+- **Claim:** Egalitarian Dominance, Quantity and Restricted Quality Addition are jointly
+  inconsistent. It suffices that some n lives at one level are at least as good as every
+  population of at least m lives in R(1, y). Corollary: Egalitarian Dominance, GNEP, Quantity and
+  2009 Weak Quality Addition are inconsistent.
+- **Why it might be known:** the proof is short. Arrhenius introduced Restricted Quality Addition
+  himself (2009 Lemma 3), and Theorem 1 uses the same chain.
+- **Settles it:** check Arrhenius 2011 (Lemmas 1.1–1.4), the book manuscript, Thomas
+  (reconstruction), and later Arrhenius papers for a size-restricted form of Theorem 1.

@@ -1,0 +1,93 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p13_bounce",
+  "observations": {
+    "wall_time_s": 1.7
+  },
+  "result": {
+    "audit": true,
+    "cli_decision": "unsat",
+    "cli_verify_accepted": true,
+    "core": [
+      [
+        "thesis:quantity",
+        "S0",
+        "C2"
+      ],
+      [
+        "thesis:quantity",
+        "C2",
+        "C3"
+      ],
+      [
+        "thesis:quantity",
+        "C3",
+        "A"
+      ],
+      [
+        "arrhenius-2009:restricted-quality-addition",
+        "A",
+        "S1"
+      ],
+      [
+        "thesis:quantity",
+        "S1",
+        "B2"
+      ],
+      [
+        "thesis:egalitarian-dominance",
+        "B2",
+        "S0"
+      ]
+    ],
+    "decision_without_completeness": "unsat",
+    "drop_one_principle": {
+      "arrhenius-2009:restricted-quality-addition": "sat",
+      "thesis:egalitarian-dominance": "sat",
+      "thesis:quantity": "sat"
+    },
+    "populations": {
+      "A": [
+        4
+      ],
+      "B2": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "C2": [
+        2,
+        2,
+        2
+      ],
+      "C3": [
+        3,
+        3
+      ],
+      "S0": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "S1": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "problem_id": "c84c5271cb980e2c4f6c0a242b02a1a747218d312fc48690af6787bf795eb317",
+    "toml": "research/experiments/project-bounce-restricted-quality-ladder-1-6.toml"
+  },
+  "result_sha256": "05b7f6dd985a7de0fce6b0e12b030a3ade32c537f03f36a9d55a07d6232e16fa",
+  "schema": "population-ethics.research-result/v1"
+}

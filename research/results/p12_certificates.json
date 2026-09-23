@@ -8,7 +8,7 @@
   },
   "name": "p12_certificates",
   "observations": {
-    "wall_time_s": 74.9
+    "wall_time_s": 71.3
   },
   "result": {
     "certified": [
@@ -954,12 +954,6 @@
       [
         "arrhenius-2009:weak-quality-addition",
         "thesis:egalitarian-dominance",
-        "thesis:general-non-extreme-priority",
-        "thesis:quantity"
-      ],
-      [
-        "arrhenius-2009:weak-quality-addition",
-        "thesis:egalitarian-dominance",
         "thesis:non-extreme-priority",
         "thesis:quantity"
       ],
@@ -1154,6 +1148,6 @@
       ]
     ]
   },
-  "result_sha256": "9520336bb8739a6f796cf36afbad527473f7037575c5f4d7aca1ba6dc106b7b5",
+  "result_sha256": "de1309c8373d33472ddb396aaf08ece96cc6070274f27fc8864d37f72d100ace",
   "schema": "population-ethics.research-result/v1"
 }

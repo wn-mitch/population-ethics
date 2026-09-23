@@ -282,6 +282,34 @@ KNOWN_THEOREMS: dict[str, frozenset[str]] = {
 }
 
 
+# Multi-premise derivations proved in the sources: the premises together imply the conclusion.
+DERIVES: tuple[tuple[frozenset[str], str, str], ...] = (
+    (
+        frozenset({"thesis:general-non-extreme-priority"}),
+        "arrhenius-2009:condition-delta",
+        "GNEP implies Condition δ (2009 Lemma 2; thesis Lemma 5.2).",
+    ),
+    (
+        frozenset({"arrhenius-2009:weak-quality-addition", "arrhenius-2009:condition-delta"}),
+        "arrhenius-2009:restricted-quality-addition",
+        "Weak Quality Addition and δ imply Restricted Quality Addition (2009 Lemma 3).",
+    ),
+)
+
+
+# Impossibility results proved in this project (docs/journal, research/p13_bounce.py), kept
+# apart from the published theorems that serve as certifier controls.
+PROJECT_THEOREMS: dict[str, frozenset[str]] = {
+    "project-bounce-restricted-quality": frozenset(
+        {
+            "thesis:egalitarian-dominance",
+            "thesis:quantity",
+            "arrhenius-2009:restricted-quality-addition",
+        }
+    ),
+}
+
+
 def closure(conditions: frozenset[str]) -> frozenset[str]:
     out = set(conditions)
     changed = True
@@ -291,13 +319,18 @@ def closure(conditions: frozenset[str]) -> frozenset[str]:
             if a in out and b not in out:
                 out.add(b)
                 changed = True
+        for premises, b, _ in DERIVES:
+            if premises <= out and b not in out:
+                out.add(b)
+                changed = True
     return frozenset(out)
 
 
 def explained_by(conditions: frozenset[str]) -> list[str]:
     """Known theorems whose conditions the set implies."""
     c = closure(conditions)
-    return sorted(k for k, t in KNOWN_THEOREMS.items() if t <= c)
+    theorems = {**KNOWN_THEOREMS, **PROJECT_THEOREMS}
+    return sorted(k for k, t in theorems.items() if t <= c)
 
 
 def minimal_unrealized(
