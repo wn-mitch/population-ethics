@@ -22,7 +22,10 @@ searches for proof skeletons, minimal cores and escapes, and compares them with 
 - `research/canon.py`: exact (nauty) canonical forms of skeletons at the motif (L0), role (L1)
   and principle levels.
 - `corpus/readings.toml`: cross-read source readings; the review-first gate (`research/readings.py`).
-- `research/schema.py`: the principle schema, instance generation and the independent audit.
+- `research/schema.py`: the 1999/2000 principle schema over numeric grids, instance generation
+  and the independent audit.
+- `research/ladder.py`: thesis-family principles (thesis, 2003, 2009) over an ordinal ladder of
+  consecutive levels, with validated existential witnesses and an independent audit.
 - `research/pN_*.py`: phase scripts; `just research` reruns them all.
 
 ## Rules

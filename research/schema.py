@@ -55,6 +55,41 @@ SHAPE = {
     "arrhenius-1999:quality-addition": "W",
     "arrhenius-1999:non-sadism": "W",
     "arrhenius-1999:minimal-non-extreme-priority": "W",
+    # Thesis-family conditions (research/ladder.py). Egalitarian Dominance is the only strict
+    # condition; thesis Dominance Addition says "not worse"; every other one is at-least-as-good.
+    "thesis:egalitarian-dominance": "S",
+    "arrhenius-2003:egalitarian-dominance": "S",
+    "arrhenius-2009:egalitarian-dominance": "S",
+    "thesis:dominance-addition": "N",
+    **{
+        p: "W"
+        for p in (
+            "thesis:quantity",
+            "thesis:quality",
+            "arrhenius-2003:dominance-addition",
+            "thesis:inequality-aversion",
+            "thesis:non-sadism",
+            "thesis:non-extreme-priority",
+            "thesis:weak-quality-addition",
+            "thesis:non-elitism",
+            "arrhenius-2009:non-elitism",
+            "arrhenius-2003:non-elitism",
+            "thesis:general-non-extreme-priority",
+            "arrhenius-2003:general-non-extreme-priority",
+            "arrhenius-2009:general-non-extreme-priority",
+            "thesis:weak-non-sadism",
+            "arrhenius-2009:weak-non-sadism",
+            "arrhenius-2003:vrc-avoidance",
+            "arrhenius-2009:weak-quality-addition",
+            "thesis:condition-beta",
+            "arrhenius-2009:condition-beta",
+            "arrhenius-2003:condition-beta",
+            "thesis:condition-delta",
+            "arrhenius-2003:condition-delta",
+            "arrhenius-2009:condition-delta",
+            "arrhenius-2009:restricted-quality-addition",
+        )
+    },
 }
 
 

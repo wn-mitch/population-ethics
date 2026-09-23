@@ -63,12 +63,15 @@ def parse(data: Mapping[str, Any]) -> dict[str, Reading]:
             raise ValueError(f"reading {raw.get('principle', '?')} lacks {', '.join(missing)}")
         if raw["review_state"] not in STATES:
             raise ValueError(f"{raw['principle']}: unknown review_state {raw['review_state']}")
-        if raw["principle"] in readings:
-            raise ValueError(f"{raw['principle']}: two readings")
         if raw["review_state"] in REVIEWED and raw["cross_verdict"] != "agree":
             raise ValueError(f"{raw['principle']}: reviewed state without cross-reader agreement")
         extra = {k: v for k, v in raw.items() if k not in REQUIRED}
-        readings[raw["principle"]] = Reading(**{k: raw[k] for k in REQUIRED}, extra=extra)
+        reading = Reading(**{k: raw[k] for k in REQUIRED}, extra=extra)
+        # A lemma's reading also covers the derived condition it states (e.g. Condition β).
+        for key in (raw["principle"], *raw.get("defines", ())):
+            if key in readings:
+                raise ValueError(f"{key}: two readings")
+            readings[key] = reading
     return readings
 
 

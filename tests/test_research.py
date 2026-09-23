@@ -433,3 +433,61 @@ def test_canonical_form_separates_what_colour_refinement_cannot() -> None:
         two, principle_colors=True
     )
     assert canonical(big, "L0") != canonical(two, "L0")
+
+
+LADDER_WITNESS = {
+    "quantity": {"step": 1},
+    "quality": {"u": 4, "v": 6, "y": 3, "n": 1},
+    "inequality-aversion": {"step": 1},
+    "non-extreme-priority": {"x": 4, "y": -1, "z": 3, "n": 1},
+    "weak-quality-addition": {"x": 4, "w": 6, "y": 3, "n": 1},
+    "non-elitism": {"n": 1},
+    "general-non-extreme-priority": {"u": 4, "y": 3, "n": 1},
+    "weak-non-sadism": {"x": -1, "n": 1},
+    "vrc-avoidance": {"x": -1, "u": 4, "v": 6, "y": 3, "n": 1, "m": 1},
+    "weak-quality-addition-negative": {"x": -1, "u": 4, "v": 6, "y": 3, "n": 1, "m": 1},
+    "condition-beta": {"step": 1},
+    "condition-delta": {"u": 4, "y": 3, "n": 1},
+    "restricted-quality-addition": {"x": 4, "y": 3, "n": 1, "m": 1},
+}
+
+
+def test_ladder_audit_accepts_exactly_the_generated_instances() -> None:
+    from research.ladder import FORM, Ladder, Witness, audit, domain, instances_over
+
+    ladder, witness = Ladder(2, 6), Witness(LADDER_WITNESS)
+    pops = domain(ladder, 3)
+    for principle in FORM:
+        generated = {i.args for i in instances_over(pops, ladder, witness, [principle])}
+        assert generated, f"{principle} generates nothing on this domain"
+        audited = {
+            (x, y)
+            for x in pops
+            for y in pops
+            if audit(Instance(principle, (x, y)), ladder, witness)
+        }
+        assert audited == generated, (principle, sorted(audited ^ generated)[:5])
+
+
+def test_ladder_generation_is_nested_and_rejects_bad_witnesses() -> None:
+    from research.ladder import FORM, Ladder, Witness, domain, instances_over
+
+    ladder, witness = Ladder(1, 6), Witness(LADDER_WITNESS)
+    small = set(instances_over(domain(ladder, 3), ladder, witness, FORM))
+    large = set(instances_over(domain(ladder, 4), ladder, witness, FORM))
+    assert small < large
+    bad = {
+        "quality": {"u": 3, "v": 6, "y": 3, "n": 1},  # R(u, v) must lie above R(1, y)
+        "non-extreme-priority": {"x": 4, "y": 1, "z": 3, "n": 1},  # W_y must be negative
+        "general-non-extreme-priority": {"u": 4, "y": 2, "n": 1},  # R(1, 2) has two levels
+        "vrc-avoidance": {"x": -1, "u": 5, "v": 6, "y": 3, "n": 1, "m": 1},  # R(5, 6) too short
+    }
+    for family, params in bad.items():
+        principle = next(p for p, f in FORM.items() if f.startswith(family))
+        with pytest.raises(ValueError, match="witness violates"):
+            instances_over(
+                domain(ladder, 3),
+                ladder,
+                Witness({**LADDER_WITNESS, family: params}),
+                [principle],
+            )

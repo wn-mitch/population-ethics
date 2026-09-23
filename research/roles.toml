@@ -59,3 +59,145 @@ reason = "Positive form of the 2000 Non-Sadism avoidance, over any background."
 id = "arrhenius-1999:minimal-non-extreme-priority"
 role = "priority"
 reason = "The same statement as the 2000 MNEP."
+
+# Thesis-family conditions (research/ladder.py).
+
+[[principles]]
+id = "thesis:egalitarian-dominance"
+role = "dominance"
+reason = "The single strict link: a perfectly equal population beats a same-size one entirely below its level."
+
+[[principles]]
+id = "arrhenius-2003:egalitarian-dominance"
+role = "dominance"
+reason = "Same statement as thesis Egalitarian Dominance (B ⊂ R(Ω, x−1))."
+
+[[principles]]
+id = "arrhenius-2009:egalitarian-dominance"
+role = "dominance"
+reason = "Same statement as thesis Egalitarian Dominance."
+
+[[principles]]
+id = "thesis:quantity"
+role = "quantity"
+reason = "Enough lives one level lower are at least as good as fewer lives one level higher; Theorem 1 chains it down the ladder."
+
+[[principles]]
+id = "thesis:quality"
+role = "quality"
+reason = "A fixed number of lives at any level of a high range is at least as good as any population in a low range; the 1999 Quality Addition place on an empty background."
+
+[[principles]]
+id = "thesis:weak-quality-addition"
+role = "quality"
+reason = "Quality over any shared background, the thesis Theorem 3 and 4 counterpart of 1999 Quality Addition."
+
+[[principles]]
+id = "arrhenius-2009:weak-quality-addition"
+role = "quality"
+reason = "Quality with m negative lives added to the low side, over any background; 2009 Lemma 3 turns it into Restricted Quality Addition."
+
+[[principles]]
+id = "arrhenius-2009:restricted-quality-addition"
+role = "quality"
+reason = "Derived (2009 Lemma 3): quality over any background against low populations of at least m lives."
+
+[[principles]]
+id = "arrhenius-2003:vrc-avoidance"
+role = "quality"
+reason = "A high population is at least as good as any low population plus m negative lives; closes the 2003 cycle where Quality closes the 1999 one."
+
+[[principles]]
+id = "thesis:dominance-addition"
+role = "dominance-addition"
+reason = "Raising a same-size population above a threshold and adding a perfectly equal positive group is not worse."
+
+[[principles]]
+id = "arrhenius-2003:dominance-addition"
+role = "dominance-addition"
+reason = "Weak (at-least-as-good) form of Dominance Addition with any positive added group."
+
+[[principles]]
+id = "thesis:inequality-aversion"
+role = "inequality-aversion"
+reason = "An intermediate perfectly equal population is at least as good as a high-plus-low mixture of the same size; the 1999 Minimal Inequality Aversion place."
+
+[[principles]]
+id = "thesis:condition-beta"
+role = "inequality-aversion"
+reason = "Derived (thesis Lemma 5.1): Inequality Aversion over a background in R(z, y+1); equal to Inequality Aversion for D = ∅ (p. 167)."
+
+[[principles]]
+id = "arrhenius-2009:condition-beta"
+role = "inequality-aversion"
+reason = "Derived (2009 Lemma 1): same statement as thesis Condition β."
+
+[[principles]]
+id = "arrhenius-2003:condition-beta"
+role = "inequality-aversion"
+reason = "Derived (2003 Lemma 1): Condition β over any background."
+
+[[principles]]
+id = "thesis:non-elitism"
+role = "non-elitism"
+reason = "One-level steps trading one life at W_x plus n at W_y for n+1 at W_{x−1}; Lemma 5.1 chains them into Condition β."
+
+[[principles]]
+id = "arrhenius-2009:non-elitism"
+role = "non-elitism"
+reason = "Same statement as thesis Non-Elitism (background in R(y, x))."
+
+[[principles]]
+id = "arrhenius-2003:non-elitism"
+role = "non-elitism"
+reason = "Non-Elitism over any background."
+
+[[principles]]
+id = "thesis:non-sadism"
+role = "sadism-avoidance"
+reason = "Adding a perfectly equal positive group is at least as good as adding a perfectly equal negative one."
+
+[[principles]]
+id = "thesis:weak-non-sadism"
+role = "sadism-avoidance"
+reason = "Adding any perfectly equal positive group is at least as good as adding n lives at one negative level."
+
+[[principles]]
+id = "arrhenius-2009:weak-non-sadism"
+role = "sadism-avoidance"
+reason = "Same statement as thesis Weak Non-Sadism."
+
+[[principles]]
+id = "thesis:non-extreme-priority"
+role = "priority"
+reason = "n high lives plus one negative life are at least as good as n+1 low lives, on any background; the MNEP place."
+
+[[principles]]
+id = "thesis:condition-delta"
+role = "priority"
+reason = "Derived (thesis Lemma 5.2): high lives plus m negative lives are at least as good as low lives plus m lives at W_3; the MNEP place in Theorem 4."
+
+[[principles]]
+id = "arrhenius-2003:condition-delta"
+role = "priority"
+reason = "Derived (2003 Lemma 2): same statement as thesis Condition δ."
+
+[[principles]]
+id = "arrhenius-2009:condition-delta"
+role = "priority"
+reason = "Derived (2009 Lemma 2): same statement as thesis Condition δ."
+
+[[principles]]
+id = "thesis:general-non-extreme-priority"
+role = "general-priority"
+reason = "One-level steps offsetting a life at W_z against one at W_{z+1}; Lemma 5.2 chains them into Condition δ."
+
+[[principles]]
+id = "arrhenius-2003:general-non-extreme-priority"
+role = "general-priority"
+reason = "Same statement as thesis GNEP."
+
+[[principles]]
+id = "arrhenius-2009:general-non-extreme-priority"
+role = "general-priority"
+reason = "Same statement as thesis GNEP."
