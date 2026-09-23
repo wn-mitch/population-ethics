@@ -835,3 +835,45 @@ def test_negative_then_critical_level_realizes_a_set_no_lexical_threshold_view_d
     ]
     assert all(CHECKS[p](ax, ladder) is None for p in wanted)
     assert CHECKS["thesis:non-extreme-priority"](ax, ladder) is not None  # the escape from T3
+
+
+def test_support_abstraction_covers_every_concrete_instance() -> None:
+    from research.certify import support_edges
+    from research.ladder import FORM, WITNESS_OF, Ladder, Witness, domain, instances_over
+    from research.possibility import PRIMITIVE
+
+    ladder = Ladder(1, 6)
+    witness = Witness(LADDER_WITNESS)
+    pops = domain(ladder, 3)
+    for principle in PRIMITIVE:
+        family = WITNESS_OF.get(FORM[principle])
+        levels = LADDER_WITNESS.get(family, {}) if family else {}
+        edges = support_edges(principle, ladder, levels)
+        concrete = instances_over(pops, ladder, witness, [principle])
+        assert concrete, principle
+        for inst in concrete:
+            a, b = (inst.args[1], inst.args[0]) if inst.shape == "N" else inst.args
+            assert (frozenset(a), frozenset(b), inst.shape == "S") in edges, (principle, inst)
+
+
+def test_certifier_proves_the_vrc_gap_consistent_and_never_a_known_theorem() -> None:
+    from research.certify import Certifier
+    from research.ladder import Ladder
+    from research.lexadd import battery
+    from research.possibility import KNOWN_THEOREMS
+
+    ladder = Ladder(2, 7)
+    certifier = Certifier(
+        ladder, [a for a in battery(ladder) if a.id in {"total", "negative-then-total"}]
+    )
+    gap = [
+        "thesis:egalitarian-dominance",
+        "thesis:non-extreme-priority",
+        "thesis:quantity",
+        "arrhenius-2003:vrc-avoidance",
+    ]
+    cert = certifier.certify(gap)
+    assert cert is not None and cert.inert == ("arrhenius-2003:vrc-avoidance",)
+    assert cert.axiology == "total"
+    for name, theorem in KNOWN_THEOREMS.items():
+        assert certifier.certify(theorem) is None, name

@@ -17,10 +17,11 @@ ladder instance, check against research/ladder.py's audit, and evaluate directly
 
 from __future__ import annotations
 
-from collections.abc import Callable, Iterator, Sequence
+from collections.abc import Callable, Iterator, Mapping, Sequence
 from dataclasses import dataclass
 from fractions import Fraction
 from itertools import product
+from typing import Any
 
 import z3  # type: ignore[import-untyped]
 
@@ -326,6 +327,11 @@ def dominance_addition_2003(ax: LexAxiology, ladder: Ladder) -> Violation | None
     return _dominance_addition(ax, ladder, False)
 
 
+def _range_fix(fix: Mapping[str, int], open_top: bool) -> tuple[int, int, int]:
+    """Quality's (u, v, y) or Weak Quality Addition's (x, w, y) as one (low, high, y) triple."""
+    return (fix["x"], fix["w"], fix["y"]) if open_top else (fix["u"], fix["v"], fix["y"])
+
+
 def _witnessed(checks: Iterator[Callable[[], Violation | None]]) -> Violation | None:
     """Satisfied if some witness's universal check finds no violation; else the last violation."""
     last: Violation | None = None
@@ -337,10 +343,12 @@ def _witnessed(checks: Iterator[Callable[[], Violation | None]]) -> Violation | 
     return last or Violation((), (), "W", "no valid witness on this ladder")
 
 
-def _quality_like(ax: LexAxiology, ladder: Ladder, open_top: bool) -> Violation | None:
+def _quality_like(
+    ax: LexAxiology, ladder: Ladder, open_top: bool, fix: Mapping[str, int] | None = None
+) -> Violation | None:
     def checks() -> Iterator[Callable[[], Violation | None]]:
         for (_, y), (u, v) in product(_ranges(ladder, True), _ranges(ladder, False)):
-            if u <= y:
+            if u <= y or (fix is not None and (u, v, y) != _range_fix(fix, open_top)):
                 continue
             tops = [z for z in ladder.levels if z >= u and (open_top or z <= v)]
             for n in range(1, WITNESS_MAX + 1):
@@ -360,20 +368,26 @@ def _quality_like(ax: LexAxiology, ladder: Ladder, open_top: bool) -> Violation 
     return _witnessed(checks())
 
 
-def quality(ax: LexAxiology, ladder: Ladder) -> Violation | None:
-    return _quality_like(ax, ladder, open_top=False)
+def quality(
+    ax: LexAxiology, ladder: Ladder, fix: Mapping[str, int] | None = None
+) -> Violation | None:
+    return _quality_like(ax, ladder, open_top=False, fix=fix)
 
 
-def weak_quality_addition(ax: LexAxiology, ladder: Ladder) -> Violation | None:
-    return _quality_like(ax, ladder, open_top=True)
+def weak_quality_addition(
+    ax: LexAxiology, ladder: Ladder, fix: Mapping[str, int] | None = None
+) -> Violation | None:
+    return _quality_like(ax, ladder, open_top=True, fix=fix)
 
 
-def non_extreme_priority(ax: LexAxiology, ladder: Ladder) -> Violation | None:
+def non_extreme_priority(
+    ax: LexAxiology, ladder: Ladder, fix: Mapping[str, int] | None = None
+) -> Violation | None:
     def checks() -> Iterator[Callable[[], Violation | None]]:
         for (_, z), x, y in product(
             _ranges(ladder, True), ladder.levels, [v for v in ladder.levels if v < 0]
         ):
-            if x <= z:
+            if x <= z or (fix is not None and (x, y, z) != (fix["x"], fix["y"], fix["z"])):
                 continue
             for n in range(1, WITNESS_MAX + 1):
 
@@ -393,14 +407,16 @@ def non_extreme_priority(ax: LexAxiology, ladder: Ladder) -> Violation | None:
     return _witnessed(checks())
 
 
-def general_non_extreme_priority(ax: LexAxiology, ladder: Ladder) -> Violation | None:
+def general_non_extreme_priority(
+    ax: LexAxiology, ladder: Ladder, fix: Mapping[str, int] | None = None
+) -> Violation | None:
     for z in ladder.levels:
         if not ladder.has(z + 1):
             continue
 
         def checks(z: int = z) -> Iterator[Callable[[], Violation | None]]:
             for (_, y), u in product(_ranges(ladder, True), [v for v in ladder.levels if v > 0]):
-                if u <= y:
+                if u <= y or (fix is not None and (u, y) != (fix["u"], fix["y"])):
                     continue
                 for n in range(1, WITNESS_MAX + 1):
 
@@ -424,9 +440,13 @@ def general_non_extreme_priority(ax: LexAxiology, ladder: Ladder) -> Violation |
     return None
 
 
-def weak_non_sadism(ax: LexAxiology, ladder: Ladder) -> Violation | None:
+def weak_non_sadism(
+    ax: LexAxiology, ladder: Ladder, fix: Mapping[str, int] | None = None
+) -> Violation | None:
     def checks() -> Iterator[Callable[[], Violation | None]]:
         for x in (v for v in ladder.levels if v < 0):
+            if fix is not None and x != fix["x"]:
+                continue
             for n in range(1, WITNESS_MAX + 1):
 
                 def check(x: int = x, n: int = n) -> Violation | None:
@@ -444,12 +464,14 @@ def weak_non_sadism(ax: LexAxiology, ladder: Ladder) -> Violation | None:
     return _witnessed(checks())
 
 
-def vrc_avoidance(ax: LexAxiology, ladder: Ladder) -> Violation | None:
+def vrc_avoidance(
+    ax: LexAxiology, ladder: Ladder, fix: Mapping[str, int] | None = None
+) -> Violation | None:
     def checks() -> Iterator[Callable[[], Violation | None]]:
         for (_, y), (u, _v), x in product(
             _ranges(ladder, True), _ranges(ladder, False), [v for v in ladder.levels if v < 0]
         ):
-            if u <= y:
+            if u <= y or (fix is not None and (x, u, y) != (fix["x"], fix["u"], fix["y"])):
                 continue
             for n, m in product(range(1, WITNESS_MAX + 1), repeat=2):
 
@@ -524,3 +546,31 @@ def battery(ladder: Ladder) -> tuple[LexAxiology, ...]:
                 label, text = f"negative-then-{name}", f"total negative welfare, then {desc}"
             out.append(LexAxiology(label, f"{text}, then total welfare", tiers_of(ladder, *fns)))
     return tuple(out)
+
+
+_LEVEL_WITNESSED = {
+    "thesis:quality",
+    "thesis:weak-quality-addition",
+    "thesis:non-extreme-priority",
+    "thesis:general-non-extreme-priority",
+    "thesis:weak-non-sadism",
+    "arrhenius-2003:vrc-avoidance",
+    "arrhenius-2009:weak-quality-addition",
+}
+
+
+def check_at(
+    principle: str, ax: LexAxiology, ladder: Ladder, levels: Mapping[str, int] | None
+) -> Violation | None:
+    """CHECKS[principle] with the condition's level witnesses fixed (counts still searched)."""
+    fn = CHECKS[principle]
+    if levels and principle in _LEVEL_WITNESSED:
+        return fn(ax, ladder, fix=levels)  # type: ignore[call-arg]
+    return fn(ax, ladder)
+
+
+def from_additive(ladder: Ladder, name: str, g: Mapping[Any, str]) -> LexAxiology:
+    """A one-tier axiology from an additive g (z3 model values as rational strings), keyed by
+    level or, after a JSON round trip, by the level's string."""
+    values = {v: Fraction(g[v] if v in g else g[str(v)]) for v in ladder.levels}
+    return LexAxiology(name, "additive V = Σ g(w)", (values,))

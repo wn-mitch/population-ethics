@@ -30,7 +30,8 @@ searches for proof skeletons, minimal cores and escapes, and compares them with 
   consecutive levels, with validated existential witnesses and an independent audit.
 - `research/additive.py`, `research/lexadd.py`: exact satisfaction checks for additive and
   lexicographic-additive axiologies; `research/possibility.py` maps realized condition sets
-  against the known theorems (D-018).
+  against the known theorems (D-018); `research/certify.py` proves gaps consistent via support
+  graphs (D-019).
 - `research/pN_*.py`: phase scripts; `just research` reruns them all. Phase 8 freezes and
   verifies every catalogued Arrhenius theorem after 1999; Phase 9 runs the motif census
   (`research/census.py`).

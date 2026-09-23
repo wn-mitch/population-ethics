@@ -132,6 +132,27 @@ delete it.
   negative lives outweigh any number of low lives, and NEP lets finitely many high lives offset a
   negative. A contradiction would need to move negatives between levels inside a background,
   which none of the four conditions provides.
-- **Settles it:** an exact check of a background-sensitive axiology class (for example
-  average-weighted or rank-dependent tiers) that realizes a gap, or a proof. Each proof would be a
-  new impossibility theorem strictly stronger than a known one.
+- **Certificates (P12-gap-certificates, D-019):** 34 of the 63 gaps are proved consistent. Each
+  certificate makes the background-free quality condition (Quality or VRC avoidance) inert and
+  covers the rest with total utilitarianism. So the backgrounds in Weak Quality Addition are
+  load-bearing in thesis Theorems 3 and 4 and the 2009 theorem. That includes the 4-set
+  {Egalitarian Dominance, NEP or GNEP, Quantity, VRC avoidance} and Theorem 3 with Quality.
+- **Still open: 29.** Twenty-six contain a background-carrying quality condition (5 thesis Weak
+  Quality Addition, 21 2009 Weak Quality Addition), so a certificate needs a background-sensitive
+  axiology. The other three are Q-011.
+- **Settles it:** an exact check of a background-sensitive axiology class that realizes a gap, or
+  a proof. Each proof would be a new impossibility theorem strictly stronger than a known one.
+
+## Q-011. Is the 2003 theorem stronger than stated?
+
+- **Status:** open; the most concrete candidates for strengthening a known theorem.
+- **Candidates:** the 2003 conditions {Egalitarian Dominance, Non-Elitism, GNEP, VRC avoidance,
+  Dominance Addition}, with Dominance Addition weakened to the thesis's not-worse form, or
+  Non-Elitism weakened to its ranged background, or both. No checked axiology realizes any of
+  them, no certificate exists at the level witnesses tried, and no known theorem explains them.
+- **What the proof would need:** the 2003 proof uses Condition β with a negative background (D₂).
+  Ranged Non-Elitism only yields β with a background in R(z, y+1), which excludes negatives. The
+  proof also chains Dominance Addition's ⪰. The not-worse form gives that only under
+  completeness, which is how the census and certifier read it.
+- **Settles it:** a census cycle under every witness family (then a written proof), or a
+  background-sensitive model.

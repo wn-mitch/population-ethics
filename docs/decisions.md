@@ -198,3 +198,20 @@ every one resolves.
   background-sensitive conditions (Weak Quality Addition, GNEP) from their background-free
   counterparts. Gaps involving that difference stay open (Q-010) until a background-sensitive
   class is checked exactly.
+
+## D-019. Fork-free consistency is absence of strict cycles, certified on supports
+
+- **Status:** settled.
+- **Sources:** `research/certify.py`, `research/p12_certificates.py`.
+- **Decision:** for fork-free conditions with fixed witnesses, a set is consistent iff its
+  instance graph over all populations has no strict cycle: the transitive closure is then a
+  quasi-ordering satisfying every instance, and the thesis family does not require completeness.
+  A certificate abstracts populations to their supports, the sets of occupied levels. Conditions
+  with no support edge inside a strongly connected component are inert. Every other condition
+  must be satisfied exactly by one axiology at the same level witnesses. The abstraction
+  over-approximates: any bag may occupy any subset of its levels, and backgrounds range over all
+  allowed subsets. A test checks that it contains every concrete instance's supports, and a
+  control checks that no known theorem is certified.
+- **Consequences:** N-shaped conditions are normalized to ⪰ (the complete-branch reading). That
+  normalization only strengthens the conditions, so certificates remain valid for the source.
+  Certificates are ladder-relative (W_−2 … W_7).
