@@ -271,6 +271,7 @@ name = "population-ethics"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "pynauty" },
     { name = "typer" },
     { name = "z3-solver" },
 ]
@@ -284,6 +285,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "pynauty", specifier = ">=2.8.8.1" },
     { name = "typer", specifier = ">=0.27.2" },
     { name = "z3-solver", specifier = ">=5.1.0.0" },
 ]
@@ -303,6 +305,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/49/2e/ced460408999b33da
 wheels = [
     { url = "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl", hash = "sha256:2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9", size = 1250147, upload-time = "2026-08-17T08:02:44.912Z" },
 ]
+
+[[package]]
+name = "pynauty"
+version = "2.8.8.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a3/23/0f7ac6e39e60c8a7ae385cc8da372d7d1608c087f8d5fa9d99e6bb130466/pynauty-2.8.8.1.tar.gz", hash = "sha256:454d3b0e605d649d13478afb090daef4a152f15c4a337a391fe69fded7e683f2", size = 2328874, upload-time = "2024-06-06T18:12:07.442Z" }
 
 [[package]]
 name = "pytest"

@@ -1,0 +1,61 @@
+schema = "population-ethics.roles/v1"
+
+# Principle id -> proof role, read by research/known.py. Principles from different papers share a
+# role when they occupy the same place in an impossibility proof (docs/decisions.md D-009, D-011).
+# A shared role says two proofs have the same dependency shape, not that the conditions are
+# equivalent. Every id here must have a reviewed reading in corpus/readings.toml.
+
+[[principles]]
+id = "dominance"
+role = "dominance"
+reason = "Strict betterness of a same-size population whose every life is above every life of the other; the one strict link that closes each cycle."
+
+[[principles]]
+id = "non-anti-egalitarianism"
+role = "inequality-aversion"
+reason = "A perfectly equal population is at least as good as (under completeness) a same-size unequal one with lower average: the step that trades an unequal population for an equal one."
+
+[[principles]]
+id = "non-repugnance"
+role = "quality"
+reason = "Some perfectly equal very-high population is at least as good as every very-low population: Quality Addition on an empty background."
+
+[[principles]]
+id = "non-sadism"
+role = "sadism-avoidance"
+reason = "Adding positive lives is at least as good as (under completeness) adding negative lives to the same background."
+
+[[principles]]
+id = "mnep"
+role = "priority"
+reason = "Enough very-high lives plus one slightly negative life are at least as good as one more very-low life each, on any background."
+
+[[principles]]
+id = "addition"
+role = "addition"
+reason = "If adding a lower group is bad, adding a larger, even lower group is at least as bad; the only conditional (fork) shape in the 2000 proof."
+
+[[principles]]
+id = "arrhenius-1999:egalitarian-dominance"
+role = "dominance"
+reason = "Same place as 2000 Dominance: the single strict link, restricted to a perfectly equal better population."
+
+[[principles]]
+id = "arrhenius-1999:minimal-inequality-aversion"
+role = "inequality-aversion"
+reason = "A perfectly equal population at an intermediate level is at least as good as an equal-high plus equal-low mixture of the same total size."
+
+[[principles]]
+id = "arrhenius-1999:quality-addition"
+role = "quality"
+reason = "Some very-high population added to any background is at least as good as any very-low population added to it."
+
+[[principles]]
+id = "arrhenius-1999:non-sadism"
+role = "sadism-avoidance"
+reason = "Positive form of the 2000 Non-Sadism avoidance, over any background."
+
+[[principles]]
+id = "arrhenius-1999:minimal-non-extreme-priority"
+role = "priority"
+reason = "The same statement as the 2000 MNEP."

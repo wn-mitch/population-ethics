@@ -377,3 +377,59 @@ def test_review_gate_rejects_missing_and_unreviewed_readings_and_blocks_generati
     }
     with pytest.raises(ValueError, match="without cross-reader agreement"):
         parse({"readings": [row]})
+
+
+def _relabel(core: list[Instance], rng: random.Random) -> list[Instance]:
+    nodes = sorted({x for inst in core for x in inst.args})
+    image = rng.sample(range(100, 100 + 3 * len(nodes)), len(nodes))
+    mapping = {x: (v,) for x, v in zip(nodes, image, strict=True)}
+    shuffled = [Instance(i.principle, tuple(mapping[x] for x in i.args)) for i in core]
+    rng.shuffle(shuffled)
+    return shuffled
+
+
+def test_canonical_form_is_relabeling_invariant_and_agrees_with_brute_force() -> None:
+    from research.canon import canonical
+    from research.p7_arrhenius1999 import CORE, R6_CORE
+    from research.schema import canonical_skeleton
+
+    rng = random.Random(5)
+    fixtures = [list(BASELINE_SKELETON), list(CORE), list(R6_CORE)]
+    for core in fixtures:
+        for level in ("L0", "L1", "principle"):
+            forms = {canonical(_relabel(core, rng), level) for _ in range(20)}
+            assert forms == {canonical(core, level)}
+    assert len({canonical(c, "L1") for c in fixtures}) == 3
+    # Random small cores: exact form equality must coincide with brute-force isomorphism.
+    principles = ["dominance", "mnep", "non-sadism", "addition", "non-anti-egalitarianism"]
+    pool: list[list[Instance]] = []
+    for _ in range(60):
+        k = rng.randint(3, 6)
+        core = []
+        for _ in range(rng.randint(2, 6)):
+            p = rng.choice(principles)
+            arity = 3 if p == "addition" else 2
+            core.append(Instance(p, tuple((v,) for v in rng.sample(range(k), arity))))
+        pool += [core, _relabel(core, rng)]
+    brute = [canonical_skeleton(c, principle_colors=True) for c in pool]
+    exact = [canonical(c, "principle") for c in pool]
+    matches = 0
+    for i in range(len(pool)):
+        for j in range(i + 1, len(pool)):
+            assert (brute[i] == brute[j]) == (exact[i] == exact[j]), (pool[i], pool[j])
+            matches += brute[i] == brute[j]
+    assert matches >= 60  # every relabelled copy matches its original
+
+
+def test_canonical_form_separates_what_colour_refinement_cannot() -> None:
+    from research.canon import canonical
+    from research.schema import canonical_skeleton
+
+    # A directed 12-cycle and two directed 6-cycles of MNEP edges: every relatum has one in-
+    # and one out-edge, so colour refinement (used above 9 relata) cannot tell them apart.
+    big = [Instance("mnep", ((i,), ((i + 1) % 12,))) for i in range(12)]
+    two = [Instance("mnep", ((i,), (6 * (i // 6) + (i + 1) % 6,))) for i in range(12)]
+    assert canonical_skeleton(big, principle_colors=True) == canonical_skeleton(
+        two, principle_colors=True
+    )
+    assert canonical(big, "L0") != canonical(two, "L0")

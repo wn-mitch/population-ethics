@@ -4,7 +4,7 @@ A skeleton is a set of hyperedges over relata. Each edge carries a principle *ro
 shape, and its ordered relata. Roles put principles from different papers into one vocabulary:
 Arrhenius's 1999 Minimal Inequality Aversion and the 2000 Non-Anti-Egalitarianism both play
 ``inequality-aversion``. The correspondence is this project's judgment, recorded per principle
-in ``ROLE``. It is not a claim that the principles are equivalent.
+in ``research/roles.toml``. It is not a claim that the principles are equivalent.
 
 Shapes are normalized for the complete branch, where ``¬(X ≻ Y)`` is ``Y ⪰ X``. Matching is
 therefore only meaningful for cores found under completeness (the rank-encoded schema search).
@@ -17,8 +17,10 @@ none, so thesis Theorems 1, 2 and 4, the 2003 theorem, and the 2009/2011 theorem
 
 from __future__ import annotations
 
+import tomllib
 from collections.abc import Sequence
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 from research.readings import require_reviewed
@@ -26,20 +28,24 @@ from research.schema import BASELINE_SKELETON, Instance, Pop
 
 Edge = tuple[str, str, tuple[int, ...]]  # (role, shape, relata indices)
 
-# Principle id -> role. v0 ids come from research.schema; arrhenius-1999:* from research.p7.
-ROLE = {
-    "dominance": "dominance",
-    "non-anti-egalitarianism": "inequality-aversion",
-    "non-repugnance": "quality",  # Quality Addition on an empty background
-    "non-sadism": "sadism-avoidance",
-    "mnep": "priority",
-    "addition": "addition",
-    "arrhenius-1999:egalitarian-dominance": "dominance",
-    "arrhenius-1999:minimal-inequality-aversion": "inequality-aversion",
-    "arrhenius-1999:quality-addition": "quality",
-    "arrhenius-1999:non-sadism": "sadism-avoidance",
-    "arrhenius-1999:minimal-non-extreme-priority": "priority",
-}
+ROLES_PATH = Path(__file__).with_name("roles.toml")
+
+
+def load_roles(path: Path = ROLES_PATH) -> dict[str, str]:
+    """Principle id -> role from research/roles.toml; every id must pass the review gate."""
+    rows = tomllib.loads(path.read_text())["principles"]
+    roles: dict[str, str] = {}
+    for row in rows:
+        if row["id"] in roles:
+            raise ValueError(f"{row['id']}: two role entries")
+        if not row.get("reason"):
+            raise ValueError(f"{row['id']}: role entry has no reason")
+        roles[row["id"]] = row["role"]
+    require_reviewed(roles)
+    return roles
+
+
+ROLE = load_roles()
 
 
 def normalize(core: Sequence[Instance]) -> tuple[list[Pop], list[Edge]]:
