@@ -147,3 +147,14 @@ every one resolves.
 - **Consequences:** a thesis-family instance needs enough consecutive positive levels for
   R(1, y) and R(u, v) to hold at least three levels each, so b ≥ 6. The single very-high level
   of the gapped grid does not form a range (see Q-004).
+
+## D-015. Known-ground coverage counts only substantial embeddings
+
+- **Status:** settled.
+- **Sources:** `research/known.py`.
+- **Decision:** a catalogued skeleton's maximum embedding covers core instances only when it
+  maps at least 3 edges and a strict majority of the skeleton's edges. Two-edge fragments of
+  the 4- and 5-edge thesis and 2003 skeletons embed into R6 by role alone and would have
+  "covered" its two new steps; with this rule R6 keeps exactly those two uncovered instances.
+- **Consequences:** `uncovered_by_published` no longer shrinks just because the catalogue grows.
+  Coverage by a small fragment is still visible in `per_known`.

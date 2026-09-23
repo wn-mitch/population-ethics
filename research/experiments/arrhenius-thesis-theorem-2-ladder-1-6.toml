@@ -1,0 +1,101 @@
+schema = "population-ethics.experiment/v2"
+id = "arrhenius-thesis-theorem-2-ladder-1-6"
+kind = "compatibility"
+claim_kind = "bounded-proof-instance"
+source_fidelity = "selected finite witness instance; not the unrestricted theorem"
+source_ids = ["arrhenius-2000-thesis"]
+formalization_id = "arrhenius-thesis-theorem-2.selected-witness/v1/arrhenius-thesis-theorem-2-ladder-1-6"
+fixed_groups = ["reflexivity", "transitivity"]
+candidate_groups = ["thesis:dominance-addition", "thesis:egalitarian-dominance", "thesis:inequality-aversion", "thesis:quality"]
+
+[resource_policy]
+max_populations = 100
+max_expanded_lives = 5000
+max_relation_atoms = 1000
+max_ground_constraints = 5000
+max_subsets = 256
+timeout_ms = 0
+
+[domain]
+mode = "explicit"
+
+[[domain.populations]]
+name = "P_1_1_6"
+values = [1, 1, 6]
+
+[[domain.populations]]
+name = "P_2_2_2"
+values = [2, 2, 2]
+
+[[domain.populations]]
+name = "P_3_3_3"
+values = [3, 3, 3]
+
+[[domain.populations]]
+name = "P_4"
+values = [4]
+
+[categories]
+slightly_negative = [-1]
+very_low_positive = [1, 2, 3]
+very_high_positive = [4, 5, 6]
+
+[witness_bindings]
+ladder_negative = 1
+ladder_positive = 6
+
+[[groups]]
+id = "reflexivity"
+principle_id = "reflexivity"
+compiler = "reflexivity"
+populations = ["P_1_1_6", "P_2_2_2", "P_3_3_3", "P_4"]
+
+[[groups]]
+id = "transitivity"
+principle_id = "transitivity"
+compiler = "transitivity"
+populations = ["P_1_1_6", "P_2_2_2", "P_3_3_3", "P_4"]
+
+[[groups]]
+id = "thesis:dominance-addition"
+principle_id = "thesis:dominance-addition"
+
+[[groups.constraints]]
+id = "thesis:dominance-addition:1"
+formula = { kind = "not", operand = { kind = "and", operands = [{ kind = "atom", left = "P_4", relation = "weak", right = "P_1_1_6" }, { kind = "not", operand = { kind = "atom", left = "P_1_1_6", relation = "weak", right = "P_4" } }] } }
+populations = ["P_1_1_6", "P_4"]
+formalization_id = "arrhenius-thesis-theorem-2.selected-witness/v1"
+explanation = "thesis:dominance-addition instance over ['P_4', 'P_1_1_6']"
+
+[[groups]]
+id = "thesis:egalitarian-dominance"
+principle_id = "thesis:egalitarian-dominance"
+
+[[groups.constraints]]
+id = "thesis:egalitarian-dominance:2"
+formula = { kind = "and", operands = [{ kind = "atom", left = "P_3_3_3", relation = "weak", right = "P_2_2_2" }, { kind = "not", operand = { kind = "atom", left = "P_2_2_2", relation = "weak", right = "P_3_3_3" } }] }
+populations = ["P_2_2_2", "P_3_3_3"]
+formalization_id = "arrhenius-thesis-theorem-2.selected-witness/v1"
+explanation = "thesis:egalitarian-dominance instance over ['P_3_3_3', 'P_2_2_2']"
+
+[[groups]]
+id = "thesis:inequality-aversion"
+principle_id = "thesis:inequality-aversion"
+
+[[groups.constraints]]
+id = "thesis:inequality-aversion:0"
+formula = { kind = "atom", left = "P_2_2_2", relation = "weak", right = "P_1_1_6" }
+populations = ["P_1_1_6", "P_2_2_2"]
+formalization_id = "arrhenius-thesis-theorem-2.selected-witness/v1"
+explanation = "thesis:inequality-aversion instance over ['P_2_2_2', 'P_1_1_6']"
+
+[[groups]]
+id = "thesis:quality"
+principle_id = "thesis:quality"
+
+[[groups.constraints]]
+id = "thesis:quality:3"
+formula = { kind = "atom", left = "P_4", relation = "weak", right = "P_3_3_3" }
+populations = ["P_3_3_3", "P_4"]
+formalization_id = "arrhenius-thesis-theorem-2.selected-witness/v1"
+explanation = "thesis:quality instance over ['P_4', 'P_3_3_3']"

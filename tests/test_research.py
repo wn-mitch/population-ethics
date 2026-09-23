@@ -491,3 +491,22 @@ def test_ladder_generation_is_nested_and_rejects_bad_witnesses() -> None:
                 Witness({**LADDER_WITNESS, family: params}),
                 [principle],
             )
+
+
+def test_frozen_theorems_are_audited_and_match_their_catalogue_entries() -> None:
+    from research.known import CATALOGUE, known_ground
+    from research.ladder import audit
+    from research.p8_catalogue import FROZEN, LADDER, WITNESS
+
+    ids = {k.id for k in CATALOGUE}
+    same_as_1999 = {
+        "arrhenius-thesis-theorem-3",
+        "arrhenius-thesis-theorem-4",
+        "arrhenius-2009-one-more",
+    }
+    for frozen in FROZEN:
+        core = frozen.instances()
+        assert all(audit(i, LADDER, WITNESS) for i in core), frozen.id
+        expected = "arrhenius-1999" if frozen.id in same_as_1999 else frozen.id
+        assert expected in ids
+        assert known_ground(core)["exact_known"] == expected, frozen.id

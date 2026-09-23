@@ -24,6 +24,7 @@ research:
     uv run python -m research.p5_sat_structure
     uv run python -m research.p6_schema
     uv run python -m research.p7_arrhenius1999
+    uv run python -m research.p8_catalogue
     uv run python -m research.render_ledger
 
 # Regenerate docs/results.md from the ledger and literature verdicts.

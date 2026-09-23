@@ -9,10 +9,12 @@ in ``research/roles.toml``. It is not a claim that the principles are equivalent
 Shapes are normalized for the complete branch, where ``¬(X ≻ Y)`` is ``Y ⪰ X``. Matching is
 therefore only meaningful for cores found under completeness (the rank-encoded schema search).
 
-Only skeletons whose every role has a v0 counterpart are catalogued. Arrhenius's Dominance
-Addition, Quantity, Non-Elitism lemma chains, and Very Repugnant Conclusion avoidance have
-none, so thesis Theorems 1, 2 and 4, the 2003 theorem, and the 2009/2011 theorem are listed in
-``UNCATALOGUED`` and cannot be matched.
+The catalogue holds every ordering-based Arrhenius theorem from 1999 to 2011. Thesis Theorem 3,
+thesis Theorem 4 (at Lemma 5.3) and 2009 Lemma 4 are the 1999 skeleton at the role level, which
+research/p8_catalogue.py confirms; Theorems 4 and 2009 are catalogued at the level of their
+final lemma, whose derived conditions (β, δ, Restricted Quality Addition) are edge
+realizations of Non-Elitism, GNEP and Weak Quality Addition. ``UNCATALOGUED`` lists theorems
+the schema cannot express.
 """
 
 from __future__ import annotations
@@ -101,7 +103,7 @@ CATALOGUE: tuple[KnownSkeleton, ...] = (
             "arrhenius-1999-weak-ordering",
             "arrhenius-2000-thesis",  # Theorem 3, and Lemma 5.3 with lemma-derived conditions
             "arrhenius-2001-osterberg",
-            "arrhenius-2009-one-more",  # Lemma 4
+            "arrhenius-2009-one-more",  # Lemma 4 (with Restricted Quality Addition, β, δ)
             "arrhenius-2011-impossibility",  # Lemma 1.4
             "thomas-2016-reconstructing",  # Theorem 3
         ),
@@ -142,14 +144,50 @@ CATALOGUE: tuple[KnownSkeleton, ...] = (
         ],
         "Solver-found on the gapped grid; the 1999 frame with an Addition-based closing link.",
     ),
+    # Frozen and verified in research/p8_catalogue.py; relata follow the placeholder order.
+    _from_instances(
+        "arrhenius-thesis-theorem-1",
+        ("arrhenius-2000-thesis",),
+        ("A1", "A2", "A3", "A4", "B"),
+        [
+            Instance("thesis:quantity", (_p(1), _p(0))),
+            Instance("thesis:quantity", (_p(2), _p(1))),
+            Instance("thesis:quantity", (_p(3), _p(2))),
+            Instance("thesis:egalitarian-dominance", (_p(4), _p(3))),
+            Instance("thesis:quality", (_p(0), _p(4))),
+        ],
+        "A Quantity chain down the ladder, one level per step, closed by Egalitarian Dominance "
+        "and Quality; the chain length grows with the height of the quality range.",
+    ),
+    _from_instances(
+        "arrhenius-thesis-theorem-2",
+        ("arrhenius-2000-thesis",),
+        ("A", "B", "C", "E∪D"),
+        [
+            Instance("thesis:inequality-aversion", (_p(2), _p(3))),
+            Instance("thesis:dominance-addition", (_p(0), _p(3))),
+            Instance("thesis:egalitarian-dominance", (_p(1), _p(2))),
+            Instance("thesis:quality", (_p(0), _p(1))),
+        ],
+        "A ⪰ B ≻ C ⪰ E∪D against the not-worse form of Dominance Addition; no completeness.",
+    ),
+    _from_instances(
+        "arrhenius-2003-vrc",
+        ("arrhenius-2003-vrc",),
+        ("A1", "A2", "A3∪B1∪C1∪D1", "A3∪B2∪C1∪D2", "A4∪B3∪C2∪D2"),
+        [
+            Instance("arrhenius-2003:egalitarian-dominance", (_p(1), _p(0))),
+            Instance("arrhenius-2003:dominance-addition", (_p(2), _p(1))),
+            Instance("arrhenius-2003:condition-delta", (_p(3), _p(2))),
+            Instance("arrhenius-2003:condition-beta", (_p(4), _p(3))),
+            Instance("arrhenius-2003:vrc-avoidance", (_p(0), _p(4))),
+        ],
+        "A weak cycle through Dominance Addition, δ and β, closed by one strict Egalitarian "
+        "Dominance link and VRC avoidance; no completeness.",
+    ),
 )
 
 UNCATALOGUED = {
-    "arrhenius-2000-thesis#theorem-1": "Quantity has no v0 counterpart.",
-    "arrhenius-2000-thesis#theorem-2": "Dominance Addition has no v0 counterpart.",
-    "arrhenius-2000-thesis#theorem-4": "Non-Elitism and GNEP lemma chains have no v0 counterpart.",
-    "arrhenius-2003-vrc": "Dominance Addition and VRC avoidance have no v0 counterpart.",
-    "arrhenius-2009-one-more": "Only Lemma 4 is catalogued, as arrhenius-1999.",
     "arrhenius-2022-without-transitivity": "Maximality over finite sets has no v0 counterpart.",
 }
 
@@ -219,6 +257,11 @@ def match(core: Sequence[Instance], known: KnownSkeleton) -> Match:
     return Match(known.id, count, len(known.edges), exact, mapping, residual)
 
 
+def substantial(m: Match) -> bool:
+    """An embedding counts as coverage when it maps at least 3 edges and most of the skeleton."""
+    return m.matched >= 3 and 2 * m.matched > m.known_edges
+
+
 def known_ground(
     core: Sequence[Instance], catalogue: Sequence[KnownSkeleton] = CATALOGUE
 ) -> dict[str, Any]:
@@ -230,15 +273,17 @@ def known_ground(
     ``uncovered_by_published`` lists the core instances that no maximum embedding of any
     published (non-``project-``) skeleton covers; a novelty claim rests on these.
     ``uncovered_by_catalogue`` does the same over the whole catalogue, so it also discounts
-    steps the project has already found. Smaller
-    embeddings are ignored, since a single edge of the right role always embeds.
+    steps the project has already found. Only substantial embeddings count as coverage
+    (``substantial``, docs/decisions.md D-015): a one- or two-edge fragment of the right roles
+    embeds almost anywhere, so counting it would let coverage grow with the catalogue alone.
     """
     matches = [match(core, k) for k in catalogue]
     exact = next((m.known_id for m in matches if m.exact), None)
     top = max(matches, key=lambda m: m.matched)
-    published = [m for m in matches if not m.known_id.startswith("project-")]
+    counted = [m for m in matches if substantial(m)]
+    published = [m for m in counted if not m.known_id.startswith("project-")]
     covered = {j for j in range(len(core)) if any(j not in m.residual for m in published)}
-    anywhere = {j for j in range(len(core)) if any(j not in m.residual for m in matches)}
+    anywhere = {j for j in range(len(core)) if any(j not in m.residual for m in counted)}
     return {
         "exact_known": exact,
         "largest_fragment": top.known_id,
