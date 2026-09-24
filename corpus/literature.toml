@@ -678,3 +678,27 @@ verdict = "partial"
 sources = ["arrhenius-2000-thesis", "arrhenius-2003-vrc", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "thomas-2018-possibilities", "thornley-2022-prospect"]
 known = "Thesis Theorem 2 (§10.6, pp. 159–161) uses unrestricted Quality with Inequality Aversion and Dominance Addition, not 2009 Weak Quality Addition. Thesis Theorem 4 (§10.10, pp. 167–180), the 2003 theorem (pp. 5–13), and the 2009/2011 sixth-theorem proofs use Non-Elitism and GNEP, but close via Weak Non-Sadism or VRC avoidance rather than this Dominance Addition cycle. The 2018 critique (fn. 4) identifies an error in deriving Restricted Quality Addition in the 2011 proof; the 2022 critique (fn. 7) explains that the stronger uniform Weak Quality Addition witness order is needed."
 open = "No checked primary source states the unconditional Egalitarian Dominance, GNEP, repaired 2009 Weak Quality Addition, Inequality Aversion and Dominance Addition contradiction or its direct Non-Elitism variants on a top-witness ladder. The finite-ladder result is proved for the repaired uniform Weak Quality Addition reading, not the published background-first existential order. Independent publication of the precise combination remains unchecked."
+
+[[collisions]]
+result = "P18"
+ledger = ["P18-vrc-primitive-control-and-bounded-search"]
+verdict = "partial"
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "arrhenius-2001-osterberg", "thomas-2016-reconstructing", "thomas-2018-possibilities"]
+known = "The primitive chosen-witness control is a re-expansion of published material, not a new result: 2003 Lemma 1.1 (n Non-Elitism applications give Condition α with m = n·p) and Lemma 1.2 (r = x−y applications of α with m_i ≥ f(m_{i−1}) give Condition β) on pp. 174–177, and thesis Lemma 5.2.1 (r = 3−z GNEP applications at W_{z+(i−1)}, χ's n = Σ n_i) and Lemma 5.2.2 (m copies of χ, so δ's n = m·n_χ) on pp. 173–177, which is why the control's β run has 35 Non-Elitism edges at n = 5 and its δ run exactly four GNEP edges at z = −1, m = 1 with δ's n = 4. The project records the same contractions once as the realizations non-elitism-to-beta and gnep-to-delta (D-011, D-017). Arrhenius 2001 (Österberg volume) is the published source for the Non-Elitism and GNEP lemma proofs the 2003 paper cites. Thomas 2016 (pp. 4–5, 10) notes only that the negative-form Dominance Addition yields 'not at least as good'."
+open = "No checked source states a strengthened 2003 theorem. Ranged Non-Elitism (thesis p. 166 restricts D to R(y, x)) and the thesis not-worse Dominance Addition (p. 159, C perfectly equal at one positive level) appear together with GNEP and VRC avoidance in none of the works read. The P18 primitive control and its two-cap search are a finite fixed-witness diagnostic: a chosen-witness expansion, a bounded SAT/UNSAT table, and an absent cycle are not consistency or impossibility evidence for the unrestricted conditions, so Q-011 stays open. Outstanding: the forthcoming book, Arrhenius 2016, Jensen 2008/2020, Handfield & Rabinowicz 2018, and Arrhenius & Rabinowicz 2005."
+
+[[collisions]]
+result = "P20"
+ledger = ["P20-vrc-dual-routes"]
+verdict = "partial"
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "arrhenius-2001-osterberg"]
+known = "The original five-condition impossibility is the published 2003 theorem. Its Non-Elitism-to-beta and GNEP-to-delta lemma chains, also present in the thesis and 2001 source, supply the primitive steps used by the chosen-witness expansions. A 23-edge contradiction at one legal witness, an alternative 82-edge expansion, and exclusions of specified model families are narrower claims than a strengthened theorem; none establishes that every source witness closes."
+open = "The checked works do not state the three 2003 weakenings with ranged Non-Elitism and/or thesis not-worse Dominance Addition together. No source-general contradiction and no source-general model is established at this phase's witnesses and model families; the both-weakened variant later has a finite-ladder all-size model (P21) at a different legal witness, where GNEP's high floor is one level higher than in the phase-17/18/20 constructions. No novelty claim is made for the fixed-witness or family-specific results. The unchecked sources listed in the P18 verdict remain outstanding."
+
+[[collisions]]
+result = "P21"
+ledger = ["P21-least-preorder-both-weakened"]
+verdict = "partial"
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis"]
+known = "The original five-condition impossibility is the published 2003 theorem. The thesis gives the ranged-background Non-Elitism and N-shaped not-worse Dominance Addition readings used here; neither source provides the finite-ladder least-preorder model."
+open = "The new result certifies all nonempty population sizes only on W_-1..W_6 at one legal witness. Source-general welfare levels and the two singly weakened variants remain open. Independent publication of this precise model has not been checked; this verdict does not assert novelty."

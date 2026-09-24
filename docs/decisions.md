@@ -249,3 +249,22 @@ every one resolves.
   at W_−1 and 2009 Weak Quality Addition at W_−2, and `negative-then-total` fails NEP. GNEP trades
   at every level, so it rules out every such tier.
 
+
+## D-022. Ranged Condition β's background range is closed at its lower endpoint
+
+- **Status:** settled; corrects the phase-18 annotation on the Q-011 losing edge.
+- **Sources:** `arrhenius-2000-thesis` (Lemma 5.1, p. 167–172), `arrhenius-2003-vrc`
+  (Condition β, p. 173), `corpus/readings.toml`, `research/p19_vrc_universal.py`.
+- **Decision:** thesis Condition β quantifies over `D ⊂ R(z, y+1)` where `x > y > z` are β's own
+  levels, and `R(z, y+1)` is the union of the levels `W_z … W_{y+1}`, so its lower endpoint is
+  closed. A background containing a negative life at `W_q` (`q < 0`) is therefore admissible
+  exactly when `z ≤ q ≤ y+1`; in particular a negative background is available whenever β's own
+  low level is negative. The published Lemma 3 instance (levels `x+2 > 3 > 1`) lies outside that
+  case, which is why phase 17 and 18 record the negative-background edge as lost under ranged
+  Non-Elitism: that is a property of the level choice, not of the weakening.
+- **Consequences:** the Q-011 reading that ranged Non-Elitism *cannot* supply a negative
+  background is wrong as stated, so the weakened variants are not settled by the phase-18
+  obstruction. `research/p19_vrc_universal.py` replays both sides of this rule: the repaired
+  instance (`z = −1`) is accepted, the published level choice is rejected on the range alone, and
+  a test pins the pair. The repair is necessary but not sufficient (see Q-011's phase-19 entry):
+  the repaired family is obstructed by the count identity `n_β = n_δ + n_v ≥ m_δ > m_β > n_β`.

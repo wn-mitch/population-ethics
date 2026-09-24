@@ -145,15 +145,19 @@ delete it.
 
 ## Q-011. Is the 2003 theorem stronger than stated?
 
-- **Status:** open; the most concrete candidates for strengthening a known theorem.
+- **Status:** open at the source-general welfare-level domain; the weakest variant now has an
+  all-population-size model on the finite ladder `W_-1…W_6` (P21).
 - **Candidates:** the 2003 conditions {Egalitarian Dominance, Non-Elitism, GNEP, VRC avoidance,
   Dominance Addition}, with Dominance Addition weakened to the thesis's not-worse form, or
-  Non-Elitism weakened to its ranged background, or both. No checked axiology realizes any of
-  them, no certificate exists at the level witnesses tried, and no known theorem explains them.
-- **What the proof would need:** the 2003 proof uses Condition β with a negative background (D₂).
-  Ranged Non-Elitism only yields β with a background in R(z, y+1), which excludes negatives. The
-  proof also chains Dominance Addition's ⪰. The not-worse form gives that only under
-  completeness, which is how the census and certifier read it.
+  Non-Elitism weakened to its ranged background, or both. P21 realizes **both** weakenings
+  together on one finite ladder at one legal witness. The two singly weakened variants remain
+  without a model; no source-general model or contradiction is established for any variant.
+- **What the proof would need:** the published 2003 proof uses Condition β with a negative
+  background while β's own low level is `W_1`. Thesis Non-Elitism yields β with background in
+  `R(z, y+1)`: that excludes negatives for the published levels, but permits them if β's low
+  level `z` is negative (D-022). The published Dominance Addition edge also has a mixed positive
+  addition, unavailable to thesis Dominance Addition. The thesis not-worse clause is N-shaped,
+  not a reverse weak edge in isolation; it can nevertheless close a suitable weak cycle.
 - **Evidence so far (lemma level, derived β and δ, ≤ 6 lives, δ's n growing by 5 per negative
   life):**
   - The control holds: the 2003 conditions reproduce their source word.
@@ -164,9 +168,173 @@ delete it.
     artifacts: total utilitarianism satisfies Egalitarian Dominance, Non-Elitism and GNEP
     together once δ's base n is at least 4 on this ladder.
 
-  Both weakenings therefore look consistent, not like stronger versions of the 2003 theorem.
-- **Settles it:** a background-sensitive or lexicographic model certified with the certifier's
-  method, which would close them; or a cycle under every witness family.
+- **Source-instance diagnostic (P17-vrc-source-boundary):** at the Phase 8 fixed witness, on only
+  the five frozen 2003 proof populations (each at most six lives), the original and ranged-NE
+  sets each generate 1 Egalitarian Dominance, 2 VRC-avoidance and 2 Dominance Addition instances;
+  the thesis-DA sets generate the first 3 but no DA instance. No primitive Non-Elitism or GNEP
+  instance has both endpoints among these five populations. All four focused preorders are SAT
+  without completeness, with no W/S cycle of at most 8 edges. The original published *derived*
+  β/δ proof remains independently UNSAT: its β edge has a negative background unavailable to
+  ranged NE, and its mixed-addition DA edge is unavailable to thesis DA. This narrow diagnostic
+  neither tests all six-life populations nor settles any variant; see `research/results/p17_vrc_boundary.json`.
+
+  This bounded diagnostic does not establish consistency for either weakening.
+
+- **Primitive control and bounded search (P18-vrc-primitive-control-and-bounded-search,
+  `research/p18_vrc_certificate.py`):** the 2003 Lemma 3 chain is rebuilt from primitive
+  applications: 42 edges over 42 populations — 35 Non-Elitism, four GNEP, one each Egalitarian
+  Dominance, Dominance Addition and VRC avoidance — every edge replayed from its own serialized
+  decomposition (principle, shape, count vectors, background, added parts, existential lookup,
+  source page), and every edge also passing the exhaustive ladder audit. Condition β's realized
+  target (n = 5, m = 35, C = 40 lives at W_3, from the Lemma 1.2 counts 5, 10, 20) and Condition
+  δ's (four GNEP applications at z = −1, 0, 1, 2 with δ's n = 4 at m = 1) are audited as source
+  instances, so both derived conditions are targets of the trace rather than premises. The chain is
+  UNSAT with no completeness through mentioned-atom transitivity alone, and the separately labelled
+  P8 derived β/δ control stays UNSAT. On the fixed 32- and 64-population foci (≤ three lives per
+  relatum, the 11 mandatory seeds, 218 and 511 instances, all audited, all seven principles
+  covered) all four variants are SAT at both caps with no W/S cycle of at most 8 edges, the scan
+  being partial only where thesis Dominance Addition's N-shape is present. Fixing a cap-32
+  assignment's weak atoms and extending it to the 64-relatum focus is UNSAT for all four variants
+  on this run, each with a minimal conflicting set of two or three primitive clauses; an
+  independent run of the same query found original and ranged-NE extending SAT instead, so that
+  decision is a property of the recorded 32-relatum assignment, not of the focus. A bounded SAT
+  table bounds nothing beyond its focus and no source-general witness construction or full
+  finite-ladder model is discharged here, so Q-011 stays open; see
+  `research/results/p18_vrc_certificate.json`.
+- **Phase 19 dual-route pass (P19-vrc-universal-routes, `research/p19_vrc_universal.py`):** both
+  routes were pushed as far as the evidence allows; neither reaches a certificate, and Q-011 stays
+  open.
+  - *Reading.* Thesis Condition β quantifies over `D ⊂ R(z, y+1)`, a closed range, so ranged
+    Non-Elitism **does** supply a negative background whenever β's own low level is negative
+    (D-022). The phase-18 losing edge is therefore a level-choice artefact, and the repair is
+    available; the phase replays the rule in both directions.
+  - *Mechanics.* With the repair the written chain ED, δ, β, VRC closes as an UNSAT chain under
+    reflexivity and the cycle's own transitivity, for **both** Dominance Addition forms. The
+    not-worse (N-shaped) thesis form does not block the closure: the weak chain already entails
+    `P2 ⪰ M1`, so `¬(P2 ≻ M1)` forces `M1 ⪰ P2`, contradicting the strict Egalitarian Dominance
+    link. This corrects the phase-17 note that the not-worse clause gives no reverse weak edge:
+    locally true, globally irrelevant inside a cycle. Dropping the Dominance Addition link restores
+    satisfiability, and every chain edge passes the phase-18 manifest replay plus the new ranged-β
+    replayer at this chain's own witness.
+  - *Obstruction.* A derived-witness instance closes, but arbitrary source-order witnesses do
+    not force this repaired chain. In the shared population, high lives must either sit at β's
+    single A level with δ's high population nested there (`n_β = n_δ + n_v`), or δ's A lives
+    must fall inside β's permitted background
+    (`x_δ ≤ y_β + 1 ≤ y_v + 1`, a bound on the axiology's GNEP witness level relative to its own
+    VRC range top that no source condition supplies). The nesting branch is closed by the source's
+    own count identities: thesis Lemma 5.2.2's `n_δ = m_δ·n_χ` with `n_χ ≥ 1`, β's `m_β > n_β`,
+    and the negative lives `m_δ = m_β + m_v` give the unsatisfiable
+    `n_β = n_δ + n_v ≥ n_δ ≥ m_δ > m_β > n_β`. The phase proves that branch UNSAT over the
+    integers, and shows the same system without the nesting equation is satisfiable, so the
+    obstruction is exactly the nesting. The independent template scan in
+    `research/p19_impossibility_ranged_ne.py` reports the same tension on 88 repaired templates
+    (`n_δ = 4·n_g·(m_β + m_v) > n_β`); the bounded scans in
+    `research/p19_impossibility_not_worse_da.py` (96-population focus, ≤ 8 lives, ≤ 6 edges) find
+    no cycle and no contradiction for any variant; and the phase-18 42-edge control still replays
+    and closes UNSAT at its own fixed witness.
+  - *Models.* Six explicit count-sensitive total preorders were checked
+    (`research/p19_vrc_model.py`; the two decisive counterexamples are re-verified by the phase
+    with `ladder.audit`): critical-level and exponential additive orders fail VRC avoidance through
+    arbitrary-size `B`; level-count lexicographic fails Non-Elitism for every pair `(x, y)` and
+    every witness `n`; count-first and thresholded orders fail Egalitarian Dominance or
+    Non-Elitism. No candidate certifies the five conditions for all finite sizes, and no
+    candidate's failure proves inconsistency. The three requirements pull in different directions,
+    and each class isolates one of them: critical-level total at the VRC threshold and `Σ2^level`
+    satisfy everything but VRC avoidance (arbitrary-size `B`); level-count lexicographic and the
+    count-first orders tested satisfy everything but Non-Elitism (one `W_x` life outranks any
+    number at `W_{x-1}`); critical-level total with its critical level above the added lives
+    satisfies everything but thesis Dominance Addition (enough added low lives sink the uniformly
+    higher side).
+  - *Background-sensitive and structural checks.* Three non-additive relations with
+    background-dependent comparisons were checked in `research/p19_vrc_model_background.py`.
+    Each satisfies some source conditions for all finite sizes on the ladder but fails another
+    with an independently audited source instance; none models the five-condition set.
+    A separate first-tier coefficient proof in `research/p19_vrc_translation_invariant.py`
+    excludes every lexicographic-linear, translation-invariant order on `W_-1…W_6`, regardless
+    of its existential witnesses. VRC's arbitrary-size low bag and thesis DA force zero weights
+    at positive levels; NE propagates zero to the remaining positive levels; ED and GNEP force
+    zero at neutral and negative levels. The necessary-coefficient solver is UNSAT and becomes
+    SAT when VRC's unbounded-bag restriction is removed. This class exclusion is ladder-relative,
+    not a consistency or unrestricted impossibility certificate.
+  - *Verdicts at the phase-19 ladder and placement.* Route A: **unresolved** for the three
+    weakenings (no source-general contradiction; the nested placement is obstructed, while the
+    bound placement was not instantiated on the frozen ladder). Route B: **unresolved** for the
+    three weakenings (no certified model at any stated domain). The
+    original variant is not in question: for {Egalitarian Dominance, 2003 Non-Elitism, GNEP, VRC
+    avoidance, 2003 Dominance Addition} the published 2003 theorem is the source-general
+    impossibility, and this phase's contribution there is only the fixed-witness chain mechanics
+    (both Dominance Addition forms) plus the phase-18 primitive control, not an independent
+    parameterized primitive proof. The initial six route-B orders cancel shared backgrounds
+    (D-018), whereas three genuinely background-sensitive orders still fail audited source
+    instances. The translation-invariant class exclusion leaves only background-dependent
+    relations as model candidates on this ladder. Nothing here promotes a bounded table to
+    consistency or a fixed witness to a source-general claim.
+    What is checked here: β's background is a level
+    question (D-022), the not-worse clause does not block a closure, and the nesting count identity
+    obstructs one placement of the repaired template; see
+    `research/results/p19_vrc_universal.json`. A phase-20 fixed-witness construction reaches the
+    bound placement one level above the frozen ladder; it does not make that placement source-general.
+- **Phase 20 independent routes (P20-vrc-dual-routes, `research/p20_vrc_dual_routes.py`):**
+  three contradiction constructions and three model approaches sharpen the boundary without
+  settling any weakened set.
+  - *Primitive cycles at chosen witnesses.* On the extended ladder `W_-1…W_9`, a direct
+    23-edge cycle uses one Egalitarian Dominance, one VRC avoidance, eight GNEP, twelve
+    Non-Elitism and one Dominance Addition instance. At VRC `(x,u,v,y,n,m)=(-1,5,7,4,1,2)`,
+    GNEP `(u,y,n)=(4,3,1)` and Non-Elitism `n=1`, all edges pass the frozen source manifest
+    and independent ladder audit, including the ranged backgrounds and single-level addition.
+    Both Dominance Addition forms close without completeness; the same primitive instances
+    therefore refute all four variants **at this witness only**. A separate β/δ placement puts
+    the GNEP high lives in β's ranged background and expands into 82 primitive audited edges
+    (15 Non-Elitism, 64 GNEP, three closing edges). Its smallest top is `W_7`, explaining why
+    the phase-19 `W_6` ladder missed it. Neither cycle works for arbitrary source witnesses:
+    the direct reservoir needs VRC's low range to reach GNEP's fuel level, which the source
+    does not require. A distinct adversarial search found no instantiable bare cycle among
+    3,762 motifs with at most three weak path edges and four levels per population; this
+    bounded absence proves nothing about longer chains.
+  - *Model exclusions, not a model.* On `W_-1…W_6`, an exact support-quotient cycle excludes
+    every total preorder determined only by occupied levels, for every Non-Elitism witness.
+    All-size inequalities exclude anchored level-separable count potentials via Egalitarian
+    Dominance + ranged Non-Elitism + VRC, and strictly total-welfare-monotone
+    cardinality-normalized orders via thesis Dominance Addition + VRC. A context-state
+    linear-score design is refuted at its specified Non-Elitism/GNEP/VRC witness by a
+    21-instance audited core at six lives; other witness choices are not excluded. Raw
+    total-preorder feasibility at size eight (size eleven with the optional `--full` scan)
+    is only a bounded control, not a model.
+  - *Verdict.* All three weakenings remain **open** at the source-general welfare-level domain:
+    no source-general primitive cycle and no source-general model. At phase 20's own fixed
+    witnesses and model families, no exact all-size model was found; the both-weakened variant
+    later got one on the frozen ladder (P21 below). The original is the published 2003 theorem.
+    The source comparison and result scopes are in `corpus/literature.toml` and
+    `research/results/p20_vrc_dual_routes.json`.
+- **All-size finite-ladder model (P21-least-preorder-both-weakened,
+  `research/p21_least_preorder.py`):** on all nonempty finite multisets of `W_-1…W_6`, take the
+  reflexive/transitive closure of the primitive ED, thesis ranged NE, 2003 GNEP and 2003 VRC
+  weak edges. Witnesses are NE `n=1`, GNEP `(u,y,n)=(5,3,1)`, VRC
+  `(x,u,v,y,n,m)=(-1,4,6,3,1,1)`. Thesis DA is an N-shaped condition to verify, **not** a
+  reverse weak edge. Every edge preserves cardinality except VRC, which increases it from a
+  singleton when its bag is nonempty (with an empty bag it is size-preserving and holds along
+  the single-life ED chain down to `W_-1`). The exact potential `Σ(20t−t²)` strictly decreases on
+  each cardinality-preserving edge (the GNEP high/low drop is at least 24, against a maximum
+  adjacent-level gain of 21), so the closure is a partial order and ED is strict. Every VRC
+  target and subsequent reachable larger population satisfies `I(P)=#{t≤0}−#{t≥5}≥1`: ED and
+  GNEP preserve it, and the only negative-delta ranged NE cases either retain slack or have an
+  impossible invariant-bearing source. DA's larger target is unreachable from any nonsingleton,
+  and a singleton cannot reach its all-positive DA target by VRC without violating `I≥1`; a
+  same-size DA target (C empty, which the reading leaves open) is excluded by the strictly
+  increasing potential; see the module's complete case proof. Because the readings leave VRC's
+  bag and DA's `C` unconstrained, those two empty families are treated as source instances and
+  discharged rather than dropped: the ladder generators and `ladder.audit` require nonempty
+  sub-populations, which only ever drops instances and is therefore unsound for a
+  model-existence claim. All level-parameter checks are size-uniform; the separately audited
+  bounded instance/closure scan is only a diagnostic
+  (`research/results/p21_least_preorder.json`). This is a consistency model for **one finite
+  ladder**, not for unrestricted welfare levels or either singly weakened set. The
+  source-general Q-011 question remains open.
+- **Settles it:** an exact model over the source's unrestricted welfare-level domain for a
+  weakened set, or a contradiction for every valid source witness. P21 settles only the
+  both-weakened variant on one finite ladder. On `W_-1…W_6`, no translation-invariant
+  additive or lexicographic-linear order supplies that model; the least-preorder construction
+  uses the reachability relation rather than such a score.
 
 ## Q-012. Is the bounce theorem known?
 
