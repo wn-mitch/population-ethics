@@ -1680,19 +1680,55 @@ def test_p21_least_preorder_certificate_needs_ranged_ne_and_high_gnep_floor() ->
     assert potential(4) + potential(-1) <= potential(3) + potential(0)
     scan = bounded_diagnostic(4)
     assert scan["ed_reversals"] == scan["da_forward_paths"] == 0
-    assert scan["audited_instances"] > 0
     # The source leaves VRC's bag and DA's C unconstrained, so the empty cases are instances too.
     assert scan["empty_vrc_bag_obligations"] == 3
     assert scan["empty_da_c_obligations"] > 0
+    assert scan["empty_population_is_isolated"]
     empty = source_empty_cases()
     assert empty["vrc_empty_bag_image_invariant"] == 1
     assert all(row["reaches_negative_level"] for row in empty["vrc_empty_bag_images"].values())
 
-    # The repo's other fixed-witness constructions sit one GNEP floor lower, so their
-    # instance sets strictly contain this model's.
+    # The named lower-floor design has a genuine weak cycle; P20's other
+    # direct-route witnesses can differ in VRC ranges even when u_g=5.
     separation = witness_separation()
     assert separation["gnep_high_floor"] == 5
     assert separation["phase_17_18_20_gnep_high_floor"] == 4
-    assert separation["weight_of_the_lower_floor"] == 0
     assert separation["instance_set_is_a_strict_subset_at_the_lower_floor"]
     assert separation["extra_instances_are_all_gnep"]
+    assert separation["lower_floor_two_cycle"] == [[2, 4], [3, 3], [2, 4]]
+    assert separation["direct_route_unsat_chains_with_vrc_edge_outside_model"] > 0
+
+
+def test_p21_integer_chain_certificate_covers_levels_beyond_the_finite_ladder() -> None:
+    from research.ladder import Ladder, audit
+    from research.p20_contextual_priority import GNEP
+    from research.p21_least_preorder import (
+        WITNESS,
+        integer_certificate,
+        integer_gain,
+        integer_potential,
+        integer_window_diagnostic,
+        potential,
+    )
+    from research.p21_machine_check import machine_certificate
+    from research.schema import Instance
+
+    left, right = (-3, 5), (-2, 3)
+    assert audit(Instance(GNEP, (left, right)), Ladder(negative=3, positive=10), WITNESS)
+    assert sum(map(potential, left)) < sum(map(potential, right))
+    assert sum(map(integer_potential, left)) > sum(map(integer_potential, right))
+
+    assert 1 < integer_gain(-20) < 2
+    assert integer_gain(-20) > integer_gain(0) > integer_gain(20) > 1
+    assert integer_gain(3) + integer_gain(4) > 2
+    certificate = integer_certificate()
+    assert certificate["gain_bounds_verified_for_every_positive_real_q"]
+    assert certificate["machine_certificate"]["all_finite_path_lengths_checked"]
+    scan = integer_window_diagnostic()
+    assert scan["ladder"][0] < -1 and scan["ladder"][1] > 6
+    assert scan["empty_population_is_isolated"]
+
+    with pytest.raises(ValueError, match="only covers the stated P21 witness"):
+        machine_certificate(
+            {**WITNESS.params, "general-non-extreme-priority": {"u": 4, "y": 3, "n": 1}}
+        )

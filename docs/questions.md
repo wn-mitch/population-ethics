@@ -113,7 +113,7 @@ delete it.
 
 ## Q-010. Gaps in the possibility map
 
-- **Status:** open (3 of 58 sets).
+- **Status:** open for 2 of the 3 VRC-avoidance gaps left after P16; P21 realizes the both-weakened set on one unbounded welfare chain.
 - **Setup (P11-possibility-map):** the additive class is decided exactly, and 57
   lexicographic-additive axiologies are checked exactly (D-021). 58 minimal condition sets are
   realized by none of them. 37 are explained by a known or project theorem via the recorded
@@ -137,21 +137,23 @@ delete it.
   - P16-top-gnep-ne-and-ia: five Dominance Addition gaps with GNEP, repaired 2009 Weak
     Quality Addition, and Inequality Aversion or either Non-Elitism form. Its audited cycles
     need no welfare level above the GNEP witness (research/p16_ne_top.py; Q-013).
-- **Still open: 3.** Each contains Egalitarian Dominance, GNEP, VRC avoidance, a Non-Elitism
-  form and a Dominance Addition form (Q-011). VRC avoidance has no arbitrary background,
-  so the P16 Weak Quality Addition construction does not apply.
-- **Settles it:** for each of the three, a certificate from a background-sensitive or
-  count-sensitive model class, or a contradiction for every valid top-level witness.
+- **Still open: 2.** Each contains Egalitarian Dominance, GNEP, VRC avoidance, and one
+  stronger 2003 form of Non-Elitism or Dominance Addition (Q-011). P21 realizes the
+  set with both thesis weakenings. VRC avoidance has no arbitrary background,
+  so the P16 Weak Quality Addition construction does not apply to the remaining sets.
+- **Settles them:** a model for either remaining set on a source-permitted welfare
+  universe, or a contradiction for every valid top-level witness.
 
 ## Q-011. Is the 2003 theorem stronger than stated?
 
-- **Status:** open at the source-general welfare-level domain; the weakest variant now has an
-  all-population-size model on the finite ladder `W_-1…W_6` (P21).
+- **Status:** the both-weakened set has an all-size model on the entire indexed integer
+  welfare chain, including the empty population (P21). Extension to richer welfare
+  quasi-orders with off-chain levels and the two singly weakened sets remains open.
 - **Candidates:** the 2003 conditions {Egalitarian Dominance, Non-Elitism, GNEP, VRC avoidance,
   Dominance Addition}, with Dominance Addition weakened to the thesis's not-worse form, or
-  Non-Elitism weakened to its ranged background, or both. P21 realizes **both** weakenings
-  together on one finite ladder at one legal witness. The two singly weakened variants remain
-  without a model; no source-general model or contradiction is established for any variant.
+  Non-Elitism weakened to its ranged background, or both. P21 realizes **both**
+  weakenings together on one source-permitted unbounded welfare universe at one legal
+  witness. It says nothing about models for either singly weakened set.
 - **What the proof would need:** the published 2003 proof uses Condition β with a negative
   background while β's own low level is `W_1`. Thesis Non-Elitism yields β with background in
   `R(z, y+1)`: that excludes negatives for the published levels, but permits them if β's low
@@ -300,41 +302,71 @@ delete it.
     21-instance audited core at six lives; other witness choices are not excluded. Raw
     total-preorder feasibility at size eight (size eleven with the optional `--full` scan)
     is only a bounded control, not a model.
-  - *Verdict.* All three weakenings remain **open** at the source-general welfare-level domain:
-    no source-general primitive cycle and no source-general model. At phase 20's own fixed
-    witnesses and model families, no exact all-size model was found; the both-weakened variant
-    later got one on the frozen ladder (P21 below). The original is the published 2003 theorem.
+  - *Verdict at phase 20.* No source-general primitive cycle or model had been established
+    for any weakened set. At that phase's fixed witnesses and model families no exact
+    all-size model was found. P21 below supplies a both-weakened model on a single
+    unbounded chain; it does not generalize to every possible welfare quasi-order.
+    The original five-condition impossibility remains the published 2003 theorem.
     The source comparison and result scopes are in `corpus/literature.toml` and
     `research/results/p20_vrc_dual_routes.json`.
-- **All-size finite-ladder model (P21-least-preorder-both-weakened,
-  `research/p21_least_preorder.py`):** on all nonempty finite multisets of `W_-1…W_6`, take the
-  reflexive/transitive closure of the primitive ED, thesis ranged NE, 2003 GNEP and 2003 VRC
-  weak edges. Witnesses are NE `n=1`, GNEP `(u,y,n)=(5,3,1)`, VRC
-  `(x,u,v,y,n,m)=(-1,4,6,3,1,1)`. Thesis DA is an N-shaped condition to verify, **not** a
-  reverse weak edge. Every edge preserves cardinality except VRC, which increases it from a
-  singleton when its bag is nonempty (with an empty bag it is size-preserving and holds along
-  the single-life ED chain down to `W_-1`). The exact potential `Σ(20t−t²)` strictly decreases on
-  each cardinality-preserving edge (the GNEP high/low drop is at least 24, against a maximum
-  adjacent-level gain of 21), so the closure is a partial order and ED is strict. Every VRC
-  target and subsequent reachable larger population satisfies `I(P)=#{t≤0}−#{t≥5}≥1`: ED and
-  GNEP preserve it, and the only negative-delta ranged NE cases either retain slack or have an
-  impossible invariant-bearing source. DA's larger target is unreachable from any nonsingleton,
-  and a singleton cannot reach its all-positive DA target by VRC without violating `I≥1`; a
-  same-size DA target (C empty, which the reading leaves open) is excluded by the strictly
-  increasing potential; see the module's complete case proof. Because the readings leave VRC's
-  bag and DA's `C` unconstrained, those two empty families are treated as source instances and
-  discharged rather than dropped: the ladder generators and `ladder.audit` require nonempty
-  sub-populations, which only ever drops instances and is therefore unsound for a
-  model-existence claim. All level-parameter checks are size-uniform; the separately audited
-  bounded instance/closure scan is only a diagnostic
-  (`research/results/p21_least_preorder.json`). This is a consistency model for **one finite
-  ladder**, not for unrestricted welfare levels or either singly weakened set. The
-  source-general Q-011 question remains open.
-- **Settles it:** an exact model over the source's unrestricted welfare-level domain for a
-  weakened set, or a contradiction for every valid source witness. P21 settles only the
-  both-weakened variant on one finite ladder. On `W_-1…W_6`, no translation-invariant
-  additive or lexicographic-linear order supplies that model; the least-preorder construction
-  uses the reachability relation rather than such a score.
+- **All-size integer-chain model (P21-integer-chain-both-weakened,
+  `research/p21_least_preorder.py`, D-023):** the welfare universe is exactly
+  `{W_i : i ∈ Z}`, and the populations have every finite multiset of its levels,
+  including `∅`. The relation pulls back from level multisets to distinct finite
+  sets of lives, treating equal welfare profiles as indifferent. Take the
+  reflexive/transitive closure of the primitive ED, thesis
+  ranged NE, 2003 GNEP and 2003 VRC weak edges; leave `∅` isolated. Witnesses are
+  NE `n=1`, GNEP `(u,y,n)=(5,3,1)`, VRC `(x,u,v,y,n,m)=(-1,4,6,3,1,1)`.
+  Thesis DA is an N-shaped condition checked on this closure, **not** a reverse
+  weak edge. Define `F(0)=0`, `F(t+1)−F(t)=g(t)=1+1/(1+2^t)` for every integer `t`,
+  and the exact potential `Σ F(t)`. Since `1<g(t)<2`, `g` strictly decreases and
+  `g(3)+g(4)>2`, every cardinality-preserving primitive edge decreases this
+  potential strictly; only reflexive steps preserve it. In
+  particular ED cannot reverse. VRC with a nonempty bag is the only
+  cardinality-increasing primitive edge; its targets satisfy
+  `I(P)=#{t≤0}−#{t≥5}≥1`, and all further edges preserve that invariant.
+  A larger DA target cannot be reached from a nonsingleton, while the only
+  singleton source that can grow has level at least 4; every corresponding
+  DA target has invariant at most −1 and every reachable grown profile has
+  invariant at least 1. DA with an empty added bag is same-size and excluded
+  by the potential; `A=B=∅` is reflexive. VRC with an empty low bag is
+  discharged by ED, without changing size.
+  The independent `research/p21_machine_check.py` discharges the universal
+  gain, invariant and DA-target inequalities with exact SMT and checks the
+  finite-sum and abstract path inductions with Spacer CHCs. Its source-to-edge
+  translation is still a reviewed reading, tested on an extended finite
+  window only as a diagnostic.
+  The proof uses the written source quantifiers: NE has a ranged background, GNEP
+  an arbitrary one, and ED, DA and VRC have no additional universally quantified
+  common background. It does not prove a separability-strengthened variant.
+  This is one source-permitted unbounded welfare structure, **not** a
+  construction on every richer quasi-order with additional off-chain
+  levels. The two singly weakened sets and independent publication of
+  this exact conjunction remain unestablished.
+- **Finite-ladder specialization (P21-least-preorder-both-weakened):** on
+  `W_-1…W_6` the same primitive closure has the exact potential
+  `Σ(20t−t²)` and the same invariant; it covers all nonempty population
+  sizes plus `∅`. This score does **not** extend to the full integer
+  chain. The original source-level generators omit the empty low bag,
+  empty added bag, and `∅`, so the separate source-instance checks are
+  required; a bounded generator's success alone does not prove either model.
+- **Witness and literature boundary:** the named phase-17, phase-18 and
+  phase-20 contextual witnesses have GNEP high floor `u=4`; at that
+  witness, thesis NE and GNEP admit the weak cycle
+  `(2,4) ⪰ (3,3) ⪰ (2,4)`. P20's other direct-route UNSAT chains
+  use different VRC ranges and are not defeated just by changing that
+  floor. With weak DA, Thomas's 2016 reconstruction derives
+  `¬(low ⪰ high)`, which violates its Weak Quality Condition but does
+  **not** refute the 2003 avoidance requirement `high ⪰ low` in an
+  incomplete quasi-order. It therefore does not settle the DA-only
+  weakening. Checked sources have no verified identical model, but
+  inaccessible texts prevent a priority claim (`corpus/literature.toml`).
+- **Settles it:** the both-weakened set is consistent on the full
+  integer-indexed welfare chain, not merely at a finite welfare ceiling
+  or population-size cap. To claim an axiology on every welfare
+  quasi-order allowed by the source would require extending it to
+  off-chain levels. The singly weakened sets require separate models
+  or contradictions for all their valid witnesses.
 
 ## Q-012. Is the bounce theorem known?
 
@@ -376,5 +408,5 @@ delete it.
 - **Scope:** WQA's fixed witnesses and arbitrary background are the repaired uniform
   reading, stronger than the published background-first quantifier order. The literature
   collision is partial, not a claim that the exact theorem is printed in a checked source.
-  The three VRC-avoidance gaps remain Q-011.
+  The remaining singly weakened VRC-avoidance gaps are tracked under Q-011.
 

@@ -15,6 +15,7 @@
       "ed_reversals": 0,
       "empty_da_c_obligations": 1162,
       "empty_da_c_sizes_checked": 3,
+      "empty_population_is_isolated": true,
       "empty_vrc_bag_obligations": 3,
       "not_an_all_size_proof": true,
       "population_cap": 6
@@ -60,6 +61,7 @@
       ],
       "source_empty_cases": {
         "dominance_addition_empty_c_target_is_unreachable": true,
+        "empty_population_is_isolated": true,
         "potential_is_strictly_increasing_on_the_ladder": true,
         "vrc_empty_bag_image_invariant": 1,
         "vrc_empty_bag_images": {
@@ -77,9 +79,51 @@
       },
       "vrc_image_invariant": 1
     },
+    "finite_ladder_scope": "all finite multisets on W_-1..W_6, including empty",
+    "integer_certificate": {
+      "gain": "1+1/(1+2^t)",
+      "gain_bounds_verified_for_every_positive_real_q": true,
+      "gnep_adjacent_gain_upper_bound": "2 (strict)",
+      "high_to_low_gain": "332/153",
+      "invariant": "#{t<=0}-#{t>=5}",
+      "machine_certificate": {
+        "all_finite_path_lengths_checked": true,
+        "arbitrary_finite_positive_sums": true,
+        "arbitrary_finite_signed_bag_sums": true,
+        "depends_on_reviewed_source_translation": true,
+        "engine": "Z3 exact SMT and Spacer constrained-Horn induction",
+        "unbounded_ne_and_gnep_potential_gaps": true,
+        "universal_local_arithmetic_checks": true,
+        "unrestricted_ne_negative_control": true
+      },
+      "sampled_levels_only_a_diagnostic": [
+        -3,
+        10
+      ],
+      "scope": "all finite multisets over every W_i, i in Z, including empty",
+      "source_empty_population": "isolated reflexive point"
+    },
+    "integer_chain_scope": "all finite multisets on W_i for every i in Z, including empty",
+    "integer_window_diagnostic": {
+      "empty_population_is_isolated": true,
+      "ladder": [
+        -3,
+        10
+      ],
+      "not_an_all_integer_proof": true,
+      "population_cap": 3,
+      "principle_counts": {
+        "arrhenius-2003:egalitarian-dominance": 2366,
+        "arrhenius-2003:general-non-extreme-priority": 3500,
+        "arrhenius-2003:vrc-avoidance": 63,
+        "thesis:dominance-addition": 11746,
+        "thesis:non-elitism": 598
+      },
+      "source_instances_audited": 18273
+    },
     "relation": "reflexive/transitive closure of primitive ED, ranged NE, GNEP, VRC edges",
-    "scope": "all nonempty finite populations over W_-1..W_6; one legal witness",
-    "source_general_q011": "open; no claim about levels outside W_-1..W_6",
+    "scope": "all finite multisets on W_-1..W_6 and, separately, on every indexed W_i (i in Z); one legal witness",
+    "source_general_q011": "both-weakened set realized on one source-permitted full indexed integer chain; extension to off-chain welfare levels and singly weakened sets remain open",
     "thesis_dominance_addition": "not(A strictly better than B+C), not a reverse edge",
     "witness": {
       "general-non-extreme-priority": {
@@ -100,19 +144,32 @@
       }
     },
     "witness_separation": {
+      "direct_route_unsat_chains_with_vrc_edge_outside_model": 6,
       "extra_instances_are_all_gnep": true,
       "gnep_high_floor": 5,
       "instance_set_is_a_strict_subset_at_the_lower_floor": true,
+      "lower_floor_two_cycle": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
       "phase_17_18_20_gnep_high_floor": 4,
       "population_cap_for_the_comparison": 3,
       "reference_instance_counts": {
         "lower_floor": 2091,
         "this_witness": 1913
-      },
-      "weight_of_the_lower_floor": 0,
-      "weight_of_this_floor": -1
+      }
     }
   },
-  "result_sha256": "c129ac4a59500ac7479951828c56793e519393e48967ef491242e87130563b90",
+  "result_sha256": "b6004eab7820faefaf151c257165668d04f8d0beaef3017481b941fb5763b1d5",
   "schema": "population-ethics.research-result/v1"
 }

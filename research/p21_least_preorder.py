@@ -1,7 +1,11 @@
-"""An all-size, finite-ladder model of Q-011's both-weakened conditions.
+"""Least-preorder models for the both-weakened Q-011 condition set.
 
-The domain consists of every nonempty finite multiset over W_-1,...,W_6. Let G contain
-all primitive ED, thesis ranged NE, 2003 GNEP, and 2003 VRC weak edges at WITNESS below.
+On the finite ladder W_-1,...,W_6, and separately on every indexed level W_i
+(i in Z), the domain contains every finite multiset, including an isolated empty
+population. The relation pulls back to populations of individuated lives by welfare-level
+multiset; different finite sets of lives with the same profile are indifferent.
+Let G contain all primitive ED, thesis ranged NE, 2003 GNEP, and 2003 VRC
+weak edges at WITNESS below.
 The ordering is the reflexive/transitive closure of G; thesis Dominance Addition (DA) is
 an N-shaped obligation, NOT a reverse edge. The four edge schemas are:
 
@@ -10,20 +14,19 @@ an N-shaped obligation, NOT a reverse edge. The four edge schemas are:
   GNEP: h + z + E -> b + (z+1) + E      h>=5, b in {1,2,3}, E arbitrary
   VRC:  h -> B + (-1)                    h>=4, B nonempty in R(1,3)
 
-All edges preserve the population size except VRC, which increases it from a single
-life when its bag is nonempty and is size-preserving when the bag is empty; the
-empty-bag case is covered by the potential and by the single-life ED chain below.
-For f(t)=20t-t^2, Phi(P)=sum(f(t) for t in P) strictly decreases on every
-size-preserving edge: f increases throughout the ladder; strict concavity handles NE;
-f(5)-f(3)=24 exceeds max_z(f(z+1)-f(z))=21 for GNEP. Hence G has no cycle,
-and ED cannot be reversed in the closure. Phi is only a proof potential, NOT an
-additive representation of the ordering.
+Every edge preserves population size except VRC, which grows only from a singleton
+when its bag is nonempty. With an empty bag VRC is already a singleton ED edge.
+On the finite ladder, f(t)=20t-t^2 gives a strictly decreasing potential Phi=sum f
+on every size-preserving edge. On all of Z the exact adjacent gains
+g(t)=F(t+1)-F(t)=1+1/(1+2^t) are strictly decreasing and between 1 and 2;
+g(3)+g(4)>2 bounds every GNEP adjacent gain. Both potentials make G acyclic
+and ED strict. They are proof devices, not additive representations of the order.
 
-Write I(P)=#{t<=0}-#{t>=5}. Every VRC output has I=1, and ED/NE/GNEP preserve
-I>=1 on populations of size >=2. The only NE cases with negative Delta I are
-(x-1,y)=(0,-1), where the source has I>=2 and Delta=-1, and (4,1),(4,2),
-(4,3), where the ranged background cannot contain a nonpositive life, so its
-source cannot have I>=1. GNEP has Delta I=1-[z=0]-[z=4]>=0.
+Write I(P)=#{t<=0}-#{t>=5}. Every VRC output has I=1; ED, GNEP and ranged
+NE preserve I>=1 for arbitrary backgrounds and sizes. On all of Z the only
+negative-Delta NE cases have middle x-1=0 with y<0 (the source has I>=2),
+or middle 4 with y in {1,2,3} (its ranged background has no weight +1).
+GNEP has Delta I=1-[z=0]-[z=4]>=0.
 
 For thesis DA, A and B have the same nonzero size and all A lives are below all
 B lives; C is a nonempty perfectly equal positive bag. A target B+C is
@@ -37,28 +40,27 @@ positive, giving I(B+C) <= -1. Every VRC image has I = 1 and the invariant is
 preserved afterwards, so such a target is unreachable. Thus A cannot reach
 B+C, proving not(A strictly better than B+C) without assuming completeness.
 
-The readings leave VRC's bag B and thesis DA's C unconstrained in size, so the
-empty sub-populations are source instances as well. They are discharged below
-rather than dropped: with B empty the VRC instance is size-preserving and holds
-along the single-life ED chain down to W_-1, and with C empty the DA target has
-A's size with every level above every level of A, so the strictly increasing
-potential puts it out of reach.
-
-The exhaustive level-parameter checks below certify the local inequalities and
-background invariant for arbitrary population sizes. The bounded graph scan is
-an independent source-instance diagnostic, not the all-size proof. No claim is
-made about welfare levels outside this ladder or the other Q-011 variants.
+VRC's low bag B and thesis DA's C can be empty. B empty is a direct ED edge;
+C empty would require a same-size path to a strictly higher potential, so DA
+still holds. If A=B=empty, DA holds because the empty population is isolated;
+strict ED implicitly excludes empty A=B, or it would contradict reflexivity.
+The finite ladder's exhaustive level checks and bounded source-instance scan
+are diagnostics. research.p21_machine_check verifies the universal gain,
+invariant, and abstract path-closure obligations with SMT and CHC induction.
+The source translation is reviewed separately; neither singly weakened variant
+is claimed.
 """
 
 from __future__ import annotations
 
 import json
 from collections import defaultdict, deque
+from fractions import Fraction
 from itertools import combinations_with_replacement
 from typing import Any
 
-from research.lab import LedgerEntry, record, write_result
-from research.ladder import Ladder, Witness, audit, validate
+from research.lab import RESULTS_DIR, LedgerEntry, record, write_result
+from research.ladder import Ladder, Witness, audit, domain, instances_over, validate
 from research.p20_contextual_priority import (
     DA,
     ED,
@@ -67,6 +69,7 @@ from research.p20_contextual_priority import (
     VRC,
     source_instances,
 )
+from research.p21_machine_check import machine_certificate
 from research.schema import Instance, Pop
 
 LADDER = Ladder(negative=1, positive=6)
@@ -105,6 +108,191 @@ def invariant_preserved(base: int, delta: int, support: tuple[int, ...]) -> bool
     if least > 0 and not has_positive:
         return True  # The premise I(source)>=1 is impossible on this support.
     return base + least + delta >= 1
+
+
+def integer_gain(level: int) -> Fraction:
+    """Exact gain F(level + 1) - F(level) on the unbounded integer chain."""
+    if level >= 0:
+        power = 1 << level
+        return Fraction(power + 2, power + 1)
+    power = 1 << -level
+    return Fraction(2 * power + 1, power + 1)
+
+
+def integer_potential(level: int) -> Fraction:
+    """Anchor F(0) = 0; used only to stress-test finite windows of the proof."""
+    if level >= 0:
+        return sum((integer_gain(t) for t in range(level)), Fraction())
+    return -sum((integer_gain(t) for t in range(level, 0)), Fraction())
+
+
+def integer_certificate() -> dict[str, Any]:
+    """Prove the same closure works for every integer-indexed welfare level.
+
+    Write q = 2**t > 0 and g(t) = F(t+1)-F(t) = 1+1/(1+q).
+    Exact real arithmetic below proves 1 < g(t) < 2 and g(t) > g(t+1)
+    for every t, since q at t+1 is 2q. Thus F is increasing and strictly
+    concave over all integers. Every size-preserving generator lowers Phi:
+
+    * ED lowers every life.
+    * For NE let m=x-1 and y<m. F(m)-F(y) >= g(m-1) > g(m)
+      = F(m+1)-F(m), independently of its common background.
+    * For GNEP h>=5 and b in {1,2,3}, F(h)-F(b) >= g(3)+g(4)>2>g(z)
+      for every z and arbitrary common background.
+    * VRC with an empty low bag h->(-1) is already an ED edge.
+
+    Cardinality never falls, so these inequalities make the closure
+    antisymmetric and its ED comparisons strict. Unbounded descending
+    paths are harmless: reachability requires a finite path.
+
+    For I(P)=#{t<=0}-#{t>=5}, ED can start with I>=1 only at x<=0;
+    all its target lives then also weigh +1. For ranged NE let m=x-1:
+    m<0 gives Delta I=0; m=0,y<0 gives Delta=-1 but source I>=2
+    because R(y,1) has no weight -1; 1<=m<=3 gives Delta=w(y)>=0;
+    m=4,y<=0 gives Delta=0; m=4,1<=y<=3 gives Delta=-1 but
+    R(y,5) has no weight +1, so the source cannot have I>=1;
+    m>=5 gives Delta=1+w(y)>=0. GNEP has
+    Delta=1-[z=0]-[z=4]>=0. Each VRC image has I=1.
+
+    In thesis DA, |A|=|B|>0 and C nonempty means a larger target:
+    a source of size >=2 cannot grow. A singleton below W_4 cannot
+    grow either. For a singleton a>=4, the first growing VRC edge
+    makes I=1, whereas every DA target has b>a>=4, hence b>=5
+    and I<=-1. If C is empty, A and B have the same size and every
+    B life is above every A life, so increasing Phi forbids reachability.
+    If A=B=empty, the empty population is an isolated reflexive point:
+    it is not strictly better than C, including when C is empty. ED's
+    strict premise implicitly requires nonempty populations, since its
+    literal empty instance would demand empty > empty.
+
+    The finite-window checks below are only diagnostics. The independent
+    machine certificate checks the unbounded arithmetic, invariant cases,
+    and an abstract closure over all finite path lengths. The connection
+    between these schemas and the source text remains a reviewed reading.
+    """
+    machine = machine_certificate(WITNESS.params)
+
+    high_to_low = integer_gain(3) + integer_gain(4)
+    assert high_to_low > 2
+    sample = range(-3, 11)
+    for m in sample:
+        if m + 1 not in sample:
+            continue
+        for y in sample:
+            if y >= m:
+                continue
+            assert 2 * integer_potential(m) > (integer_potential(m + 1) + integer_potential(y)), (
+                m,
+                y,
+            )
+            base = 2 * invariant_weight(m)
+            delta = invariant_weight(m + 1) + invariant_weight(y) - base
+            assert invariant_preserved(base, delta, tuple(range(y, m + 2))), (m, y)
+    for z in sample:
+        if z + 1 not in sample:
+            continue
+        for h in sample:
+            if h < 5:
+                continue
+            for b in (1, 2, 3):
+                assert integer_potential(h) + integer_potential(z) > (
+                    integer_potential(b) + integer_potential(z + 1)
+                ), (h, z, b)
+                delta = (
+                    invariant_weight(b)
+                    + invariant_weight(z + 1)
+                    - invariant_weight(h)
+                    - invariant_weight(z)
+                )
+                assert delta >= 0, (h, z, b)
+    return {
+        "scope": "all finite multisets over every W_i, i in Z, including empty",
+        "gain": "1+1/(1+2^t)",
+        "gain_bounds_verified_for_every_positive_real_q": True,
+        "machine_certificate": machine,
+        "high_to_low_gain": str(high_to_low),
+        "gnep_adjacent_gain_upper_bound": "2 (strict)",
+        "invariant": "#{t<=0}-#{t>=5}",
+        "source_empty_population": "isolated reflexive point",
+        "sampled_levels_only_a_diagnostic": [min(sample), max(sample)],
+    }
+
+
+def integer_window_diagnostic() -> dict[str, Any]:
+    """Independently audit source instances beyond the original finite ladder.
+
+    This bounded graph is a counterexample search, not the all-integer proof.
+    The analytic certificate above handles arbitrary level indices and sizes.
+    """
+    ladder = Ladder(negative=3, positive=10)
+    cap = 3
+    populations = domain(ladder, cap)
+    instances = instances_over(populations, ladder, WITNESS, PRINCIPLES.values())
+    scores = {level: integer_potential(level) for level in ladder.levels}
+    weights = {level: invariant_weight(level) for level in ladder.levels}
+    edges: dict[Pop, set[Pop]] = defaultdict(set)
+    counts: dict[str, int] = defaultdict(int)
+
+    def score(pop: Pop) -> Fraction:
+        return sum((scores[level] for level in pop), Fraction())
+
+    def weight(pop: Pop) -> int:
+        return sum(weights[level] for level in pop)
+
+    for row in instances:
+        assert audit(row, ladder, WITNESS), row
+        left, right = row.args
+        counts[row.principle] += 1
+        if row.principle == DA:
+            continue
+        edges[left].add(right)
+        assert len(left) <= len(right)
+        if len(left) == len(right):
+            assert score(left) > score(right), row
+            if len(left) == 1:
+                assert right[0] < left[0], row
+        else:
+            assert row.principle == VRC and len(left) == 1, row
+        if row.principle == VRC:
+            assert weight(right) == 1, row
+        elif weight(left) >= 1:
+            assert weight(right) >= 1, row
+
+    assert all(counts[principle] > 0 for principle in PRINCIPLES.values())
+    assert all(
+        (WITNESS.get("vrc-avoidance")["x"],) in edges[(high,)]
+        for high in ladder.levels
+        if high >= WITNESS.get("vrc-avoidance")["u"]
+    )
+    reached: dict[Pop, set[Pop]] = {}
+
+    def reachable(start: Pop) -> set[Pop]:
+        if start not in reached:
+            seen = {start}
+            queue = deque([start])
+            while queue:
+                for target in edges[queue.popleft()]:
+                    if target not in seen:
+                        seen.add(target)
+                        queue.append(target)
+            reached[start] = seen
+        return reached[start]
+
+    assert reachable(()) == {()}
+    for row in instances:
+        left, right = row.args
+        if row.principle == ED:
+            assert left not in reachable(right), row
+        elif row.principle == DA:
+            assert right not in reachable(left), row
+    return {
+        "ladder": [min(ladder.levels), max(ladder.levels)],
+        "population_cap": cap,
+        "source_instances_audited": len(instances),
+        "principle_counts": dict(counts),
+        "empty_population_is_isolated": True,
+        "not_an_all_integer_proof": True,
+    }
 
 
 def dominance_addition_cases() -> dict[str, Any]:
@@ -163,82 +351,94 @@ def dominance_addition_cases() -> dict[str, Any]:
 
 
 def source_empty_cases() -> dict[str, Any]:
-    """Cover the two empty sub-populations the source readings leave open.
+    """Discharge empty source parts without dropping their obligations.
 
-    ``corpus/readings.toml`` leaves VRC's ``B`` size unconstrained (``N(B)`` unrestricted), so
-    ``B = empty`` is a source instance: the single life at ``A``'s level must satisfy
-    ``(h) >= (-1)^m``. The closure carries it along the single-life Egalitarian Dominance chain
-    ``h -> h-1 -> ... -> W_-1``, every link of which is an ED instance, and the same chain shows
-    the potential decreases there too. Note that a VRC instance with ``B`` empty is
-    size-preserving, so the potential, not size, is what rules out cycles through it.
-
-    The thesis Dominance Addition reading leaves ``N(C)`` unconstrained, so ``C = empty`` is a
-    source instance whose target ``B`` has the same size as ``A`` with every level above every
-    level of ``A``. The potential is strictly increasing, so ``Phi(B) > Phi(A)`` termwise; a
-    same-size path cannot grow and return to that size, so ``B`` is unreachable from ``A``.
+    VRC with B empty is h >= (-1), already a one-life ED edge for every
+    h >= 4. DA with C empty forbids a same-size upward path by Phi.
+    A=B=empty is also a legal DA reading: add the empty population as
+    an isolated reflexive point. Its only reachable target is itself,
+    so it is not strictly better than any positive C. Strict ED must
+    have nonempty A and B: its literal empty instance would demand
+    empty > empty and contradict reflexivity.
     """
     floor = WITNESS.get("vrc-avoidance")["u"]
     instances = source_instances(1, WITNESS_PARAMS)
-    ed_steps = {(left[0], right[0]) for kind, left, right, _ in instances if kind == "ED"}
-    ladder_steps = {(above, above - 1) for above in LEVELS if LADDER.has(above - 1)}
-    assert ladder_steps and ladder_steps <= ed_steps, ladder_steps - ed_steps
-    assert all(
-        potential(high) > potential(low)
-        for high, low in ((a, b) for a in LEVELS for b in LEVELS if a > b)
-    )
-
-    singleton_paths = {}
-    for high in [level for level in LEVELS if level >= floor]:
-        walk = list(range(high, min(LEVELS) - 1, -1))
-        assert all((above, above - 1) in ed_steps for above in walk[:-1]), high
-        singleton_paths[high] = {"reaches_negative_level": walk[-1] == min(LEVELS)}
-
-    # The VRC image with an empty bag is m copies of the negative level: nonempty for m >= 1.
+    ed_edges = {(left, right) for kind, left, right, _ in instances if kind == "ED"}
     vrc = WITNESS.get("vrc-avoidance")
-    assert vrc["m"] >= 1 and invariant_weight(vrc["x"]) == 1
+    assert vrc["m"] == 1 and invariant_weight(vrc["x"]) == 1
+    singleton_paths = {
+        high: {"reaches_negative_level": ((high,), (vrc["x"],)) in ed_edges}
+        for high in LEVELS
+        if high >= floor
+    }
+    assert singleton_paths and all(
+        entry["reaches_negative_level"] for entry in singleton_paths.values()
+    )
+    assert all(left and right for _, left, right, _ in instances)
+    assert all(potential(high) > potential(low) for high in LEVELS for low in LEVELS if high > low)
     return {
         "vrc_empty_bag_is_a_source_instance": True,
         "vrc_empty_bag_images": singleton_paths,
-        "vrc_empty_bag_image_invariant": vrc["m"] * invariant_weight(vrc["x"]),
+        "vrc_empty_bag_image_invariant": invariant_weight(vrc["x"]),
         "dominance_addition_empty_c_target_is_unreachable": True,
+        "empty_population_is_isolated": True,
         "potential_is_strictly_increasing_on_the_ladder": True,
     }
 
 
 def witness_separation() -> dict[str, Any]:
-    """Compare this witness with the repo's other fixed-witness Q-011 constructions.
+    """Separate this witness from earlier fixed-witness contradictions.
 
-    Phases 17, 18 and phase 20's contextual design all fix GNEP's high floor at ``u = 4``,
-    one level below this model's ``u = 5``. With every other parameter equal, their
-    five-condition instance sets over the same ladder are strict supersets of this model's,
-    and their fixed-witness UNSAT results are statements about that larger set. A fixed
-    witness at a *lower* floor admits strictly more GNEP sources, and ``W_4`` carries
-    invariant weight 0 while ``W_5`` carries ``-1``, so raising the floor is exactly what
-    lets the invariant and the descent potential survive. GNEP's floor is an existential
-    witness the source leaves free, so both witnesses are legal; the recursion would have
-    to be an UNSAT subset of this model's instance set to conflict with it, which cannot
-    exist once the closure below satisfies every one of those instances.
+    P17, P18 and P20's contextual design use the same parameters apart
+    from GNEP's floor u=4 rather than 5. Their instance sets strictly
+    contain ours; the extra GNEP edge (4,2)->(3,3) closes a weak
+    two-cycle with the shared ranged NE edge (3,3)->(4,2). The higher
+    floor removes that cycle and permits this proof's descending
+    potential; it is not by itself sufficient for a model. P20's
+    direct-route grids include u=5 but use different VRC bags and
+    GNEP low ranges. The checks below compare the named design at cap
+    three and inspect the recorded direct-route VRC edges separately.
     """
     from research.p18_vrc_certificate import CONTROL_WITNESS
 
     floor = WITNESS.get("general-non-extreme-priority")["u"]
-    assert floor >= 5, floor
+    assert floor == 5
     assert CONTROL_WITNESS.get("general-non-extreme-priority")["u"] == floor - 1
-    assert invariant_weight(floor - 1) == 0 and invariant_weight(floor) == -1
-
     cap = 3
     ours = {row[:3] for row in source_instances(cap, WITNESS_PARAMS)}
     lower = {row[:3] for row in source_instances(cap, {**WITNESS_PARAMS, "g_u": floor - 1})}
     extra = lower - ours
     assert ours < lower, "a lower GNEP floor must strictly enlarge the instance set"
     assert all(kind == "GNEP" for kind, _, _ in extra)
+
+    lower_only = ("GNEP", (2, 4), (3, 3))
+    shared = ("NE", (3, 3), (2, 4))
+    assert lower_only in extra and shared in ours
+    assert 2 * potential(3) > potential(2) + potential(4)
+
+    recorded = json.loads((RESULTS_DIR / "p20_vrc_dual_routes.json").read_text())
+    runs = recorded["result"]["route_a"]["direct"]["evidence"]["witness_grid"]["runs"]
+    both_weakened = [
+        row
+        for row in runs
+        if row["ne_form"] == NE
+        and row["da_form"] == DA
+        and row["closure"]["decision_without_completeness"] == "unsat"
+    ]
+    low_levels = set(LADDER.range(1, WITNESS.get("vrc-avoidance")["y"]))
+    assert both_weakened
+    for row in both_weakened:
+        vrc_image = row["populations"]["VRC_B_union_C"]
+        assert set(row["principles"]) == set(PRINCIPLES.values())
+        assert any(level > 0 and level not in low_levels for level in vrc_image), row["label"]
+
     return {
         "gnep_high_floor": floor,
         "phase_17_18_20_gnep_high_floor": floor - 1,
-        "weight_of_the_lower_floor": invariant_weight(floor - 1),
-        "weight_of_this_floor": invariant_weight(floor),
+        "lower_floor_two_cycle": [[2, 4], [3, 3], [2, 4]],
         "instance_set_is_a_strict_subset_at_the_lower_floor": True,
         "extra_instances_are_all_gnep": True,
+        "direct_route_unsat_chains_with_vrc_edge_outside_model": len(both_weakened),
         "reference_instance_counts": {"this_witness": len(ours), "lower_floor": len(lower)},
         "population_cap_for_the_comparison": cap,
     }
@@ -317,18 +517,11 @@ def bounded_diagnostic(cap: int = 6) -> dict[str, Any]:
         if kind != "DA":
             edges[left].add(right)
 
-    # Source-legal instances the generators drop, kept here as required weak pairs: VRC with an
-    # empty bag (size-preserving, potential-decreasing) and DA with C empty (the target keeps A's
-    # size with every level above every level of A).
+    # VRC with an empty bag is already an ED edge; generators omit that VRC
+    # decomposition but must still imply its weak comparison.
     vrc = WITNESS.get("vrc-avoidance")
-    empty_vrc = [
-        ((high,), (vrc["x"],) * vrc["m"])
-        for high in LEVELS
-        if high >= vrc["u"] and vrc["m"] * potential(vrc["x"]) < potential(high)
-    ]
-    assert len(empty_vrc) == len([high for high in LEVELS if high >= vrc["u"]])
-    for left, right in empty_vrc:
-        edges[left].add(right)
+    empty_vrc = [((high,), (vrc["x"],) * vrc["m"]) for high in LEVELS if high >= vrc["u"]]
+    assert empty_vrc and all(right in edges[left] for left, right in empty_vrc)
 
     reached: dict[Pop, set[Pop]] = {}
 
@@ -352,9 +545,11 @@ def bounded_diagnostic(cap: int = 6) -> dict[str, Any]:
         elif kind == "DA" and right in reachable(left):
             da_forward_paths += 1
     assert ed_reversals == da_forward_paths == 0
+    assert reachable(()) == {()}
+    assert all(() not in targets for targets in edges.values())
 
-    # Obligations of the two dropped families, checked against the same closure.
-    assert all(right in reachable(left) for left, right in empty_vrc)
+    # C-empty DA targets are unreachable; the isolated empty A=B case
+    # cannot be strictly better than any positive C.
     empty_da = 0
     for size in range(1, 4):
         for a in combinations_with_replacement(LEVELS, size):
@@ -369,6 +564,7 @@ def bounded_diagnostic(cap: int = 6) -> dict[str, Any]:
         "da_forward_paths": da_forward_paths,
         "empty_vrc_bag_obligations": len(empty_vrc),
         "empty_da_c_obligations": empty_da,
+        "empty_population_is_isolated": True,
         "empty_da_c_sizes_checked": 3,
         "not_an_all_size_proof": True,
     }
@@ -381,14 +577,18 @@ def run() -> dict[str, Any]:
         and separation["extra_instances_are_all_gnep"]
     )
     return {
-        "scope": "all nonempty finite populations over W_-1..W_6; one legal witness",
+        "scope": "all finite multisets on W_-1..W_6 and, separately, on every indexed W_i (i in Z); one legal witness",
+        "finite_ladder_scope": "all finite multisets on W_-1..W_6, including empty",
+        "integer_chain_scope": "all finite multisets on W_i for every i in Z, including empty",
         "witness": WITNESS.params,
         "relation": "reflexive/transitive closure of primitive ED, ranged NE, GNEP, VRC edges",
         "thesis_dominance_addition": "not(A strictly better than B+C), not a reverse edge",
         "certificate": certify_all_sizes(),
+        "integer_certificate": integer_certificate(),
+        "integer_window_diagnostic": integer_window_diagnostic(),
         "bounded_diagnostic": bounded_diagnostic(),
         "witness_separation": separation,
-        "source_general_q011": "open; no claim about levels outside W_-1..W_6",
+        "source_general_q011": "both-weakened set realized on one source-permitted full indexed integer chain; extension to off-chain welfare levels and singly weakened sets remain open",
     }
 
 
@@ -399,27 +599,56 @@ def main() -> None:
         [
             LedgerEntry(
                 candidate_id="P21-least-preorder-both-weakened",
-                hypothesis="The both-weakened Q-011 conditions admit a partial order for every finite population size on one reviewed finite ladder.",
+                hypothesis="The both-weakened Q-011 conditions admit a preorder for every finite population size, including zero, on one reviewed finite ladder.",
                 motivation="Prior bounded satisfiability checks gave no all-size model for the weakest 2003 variant.",
                 exact_formal_change="None; use thesis ranged NE and N-shaped thesis DA alongside 2003 ED, GNEP, and VRC.",
-                scope=data["scope"],
+                scope=data["finite_ladder_scope"],
                 search_method="least reflexive/transitive closure of primitive edges; exact integer descent potential and size-uniform invariant; bounded independent instance audit",
-                result="all-size partial-order model for the both-weakened set on W_-1..W_6; unrestricted welfare-level case open",
+                result="all-size preorder on populations of individuated lives (partial order on welfare profiles) on W_-1..W_6",
                 evidence_type="finite level-parameter certificate with mathematical path proof; audited bounded source instances as a diagnostic",
                 checked=True,
                 minimal="no witness or ladder minimality claim",
-                interpretation="This closes the population-size dimension for one finite ladder and legal witness, but neither other weakened variant nor source-general Q-011.",
-                next_experiment="test whether a level-unbounded construction can preserve the DA invariant under source-order existential witnesses",
-                result_scope="checked finite-ladder theorem (all nonempty finite population sizes)",
+                interpretation="The finite ladder illustrates the least-preorder construction; its independent full integer-chain extension is recorded separately. Neither singly weakened variant is resolved.",
+                next_experiment="check the two singly weakened Q-011 variants at source-general witnesses",
+                result_scope="checked finite-ladder theorem (all finite population sizes including zero)",
                 formalization_tier="agent-cross-read 2000 thesis and 2003 source conditions; independently audited finite-ladder instances",
                 witness_conditions="NE n=1; GNEP (u,y,n)=(5,3,1); VRC (x,u,v,y,n,m)=(-1,4,6,3,1,1)",
                 novelty_status="not claimed; independent publication of this precise finite-ladder model unchecked",
                 status="confirmed",
                 artifacts=[str(path.relative_to(path.parent.parent.parent))],
-            )
+            ),
+            LedgerEntry(
+                candidate_id="P21-integer-chain-both-weakened",
+                hypothesis="The both-weakened Q-011 conditions admit a preorder over all finite populations on the full indexed integer welfare chain.",
+                motivation="The quadratic finite-ladder potential cannot grow monotonically in both unbounded directions, but that bound need not constrain the least preorder.",
+                exact_formal_change="None; use the same thesis ranged NE and not-worse DA, 2003 ED/GNEP/VRC, and one legal witness over every indexed W_i.",
+                scope=data["integer_chain_scope"],
+                search_method="least reflexive/transitive closure; exact rational adjacent gains, universal SMT edge and invariant checks, and constrained-Horn induction over arbitrary finite sums and paths",
+                result="all-integer-chain preorder for the both-weakened set; the other two weakened variants remain open",
+                evidence_type="compositional SMT/CHC certificate conditional on reviewed source schemas; bounded independent source-instance diagnostics",
+                checked=True,
+                minimal="no witness, welfare-order, or closure minimality claim",
+                interpretation="One full unbounded integer chain is a source-permitted welfare domain; no claim is made about every possible richer welfare quasi-order, nor about the original 2003 condition set.",
+                next_experiment="seek a primary-literature collision and independent human review of the exact two thesis weakenings",
+                result_scope="checked theorem (all finite welfare profiles over W_i for i in Z, including empty; pulled back to populations of individuated lives)",
+                formalization_tier="agent-cross-read 2000 thesis and 2003 source clauses; solver-checked universal obligations and abstract path induction",
+                witness_conditions="NE n=1; GNEP (u,y,n)=(5,3,1); VRC (x,u,v,y,n,m)=(-1,4,6,3,1,1)",
+                novelty_status="not claimed; targeted literature comparison incomplete",
+                status="confirmed",
+                artifacts=[str(path.relative_to(path.parent.parent.parent))],
+            ),
         ]
     )
-    print(json.dumps({"result": str(path), "certificate": data["certificate"]}, indent=2))
+    print(
+        json.dumps(
+            {
+                "result": str(path),
+                "certificate": data["certificate"],
+                "integer_certificate": data["integer_certificate"],
+            },
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

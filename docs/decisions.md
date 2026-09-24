@@ -268,3 +268,37 @@ every one resolves.
   instance (`z = −1`) is accepted, the published level choice is rejected on the range alone, and
   a test pins the pair. The repair is necessary but not sufficient (see Q-011's phase-19 entry):
   the repaired family is obstructed by the count identity `n_β = n_δ + n_v ≥ m_δ > m_β > n_β`.
+
+## D-023. The integer-chain model chooses one welfare universe
+
+- **Status:** settled for the model's scope; extension to every possible welfare quasi-order
+  remains open (Q-011).
+- **Sources:** `arrhenius-2000-thesis` (pp. 152–159, 166),
+  `arrhenius-2003-vrc` (pp. 169–172), D-016, D-019,
+  `research/p21_least_preorder.py`.
+- **Decision:** the model takes all indexed levels `W_i`, `i ∈ Z`, as its entire welfare-level
+  universe and every finite level multiset as a population profile. Pull the profile
+  preorder back to finite sets of individual lives: different populations with the same
+  profile are indifferent, and the source's disjoint-union clauses become multiset
+  additions. Every finite profile is possible in this chosen universe. The empty
+  population is an isolated reflexive point: thesis Dominance Addition with `A=B=∅` holds,
+  and strict Egalitarian Dominance implicitly requires nonempty equal-size populations because its
+  literal size-zero instance would demand `∅ ≻ ∅`. VRC's empty low bag and Dominance
+  Addition's empty added bag are checked separately. A single uniform existential witness
+  is legal and stronger than the source's level-dependent existential clauses;
+  it leaves their universal clauses unchanged. The full chain is a
+  permissible Discreteness model, not a claim that all possible welfare levels must lie on
+  that chain; the sources allow incomparable off-chain levels.
+  The exact ED, thesis DA and VRC clauses have no universal shared-background parameter;
+  their informal phrase "other things being equal" does not add a global separability
+  axiom. Thesis NE explicitly ranges its background, and GNEP quantifies over any
+  background. This model is not certified under stronger background closure.
+- **Consequences:** the exact adjacent-gain argument certifies the both-weakened set
+  on one unbounded welfare universe for every finite population size. Z3 checks its
+  universal algebraic and invariant obligations; Spacer checks arbitrary finite-sum
+  and abstract path induction. The translation from source prose to these schemas
+  remains a reviewed assumption, and bounded ladder scans are only diagnostics.
+  This does not establish a model on every richer welfare quasi-order, settle
+  either singly weakened variant, or challenge the original 2003
+  impossibility theorem. The reflexive/transitive-closure method itself was already used
+  as a consistency device in D-019; no priority claim follows from this construction.
