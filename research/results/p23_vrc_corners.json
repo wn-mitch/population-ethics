@@ -1,0 +1,2255 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p23_vrc_corners",
+  "observations": {},
+  "result": {
+    "both_weakened_control": "P21-integer-chain-both-weakened: one legal uniform witness, every finite population profile and every path; P21 unchanged.",
+    "original_fixed_witness_control": {
+      "decision": "unsat",
+      "primitive_edges": 42,
+      "witness_scope": "P18 selected witness only; published theorem supplies source-general claim"
+    },
+    "quantifiers": "One legal witness plus every source instance on the stated domain proves consistency; impossibility requires an audited contradiction for every valid existential witness. Finite caps and chosen-witness cycles decide neither.",
+    "single_weakening_probes": [
+      {
+        "corner": "ranged-ne",
+        "diagnostics": [
+          {
+            "cyclic_scc_count": 0,
+            "domain": "all finite multisets on W_-1..W_6",
+            "edge_count": 14059,
+            "instances_audited": 10533,
+            "label": "bounded directed-cycle scan",
+            "not_a_general_proof": true,
+            "population_cap": 4
+          },
+          {
+            "domain": "all finite multisets on W_-1..W_6",
+            "label": "bounded VRC-image-to-DA-source reachability",
+            "not_a_general_proof": true,
+            "population_cap": 4,
+            "vrc_targets_checked": 60,
+            "vrc_targets_reaching_a_da_source": 0
+          },
+          {
+            "domain": "W_-1..W_6 at the selected witness",
+            "invariant": {
+              "audited": true,
+              "i_excludes_da_source": false,
+              "i_source": 1,
+              "i_target": 1,
+              "instance": {
+                "args": [
+                  [
+                    0,
+                    1
+                  ],
+                  [
+                    -1
+                  ]
+                ],
+                "principle": "arrhenius-2003:dominance-addition"
+              },
+              "psi_source": 0
+            },
+            "label": "P21 potential and I-invariant insufficient at concrete source instances",
+            "not_a_general_proof": true,
+            "population_cap": 3,
+            "potential": {
+              "audited": true,
+              "instance": {
+                "args": [
+                  [
+                    4
+                  ],
+                  [
+                    3,
+                    3,
+                    -1
+                  ]
+                ],
+                "principle": "arrhenius-2003:vrc-avoidance"
+              },
+              "phi_decreases": false,
+              "phi_source": 64,
+              "phi_target": 81
+            }
+          },
+          {
+            "domain": "one audited 2003 DA source instance on W_-1..W_6",
+            "label": "manifest replay of the control's 2003 weak-DA edge at P21's witness",
+            "not_a_general_proof": true,
+            "population_cap": 41,
+            "replay": {
+              "ladder_audit": true,
+              "left": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                3,
+                6
+              ],
+              "record": {
+                "background": [],
+                "left": [
+                  [
+                    1,
+                    39
+                  ],
+                  [
+                    3,
+                    1
+                  ],
+                  [
+                    6,
+                    1
+                  ]
+                ],
+                "left_part": [
+                  [
+                    1,
+                    39
+                  ],
+                  [
+                    3,
+                    1
+                  ],
+                  [
+                    6,
+                    1
+                  ]
+                ],
+                "page": "171",
+                "principle": "arrhenius-2003:dominance-addition",
+                "right": [
+                  [
+                    5,
+                    1
+                  ]
+                ],
+                "right_part": [
+                  [
+                    5,
+                    1
+                  ]
+                ],
+                "shape": "W",
+                "source": "arrhenius-2003:dominance-addition",
+                "witness": {}
+              },
+              "right": [
+                5
+              ],
+              "skipped_verify_edge_count": "every generated instance is replayed by ladder.audit; verify_edge is applied to the one serialized control DA edge, not to every generated instance (those are recovered from populations, not from P18 serialized decompositions)",
+              "verify_edge_problems": []
+            }
+          }
+        ],
+        "model": {
+          "acyclicity_certificate": {
+            "conclusion": "Psi >= 1 after any VRC edge and is non-decreasing while a negative life remains, so the negative-live count never returns to zero; no 2003 weak-DA edge can follow a VRC edge, and no directed cycle can contain either",
+            "da_source_nonnegative": true,
+            "domain": "every convex subchain {W_-1, ..., W_k} with k >= 6",
+            "empty_source_clauses": "DA with A=B=empty sends positive C to empty; empty is a sink. VRC with B=empty and DA with C=empty are size-preserving and decrease P21's integer potential.",
+            "gnep_min_delta_psi": 0,
+            "invariant": "Psi(P) = #{t<0} - #{t>=5}",
+            "ne_min_delta_psi": 0,
+            "not_covering": "the bi-integer chain Z (NE at x=0 with y<=-2 lowers Psi)",
+            "unbounded_gnep_delta_counterexample": "unsat for all z>=-1",
+            "unbounded_ne_delta_counterexample": "unsat for all x>=1, n>=1",
+            "vrc_image_psi": 1
+          },
+          "domain": "all finite multisets on W_-1..W_6, including the empty population",
+          "ed_strictness": "the closure is antisymmetric (acyclic), so an ED edge x^n -> B has no return path B ->* x^n and is genuinely strict",
+          "empty_population": "DA with A=B=empty and positive C may require C >= empty; include those edges. Empty has no outgoing edges except reflexivity, so remains a sink.",
+          "extends_to": "every convex subchain {W_-1, ..., W_k} with k >= 6, also k unbounded above",
+          "relation": "reflexive/transitive closure of primitive ED, ranged NE, GNEP, VRC and 2003 weak-DA edges, including source-permitted empty-part clauses"
+        },
+        "obstruction": null,
+        "routes": {
+          "all_size_model": {
+            "evidence": "symbolic acyclicity certificate (level-parameter exhaustive) plus bounded no-cycle diagnostics",
+            "remaining_gap": "the certificate needs a chain whose minimum level is -1; the bi-integer chain Z is not covered because ranged NE at x = 0 with y <= -2 lowers the negative-live count and Psi may fall"
+          },
+          "impossibility": {
+            "conclusion": "not impossible on W_-1..W_6",
+            "evidence": "no audited cycle or VRC-image-to-DA-source path up to the stated caps; the corner is consistent, so no impossibility is sought"
+          }
+        },
+        "status": "consistent",
+        "witness": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        }
+      },
+      {
+        "best_failed_lemma": {
+          "cap": "level pairs only; not a population-size cap",
+          "counterexample": {
+            "background": [
+              [
+                -1,
+                1
+              ]
+            ],
+            "left": [
+              [
+                -1,
+                1
+              ],
+              [
+                4,
+                2
+              ]
+            ],
+            "left_part": [
+              [
+                4,
+                2
+              ]
+            ],
+            "page": "172",
+            "principle": "arrhenius-2003:non-elitism",
+            "right": [
+              [
+                -1,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                5,
+                1
+              ]
+            ],
+            "right_part": [
+              [
+                1,
+                1
+              ],
+              [
+                5,
+                1
+              ]
+            ],
+            "shape": "W",
+            "source": "arrhenius-2003:non-elitism",
+            "witness": {
+              "n": 1,
+              "x": 5,
+              "y": 1
+            }
+          },
+          "counterexample_audited": true,
+          "countersource_I": 1,
+          "countertarget_I": 0,
+          "domain": "ladder W_-1..W_6, one fixed witness; every failing (middle, low) level pair is realizable with a background containing a weight-+1 or weight--1 level",
+          "kept_true_by_the_ranged_reading": true,
+          "name": "p21 invariant preservation under unrestricted Non-Elitism",
+          "not_a_general_proof": true,
+          "statement": "I(P) = #{t <= 0} - #{t >= 5} satisfies I(source) >= 1 => I(target) >= 1 along every primitive edge",
+          "status": "false for 2003 Non-Elitism",
+          "what_it_does_not_prove": "one legal instance with I(source) = 1 > I(target) = 0 refutes the invariant lemma only; the background-independent potential still decreases, and neither a strict cycle nor a DA violation follows from that instance alone"
+        },
+        "controls": {
+          "original_2003_control": "the published 2003 control stays the source-general impossibility of the unweakened conjunction (arrhenius-2003:theorem, P18 result); this module changes neither its witness nor its certificate",
+          "p21_read_only": "research/p21_least_preorder is imported read-only; its witness, ladder, certificates and both ledger ids are unchanged",
+          "ranged_reading": "with the ranged reading no DA target is reachable at all, so the corner's refutation is caused by the background-permitted Non-Elitism edges; this agrees with P21's all-size model for the both-weakened corner at the same witness"
+        },
+        "corner": "not-worse-da",
+        "diagnostics": [
+          {
+            "cap": "level pairs only; not a population-size cap",
+            "domain": "ladder W_-1..W_6, one fixed witness; every failing (middle, low) level pair is realizable with a background containing a weight-+1 or weight--1 level",
+            "failing_level_pairs_middle_low": [
+              [
+                0,
+                -1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "instance": {
+              "background": [
+                [
+                  -1,
+                  1
+                ]
+              ],
+              "left": [
+                [
+                  -1,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ]
+              ],
+              "left_part": [
+                [
+                  4,
+                  2
+                ]
+              ],
+              "page": "172",
+              "principle": "arrhenius-2003:non-elitism",
+              "right": [
+                [
+                  -1,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  5,
+                  1
+                ]
+              ],
+              "right_part": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  5,
+                  1
+                ]
+              ],
+              "shape": "W",
+              "source": "arrhenius-2003:non-elitism",
+              "witness": {
+                "n": 1,
+                "x": 5,
+                "y": 1
+              }
+            },
+            "instance_audited": true,
+            "invariant": "#{t <= 0} - #{t >= 5}",
+            "invariant_preserved_on_full_support": false,
+            "invariant_preserved_on_p21_ranged_support": true,
+            "kind": "failed proof device",
+            "name": "p21-invariant-breaking instance",
+            "not_a_general_proof": true,
+            "potential_still_decreases": true,
+            "source_I": 1,
+            "target_I": 0,
+            "why_not_impossibility": "one legal instance with I(source) = 1 > I(target) = 0 refutes the invariant lemma only; the background-independent potential still decreases, and neither a strict cycle nor a DA violation follows from that instance alone"
+          },
+          {
+            "cap": "populations of at most 10 lives",
+            "domain": "ladder W_-1..W_6, populations of at most 10 lives, one fixed witness",
+            "name": "least-closure DA targets (2003 unrestricted Non-Elitism)",
+            "not_a_general_proof": true,
+            "reachable_da_targets": {
+              "4": [
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ]
+              ],
+              "5": [
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ]
+              ]
+            }
+          },
+          {
+            "cap": "populations of at most 10 lives",
+            "control_for": "the both-weakened corner (thesis ranged Non-Elitism) at the same witness",
+            "domain": "ladder W_-1..W_6, populations of at most 10 lives, one fixed witness",
+            "first_edge_the_ranged_reading_forbids": {
+              "background": [
+                -1,
+                3,
+                3,
+                3,
+                3,
+                3
+              ],
+              "left": [
+                -1,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3,
+                3
+              ],
+              "principle": "arrhenius-2003:non-elitism",
+              "ranged_window": [
+                2,
+                3,
+                4
+              ],
+              "replay_problems": [],
+              "right": [
+                -1,
+                2,
+                3,
+                3,
+                3,
+                3,
+                3,
+                4
+              ],
+              "shape": "W",
+              "witness": {
+                "n": 1,
+                "x": 4,
+                "y": 2
+              }
+            },
+            "interpretation": "with the ranged reading no DA target is reachable at all, so the corner's refutation is caused by the background-permitted Non-Elitism edges; this agrees with P21's all-size model for the both-weakened corner at the same witness",
+            "name": "thesis ranged Non-Elitism control",
+            "non_elitism": "thesis ranged",
+            "not_a_general_proof": true,
+            "population_cap": 10,
+            "reachable_da_targets": {}
+          },
+          {
+            "cap": "6 validated witnesses, populations of at most 8 lives",
+            "domain": "ladder W_-1..W_6, populations of at most 8 lives, 6 witnesses",
+            "name": "witness census",
+            "not_a_general_proof": true,
+            "rows": [
+              {
+                "label": "p21-witness",
+                "legal_witness": true,
+                "params": {
+                  "general-non-extreme-priority": {
+                    "n": 1,
+                    "u": 5,
+                    "y": 3
+                  },
+                  "non-elitism": {
+                    "n": 1
+                  },
+                  "vrc-avoidance": {
+                    "m": 1,
+                    "n": 1,
+                    "u": 4,
+                    "v": 6,
+                    "x": -1,
+                    "y": 3
+                  }
+                },
+                "smallest_target": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "sources": [
+                  4,
+                  5
+                ],
+                "two_source_obstruction": true
+              },
+              {
+                "label": "p17-p18-p20-witness",
+                "legal_witness": true,
+                "params": {
+                  "general-non-extreme-priority": {
+                    "n": 1,
+                    "u": 4,
+                    "y": 3
+                  },
+                  "non-elitism": {
+                    "n": 1
+                  },
+                  "vrc-avoidance": {
+                    "m": 1,
+                    "n": 1,
+                    "u": 4,
+                    "v": 6,
+                    "x": -1,
+                    "y": 3
+                  }
+                },
+                "smallest_target": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "sources": [
+                  4,
+                  5
+                ],
+                "two_source_obstruction": true
+              },
+              {
+                "label": "ne-n2",
+                "legal_witness": true,
+                "params": {
+                  "general-non-extreme-priority": {
+                    "n": 1,
+                    "u": 5,
+                    "y": 3
+                  },
+                  "non-elitism": {
+                    "n": 2
+                  },
+                  "vrc-avoidance": {
+                    "m": 1,
+                    "n": 1,
+                    "u": 4,
+                    "v": 6,
+                    "x": -1,
+                    "y": 3
+                  }
+                },
+                "smallest_target": null,
+                "sources": null,
+                "two_source_obstruction": false
+              },
+              {
+                "label": "gnep-n2",
+                "legal_witness": true,
+                "params": {
+                  "general-non-extreme-priority": {
+                    "n": 2,
+                    "u": 5,
+                    "y": 3
+                  },
+                  "non-elitism": {
+                    "n": 1
+                  },
+                  "vrc-avoidance": {
+                    "m": 1,
+                    "n": 1,
+                    "u": 4,
+                    "v": 6,
+                    "x": -1,
+                    "y": 3
+                  }
+                },
+                "smallest_target": null,
+                "sources": null,
+                "two_source_obstruction": false
+              },
+              {
+                "label": "vrc-m2",
+                "legal_witness": true,
+                "params": {
+                  "general-non-extreme-priority": {
+                    "n": 1,
+                    "u": 5,
+                    "y": 3
+                  },
+                  "non-elitism": {
+                    "n": 1
+                  },
+                  "vrc-avoidance": {
+                    "m": 2,
+                    "n": 1,
+                    "u": 4,
+                    "v": 6,
+                    "x": -1,
+                    "y": 3
+                  }
+                },
+                "smallest_target": null,
+                "sources": null,
+                "two_source_obstruction": false
+              },
+              {
+                "label": "vrc-n2",
+                "legal_witness": true,
+                "params": {
+                  "general-non-extreme-priority": {
+                    "n": 1,
+                    "u": 5,
+                    "y": 3
+                  },
+                  "non-elitism": {
+                    "n": 1
+                  },
+                  "vrc-avoidance": {
+                    "m": 1,
+                    "n": 2,
+                    "u": 4,
+                    "v": 6,
+                    "x": -1,
+                    "y": 3
+                  }
+                },
+                "smallest_target": null,
+                "sources": null,
+                "two_source_obstruction": false
+              }
+            ],
+            "witness_count": 6
+          }
+        ],
+        "not_a_general_proof": true,
+        "obstruction": {
+          "all_edges_replayed_clean": true,
+          "argument": "any model has (W_4,) >= T by transitivity over the low chain and (W_5,) >= T over the high chain; the DA instance A = (W_5,), B u C = T forces not(A > T), hence T >= (W_5,) because A >= T is already forced; transitivity gives (W_4,) >= (W_5,), contradicting the strict ED instance (W_5,) > (W_4,)",
+          "cap": "populations of at most 10 lives",
+          "chains": {
+            "high_source": [
+              {
+                "background": [],
+                "left": [
+                  5
+                ],
+                "principle": "arrhenius-2003:vrc-avoidance",
+                "right": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "shape": "W",
+                "witness": {
+                  "m": 1,
+                  "n": 1,
+                  "u": 4,
+                  "v": 6,
+                  "x": -1,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "left": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 6,
+                  "y": 4
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": -1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  4,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": 0
+                }
+              }
+            ],
+            "low_source": [
+              {
+                "background": [],
+                "left": [
+                  4
+                ],
+                "principle": "arrhenius-2003:vrc-avoidance",
+                "right": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "shape": "W",
+                "witness": {
+                  "m": 1,
+                  "n": 1,
+                  "u": 4,
+                  "v": 6,
+                  "x": -1,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "left": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 6,
+                  "y": 4
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": -1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  4,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          "domain": "ladder W_-1..W_6, populations of at most 10 lives, one fixed witness",
+          "dominance_addition_instance": {
+            "args": [
+              [
+                5
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                6
+              ]
+            ],
+            "principle": "thesis:dominance-addition",
+            "shape": "N"
+          },
+          "egalitarian_dominance_instance": {
+            "args": [
+              [
+                5
+              ],
+              [
+                4
+              ]
+            ],
+            "principle": "arrhenius-2003:egalitarian-dominance",
+            "shape": "S"
+          },
+          "induced_domain_check": {
+            "decision_without_completeness": "unsat",
+            "generator_cross_check": {
+              "ladder_instances_over": 20,
+              "missing_from_enumeration": 0
+            },
+            "instances": 22,
+            "not_a_general_proof": true,
+            "reason": null,
+            "relata": 20,
+            "scope": "every ED/NE-2003/GNEP/VRC/DA-thesis instance induced on the 20 certificate relata (at most 10 lives each)"
+          },
+          "kind": "fixed-witness contradiction from the two-source obstruction lemma",
+          "minimality": "every frozen nonempty-bag primitive instance from a population of at most 10 lives is enumerated, and a path to a target of width w never leaves populations of at most w lives, so no two-source DA target of width below 8 exists at this witness",
+          "not_a_general_proof": true,
+          "replay": {
+            "da_instance_audited": true,
+            "ed_instance_audited": true,
+            "edge_count": 19,
+            "edge_problems": []
+          },
+          "sources": [
+            4,
+            5
+          ],
+          "target": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            6
+          ],
+          "target_decomposition": {
+            "B": [
+              6
+            ],
+            "C": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "thesis:dominance-addition"
+        ],
+        "routes": {
+          "impossibility": {
+            "evidence": "obstruction.chains: the two audited weak chains plus the DA instance with A = (W_5,) and the strict ED instance (W_5,) > (W_4,)",
+            "proved": "at the fixed legal witness of research/p21_least_preorder.WITNESS the corner is inconsistent: one audited thesis-DA target is reachable from two singleton sources, forcing (W_4,) >= (W_5,) against the strict ED instance",
+            "remaining_gap": "source-general impossibility is not claimed: the source's existential witnesses (Non-Elitism's n per level pair, GNEP's (u, y, n), VRC's (x, u, v, y, n, m)) are fixed here, so only this witness is refuted; the witness census samples further witnesses without quantifying over them",
+            "route": "arbitrary-witness primitive chain with symbolic count/level dependencies"
+          },
+          "model": {
+            "cap": "populations of at most 10 lives",
+            "domain": "ladder W_-1..W_6, populations of at most 10 lives, one fixed witness",
+            "least_closure_is_a_model": false,
+            "not_a_general_proof": true,
+            "reachable_da_targets": "diagnostics[1].reachable_da_targets",
+            "remaining_gap": "no all-size model at this witness; the model route is untested for other legal witnesses, where the corner may still be satisfiable",
+            "route": "all-size model on a stated full domain",
+            "why": "the least reflexive/transitive closure of the primitive weak instances already reaches a legal DA target from a legal singleton source, so the least closure violates thesis DA; combining the DA-forced reverse comparison with the target's second source chain then yields a comparison that the strict Egalitarian Dominance instance forbids"
+          }
+        },
+        "status": "open",
+        "status_reason": "refuted at one fixed legal witness by an audited primitive certificate, but no source-general contradiction over every legal witness and no all-size model is established here",
+        "witness": {
+          "ladder": [
+            -1,
+            6
+          ],
+          "params": {
+            "general-non-extreme-priority": {
+              "n": 1,
+              "u": 5,
+              "y": 3
+            },
+            "non-elitism": {
+              "n": 1
+            },
+            "vrc-avoidance": {
+              "m": 1,
+              "n": 1,
+              "u": 4,
+              "v": 6,
+              "x": -1,
+              "y": 3
+            }
+          },
+          "source": "research/p21_least_preorder.WITNESS (read-only)"
+        }
+      }
+    ],
+    "variants": [
+      {
+        "dominance_addition": "arrhenius-2003:dominance-addition",
+        "label": "original",
+        "non_elitism": "arrhenius-2003:non-elitism",
+        "status": "source-general impossible (published 2003 theorem)"
+      },
+      {
+        "dominance_addition": "arrhenius-2003:dominance-addition",
+        "label": "ranged-ne",
+        "non_elitism": "thesis:non-elitism",
+        "status": "consistent"
+      },
+      {
+        "dominance_addition": "thesis:dominance-addition",
+        "label": "not-worse-da",
+        "non_elitism": "arrhenius-2003:non-elitism",
+        "status": "open"
+      },
+      {
+        "dominance_addition": "thesis:dominance-addition",
+        "label": "both-weakened",
+        "non_elitism": "thesis:non-elitism",
+        "status": "all-size model on one indexed integer welfare chain (P21)"
+      }
+    ]
+  },
+  "result_sha256": "6f20262b51c21ab209a977341c6b79854dab95db98d73889659f509693d281fd",
+  "schema": "population-ethics.research-result/v1"
+}

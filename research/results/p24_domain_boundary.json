@@ -1,0 +1,71 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p24_domain_boundary",
+  "observations": {},
+  "result": {
+    "convex_restriction": {
+      "domain_types": [
+        "arbitrarily long finite intervals containing W_-1..W_6",
+        "one-sided infinite integer intervals containing W_-1..W_6",
+        "the full bi-infinite indexed integer chain",
+        "order-isomorphic relabelings preserving successor, sign and witness ranges"
+      ],
+      "finite_controls": [
+        {
+          "independently_audited_instances": 302,
+          "indexed_levels": [
+            -1,
+            6
+          ],
+          "max_lives_diagnostic": 2,
+          "not_a_general_proof": true
+        },
+        {
+          "independently_audited_instances": 1180,
+          "indexed_levels": [
+            -3,
+            9
+          ],
+          "max_lives_diagnostic": 2,
+          "not_a_general_proof": true
+        }
+      ],
+      "full_chain_certificate": {
+        "all_finite_path_lengths_checked": true,
+        "gain_bounds_verified": true
+      },
+      "proof": "Every source instance over J is already a source instance on Z at the same legal witness: the range and successor levels remain indexed and the witness ranges are present. A restriction of a reflexive/transitive relation stays reflexive/transitive. If ED was strict on Z, restricting cannot add a reverse comparison. Empty clauses remain satisfied, because the empty profile belongs to both universes.",
+      "quantifiers": "one fixed legal P21 witness; all finite profiles over each stated J; all source instances and arbitrary finite paths, not a finite cap",
+      "scope_limit": "No claim about arbitrary welfare quasi-orders with off-chain levels or every satisfying axiology.",
+      "theorem": "For every convex J subset of Z containing all W_-1,...,W_6, restrict P21's full-chain relation to every finite population profile over J, including empty. The resulting relation remains reflexive and transitive, retains every source universal W/S/N obligation on J, and preserves strict ED comparisons."
+    },
+    "forbidden_substructure_limit": "No all-witness source forbidden-substructure or representation iff follows from the abstract shape theorem.",
+    "off_chain_falsification_probes": [
+      {
+        "not_a_general_proof": true,
+        "placement": "new level strictly between the existing indexed W_4 and W_5",
+        "primitive_closure_search": "not run: no source-authorized instance set for the insertion",
+        "probe": "inserted-level-between-W_4-and-W_5",
+        "source_issue": "The reviewed definitions call W_i and W_(i+1) consecutive, with no intervening welfare level. Holding the old indexes fixed makes the proposed ordering incompatible with that reading. Reindexing changes NE/GNEP successor instances and the witness threshold u=5; the reviewed source does not prescribe such a reindexing for an extra level.",
+        "status": "source-fidelity unresolved; fixed-index version violates consecutive-level premise"
+      },
+      {
+        "not_a_general_proof": true,
+        "placement": "one extra welfare level incomparable to every indexed level",
+        "primitive_closure_search": "not run: the full mixed-profile instance set is not source-determined",
+        "probe": "level-incomparable-with-every-W_i",
+        "source_issue": "The life quasi-order admits incommensurable levels and the W_i select one chain. Exact indexed ranges exclude the off-chain level, but the informal higher/lower clauses refer to welfare comparison, and GNEP's 'any' shared background includes it. The reviewed source does not settle whether an unindexed level belongs to the universal welfare-level quantifiers or which mixed-profile comparisons survive translation from informal to exact clauses. Assigning it a numeric index or a private comparison rule would change the reviewed source interpretation.",
+        "status": "source-fidelity unresolved; off-chain axiology extension unproved"
+      }
+    ],
+    "source_level_status": "exact finite complete-preorder W/S/I branch-cycle converse; fixed-witness fork-free source graph-cycle converse; original 2003 conjunction impossible; P21 both-weakened integer-chain model; P23 ranged-NE one-sided-chain model; unrestricted-NE plus thesis DA and off-chain extensions remain open"
+  },
+  "result_sha256": "acece50a472bc9133ee8f4accdec4a83678800046aff8390f000f149195ca784",
+  "schema": "population-ethics.research-result/v1"
+}

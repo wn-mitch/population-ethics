@@ -1,0 +1,246 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p22_shape_classification",
+  "observations": {},
+  "result": {
+    "examples": {
+      "one_fork": {
+        "certificate": {
+          "branches": [
+            {
+              "choices": [
+                0
+              ],
+              "cycle": [
+                0,
+                2
+              ]
+            },
+            {
+              "choices": [
+                1
+              ],
+              "cycle": [
+                1,
+                2
+              ]
+            }
+          ],
+          "decision": "unsat"
+        },
+        "deletions": [
+          "sat",
+          "sat",
+          "sat"
+        ],
+        "edges": [
+          [
+            "I",
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          [
+            "S",
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            "S",
+            [
+              2,
+              1
+            ]
+          ]
+        ],
+        "relata": 3
+      },
+      "strict_two_cycle": {
+        "certificate": {
+          "branches": [
+            {
+              "choices": [],
+              "cycle": [
+                1,
+                0
+              ]
+            }
+          ],
+          "decision": "unsat"
+        },
+        "deletions": [
+          "sat",
+          "sat"
+        ],
+        "edges": [
+          [
+            "S",
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            "W",
+            [
+              1,
+              0
+            ]
+          ]
+        ],
+        "relata": 2
+      },
+      "two_forks": {
+        "certificate": {
+          "branches": [
+            {
+              "choices": [
+                0,
+                0
+              ],
+              "cycle": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "choices": [
+                0,
+                1
+              ],
+              "cycle": [
+                1,
+                2,
+                3,
+                0
+              ]
+            },
+            {
+              "choices": [
+                1,
+                0
+              ],
+              "cycle": [
+                1,
+                2,
+                0
+              ]
+            },
+            {
+              "choices": [
+                1,
+                1
+              ],
+              "cycle": [
+                1,
+                2,
+                0
+              ]
+            }
+          ],
+          "decision": "unsat"
+        },
+        "deletions": [
+          "sat",
+          "sat",
+          "sat",
+          "sat"
+        ],
+        "edges": [
+          [
+            "I",
+            [
+              3,
+              1,
+              2
+            ]
+          ],
+          [
+            "I",
+            [
+              0,
+              3,
+              2
+            ]
+          ],
+          [
+            "S",
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            "W",
+            [
+              2,
+              0
+            ]
+          ]
+        ],
+        "relata": 4
+      },
+      "weak_two_cycle": {
+        "certificate": {
+          "choices": [],
+          "decision": "sat",
+          "ranks": [
+            0,
+            0
+          ]
+        },
+        "deletions": [
+          "sat",
+          "sat"
+        ],
+        "edges": [
+          [
+            "W",
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            "W",
+            [
+              1,
+              0
+            ]
+          ]
+        ],
+        "relata": 2
+      }
+    },
+    "minimal_core_census": {
+      "all_one_fork_cases_match_motif": true,
+      "fork_counts": {
+        "0": 10,
+        "1": 36,
+        "2": 31
+      },
+      "max_edges": 4,
+      "max_forks": 2,
+      "not_a_general_proof": true
+    },
+    "multiple_fork_compression": "Open: the branch-cycle certificate decides any finite input without a finite parameterized motif-family theorem.",
+    "one_fork_theorem": "Every deletion-minimal UNSAT set with one I(a,b,c) consists of the fork and the union of two simple strict paths a to b and c to b. Removing the fork leaves a SAT W/S graph; each refuting branch cycle must use its added weak edge, and removing that edge leaves the requisite strict path. Any base edge outside both paths could be deleted while preserving both cycles, contradicting minimality. Paths may overlap or coincide when a=c. The path-union form alone does not imply minimality.",
+    "proof": "Completeness changes each negated strict antecedent to a weak reverse edge. Choosing a true disjunct in each I gives one W/S branch. Every strict cycle contradicts rank inequalities. If none exists, SCC contraction has only weak internal edges and the DAG longest strict-weighted path assigns integer ranks; it satisfies every edge. Conversely every model chooses at least one true disjunct for each fork, so all-branch strict cycles exclude every model.",
+    "source_scope": "No source-level existential-witness or unrestricted welfare-domain conclusion follows.",
+    "theorem": "Finite W/S/I under a complete preorder is satisfiable iff one fork-branch assignment has no strict directed cycle; otherwise one simple strict cycle per assignment is a complete obstruction certificate.",
+    "two_fork_control": "The four-edge two-fork example is deletion-minimal UNSAT; it has no one-fork UNSAT subcore and requires all four branch cycles."
+  },
+  "result_sha256": "b05783eba3480fa83b44066c259cc7ca3b511559a35ad459c027452957b126a9",
+  "schema": "population-ethics.research-result/v1"
+}

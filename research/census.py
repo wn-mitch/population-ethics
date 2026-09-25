@@ -5,6 +5,11 @@ normalization): ``W(a, b)`` is r(a) ≥ r(b), ``S(a, b)`` is r(a) > r(b), and th
 ``I(a, b, c)``, (a ≻ b) → (b ⪰ c), is r(b) ≥ r(a) ∨ r(b) ≥ r(c). Whether a set of instances is
 consistent with a complete preorder therefore depends only on its shape hypergraph (L0).
 
+``rank_sat`` decides such a shape set. ``rank_certificate`` decides it and returns replayable
+evidence: either one branch choice per I fork plus integer ranks, or one simple strict cycle per
+fork branch, which together exclude every model. ``verify_rank_certificate`` rechecks that evidence
+from the input alone, without consulting the search that produced it.
+
 ``minimal_cores(k)`` enumerates, up to isomorphism, every connected shape hypergraph with at most
 ``k`` edges that is unsatisfiable under ranks while every proper subset is satisfiable. It grows
 satisfiable hypergraphs one edge at a time (a connected hypergraph always has an edge order that
@@ -17,10 +22,11 @@ audited instance graph. For a fork-free principle set these are all of its minim
 
 from __future__ import annotations
 
-from collections import defaultdict
-from collections.abc import Iterable, Iterator, Sequence
+from collections import defaultdict, deque
+from collections.abc import Iterable, Iterator, Mapping, Sequence
 from dataclasses import dataclass
 from itertools import permutations, product
+from typing import Any
 
 from research.canon import canonical_form
 from research.schema import Instance, Pop
@@ -64,6 +70,330 @@ def rank_sat(n: int, edges: Sequence[ShapeEdge]) -> bool:
         if _difference_sat(n, [*weak, *extra], strict):
             return True
     return False
+
+
+# ---------------------------------------------------------------------------------------------
+# Certificate-producing decision: a replayable integer model, or one strict cycle per branch.
+
+
+_SHAPE_ARITY: dict[str, int] = {"W": 2, "S": 2, "I": 3}
+
+
+def _checked(
+    n: int, edges: Sequence[ShapeEdge]
+) -> tuple[list[tuple[int, int]], list[tuple[int, int]], list[tuple[int, int, int]]]:
+    """(weak, strict, fork) edge lists with duplicates kept, refusing anything unrankable."""
+    if not isinstance(n, int) or isinstance(n, bool) or n < 0:
+        raise ValueError(f"relata count must be a non-negative integer, got {n!r}")
+    weak: list[tuple[int, int]] = []
+    strict: list[tuple[int, int]] = []
+    forks: list[tuple[int, int, int]] = []
+    for edge in edges:
+        try:
+            shape, args = edge
+            arity = _SHAPE_ARITY[shape]
+            relata = tuple(args)
+        except TypeError, ValueError, KeyError:
+            raise ValueError(f"malformed shape edge: {edge!r}") from None
+        if len(relata) != arity:
+            raise ValueError(f"shape {shape!r} takes {arity} relata, got {edge!r}")
+        if any(not isinstance(a, int) or isinstance(a, bool) or not 0 <= a < n for a in relata):
+            raise ValueError(f"relata outside range({n}): {edge!r}")
+        if shape == "I":
+            forks.append((relata[0], relata[1], relata[2]))
+        elif shape == "S":
+            strict.append((relata[0], relata[1]))
+        else:
+            weak.append((relata[0], relata[1]))
+    return weak, strict, forks
+
+
+def _branch_edges(
+    weak: Sequence[tuple[int, int]],
+    strict: Sequence[tuple[int, int]],
+    forks: Sequence[tuple[int, int, int]],
+    choices: Sequence[int],
+) -> list[tuple[int, int]]:
+    """One branch's directed edges, in the index order its certificate cycle names.
+
+    Every W edge in input order, then every S edge in input order, then one disjunct per I fork in
+    fork input order: ``I(a, b, c)`` contributes ``(b, a)`` for choice 0 and ``(b, c)`` for choice
+    1, the weak edge a complete preorder lets that fork take.
+    """
+    return [
+        *weak,
+        *strict,
+        *(
+            (b, a) if choice == 0 else (b, c)
+            for (a, b, c), choice in zip(forks, choices, strict=True)
+        ),
+    ]
+
+
+def _reach(n: int, edges: Sequence[tuple[int, int]]) -> list[list[bool]]:
+    """Reflexive-transitive closure: ``reach[a][b]`` iff a directed walk a ⇝ b exists."""
+    reach = [[i == j for j in range(n)] for i in range(n)]
+    for a, b in edges:
+        reach[a][b] = True
+    for k in range(n):
+        row_k = reach[k]
+        for i in range(n):
+            if reach[i][k]:
+                row_i = reach[i]
+                for j in range(n):
+                    if row_k[j]:
+                        row_i[j] = True
+    return reach
+
+
+def _shortest_walk(
+    n: int, edges: Sequence[tuple[int, int]], src: int, dst: int
+) -> list[int] | None:
+    """Edge indices of a shortest walk src ⇝ dst ([] when src == dst), relata never revisited.
+
+    Breadth first over edges in index order, so the reported walk is the same on every run.
+    """
+    if src == dst:
+        return []
+    incoming: dict[int, tuple[int, int]] = {}
+    seen = [False] * n
+    seen[src] = True
+    queue = deque([src])
+    while queue:
+        node = queue.popleft()
+        for index, (tail, head) in enumerate(edges):
+            if tail == node and not seen[head]:
+                seen[head] = True
+                incoming[head] = (index, node)
+                if head == dst:
+                    walk: list[int] = []
+                    step = dst
+                    while step != src:
+                        step_index, back = incoming[step]
+                        walk.append(step_index)
+                        step = back
+                    walk.reverse()
+                    return walk
+                queue.append(head)
+    return None
+
+
+def _refuting_cycle(
+    n: int,
+    weak: Sequence[tuple[int, int]],
+    strict: Sequence[tuple[int, int]],
+    forks: Sequence[tuple[int, int, int]],
+    choices: Sequence[int],
+) -> list[int] | None:
+    """A simple strict cycle refuting one branch, or None when the branch is rankable.
+
+    A branch is infeasible exactly when some strict edge ``a > b`` has a walk ``b ⇝ a``: the strict
+    edge forces ``r(a) > r(b)`` while the walk forces ``r(b) ≥ r(a)``. The strict edge plus a
+    shortest return walk is then a simple cycle, and naming the strict edge is what makes the cycle
+    an S-bearing refutation rather than a consistent weak rotation.
+    """
+    edges = _branch_edges(weak, strict, forks, choices)
+    reach = _reach(n, edges)
+    for offset, (a, b) in enumerate(strict):
+        if not reach[b][a]:
+            continue
+        walk = _shortest_walk(n, edges, b, a)
+        if walk is not None:
+            return [len(weak) + offset, *walk]
+    return None
+
+
+def _ranks(
+    n: int, edges: Sequence[tuple[int, int]], weak_count: int, strict_count: int
+) -> list[int]:
+    """Integer ranks for a rankable branch: SCCs and longest strict-weighted paths.
+
+    In a rankable branch every cycle is weak, so its strongly connected relata
+    have equal rank. Condensation edges have weight 1 for S and 0 for W;
+    the longest path to a sink satisfies every strict and weak inequality.
+    """
+    reach = _reach(n, edges)
+    component = [-1] * n
+    count = 0
+    for i in range(n):
+        if component[i] >= 0:
+            continue
+        component[i] = count
+        for j in range(i + 1, n):
+            if component[j] < 0 and reach[i][j] and reach[j][i]:
+                component[j] = count
+        count += 1
+    successors: list[dict[int, int]] = [{} for _ in range(count)]
+    for index, (a, b) in enumerate(edges):
+        if component[a] != component[b]:
+            downstream = successors[component[a]]
+            target = component[b]
+            weight = int(weak_count <= index < weak_count + strict_count)
+            downstream[target] = max(downstream.get(target, 0), weight)
+    indegree = [0] * count
+    for downstream in successors:
+        for c in downstream:
+            indegree[c] += 1
+    queue = deque(c for c in range(count) if indegree[c] == 0)
+    order: list[int] = []
+    while queue:
+        c = queue.popleft()
+        order.append(c)
+        for d in sorted(successors[c]):
+            indegree[d] -= 1
+            if indegree[d] == 0:
+                queue.append(d)
+    height = [0] * count
+    for c in reversed(order):
+        height[c] = max((weight + height[d] for d, weight in successors[c].items()), default=0)
+    return [height[component[v]] for v in range(n)]
+
+
+def rank_certificate(n: int, edges: Sequence[ShapeEdge]) -> dict[str, Any]:
+    """Decide a finite W/S/I shape set under a complete preorder, with replayable evidence.
+
+    ``rank_sat`` answers the same question; this returns the certificate. Under completeness a
+    model is a map from the ``n`` relata to integer ranks, and the three shapes are the rank
+    constraints W(a, b): ``r(a) ≥ r(b)``, S(a, b): ``r(a) > r(b)``, and I(a, b, c), that is
+    ``(r(a) > r(b)) → (r(b) ≥ r(c))``, which is ``r(b) ≥ r(a)`` or ``r(b) ≥ r(c)``.
+
+    Every model of the forks picks at least one true disjunct per I, so the satisfying assignments
+    are exactly the union, over the ``2 ** forks`` branch assignments, of the difference systems
+    formed by the W and S edges plus one weak disjunct per fork. Enumerating the branches is
+    therefore necessary and sufficient: a rankable branch exhibits a model, and a refutation of
+    every branch excludes every model.
+
+    A difference system is infeasible exactly when some strict edge lies on a directed cycle,
+    because a cycle ``a > b ≥ … ≥ a`` is contradictory while contracting the SCCs of a cycle-free
+    system and weighting the condensation by longest path yields ranks (see ``_ranks``). Necessity
+    and sufficiency of the reported cycles: each names a strict edge plus a return walk, and the
+    strict edge is what makes the cycle unsatisfiable, since weak-only cycles are consistent.
+
+    SAT payload ``{"decision": "sat", "choices": list[int], "ranks": list[int]}``: one disjunct per
+    fork, in fork input order, and one rank per relatum. UNSAT payload
+    ``{"decision": "unsat", "branches": [{"choices": list[int], "cycle": list[int]}, ...]}`` with
+    one branch per assignment in ``itertools.product`` order; each ``cycle`` lists edge indices of
+    that branch's own edges (all W in input order, then all S in input order, then the fork
+    disjuncts in fork input order) forming a closed directed walk of distinct tails through at
+    least one S edge.
+
+    Raises ``ValueError`` for an unknown shape, a wrong arity, or a relatum outside ``range(n)``.
+    The run is exponential in the number of I edges, as any exhaustive branch rule must be.
+    """
+    weak, strict, forks = _checked(n, edges)
+    exhausted: list[dict[str, Any]] = []
+    for choices in product((0, 1), repeat=len(forks)):
+        cycle = _refuting_cycle(n, weak, strict, forks, choices)
+        if cycle is None:
+            return {
+                "decision": "sat",
+                "choices": list(choices),
+                "ranks": _ranks(
+                    n, _branch_edges(weak, strict, forks, choices), len(weak), len(strict)
+                ),
+            }
+        exhausted.append({"choices": list(choices), "cycle": cycle})
+    return {"decision": "unsat", "branches": exhausted}
+
+
+def _int_tuple(value: Any, length: int) -> tuple[int, ...] | None:
+    """``value`` as a length-``length`` sequence of plain integers, else None."""
+    if not isinstance(value, (list, tuple)) or len(value) != length:
+        return None
+    if any(not isinstance(x, int) or isinstance(x, bool) for x in value):
+        return None
+    return tuple(value)
+
+
+def _satisfies(
+    weak: Sequence[tuple[int, int]],
+    strict: Sequence[tuple[int, int]],
+    forks: Sequence[tuple[int, int, int]],
+    choices: tuple[int, ...],
+    ranks: tuple[int, ...],
+) -> bool:
+    """Do ``ranks`` model every original W/S/I formula, with ``choices`` the forks' true disjuncts?
+
+    The I test reads the disjunct the certificate names, which is one of the formula's two
+    disjuncts, so this is direct satisfaction of each original formula.
+    """
+    if any(ranks[b] > ranks[a] for a, b in weak):  # W(a, b): r(a) ≥ r(b)
+        return False
+    if any(ranks[b] >= ranks[a] for a, b in strict):  # S(a, b): r(a) > r(b)
+        return False
+    for (a, b, c), choice in zip(forks, choices, strict=True):
+        # I(a, b, c): r(b) ≥ r(a) under choice 0, r(b) ≥ r(c) under choice 1.
+        if ranks[a if choice == 0 else c] > ranks[b]:
+            return False
+    return True
+
+
+def _is_refuting_cycle(
+    edges: Sequence[tuple[int, int]], weak_count: int, strict_count: int, cycle: Any
+) -> bool:
+    """Is ``cycle`` a closed walk of distinct tails through an S edge of these branch edges?
+
+    Distinct tails with consecutive head = tail make the walk a simple directed cycle, so the
+    check is complete for the certificate's claim and costs one pass per branch.
+    """
+    if not isinstance(cycle, (list, tuple)) or not cycle:
+        return False
+    if any(not isinstance(j, int) or isinstance(j, bool) or not 0 <= j < len(edges) for j in cycle):
+        return False
+    tails = [edges[j][0] for j in cycle]
+    if len(set(tails)) != len(tails):
+        return False
+    for position, j in enumerate(cycle):
+        if edges[j][1] != edges[cycle[(position + 1) % len(cycle)]][0]:
+            return False
+    return any(weak_count <= j < weak_count + strict_count for j in cycle)
+
+
+def verify_rank_certificate(
+    n: int, edges: Sequence[ShapeEdge], certificate: Mapping[str, Any]
+) -> bool:
+    """Replay a ``rank_certificate`` payload from scratch, never trusting the producer's search.
+
+    SAT: ``choices`` must name one disjunct per fork and ``ranks`` must satisfy every original W, S
+    and I formula, which is an explicit complete-preorder model. UNSAT: the branches must cover
+    every assignment of the ``2 ** forks`` exactly once, and each must carry a valid simple closed
+    directed walk through an S edge of that branch's selected edges, which refutes that branch on
+    its own.
+
+    Returns False for a malformed instance, an unrecognised decision, a malformed, duplicated or
+    incomplete payload, an edge index out of range, a cycle that is not a simple closed walk, a
+    cycle without a strict edge, or ranks that fail a formula. Independent of ``rank_sat``.
+    """
+    try:
+        weak, strict, forks = _checked(n, edges)
+    except TypeError, ValueError:
+        return False
+    if not isinstance(certificate, Mapping):
+        return False
+    decision = certificate.get("decision")
+    if decision == "sat":
+        choices = _int_tuple(certificate.get("choices"), len(forks))
+        ranks = _int_tuple(certificate.get("ranks"), n)
+        if choices is None or ranks is None or any(c not in (0, 1) for c in choices):
+            return False
+        return _satisfies(weak, strict, forks, choices, ranks)
+    if decision != "unsat":
+        return False
+    branches = certificate.get("branches")
+    if not isinstance(branches, (list, tuple)) or len(branches) != 2 ** len(forks):
+        return False
+    seen: set[tuple[int, ...]] = set()
+    for branch in branches:
+        if not isinstance(branch, Mapping):
+            return False
+        choices = _int_tuple(branch.get("choices"), len(forks))
+        if choices is None or any(c not in (0, 1) for c in choices) or choices in seen:
+            return False
+        seen.add(choices)
+        selected = _branch_edges(weak, strict, forks, choices)
+        if not _is_refuting_cycle(selected, len(weak), len(strict), branch.get("cycle")):
+            return False
+    return True
 
 
 # ---------------------------------------------------------------------------------------------
