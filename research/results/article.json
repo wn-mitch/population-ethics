@@ -1,0 +1,1479 @@
+{
+ "additive": {
+  "conditions": [
+   "thesis:egalitarian-dominance",
+   "thesis:quantity",
+   "thesis:quality",
+   "thesis:dominance-addition",
+   "arrhenius-2003:dominance-addition",
+   "thesis:inequality-aversion",
+   "thesis:non-sadism",
+   "thesis:non-extreme-priority",
+   "thesis:weak-quality-addition",
+   "thesis:non-elitism",
+   "arrhenius-2003:non-elitism",
+   "thesis:general-non-extreme-priority",
+   "thesis:weak-non-sadism",
+   "arrhenius-2003:vrc-avoidance",
+   "arrhenius-2009:weak-quality-addition"
+  ],
+  "fixtures": [
+   {
+    "g": {
+     "-1": "-1/1",
+     "-2": "-2/1",
+     "0": "0/1",
+     "1": "1/1",
+     "2": "2/1",
+     "3": "3/1",
+     "4": "4/1",
+     "5": "5/1",
+     "6": "6/1",
+     "7": "7/1"
+    },
+    "name": "total",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": true,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": false,
+     "arrhenius-2009:weak-quality-addition": false,
+     "thesis:dominance-addition": true,
+     "thesis:egalitarian-dominance": true,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": true,
+     "thesis:quality": false,
+     "thesis:quantity": true,
+     "thesis:weak-non-sadism": true,
+     "thesis:weak-quality-addition": false
+    }
+   },
+   {
+    "g": {
+     "-1": "-3/1",
+     "-2": "-4/1",
+     "0": "-2/1",
+     "1": "-1/1",
+     "2": "0/1",
+     "3": "1/1",
+     "4": "2/1",
+     "5": "3/1",
+     "6": "4/1",
+     "7": "5/1"
+    },
+    "name": "critical-level-2",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": false,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": false,
+     "arrhenius-2009:weak-quality-addition": false,
+     "thesis:dominance-addition": false,
+     "thesis:egalitarian-dominance": true,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": false,
+     "thesis:quality": false,
+     "thesis:quantity": false,
+     "thesis:weak-non-sadism": false,
+     "thesis:weak-quality-addition": false
+    }
+   },
+   {
+    "g": {
+     "-1": "0/1",
+     "-2": "0/1",
+     "0": "0/1",
+     "1": "0/1",
+     "2": "0/1",
+     "3": "0/1",
+     "4": "0/1",
+     "5": "0/1",
+     "6": "0/1",
+     "7": "0/1"
+    },
+    "name": "all-zero",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": true,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": true,
+     "arrhenius-2009:weak-quality-addition": true,
+     "thesis:dominance-addition": true,
+     "thesis:egalitarian-dominance": false,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": true,
+     "thesis:quality": true,
+     "thesis:quantity": true,
+     "thesis:weak-non-sadism": true,
+     "thesis:weak-quality-addition": true
+    }
+   },
+   {
+    "g": {
+     "-1": "0/1",
+     "-2": "0/1",
+     "0": "0/1",
+     "1": "1/2",
+     "2": "1/4",
+     "3": "1/8",
+     "4": "1/16",
+     "5": "1/32",
+     "6": "1/64",
+     "7": "1/128"
+    },
+    "name": "bounded-positive",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": false,
+     "arrhenius-2003:non-elitism": false,
+     "arrhenius-2003:vrc-avoidance": false,
+     "arrhenius-2009:weak-quality-addition": false,
+     "thesis:dominance-addition": false,
+     "thesis:egalitarian-dominance": false,
+     "thesis:general-non-extreme-priority": false,
+     "thesis:inequality-aversion": false,
+     "thesis:non-elitism": false,
+     "thesis:non-extreme-priority": false,
+     "thesis:non-sadism": true,
+     "thesis:quality": false,
+     "thesis:quantity": true,
+     "thesis:weak-non-sadism": true,
+     "thesis:weak-quality-addition": false
+    }
+   },
+   {
+    "g": {
+     "-1": "-1/1",
+     "-2": "-2/1",
+     "0": "0/1",
+     "1": "0/1",
+     "2": "0/1",
+     "3": "0/1",
+     "4": "0/1",
+     "5": "0/1",
+     "6": "0/1",
+     "7": "0/1"
+    },
+    "name": "negative-only",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": true,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": true,
+     "arrhenius-2009:weak-quality-addition": true,
+     "thesis:dominance-addition": true,
+     "thesis:egalitarian-dominance": false,
+     "thesis:general-non-extreme-priority": false,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": false,
+     "thesis:non-sadism": true,
+     "thesis:quality": true,
+     "thesis:quantity": true,
+     "thesis:weak-non-sadism": true,
+     "thesis:weak-quality-addition": true
+    }
+   },
+   {
+    "g": {
+     "-1": "-1/1",
+     "-2": "-1/1",
+     "0": "-1/1",
+     "1": "-1/1",
+     "2": "-1/1",
+     "3": "-1/1",
+     "4": "1/1",
+     "5": "1/1",
+     "6": "1/1",
+     "7": "1/1"
+    },
+    "name": "step-at-four",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": false,
+     "arrhenius-2003:non-elitism": false,
+     "arrhenius-2003:vrc-avoidance": true,
+     "arrhenius-2009:weak-quality-addition": true,
+     "thesis:dominance-addition": false,
+     "thesis:egalitarian-dominance": false,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": false,
+     "thesis:non-elitism": false,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": false,
+     "thesis:quality": true,
+     "thesis:quantity": false,
+     "thesis:weak-non-sadism": false,
+     "thesis:weak-quality-addition": true
+    }
+   },
+   {
+    "g": {
+     "-1": "1/1",
+     "-2": "1/1",
+     "0": "1/1",
+     "1": "1/1",
+     "2": "1/1",
+     "3": "1/1",
+     "4": "1/1",
+     "5": "1/1",
+     "6": "1/1",
+     "7": "1/1"
+    },
+    "name": "constant-positive",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": true,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": false,
+     "arrhenius-2009:weak-quality-addition": false,
+     "thesis:dominance-addition": true,
+     "thesis:egalitarian-dominance": false,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": false,
+     "thesis:quality": false,
+     "thesis:quantity": true,
+     "thesis:weak-non-sadism": true,
+     "thesis:weak-quality-addition": false
+    }
+   },
+   {
+    "g": {
+     "-1": "-11/1",
+     "-2": "-12/1",
+     "0": "-10/1",
+     "1": "-9/1",
+     "2": "-8/1",
+     "3": "-7/1",
+     "4": "-6/1",
+     "5": "-5/1",
+     "6": "-4/1",
+     "7": "-3/1"
+    },
+    "name": "strictly-increasing-negative",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": false,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": true,
+     "arrhenius-2009:weak-quality-addition": true,
+     "thesis:dominance-addition": false,
+     "thesis:egalitarian-dominance": true,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": false,
+     "thesis:quality": true,
+     "thesis:quantity": false,
+     "thesis:weak-non-sadism": false,
+     "thesis:weak-quality-addition": true
+    }
+   },
+   {
+    "g": {
+     "-1": "0/1",
+     "-2": "0/1",
+     "0": "0/1",
+     "1": "0/1",
+     "2": "0/1",
+     "3": "0/1",
+     "4": "0/1",
+     "5": "0/1",
+     "6": "0/1",
+     "7": "0/1"
+    },
+    "name": "exported-maximal-0",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": true,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": true,
+     "arrhenius-2009:weak-quality-addition": true,
+     "thesis:dominance-addition": true,
+     "thesis:egalitarian-dominance": false,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": true,
+     "thesis:quality": true,
+     "thesis:quantity": true,
+     "thesis:weak-non-sadism": true,
+     "thesis:weak-quality-addition": true
+    }
+   },
+   {
+    "g": {
+     "-1": "0/1",
+     "-2": "-1/1",
+     "0": "1/16",
+     "1": "1/8",
+     "2": "3/16",
+     "3": "1/4",
+     "4": "19/64",
+     "5": "11/32",
+     "6": "3/8",
+     "7": "51/128"
+    },
+    "name": "exported-maximal-1",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": true,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": false,
+     "arrhenius-2009:weak-quality-addition": false,
+     "thesis:dominance-addition": true,
+     "thesis:egalitarian-dominance": true,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": true,
+     "thesis:quality": false,
+     "thesis:quantity": true,
+     "thesis:weak-non-sadism": true,
+     "thesis:weak-quality-addition": false
+    }
+   },
+   {
+    "g": {
+     "-1": "-6293/675520560",
+     "-2": "-6293/562933800",
+     "0": "-6293/844400700",
+     "1": "-6293/1125867600",
+     "2": "-6293/1688801400",
+     "3": "-6293/3377602800",
+     "4": "0/1",
+     "5": "6293/1125867600",
+     "6": "6293/562933800",
+     "7": "6293/375289200"
+    },
+    "name": "exported-maximal-2",
+    "verdicts": {
+     "arrhenius-2003:dominance-addition": false,
+     "arrhenius-2003:non-elitism": true,
+     "arrhenius-2003:vrc-avoidance": true,
+     "arrhenius-2009:weak-quality-addition": true,
+     "thesis:dominance-addition": false,
+     "thesis:egalitarian-dominance": true,
+     "thesis:general-non-extreme-priority": true,
+     "thesis:inequality-aversion": true,
+     "thesis:non-elitism": true,
+     "thesis:non-extreme-priority": true,
+     "thesis:non-sadism": false,
+     "thesis:quality": true,
+     "thesis:quantity": false,
+     "thesis:weak-non-sadism": false,
+     "thesis:weak-quality-addition": true
+    }
+   }
+  ],
+  "ladder": {
+   "levels": [
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "negative": 2,
+   "positive": 7
+  },
+  "maximal_realizable": [
+   {
+    "conditions": [
+     "arrhenius-2003:dominance-addition",
+     "arrhenius-2003:non-elitism",
+     "arrhenius-2003:vrc-avoidance",
+     "arrhenius-2009:weak-quality-addition",
+     "thesis:dominance-addition",
+     "thesis:general-non-extreme-priority",
+     "thesis:inequality-aversion",
+     "thesis:non-elitism",
+     "thesis:non-extreme-priority",
+     "thesis:non-sadism",
+     "thesis:quality",
+     "thesis:quantity",
+     "thesis:weak-non-sadism",
+     "thesis:weak-quality-addition"
+    ],
+    "g": {
+     "-1": "0",
+     "-2": "0",
+     "0": "0",
+     "1": "0",
+     "2": "0",
+     "3": "0",
+     "4": "0",
+     "5": "0",
+     "6": "0",
+     "7": "0"
+    }
+   },
+   {
+    "conditions": [
+     "arrhenius-2003:dominance-addition",
+     "arrhenius-2003:non-elitism",
+     "thesis:dominance-addition",
+     "thesis:egalitarian-dominance",
+     "thesis:general-non-extreme-priority",
+     "thesis:inequality-aversion",
+     "thesis:non-elitism",
+     "thesis:non-extreme-priority",
+     "thesis:non-sadism",
+     "thesis:quantity",
+     "thesis:weak-non-sadism"
+    ],
+    "g": {
+     "-1": "0",
+     "-2": "-1",
+     "0": "1/16",
+     "1": "1/8",
+     "2": "3/16",
+     "3": "1/4",
+     "4": "19/64",
+     "5": "11/32",
+     "6": "3/8",
+     "7": "51/128"
+    }
+   },
+   {
+    "conditions": [
+     "arrhenius-2003:non-elitism",
+     "arrhenius-2003:vrc-avoidance",
+     "arrhenius-2009:weak-quality-addition",
+     "thesis:egalitarian-dominance",
+     "thesis:general-non-extreme-priority",
+     "thesis:inequality-aversion",
+     "thesis:non-elitism",
+     "thesis:non-extreme-priority",
+     "thesis:quality",
+     "thesis:weak-quality-addition"
+    ],
+    "g": {
+     "-1": "-6293/675520560",
+     "-2": "-6293/562933800",
+     "0": "-6293/844400700",
+     "1": "-6293/1125867600",
+     "2": "-6293/1688801400",
+     "3": "-6293/3377602800",
+     "4": "0",
+     "5": "6293/1125867600",
+     "6": "6293/562933800",
+     "7": "6293/375289200"
+    }
+   }
+  ],
+  "minimal_unrealizable": [
+   [
+    "arrhenius-2003:dominance-addition",
+    "arrhenius-2003:vrc-avoidance",
+    "thesis:egalitarian-dominance"
+   ],
+   [
+    "arrhenius-2003:dominance-addition",
+    "arrhenius-2009:weak-quality-addition",
+    "thesis:egalitarian-dominance"
+   ],
+   [
+    "arrhenius-2003:dominance-addition",
+    "thesis:egalitarian-dominance",
+    "thesis:quality"
+   ],
+   [
+    "arrhenius-2003:dominance-addition",
+    "thesis:egalitarian-dominance",
+    "thesis:weak-quality-addition"
+   ],
+   [
+    "arrhenius-2003:vrc-avoidance",
+    "thesis:dominance-addition",
+    "thesis:egalitarian-dominance"
+   ],
+   [
+    "arrhenius-2003:vrc-avoidance",
+    "thesis:egalitarian-dominance",
+    "thesis:non-sadism"
+   ],
+   [
+    "arrhenius-2003:vrc-avoidance",
+    "thesis:egalitarian-dominance",
+    "thesis:quantity"
+   ],
+   [
+    "arrhenius-2003:vrc-avoidance",
+    "thesis:egalitarian-dominance",
+    "thesis:weak-non-sadism"
+   ],
+   [
+    "arrhenius-2009:weak-quality-addition",
+    "thesis:dominance-addition",
+    "thesis:egalitarian-dominance"
+   ],
+   [
+    "arrhenius-2009:weak-quality-addition",
+    "thesis:egalitarian-dominance",
+    "thesis:non-sadism"
+   ],
+   [
+    "arrhenius-2009:weak-quality-addition",
+    "thesis:egalitarian-dominance",
+    "thesis:quantity"
+   ],
+   [
+    "arrhenius-2009:weak-quality-addition",
+    "thesis:egalitarian-dominance",
+    "thesis:weak-non-sadism"
+   ],
+   [
+    "thesis:dominance-addition",
+    "thesis:egalitarian-dominance",
+    "thesis:quality"
+   ],
+   [
+    "thesis:dominance-addition",
+    "thesis:egalitarian-dominance",
+    "thesis:weak-quality-addition"
+   ],
+   [
+    "thesis:egalitarian-dominance",
+    "thesis:non-sadism",
+    "thesis:quality"
+   ],
+   [
+    "thesis:egalitarian-dominance",
+    "thesis:non-sadism",
+    "thesis:weak-quality-addition"
+   ],
+   [
+    "thesis:egalitarian-dominance",
+    "thesis:quality",
+    "thesis:quantity"
+   ],
+   [
+    "thesis:egalitarian-dominance",
+    "thesis:quality",
+    "thesis:weak-non-sadism"
+   ],
+   [
+    "thesis:egalitarian-dominance",
+    "thesis:quantity",
+    "thesis:weak-quality-addition"
+   ],
+   [
+    "thesis:egalitarian-dominance",
+    "thesis:weak-non-sadism",
+    "thesis:weak-quality-addition"
+   ]
+  ]
+ },
+ "census": {
+  "all_cycle_cores_are_simple_strict_cycles": true,
+  "cycle_counts_match_necklaces": true,
+  "cycle_minimal_cores_by_edges": {
+   "2": 2,
+   "3": 3,
+   "4": 5,
+   "5": 7,
+   "6": 13
+  },
+  "family": {
+   "every_word_has_egalitarian_dominance": true,
+   "max_length": 5,
+   "max_lives": 4,
+   "principle_words": 494,
+   "role_words": 81,
+   "words_by_length": {
+    "3": 3,
+    "4": 63,
+    "5": 428
+   }
+  },
+  "necklace_counts": {
+   "2": 2,
+   "3": 3,
+   "4": 5,
+   "5": 7,
+   "6": 13
+  },
+  "one_fork_minimal_cores_by_edges": {
+   "3": 5,
+   "4": 31,
+   "5": 126
+  }
+ },
+ "escape": {
+  "categories": {
+   "slightly_negative": [
+    -1
+   ],
+   "very_high_positive": [
+    8
+   ],
+   "very_low_positive": [
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  "escape_models": 20169,
+  "forced_comparable": [
+   "AAE:AB",
+   "AC:G"
+  ],
+  "k_distribution": {
+   "10": 2468,
+   "11": 3169,
+   "12": 4135,
+   "13": 3600,
+   "14": 2697,
+   "15": 1426,
+   "16": 613,
+   "17": 160,
+   "18": 30,
+   "19": 2,
+   "4": 8,
+   "5": 22,
+   "6": 135,
+   "7": 153,
+   "8": 457,
+   "9": 1094
+  },
+  "k_max": 19,
+  "k_min": 4,
+  "min_k_with_same_number_complete": 6,
+  "min_unresolved_different_number_pairs": 2,
+  "minimum_pattern": {
+   "degree": {
+    "AAE": 1,
+    "AAF": 4,
+    "AB": 1,
+    "AC": 1,
+    "G": 1
+   },
+   "pairs": [
+    "AAE|AAF",
+    "AAF|AB",
+    "AAF|AC",
+    "AAF|G"
+   ],
+   "size": 4,
+   "star_center": "AAF"
+  },
+  "populations": [
+   {
+    "groups": [
+     {
+      "count": 1,
+      "level": 8
+     }
+    ],
+    "levels": [
+     8
+    ],
+    "name": "A"
+   },
+   {
+    "groups": [
+     {
+      "count": 3,
+      "level": 4
+     },
+     {
+      "count": 1,
+      "level": 8
+     }
+    ],
+    "levels": [
+     4,
+     4,
+     4,
+     8
+    ],
+    "name": "AB"
+   },
+   {
+    "groups": [
+     {
+      "count": 21,
+      "level": 3
+     },
+     {
+      "count": 1,
+      "level": 8
+     }
+    ],
+    "levels": [
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     8
+    ],
+    "name": "AC"
+   },
+   {
+    "groups": [
+     {
+      "count": 1,
+      "level": -1
+     },
+     {
+      "count": 3,
+      "level": 8
+     }
+    ],
+    "levels": [
+     -1,
+     8,
+     8,
+     8
+    ],
+    "name": "AAE"
+   },
+   {
+    "groups": [
+     {
+      "count": 19,
+      "level": 1
+     },
+     {
+      "count": 3,
+      "level": 8
+     }
+    ],
+    "levels": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     1,
+     8,
+     8,
+     8
+    ],
+    "name": "AAF"
+   },
+   {
+    "groups": [
+     {
+      "count": 22,
+      "level": 4
+     }
+    ],
+    "levels": [
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4,
+     4
+    ],
+    "name": "D"
+   },
+   {
+    "groups": [
+     {
+      "count": 22,
+      "level": 2
+     }
+    ],
+    "levels": [
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "name": "G"
+   }
+  ],
+  "preorders_scanned": 9535241,
+  "single_route_min_k": {
+   "A:D": 6,
+   "AAE:AAF": 10,
+   "AAF:G": 12,
+   "AC:D": 10
+  },
+  "source": "arrhenius-2000-ep",
+  "witness": {
+   "m": 19,
+   "p": 1,
+   "q": 2
+  }
+ },
+ "ladder": {
+  "levels": [
+   -1,
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "negative": 1,
+  "positive": 6
+ },
+ "provenance": {
+  "ledger_rows": [
+   "P2-escape-sat",
+   "P2-min-incomparability",
+   "P2-avoidance-necessity",
+   "P2-same-number-escape",
+   "P9-l0-cycle-motif",
+   "P9-family-N4-L5",
+   "P7-arrhenius-1999-baseline"
+  ],
+  "p11_possibility": "6c959e4c9753ba3158bf4b015c895e0caabd82a9d6f5366417d7d6b80ec8e5b8",
+  "p2_escape": "2a574199aea561c0e4a742e9061f78e23d2667509385e83dbb7efeb4db84983d",
+  "p9_census": "4b450ad0f8ad896a0f1d21e24158a9e2a735be79032caa27bc40c01d0274e556",
+  "readings_toml": "0baddf6e1e075c243dca7f7ef66668ad536a2112176c5417a09fa876de5d3cbd"
+ },
+ "readings": {
+  "addition": {
+   "excerpt": "The Addition Principle: If a_i has higher welfare than b_j, and b_j has higher welfare than c_h, for all a_i ∈ A_k, b_j ∈ B_n, c_h ∈ C_m, and A_k is better than A_k ∪ B_n, and m > n, then A_k ∪ B_n is at least as good as A_k ∪ C_m.",
+   "informal_excerpt": "The Addition Principle: If it is bad to add a number of people, all with welfare lower than the original people, then it is at least as bad to add a greater number of people, all with even lower welfare than the original people. (p. 257, pdf 11) Gloss: 'Let us say that we can add a person with welfare y to a population where everybody enjoys a welfare above y. If this addition would be bad, then, according to the Addition Principle, it would be at least as bad to add several persons enjoying a welfare below y.'",
+   "name": "The Addition Principle",
+   "printed_page": "261 (formal); 257 (informal)",
+   "relation": "conditional",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-ep"
+  },
+  "arrhenius-1999:egalitarian-dominance": {
+   "excerpt": "The Egalitarian Dominance Condition: If a_i has the same welfare as a_j, and a_i has higher welfare than b_j for all i, j, then A_n is better than B_n other things being equal.",
+   "informal_excerpt": "The Egalitarian Dominance Condition (informal formulation): If population A is a perfectly equal population of the same size as population B, and every person in A has higher welfare than any person in B, then A is better than B, other things being equal.",
+   "name": "The Egalitarian Dominance Condition",
+   "printed_page": "17",
+   "relation": "strict",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-1999-weak-ordering"
+  },
+  "arrhenius-1999:minimal-inequality-aversion": {
+   "excerpt": "The Minimal Inequality Aversion Condition: For any A_n such that a_i has the same welfare as a_j for all i, j ≤ n, there is an m > n such that if b_i has the same welfare as b_j for all i, j ≤ m, c_i has the same welfare as c_j for all i, j ≤ m + n, and a_i and c_j has higher welfare than b_k for all i ≤ n, j ≤ m + n, k ≤ m, then C_{m+n} is at least as good as A_n∪B_m, other things being equal.",
+   "informal_excerpt": "The Minimal Inequality Aversion Condition (informal formulation): For any welfare levels of the best off and the worst off people, and for any n, there is an m > n such that for population of n best off and m worst off, a loss for the n best off can be balanced (compensated for) by a gain for the m worst off such that everybody would be equally well off, other things being equal.",
+   "name": "The Minimal Inequality Aversion Condition",
+   "printed_page": "15",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-1999-weak-ordering"
+  },
+  "arrhenius-1999:minimal-non-extreme-priority": {
+   "excerpt": "The Minimal Non-Extreme Priority Condition: There is an n such that if A_n⊂W_vhp, B_1⊂W_sn, C_{n+1}⊂W_vlp, then A_n∪B_1∪D_k is at least as good as C_{n+1}∪D_k, k ≥ 0, other things being equal.",
+   "informal_excerpt": "The Minimal Non-Extreme Priority Condition (informal formulation): There is an n such that a decrease from very high welfare to very low positive welfare for n people cannot be balanced (compensated for) by an increase from slightly negative welfare to very low positive welfare for one person, other things being equal.",
+   "name": "The Minimal Non-Extreme Priority Condition",
+   "printed_page": "16",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-1999-weak-ordering"
+  },
+  "arrhenius-1999:non-sadism": {
+   "excerpt": "The Non-Sadism Condition: If A_n⊂W_pw, B_m⊂W_nw, n, m > 0, then A_n∪C_k is at least as good as B_m∪C_k, k ≥ 0, other things being equal.",
+   "informal_excerpt": "The Non-Sadism Condition (informal formulation): An addition of any number of people with positive welfare is at least as good as an addition of any number of people with negative welfare, other things being equal.",
+   "name": "The Non-Sadism Condition",
+   "printed_page": "16",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-1999-weak-ordering"
+  },
+  "arrhenius-1999:quality-addition": {
+   "excerpt": "The Quality Addition Condition: There is an A_n⊂W_vhp such that for all B_m⊂W_vlp, A_n∪C_k is at least as good as B_m∪C_k, k ≥ 0, other things being equal.",
+   "informal_excerpt": "The Quality Addition Condition (informal formulation): There is at least one population with very high welfare such that its addition is at least as good as an addition of any population with very low positive welfare, other things being equal. (p. 14)",
+   "name": "The Quality Addition Condition",
+   "printed_page": "15",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-1999-weak-ordering"
+  },
+  "arrhenius-1999:theorem": {
+   "excerpt": "The Impossibility Theorem: There is no population axiology which satisfies the Dominance, the Minimal Inequality Aversion, the Minimal Non-Extreme Priority, the Non-Sadism, and the Quality Addition Condition.",
+   "informal_excerpt": "Proof: We show that the contrary assumption leads to a contradiction. Consider the following populations: A_p ⊂ W_vhp: A population with p ≥ 1 members with the same very high welfare. A'_q ⊂ W_vhp: A population with q ≥ 1 members with the same welfare as the A-lives. B_{q+1} ⊂ W_vlp3: A population with q + 1 members with very low positive welfare. C_{p+r-1} ⊂ W_vlp3: A population with p + r - 1 members with very low positive welfare. E_1 ⊂ W_sn: One person with slightly negative welfare. F_r ⊂ W_vlp1: A population with r ≥ 1 members with very low positive welfare. G_{p+q+r} ⊂ W_vlp2: A population of the same size as A_p∪A'_q∪F_r with very low positive welfare.",
+   "name": "The Impossibility Theorem",
+   "printed_page": "17-19",
+   "relation": "other: impossibility (non-existence of an axiology)",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-1999-weak-ordering"
+  },
+  "arrhenius-2000-ep:theorem": {
+   "excerpt": "The Impossibility Theorem: There is no welfarist axiology that satisfies the Dominance, the Addition, and the Minimal Non-Extreme Priority Principle and avoids the Repugnant, the Sadistic and the Anti-Egalitarian Conclusion.",
+   "informal_excerpt": "The primary claim of this paper is that any axiology that satisfies the Dominance, the Addition, and the Minimal Non-Extreme Priority Principle implies the Repugnant, the Anti-Egalitarian, or the Sadistic Conclusion. (p. 261)",
+   "name": "The Impossibility Theorem",
+   "printed_page": "261–263",
+   "relation": "other: impossibility (reductio)",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-ep"
+  },
+  "arrhenius-2003:dominance-addition": {
+   "excerpt": "(2*) The Dominance Addition Condition (exact formulation): For any populations A, B, and C, and any welfare level 𝕎x, if A⊂ℝ(Ω, x-1), B⊂ℝ(x, Ω), N(A)=N(B), and C⊂ℝ(1, Ω), then B∪C is at least as good as A, other things being equal.",
+   "informal_excerpt": "(2) The Dominance Addition Condition: If population A and B are of the same size and everyone in A has lower welfare than everyone in B, then a population consisting of the B-lives and any number of lives with positive welfare is at least as good as A, other things being equal.",
+   "name": "The Dominance Addition Condition",
+   "printed_page": "171",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2003-vrc"
+  },
+  "arrhenius-2003:non-elitism": {
+   "excerpt": "(4*) The Non-Elitism Condition (exact formulation): For any welfare levels 𝕎x, 𝕎y, x-1 > y, there is a number of lives n > 0 such that if A⊂𝕎x, N(A)=1, B⊂𝕎y, N(B)=n, and C⊂𝕎x-1, N(C)=n+1, then, for any D, C∪D is at least as good as A∪B∪D, other things being equal.",
+   "informal_excerpt": "(4) The Non-Elitism Condition: For any triplet of welfare levels A, B, and C, A slightly higher than B, and B higher than C, and for any one-life population A with welfare A, there is a population C with welfare C, and a population B of the same size as A∪C and with welfare B, such that for any population X, B∪X is at least as good as A∪C∪X, other things being equal.",
+   "name": "The Non-Elitism Condition",
+   "printed_page": "172",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2003-vrc"
+  },
+  "arrhenius-2003:vrc-avoidance": {
+   "excerpt": "(5*) Avoidance of the Very Repugnant Conclusion: (exact formulation): There is a negative welfare level 𝕎x, x < 0, two positive welfare ranges ℝ(u, v) and ℝ(1, y), u > y, and two population sizes n > 0, m > 0, such that if A⊂𝕎z, z ≥ u N(A)=n, B⊂ℝ(1, y), C⊂𝕎x, N(C)=m then A is at least as good as B∪C, other things being equal.",
+   "informal_excerpt": "(5) Avoidance of the Very Repugnant Conclusion: There is a perfectly equal population with very high positive welfare, and a very negative welfare level, and a number of lives at this level, such that the high welfare population is at least as good as any population consisting of the lives with negative welfare and any number of lives with very low positive welfare, other things being equal. [p.168, the conclusion avoided:] The Very Repugnant Conclusion: For any perfectly equal population A with very high positive welfare, and for any number of lives with very negative welfare, there is a population B consisting of the lives with negative welfare and lives with very low positive welfare which is better than population A, other things being equal.",
+   "name": "Avoidance of the Very Repugnant Conclusion",
+   "printed_page": "172",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2003-vrc"
+  },
+  "arrhenius-2009:weak-quality-addition": {
+   "excerpt": "The Weak Quality Addition Condition: (exact formulation): For any population X, there is a negative welfare level Wx, x < 0, two positive welfare ranges R(u, v) and R(1, y), u > y, and two population sizes n > 0, m > 0, such that if A⊂Wz, z ≥ u, N(A)=n, B⊂R(1, y), C⊂Wx, N(C)=m then A∪X is at least as good as B∪C∪X, other things being equal.",
+   "informal_excerpt": "The Weak Quality Addition Condition: For any population X, there is a perfectly equal population with very high positive welfare, and a very negative welfare level, and a number of lives at this level, such that the addition of the high welfare population to X is at least as good as the addition of any population consisting of the lives with negative welfare and any number of lives with very low positive welfare to X, other things being equal. (pp. 24 and 29–30, identical wording)",
+   "name": "The Weak Quality Addition Condition",
+   "printed_page": "30",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2009-one-more"
+  },
+  "dominance": {
+   "excerpt": "The Dominance Condition: If a_i has higher welfare than b_j for all a_i ∈ A_n, b_j ∈ B_n, then A_n is better than B_n.",
+   "informal_excerpt": "The Dominance Principle: If population A contains the same number of people as population B, and every person in A has higher welfare than any person in B, then A is better than B. (p. 257, pdf 11; fn 21: 'the Dominance Principle is similar to but stronger than the Pareto principle formulated in terms of welfare. The former principle but not the latter also applies to cases involving different people in the compared populations.')",
+   "name": "The Dominance Principle (informal, p. 257); The Dominance Condition (formal, p. 261)",
+   "printed_page": "261 (formal); 257 (informal)",
+   "relation": "strict",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-ep"
+  },
+  "mnep": {
+   "excerpt": "The Minimal Non-Extreme Priority Principle: There is an n such that if A_n ⊂ W_vhp, B_1 ⊂ W_sn, C_{n+1} ⊂ W_vlp, then A_n ∪ B_1 ∪ D_k is at least as good as C_{n+1} ∪ D_k, k ≥ 0.",
+   "informal_excerpt": "The Minimal Non-Extreme Priority Principle: There is a number n such that an addition of n people with very high welfare and a single person with slightly negative welfare is at least as good as an addition of the same number of people but with very low positive welfare. (p. 259, pdf 13)",
+   "name": "The Minimal Non-Extreme Priority Principle",
+   "printed_page": "261 (formal); 259 (informal)",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-ep"
+  },
+  "non-anti-egalitarianism": {
+   "excerpt": "The Anti-Egalitarian Conclusion: There are populations A_n and B_n such that for all a_i, a_j ∈ A_n, a_i has the same welfare as a_j, but for some b_i, b_j ∈ B_n, b_i has lower welfare than b_j, and [v(a_1)+…v(a_n)]/n > [v(b_1)+…v(b_n)]/n, and B_n is better than A_n.",
+   "informal_excerpt": "The Anti-Egalitarian Conclusion: A population with perfect equality can be worse than a population with the same number of people, inequality, and lower average (and thus lower total) positive welfare. (p. 258, pdf 12). Stronger principle not adopted: 'The Non-Anti-Egalitarianism Principle: A population with perfect equality is better than a population with the same number of people, inequality, and lower average (and thus lower total) welfare.' (p. 253, pdf 7); p. 258: 'We shall, however, adopt a weaker condition, namely avoidance of the following conclusion'.",
+   "name": "The Anti-Egalitarian Conclusion",
+   "printed_page": "261 (formal); 258 (informal)",
+   "relation": "other: the conclusion asserts strict ≻; the principle, its avoidance, is not-strict (¬≻), used as weak ⪰ via completeness at proof steps (3) and (10)",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-ep"
+  },
+  "non-repugnance": {
+   "excerpt": "The Repugnant Conclusion: For any A_n ⊂ W_vhp such that a_i has the same welfare as a_j for all a_i, a_j ∈ A_n, there is a B_m ⊂ W_vlp such that B_m is better than A_n.",
+   "informal_excerpt": "The Repugnant Conclusion: For any perfectly equal population with very high positive welfare, there is a population with very low positive welfare which is better. (p. 248, pdf 2; fn 3, pp. 248–249: 'See Parfit (1984, p. 388). My formulation is more general than Parfit's and he does not demand that the people with very high welfare are equally well off. See Section 5 for a formal definition of this conclusion.')",
+   "name": "The Repugnant Conclusion",
+   "printed_page": "261 (formal); 248 (informal)",
+   "relation": "other: the conclusion asserts strict ≻ (∀∃); avoidance is ∃∀ not-strict, used as weak ⪰ via completeness",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-ep"
+  },
+  "non-sadism": {
+   "excerpt": "The Sadistic Conclusion: There are populations A_n, B_m, C_k such that A_n ⊂ W_pw, B_m ⊂ W_nw, n, m > 0, k ≥ 0, and B_m ∪ C_k is better than A_n ∪ C_k.",
+   "informal_excerpt": "The Sadistic Conclusion: When adding people without affecting the original people's welfare, it can be better to add people with negative welfare rather than positive welfare. (p. 251, pdf 5; fn 9: 'See Section 5 for a formal definition of this conclusion.')",
+   "name": "The Sadistic Conclusion",
+   "printed_page": "261 (formal); 251 (informal)",
+   "relation": "other: the conclusion asserts strict ≻ (existential); the principle, its avoidance, is not-strict (¬≻), used as weak ⪰ via completeness at proof step (9)",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-ep"
+  },
+  "thesis:dominance-addition": {
+   "excerpt": "The Dominance Addition Condition (exact formulation): For any populations A, B, and C, and any pair of welfare levels 𝕎x and 𝕎y, y > 0, if all the lives in A have welfare below 𝕎x, all the lives in B have welfare above or at 𝕎x, N(A)=N(B), and C⊂𝕎y, then B∪C is not worse than A, other things being equal.",
+   "informal_excerpt": "The Dominance Addition Condition: An addition of lives with positive welfare and an increase in the welfare in the rest of the population doesn't make a population worse, other things being equal.",
+   "name": "The Dominance Addition Condition",
+   "printed_page": "159",
+   "relation": "not-strict",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:egalitarian-dominance": {
+   "excerpt": "The Egalitarian Dominance Condition (exact formulation): For any populations A and B, N(A)=N(B), and any welfare level 𝕎x, if all members of B have welfare below 𝕎x, and A⊂𝕎x, then A is better than B, other things being equal.",
+   "informal_excerpt": "The Egalitarian Dominance Condition: If population A is a perfectly equal population of the same size as population B, and every person in A has higher welfare than every person in B, then A is better than B, other things being equal. (p. 156; the same wording appears at p. 51 [pdf 60], §3.2)",
+   "name": "The Egalitarian Dominance Condition",
+   "printed_page": "156",
+   "relation": "strict",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:general-non-extreme-priority": {
+   "excerpt": "The General Non-Extreme Priority Condition (exact formulation): For any W_z, there is a positive welfare level W_u, and a positive welfare range R(1, y), u > y, and a number of lives n > 0 such that if A⊂W_x, x ≥ u, B⊂R(1, y), N(A)=N(B)=n, C⊂W_z, D⊂W_{z+1}, N(C)= N(D)=1, then, for any E, A∪C∪E is at least as good as B∪D∪E, other things being equal.",
+   "informal_excerpt": "The General Non-Extreme Priority Condition: There is a number n of lives such that for any population X, and any welfare level A, a population consisting of the X-lives, n lives with very high welfare, and one life with welfare A, is at least as good as a population consisting of the X-lives, n lives with very low positive welfare, and one life with welfare slightly above A, other things being equal.",
+   "name": "The General Non-Extreme Priority Condition",
+   "printed_page": "166–167",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:inequality-aversion": {
+   "excerpt": "The Inequality Aversion Condition (exact formulation): For any triplet 𝕎x, 𝕎y, 𝕎z of welfare levels, x > y > z, and any number of lives n > 0, there is a number of lives m > n such that if A⊂𝕎x, N(A)=n, B⊂𝕎y, N(B)=m+n, and C⊂𝕎z, N(C)=m, then B is at least as good as A∪C, other things being equal.",
+   "informal_excerpt": "The Inequality Aversion Condition: For any triplet of welfare levels 𝔸, 𝔹, and ℂ, 𝔸 higher than 𝔹 and 𝔹 higher than ℂ, and for any population A with welfare 𝔸, there is a larger population C with welfare ℂ such that a perfectly equal population B of the same size as A∪C and with welfare 𝔹 is at least as good as A∪C, other things being equal. (p. 159; also p. 93 [pdf 102], §6, with 'A higher than B, and B higher than C')",
+   "name": "The Inequality Aversion Condition",
+   "printed_page": "159",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:non-elitism": {
+   "excerpt": "The Non-Elitism Condition (exact formulation): For any welfare levels W_x, W_y, x-1 > y, there is a number of lives n > 0 such that if A⊂W_x, N(A)=1, B⊂W_y, N(B)=n, and C⊂W_{x-1}, N(C)=n+1, then, for any D⊂R(y, x), C∪D is at least as good as A∪B∪D, other things being equal.",
+   "informal_excerpt": "The Non-Elitism Condition: For any triplet of welfare levels A, B, and C, A slightly higher than B, and B higher than C, and for any one-life population A with welfare A, there is a population C with welfare C, and a population B of the same size as A∪C and with welfare B, such that for any population X consisting of lives with welfare ranging from C to A, B∪X is at least as good as A∪C∪X, other things being equal.",
+   "name": "The Non-Elitism Condition",
+   "printed_page": "166",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:non-extreme-priority": {
+   "excerpt": "The Non-Extreme Priority Condition (exact formulation): There are two welfare levels W_x and W_y, and a welfare range R(1, z), x > z, y < 0, and a number of lives n such that if A⊂W_u, u ≥ x, N(A)=n, B⊂R(1, z), N(B)=n+1, and C⊂W_y, N(C)=1, then, for any population D, A∪C∪D is at least as good as B∪D, other things being equal.",
+   "informal_excerpt": "The Non-Extreme Priority Condition: There is a number n of lives such that for any population X, a population consisting of the X-lives, n lives with very high welfare, and a single life with slightly negative welfare, is at least as good as a population consisting of the X-lives and n+1 lives with very low positive welfare, other things being equal.",
+   "name": "The Non-Extreme Priority Condition",
+   "printed_page": "162",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:non-sadism": {
+   "excerpt": "The Non-Sadism Condition (exact formulation): If A⊂W_x, x > 0, B⊂W_y, y < 0, N(B) > 0, then, for any population C, A∪C is at least as good as B∪C, other things being equal.",
+   "informal_excerpt": "The Non-Sadism Condition: An addition of any number of lives with positive welfare is at least as good as an addition of any number of lives with negative welfare, other things being equal.",
+   "name": "The Non-Sadism Condition",
+   "printed_page": "161",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:quality": {
+   "excerpt": "The Quality Condition (exact formulation): There are two positive welfare ranges ℝ(u, v) and ℝ(1, y), u > y, and a population size n > 0, such that if 𝕎z⊂ℝ(u, v), A⊂𝕎z, N(A)=n, and B⊂ℝ(1, y), then A is at least as good as B, other things being equal.",
+   "informal_excerpt": "The Quality Condition: There is at least one perfectly equal population with very high positive welfare which is at least as good as any population with very low positive welfare, other things being equal. (p. 156. At p. 41 [pdf 50] it reads '...with very high welfare which is at least as good as any population with very low positive welfare...', without 'positive' before 'very high'.)",
+   "name": "The Quality Condition",
+   "printed_page": "156",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:quantity": {
+   "excerpt": "The Quantity Condition (exact formulation): For any two positive welfare levels 𝕎x and 𝕎y, such that x=y+1, and for any population size n, there is a population size m > n, such that if N(A)=n, N(B)=m, A⊂𝕎x, and B⊂𝕎y, then B is at least as good as A, other things being equal.",
+   "informal_excerpt": "The Quantity Condition: For any pair of positive welfare levels 𝔸 and 𝔹, such that 𝔹 is slightly lower than 𝔸, and for any number of lives n, there is a greater number of lives m, such that a population of m people at level 𝔹 is at least as good as a population of n people at level 𝔸, other things being equal. (pp. 155–156; also p. 51 [pdf 60], §3.2)",
+   "name": "The Quantity Condition",
+   "printed_page": "156",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:theorem-1": {
+   "excerpt": "The First Impossibility Theorem: There is no population axiology which satisfies the Quality Condition, the Egalitarian Dominance Condition, and the Quantity Condition.",
+   "informal_excerpt": "In section 3.2, we claimed that an axiology cannot satisfy the Quality Condition if it satisfies the Egalitarian Dominance Condition and the following condition: [Quantity Condition] (p. 155)",
+   "name": "The First Impossibility Theorem",
+   "printed_page": "157",
+   "relation": "other: impossibility",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:weak-non-sadism": {
+   "excerpt": "The Weak Non-Sadism Condition (exact formulation): There is a welfare level W_x, x < 0, and a number of lives n, such that if A⊂W_x, N(A)=n, B⊂W_y, y > 0, then, for any population C, B∪C is at least as good as A∪C, other things being equal.",
+   "informal_excerpt": "The Weak Non-Sadism Condition: There is a negative welfare level and a number of lives at this level such that an addition of any number of people with positive welfare is at least as good as an addition of the lives with negative welfare, other things being equal.",
+   "name": "The Weak Non-Sadism Condition",
+   "printed_page": "166",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  },
+  "thesis:weak-quality-addition": {
+   "excerpt": "The Weak Quality Addition Condition (exact formulation): For any population C, there are two positive welfare ranges R(x, w) and R(1, y), x > y, and a population size n such that if A⊂W_z, z ≥ x, N(A)=n, B⊂R(1, y), then A∪C is at least as good as B∪C, other things being equal.",
+   "informal_excerpt": "The Weak Quality Addition Condition: For any population X, there is at least one perfectly equal population with very high welfare such that its addition to X is at least as good as an addition of any population with very low positive welfare to X, other things being equal.",
+   "name": "The Weak Quality Addition Condition",
+   "printed_page": "162",
+   "relation": "weak",
+   "review_state": "agent-cross-read",
+   "work": "arrhenius-2000-thesis"
+  }
+ },
+ "schema": "population-ethics.article/v1",
+ "theorem1": {
+  "edges": [
+   {
+    "from": "A2",
+    "principle": "thesis:quantity",
+    "rel": "weak",
+    "step": 1,
+    "to": "A1"
+   },
+   {
+    "from": "A3",
+    "principle": "thesis:quantity",
+    "rel": "weak",
+    "step": 2,
+    "to": "A2"
+   },
+   {
+    "from": "A4",
+    "principle": "thesis:quantity",
+    "rel": "weak",
+    "step": 3,
+    "to": "A3"
+   },
+   {
+    "from": "B",
+    "principle": "thesis:egalitarian-dominance",
+    "rel": "strict",
+    "step": 4,
+    "to": "A4"
+   },
+   {
+    "from": "A1",
+    "principle": "thesis:quality",
+    "rel": "weak",
+    "step": 5,
+    "to": "B"
+   }
+  ],
+  "note": "Quantity chain one level at a time from W_u to W_1, closed by Egalitarian Dominance and Quality.",
+  "populations": [
+   {
+    "groups": [
+     {
+      "count": 1,
+      "level": 4
+     }
+    ],
+    "levels": [
+     4
+    ],
+    "name": "A1"
+   },
+   {
+    "groups": [
+     {
+      "count": 2,
+      "level": 3
+     }
+    ],
+    "levels": [
+     3,
+     3
+    ],
+    "name": "A2"
+   },
+   {
+    "groups": [
+     {
+      "count": 3,
+      "level": 2
+     }
+    ],
+    "levels": [
+     2,
+     2,
+     2
+    ],
+    "name": "A3"
+   },
+   {
+    "groups": [
+     {
+      "count": 4,
+      "level": 1
+     }
+    ],
+    "levels": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "name": "A4"
+   },
+   {
+    "groups": [
+     {
+      "count": 4,
+      "level": 3
+     }
+    ],
+    "levels": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "name": "B"
+   }
+  ],
+  "source": "arrhenius-2000-thesis",
+  "statement": "thesis:theorem-1"
+ },
+ "theorem1999": {
+  "edges": [
+   {
+    "from": "AAE",
+    "principle": "arrhenius-1999:minimal-non-extreme-priority",
+    "rel": "weak",
+    "step": 1,
+    "to": "AB"
+   },
+   {
+    "from": "AB",
+    "principle": "arrhenius-1999:quality-addition",
+    "rel": "weak",
+    "step": 2,
+    "to": "BC"
+   },
+   {
+    "from": "BC",
+    "principle": "arrhenius-1999:egalitarian-dominance",
+    "rel": "strict",
+    "step": 3,
+    "to": "G"
+   },
+   {
+    "from": "G",
+    "principle": "arrhenius-1999:minimal-inequality-aversion",
+    "rel": "weak",
+    "step": 4,
+    "to": "AAF"
+   },
+   {
+    "from": "AAF",
+    "principle": "arrhenius-1999:non-sadism",
+    "rel": "weak",
+    "step": 5,
+    "to": "AAE"
+   }
+  ],
+  "level_map": {
+   "-1": -1,
+   "1": 1,
+   "14": 4,
+   "5": 2,
+   "7": 3
+  },
+  "populations": [
+   {
+    "groups": [
+     {
+      "count": 1,
+      "level": -1
+     },
+     {
+      "count": 2,
+      "level": 4
+     }
+    ],
+    "levels": [
+     -1,
+     4,
+     4
+    ],
+    "name": "AAE",
+    "source_levels": [
+     -1,
+     14,
+     14
+    ]
+   },
+   {
+    "groups": [
+     {
+      "count": 2,
+      "level": 3
+     },
+     {
+      "count": 1,
+      "level": 4
+     }
+    ],
+    "levels": [
+     3,
+     3,
+     4
+    ],
+    "name": "AB",
+    "source_levels": [
+     7,
+     7,
+     14
+    ]
+   },
+   {
+    "groups": [
+     {
+      "count": 7,
+      "level": 3
+     }
+    ],
+    "levels": [
+     3,
+     3,
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "name": "BC",
+    "source_levels": [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ]
+   },
+   {
+    "groups": [
+     {
+      "count": 7,
+      "level": 2
+     }
+    ],
+    "levels": [
+     2,
+     2,
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "name": "G",
+    "source_levels": [
+     5,
+     5,
+     5,
+     5,
+     5,
+     5,
+     5
+    ]
+   },
+   {
+    "groups": [
+     {
+      "count": 5,
+      "level": 1
+     },
+     {
+      "count": 2,
+      "level": 4
+     }
+    ],
+    "levels": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     4,
+     4
+    ],
+    "name": "AAF",
+    "source_levels": [
+     1,
+     1,
+     1,
+     1,
+     1,
+     14,
+     14
+    ]
+   }
+  ],
+  "source": "arrhenius-1999-weak-ordering",
+  "source_grid": {
+   "slightly_negative": -1,
+   "very_high": 14,
+   "very_low": [
+    1,
+    5,
+    7
+   ]
+  },
+  "uses_completeness": false,
+  "witness": {
+   "p": 1,
+   "q": 1,
+   "r": 5
+  }
+ }
+}
