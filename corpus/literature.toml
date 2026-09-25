@@ -1,4 +1,4 @@
-schema = "population-ethics.literature/v1"
+schema = "population-ethics.literature/v2"
 
 # Prior work checked against the breakthrough-search results in docs/journal/2026-09-22-turn-1.md.
 # Kept apart from sources.toml because that file's hash is recorded in run provenance.
@@ -6,6 +6,81 @@ schema = "population-ethics.literature/v1"
 # read: "firsthand" (full text read), "partial" (named sections read),
 # "secondary" (content known only through the works cited in `via`), "not-obtained".
 # Page numbers are printed pagination unless a note says otherwise.
+
+# Source-direction certificates use X and Y as named populations. The primary
+# passage is cross-read before a collision may use its directed relation.
+[[source_claims]]
+id = "weak-da-vrc-2016"
+work = "thomas-2016-reconstructing"
+printed_page = "10, §8, after Theorem 5"
+excerpt = "n[A] is not at least as good as m[z] + N[3]"
+X = "n lives at the high level A"
+Y = "m lives at negative z plus N lives at low positive level 3"
+formula = "¬(X ⪰ Y)"
+reader = "project-primary-reading"
+cross_reader = "cold-source-audit"
+cross_verdict = "agree"
+ambiguity = "The parenthetical reverses the strong VRC comparison, but the operative weak-DA sentence and the displayed Theorem 5 chain support ¬(X ⪰ Y)."
+
+[[source_claims]]
+id = "quality-addition-1999"
+work = "arrhenius-1999-weak-ordering"
+printed_page = "15"
+excerpt = "A_n∪C_k is at least as good as B_m∪C_k"
+X = "very-high A_n with shared background C_k"
+Y = "very-low-positive B_m with the same background C_k"
+formula = "X ⪰ Y"
+reader = "project-primary-reading"
+cross_reader = "cold-source-audit"
+cross_verdict = "agree"
+
+[[source_claims]]
+id = "non-anti-egalitarianism-1999"
+work = "arrhenius-1999-weak-ordering"
+printed_page = "11, footnote 3"
+excerpt = "A population with perfect equality is at least as good as a population with the same number of people, inequality, and lower average positive welfare."
+X = "same-size perfectly equal population"
+Y = "unequal population with lower average positive welfare"
+formula = "X ⪰ Y"
+reader = "project-primary-reading"
+cross_reader = "cold-source-audit"
+cross_verdict = "agree"
+
+[[source_claims]]
+id = "non-sadism-1999"
+work = "arrhenius-1999-weak-ordering"
+printed_page = "16"
+excerpt = "A_n∪C_k is at least as good as B_m∪C_k"
+X = "positive-welfare A_n with shared background C_k"
+Y = "negative-welfare B_m with the same background C_k"
+formula = "X ⪰ Y"
+reader = "project-primary-reading"
+cross_reader = "cold-source-audit"
+cross_verdict = "agree"
+
+[[source_claims]]
+id = "mnep-step-1999"
+work = "arrhenius-1999-weak-ordering"
+printed_page = "18"
+excerpt = "A_p∪A'_q∪E_1 is at least as good as A_p∪B_{q+1}"
+X = "A_p and A'_q very-high lives plus one slightly negative E life"
+Y = "A_p very-high lives plus B_{q+1} very-low-positive lives"
+formula = "X ⪰ Y"
+reader = "project-primary-reading"
+cross_reader = "cold-source-audit"
+cross_verdict = "agree"
+
+[[source_claims]]
+id = "mia-step-1999"
+work = "arrhenius-1999-weak-ordering"
+printed_page = "19"
+excerpt = "G_{p+q+r} is at least as good as A_p∪A'_q∪F_r"
+X = "G_{p+q+r} equal very-low-positive lives"
+Y = "A_p and A'_q very-high lives plus F_r very-low-positive lives"
+formula = "X ⪰ Y"
+reader = "project-primary-reading"
+cross_reader = "cold-source-audit"
+cross_verdict = "agree"
 
 # ---------------------------------------------------------------------------
 # Arrhenius's own theorem family
@@ -260,7 +335,7 @@ notes = [
   "Reconstructs the six book theorems from the 2013 manuscript over a transitive, reflexive relation, with positive-form conditions (p. 2).",
   "Shared lemmas: General Non-Elitism implies Generalized Inequality-Averse Addition (pp. 6–8); GNEP implies Sufficient Tradeoffs (pp. 8–9).",
   "pp. 4–5, 10: negative-form Dominance Addition yields only 'not at least as good'.",
-  "P21 check: p. 1 works with a finite welfare set; pp. 4–5 and 10 distinguish Arrhenius's not-better DA from positive weak DA. With weak DA, p. 10 derives that low is not at least as good as high, violating Thomas's Weak Quality Condition. This does not negate the 2003 avoidance condition that high is at least as good as low in an incomplete quasi-order, nor provide the P21 model.",
+  "P21 check: p. 1 works with a finite welfare set; pp. 4–5 and 10 distinguish not-better DA from positive weak DA. With not-better DA and unrestricted-background General Non-Elitism, the p. 10 remark derives that the high population is not at least as good as the negative-plus-positive population, directly negating 2003 VRC avoidance. P21 replaces unrestricted NE with ranged NE, so the remark does not refute its both-weakened integer-chain model or supply that model.",
   "Theorem 3 (p. 6) is the closest reconstructed skeleton to R6.",
   "Does not reconstruct the E&P 2000 theorem.",
 ]
@@ -632,6 +707,7 @@ citations = [
 result = "R1"
 ledger = ["P2-min-incomparability"]
 verdict = "partial"
+directional = false
 sources = ["arrhenius-2000-ep", "arrhenius-1999-weak-ordering"]
 known = "The E&P 2000 theorem fails without completeness, and Arrhenius names where completeness enters (2000 p. 264, fn 31; 1999 p. 12)."
 open = "No source counts or locates the incomparabilities. The minimum of 4 pairs and the unique AAF star appear nowhere."
@@ -640,6 +716,7 @@ open = "No source counts or locates the incomparabilities. The minimum of 4 pair
 result = "R2"
 ledger = ["M1c-same-number-completeness", "P2-same-number-escape"]
 verdict = "partial"
+directional = false
 sources = ["bbd-1996-quasi-orderings", "bbd-2005-population-issues", "lts-2024-incompleteness", "tls-dominance-against-incompleteness", "gustafsson-2020-fourth", "arrhenius-2022-conflict-imprecision", "arrhenius-2000-thesis"]
 known = "Same-number-complete, different-number-incomplete axiologies (Critical-Band Utilitarianism) are an established program and are reported to avoid the Repugnant and Sadistic Conclusions of Arrhenius 2000. Parfit's quarantine and Different-Number-Based Imprecision are the same idea informally."
 open = "The different-number-only UNSAT half and the 'at least two different-number pairs unresolved' bound appear nowhere. A literature agent derived, but did not find stated, that Critical-Band Utilitarianism satisfies all E&P 2000 conditions; unverified here. arrhenius-2016-imprecision is unread."
@@ -647,15 +724,37 @@ open = "The different-number-only UNSAT half and the 'at least two different-num
 [[collisions]]
 result = "R3"
 ledger = ["C1-combined-weakening", "M1-local-completeness-avoidance", "M2-reverse-weak-avoidance"]
-verdict = "collides"
+verdict = "partial"
+directional = true
 sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2003-vrc", "arrhenius-2009-one-more", "thomas-2016-reconstructing"]
-known = "Positive at-least-as-good avoidance conditions over a quasi-ordering, with no completeness, is Arrhenius's own method from 1999 on; fn 3 of the 1999 paper restates E&P Non-Anti-Egalitarianism in that form."
-open = "Only the four-pair partial-completeness version for the exact E&P 2000 condition set."
+known = "The 1999 source already uses positive weak avoidance-style comparisons on a quasi-ordering: Quality Addition (p. 15), Non-Sadism (p. 16), and the mildly egalitarian comparison (p. 11 fn. 3). These share M2's direction but not its complete E&P 2000 premise set. No 1999 source uses M1's four-pair local completeness or C1's weak Addition consequent."
+open = "The exact finite-witness M1, M2, and C1 mutations remain unmatched: the 1999 theorem has a different condition set and Quality Addition includes a common background absent from M2's bare avoidance comparison. The four-pair partial-completeness claim has no verified publication."
+[[collisions.comparisons]]
+source_claim = "quality-addition-1999"
+project_formula = "X ⪰ Y"
+relationship = "same"
+premises_match = false
+premise_comparison = "M2's A ⪰ D has this direction, but the source quantifies over every shared background and the 1999 condition set lacks E&P Addition; M1 instead requires local completeness and C1 weakens Addition. The exact E&P finite-witness results are not source claims."
+
+[[collisions.comparisons]]
+source_claim = "non-anti-egalitarianism-1999"
+project_formula = "X ⪰ Y"
+relationship = "same"
+premises_match = false
+premise_comparison = "M2's equal D ⪰ unequal AC matches the direction, but the source footnote restricts the lower average to positive welfare and does not supply the E&P 2000 theorem, M1's local completeness or C1's Addition premise."
+
+[[collisions.comparisons]]
+source_claim = "non-sadism-1999"
+project_formula = "X ⪰ Y"
+relationship = "same"
+premises_match = false
+premise_comparison = "M2's positive AAF ⪰ negative AAE has this direction; the source quantifies over any common background and a different five-condition set, not the selected E&P witness with M1/C1's extra premises."
 
 [[collisions]]
 result = "R4"
 ledger = ["M3-transitivity"]
 verdict = "partial"
+directional = false
 sources = ["arrhenius-2000-thesis", "arrhenius-2022-without-transitivity", "parent-benzmuller-2024-hol", "voigt-2026-theory-x", "bossert-cato-kamaga-2022-suzumura"]
 known = "Suzumura consistency equals transitivity under completeness (standard). Acyclicity and quasi-transitivity escape Parfit's Mere Addition Paradox (Parent & Benzmüller; Voigt §7 on a three-world model). Arrhenius concedes the weak-link cycles are not strict and moves to acyclicity, Maximality, or normative versions."
 open = "Minimum transitivity-core sizes (5 and 7) and their counts."
@@ -664,6 +763,7 @@ open = "Minimum transitivity-core sizes (5 and 7) and their counts."
 result = "R5"
 ledger = ["P6-relaxed-p1q1", "P6-relaxed-p1q2", "P6-relaxed-p1q3", "P6-relaxed-p1q4"]
 verdict = "partial"
+directional = false
 sources = ["thomas-2018-possibilities", "thornley-2022-prospect", "arrhenius-2000-thesis"]
 known = "Whether category gaps and Archimedean structure hold decides whether Non-Anti-Egalitarianism-based derivations go through; Arrhenius replaces the categories with ranges R(u,v), R(1,y), u > y."
 open = "The three-condition triangle itself; it remains a formalization diagnostic."
@@ -672,14 +772,36 @@ open = "The three-condition triangle itself; it remains a formalization diagnost
 result = "R6"
 ledger = ["P6-gapped-p1q1", "P6-skeleton-gapped-p1q1-0", "P6-skeleton-gapped-p1q1-1", "P6-skeleton-gapped-p1q1-2", "P6-skeleton-gapped-p1q1-3", "P6-skeleton-gapped-p1q1-4", "P6-skeleton-gapped-p1q1-5", "P7-known-ground-R6"]
 verdict = "partial"
+directional = true
 sources = ["arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "arrhenius-2003-vrc"]
 known = "The outer frame is the 1999 theorem (thesis Theorem 3) at p = q = 1, r = 5: MNEP on (14) gives (−1,14,14) ⪰ (7,7,14); Non-Sadism on (14,14) gives (1⁵,14,14) ⪰ (−1,14,14); the single inequality step compares 5⁷ with (1⁵,14,14). Putting the negative life inside the added low group and removing it with an MNEP-type bridge on a very-low background is the Lemma 3 device of 2009 and Lemma 1.3 of 2011."
 open = "Two instances: the MNEP bridge on the very-low background 6⁵ and the dominance step 7⁷ ≻ 6⁷. research/known.py finds every other R6 instance inside a maximum embedding of the 1999 or 2000 skeleton."
+[[collisions.comparisons]]
+source_claim = "mnep-step-1999"
+project_formula = "X ⪰ Y"
+relationship = "same"
+premises_match = false
+premise_comparison = "R6 uses p=q=1 and background W_14: X=(W_-1,W_14,W_14), Y=(W_7,W_7,W_14). The published size witnesses vary; this fixed choice and R6's additional edges are not themselves a source theorem."
+
+[[collisions.comparisons]]
+source_claim = "non-sadism-1999"
+project_formula = "X ⪰ Y"
+relationship = "same"
+premises_match = false
+premise_comparison = "R6 specializes the positive-versus-negative addition with W_14² as background; its fixed p=q=1,r=5 witness and bridge differ from the published theorem's existential sizes."
+
+[[collisions.comparisons]]
+source_claim = "mia-step-1999"
+project_formula = "X ⪰ Y"
+relationship = "same"
+premises_match = false
+premise_comparison = "R6's inequality step is W_5^7 ⪰ (W_1^5,W_14²); the 1999 source chooses r existentially, while R6 fixes r=5 and also includes new bridge/dominance edges."
 
 [[collisions]]
 result = "P13"
 ledger = ["P13-bounce-theorem"]
 verdict = "partial"
+directional = false
 sources = ["arrhenius-2000-thesis", "thomas-2016-reconstructing", "thomas-2018-possibilities", "thornley-2022-prospect", "thornley-2022-dilemma", "arrhenius-stefansson-2025-risk", "arrhenius-2011-impossibility", "baker-2025-non-archimedean", "nebel-2022-totalism"]
 known = "Under full comparability the bounce theorem is thesis Theorem 1 plus Appendix B (pp. 205–206), which derives Quality from Egalitarian Dominance and a size-restricted avoidance of the Repugnant Conclusion. Every restatement of Theorem 1 checked keeps unrestricted Quality (Thomas 2016 p. 4; Thomas 2018 pp. 6–7; Thornley 2022; Arrhenius & Stefánsson 2025 p. 845). Chain arguments in the superiority literature grow populations by Addition, Separability or Scaling, not by alternating Quantity and Egalitarian Dominance. Arrhenius's derivation of Restricted Quality Addition (2011 Lemma 1.3) contains an error (Thomas 2018 fn. 4); Thornley 2022 fn. 7 repairs Weak Quality Addition by making its witnesses independent of the background."
 open = "The completeness-free result: the Quantity/Egalitarian Dominance bounce that grows the low population past the size threshold without full comparability, found in none of the works checked. The corollary (Egalitarian Dominance, GNEP, Quantity, 2009 Weak Quality Addition) holds for Weak Quality Addition in Thornley's repaired form, which is the ladder's encoding; the source's form inherits the Lemma 1.3 gap. Not read: Arrhenius's forthcoming book, Arrhenius 2016 (Theoria), Jensen 2008/2020, Handfield & Rabinowicz 2018, Arrhenius & Rabinowicz 2005."
@@ -688,6 +810,7 @@ open = "The completeness-free result: the Quantity/Egalitarian Dominance bounce 
 result = "P14"
 ledger = ["P14-gnep-theorem-3"]
 verdict = "partial"
+directional = false
 sources = ["arrhenius-2000-thesis", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "thomas-2018-possibilities", "thornley-2022-prospect"]
 known = "Thesis Theorem 3 uses Egalitarian Dominance, Inequality Aversion, Non-Extreme Priority, Non-Sadism and Weak Quality Addition (§10.8, pp. 163–165). Thesis Theorem 4 and the 2009/2011 theorems instead use Non-Elitism, GNEP and Weak Non-Sadism, deriving β/δ before a Restricted Quality Addition cycle (thesis §10.10, pp. 167–180; 2009 pp. 30–36; 2011 pp. 9–22). Thomas identifies the 2011 Lemma 1.3 derivation error (2018 fn. 4); Thornley repairs the Weak Quality Addition witness order (2022 fn. 7)."
 open = "No checked source states P14's direct Inequality Aversion + GNEP + Weak Non-Sadism cycle, raising negative lives with GNEP instead of deriving δ or invoking the 2009 Lemma 3. The 2009 variant holds for the repaired Weak Quality Addition witness order (negative level and count fixed before any background), not the source's background-first order. Whether the direct combination is independently published remains open; the forthcoming Arrhenius book, Arrhenius 2016 and the Oxford Handbook chapter were not checked."
@@ -696,6 +819,7 @@ open = "No checked source states P14's direct Inequality Aversion + GNEP + Weak 
 result = "P16"
 ledger = ["P16-top-gnep-ne-and-ia"]
 verdict = "partial"
+directional = false
 sources = ["arrhenius-2000-thesis", "arrhenius-2003-vrc", "arrhenius-2009-one-more", "arrhenius-2011-impossibility", "thomas-2018-possibilities", "thornley-2022-prospect"]
 known = "Thesis Theorem 2 (§10.6, pp. 159–161) uses unrestricted Quality with Inequality Aversion and Dominance Addition, not 2009 Weak Quality Addition. Thesis Theorem 4 (§10.10, pp. 167–180), the 2003 theorem (pp. 5–13), and the 2009/2011 sixth-theorem proofs use Non-Elitism and GNEP, but close via Weak Non-Sadism or VRC avoidance rather than this Dominance Addition cycle. The 2018 critique (fn. 4) identifies an error in deriving Restricted Quality Addition in the 2011 proof; the 2022 critique (fn. 7) explains that the stronger uniform Weak Quality Addition witness order is needed."
 open = "No checked primary source states the unconditional Egalitarian Dominance, GNEP, repaired 2009 Weak Quality Addition, Inequality Aversion and Dominance Addition contradiction or its direct Non-Elitism variants on a top-witness ladder. The finite-ladder result is proved for the repaired uniform Weak Quality Addition reading, not the published background-first existential order. Independent publication of the precise combination remains unchecked."
@@ -704,14 +828,22 @@ open = "No checked primary source states the unconditional Egalitarian Dominance
 result = "P18"
 ledger = ["P18-vrc-primitive-control-and-bounded-search"]
 verdict = "partial"
+directional = true
 sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "arrhenius-2001-osterberg", "thomas-2016-reconstructing", "thomas-2018-possibilities"]
 known = "The primitive chosen-witness control is a re-expansion of published material, not a new result: 2003 Lemma 1.1 (n Non-Elitism applications give Condition α with m = n·p) and Lemma 1.2 (r = x−y applications of α with m_i ≥ f(m_{i−1}) give Condition β) on pp. 174–177, and thesis Lemma 5.2.1 (r = 3−z GNEP applications at W_{z+(i−1)}, χ's n = Σ n_i) and Lemma 5.2.2 (m copies of χ, so δ's n = m·n_χ) on pp. 173–177, which is why the control's β run has 35 Non-Elitism edges at n = 5 and its δ run exactly four GNEP edges at z = −1, m = 1 with δ's n = 4. The project records the same contractions once as the realizations non-elitism-to-beta and gnep-to-delta (D-011, D-017). Arrhenius 2001 (Österberg volume) is the published source for the Non-Elitism and GNEP lemma proofs the 2003 paper cites. Thomas 2016 (pp. 4–5, 10) notes only that the negative-form Dominance Addition yields 'not at least as good'."
 open = "No checked source states a strengthened 2003 theorem. Ranged Non-Elitism (thesis p. 166 restricts D to R(y, x)) and the thesis not-worse Dominance Addition (p. 159, C perfectly equal at one positive level) appear together with GNEP and VRC avoidance in none of the works read. The P18 primitive control and its two-cap search are a finite fixed-witness diagnostic: a chosen-witness expansion, a bounded SAT/UNSAT table, and an absent cycle are not consistency or impossibility evidence for the unrestricted conditions, so Q-011 stays open. Outstanding: the forthcoming book, Arrhenius 2016, Jensen 2008/2020, Handfield & Rabinowicz 2018, and Arrhenius & Rabinowicz 2005."
+[[collisions.comparisons]]
+source_claim = "weak-da-vrc-2016"
+project_formula = "X ⪰ Y"
+relationship = "contradicts"
+premises_match = false
+premise_comparison = "The source's unrestricted GNE and weaker DA prove ¬(high ⪰ negative+low) at matched finite-chain relata. P18 tests altered DA and/or ranged NE at chosen witnesses, with no all-witness result; the source does not license that broader verdict."
 
 [[collisions]]
 result = "P20"
 ledger = ["P20-vrc-dual-routes"]
 verdict = "partial"
+directional = false
 sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "arrhenius-2001-osterberg"]
 known = "The original five-condition impossibility is the published 2003 theorem. Its Non-Elitism-to-beta and GNEP-to-delta lemma chains, also present in the thesis and 2001 source, supply the primitive steps used by the chosen-witness expansions. A 23-edge contradiction at one legal witness, an alternative 82-edge expansion, and exclusions of specified model families are narrower claims than a strengthened theorem; none establishes that every source witness closes."
 open = "The checked works do not state the three 2003 weakenings with ranged Non-Elitism and/or thesis not-worse Dominance Addition together. No source-general contradiction and no source-general model is established at this phase's witnesses and model families; the both-weakened variant later has a finite-ladder all-size model (P21) at a different legal witness, where GNEP's high floor is one level higher than in the phase-17/18/20 constructions. No novelty claim is made for the fixed-witness or family-specific results. The unchecked sources listed in the P18 verdict remain outstanding."
@@ -720,6 +852,106 @@ open = "The checked works do not state the three 2003 weakenings with ranged Non
 result = "P21"
 ledger = ["P21-least-preorder-both-weakened", "P21-integer-chain-both-weakened"]
 verdict = "partial"
+directional = true
 sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "thomas-2016-reconstructing", "thomas-2018-possibilities", "thornley-2022-prospect", "moreno-2025-prudence", "cato-2025-acyclic", "francis-2026-repugnance"]
-known = "The original five-condition impossibility is the published 2003 theorem. The thesis gives the ranged-background Non-Elitism and N-shaped not-worse Dominance Addition readings used here; its Fourth Theorem has different premises, Weak Non-Sadism and Weak Quality Addition, and does not include Dominance Addition. Thomas 2016 distinguishes the weaker DA and, with unrestricted GNE, derives low not-at-least-as-good as high: this is not the negation of the 2003 avoidance requirement high at-least-as-good as low in an incomplete ordering. Thomas 2018's total lexic utilitarianism escapes the fifth theorem by dropping Small Steps on an infinite welfare order. Cato 2025 constructs an acyclic choice model for the Mere Addition Paradox; Francis 2026 proves a different additive impossibility. None of these checked works gives the exact P21 integer-chain least-preorder model."
+known = "The original five-condition impossibility is the published 2003 theorem. The thesis gives the ranged-background Non-Elitism and N-shaped not-worse Dominance Addition readings used here; its Fourth Theorem has different premises, Weak Non-Sadism and Weak Quality Addition, and does not include Dominance Addition. The 2016 reconstruction distinguishes the weaker DA and, with unrestricted-background General Non-Elitism, derives that high is not at least as good as negative-plus-positive: this contradicts 2003 VRC avoidance, but not P21's both-weakened set, whose Non-Elitism is ranged. The 2018 total lexic utilitarianism escapes the fifth theorem by dropping Small Steps on an infinite welfare order. The 2025 acyclic choice model for the Mere Addition Paradox and the 2026 additive impossibility have different premises. None of these checked works gives the exact P21 integer-chain least-preorder model."
 open = "P21 realizes the both-weakened conditions on every finite multiset, including the empty population, over one source-permitted unbounded integer welfare chain. It does not extend to arbitrary richer welfare quasi-orders with off-chain levels, imply a model for either singly weakened set, or guarantee that the chosen W_-1 captures an adequate 'very negative' life. The model uses the transitive-closure method already in D-019; novelty of the exact conjunction remains unchecked. Full texts of Jensen 2008/2020, Handfield and Rabinowicz 2018, Arrhenius and Rabinowicz 2005, and the later Arrhenius book were not obtained; independent publication of an equivalent result remains unchecked."
+[[collisions.comparisons]]
+source_claim = "weak-da-vrc-2016"
+project_formula = "X ⪰ Y"
+relationship = "contradicts"
+premises_match = false
+premise_comparison = "Both use VRC avoidance high ⪰ negative+low. The source's homogeneous single-level DA step fits thesis DA, but its derivation requires unrestricted-background GNE; P21 has ranged NE and models one full-integer chain, so the p. 10 conclusion cannot be inferred from P21's premises."
+
+[[collisions]]
+result = "P22"
+ledger = ["P22-complete-shape-branch-cycles", "P22-fixed-witness-source-cycle-controls"]
+verdict = "partial"
+directional = false
+sources = ["arrhenius-2000-ep", "arrhenius-1999-weak-ordering", "arrhenius-2000-thesis", "arrhenius-2003-vrc"]
+known = "The 2000 theorem uses completeness to resolve its Addition fork. The 1999 and thesis quasi-ordering proofs give the two reviewed P8 strict-cycle controls; the 2003 theorem supplies P18's primitive expansion. The fixed-branch strict-cycle criterion is the standard difference-constraint criterion, not a new population-ethics theorem."
+open = "The exact abstract decision and fixed-witness graph converse do not settle source existential witnesses or realize every abstract obstruction as a population cycle. Support SCCs forget counts. No finite parameterized family of all multi-fork minimal cores is claimed."
+
+[[collisions]]
+result = "P23"
+ledger = ["P23-vrc-corner-probes", "P23-ranged-ne-all-size-model", "P23-not-worse-da-fixed-witness-obstruction"]
+verdict = "partial"
+directional = true
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "arrhenius-2001-osterberg", "thomas-2016-reconstructing", "thomas-2018-possibilities"]
+known = "The 2003 theorem excludes the original five-condition conjunction. The thesis supplies ranged Non-Elitism and N-shaped not-worse Dominance Addition. Thomas distinguishes negative DA from positive DA and shows a different total-lexic escape by dropping Small Steps. P20 already gives chosen-witness contradictions for both singly weakened sets at another witness."
+open = "P23 establishes the ranged-NE model on a one-sided chain and a contradiction at one unrestricted-NE/not-worse-DA witness. P26 later proves that latter conjunction impossible for every legal indexed-chain witness; P27 extends the ranged-NE model to the full bi-integer chain. Independent publication of the exact model is unchecked; no richer off-chain welfare quasi-order is represented."
+[[collisions.comparisons]]
+source_claim = "weak-da-vrc-2016"
+project_formula = "X ⪰ Y"
+relationship = "contradicts"
+premises_match = false
+premise_comparison = "P23 covers two separate corners: its ranged-NE model lacks the source's unrestricted GNE, while its unrestricted-NE/not-worse-DA witness is only a chosen case. The source's homogeneous positive-addition DA step fits thesis DA, and P26 later closes every legal indexed-chain witness."
+
+[[collisions]]
+result = "P24"
+ledger = ["P24-convex-chain-restriction", "P24-off-chain-fidelity-probes"]
+verdict = "partial"
+directional = false
+sources = ["arrhenius-2000-thesis", "arrhenius-2003-vrc", "thomas-2016-reconstructing", "thomas-2018-possibilities"]
+known = "The thesis and 2003 sources use a chosen consecutive indexed chain; their life quasi-order can include incommensurable levels. P21's both-weakened full-integer-chain model and the standard relation-restriction argument imply the P24 indexed-subchain corollary. The published 2003 conjunction remains impossible."
+open = "An inserted level with the old adjacent names fixed conflicts with consecutiveness. The primary-source readings do not fix a new indexing or settle how universal clauses apply to incomparable off-chain levels and mixed populations. No primitive closure or source-general representation iff is claimed. Independent publication of the exact P21/P23 models remains unchecked."
+
+[[collisions]]
+result = "P25"
+ledger = ["P25-equal-size-two-source-lemma", "P25-p23-scanner-correction", "P25-q011-bounded-witness-routes", "P25-ne-n2-least-preorder-candidate"]
+verdict = "partial"
+directional = true
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "arrhenius-2001-osterberg", "thomas-2016-reconstructing", "thomas-2018-possibilities"]
+known = "The 2003 theorem (pp. 171–177) assumes positive DA and proves the original five-condition impossibility using derived beta/delta; its NE has unrestricted backgrounds. Thesis DA (p. 159) is N-shaped with a single positive addition level, unlike 2003 positive DA, and the thesis's NE (p. 166) has ranged backgrounds. The published 2001 chain (pp. 33, 41–43) uses Weak Non-Sadism and Weak Quality Addition, not VRC avoidance plus DA. The 2016 reconstruction (p. 10, after Theorem 5) states that with not-worse DA the high population is not at least as good as the negative-plus-positive population. This is the direct negation of 2003 VRC avoidance when high levels and sizes are matched; the earlier P25 note incorrectly reversed the comparison. P18/P20 already establish selected-witness contradictions; P21/P23 model different conjunctions."
+open = "P25 alone proves a conditional all-r two-source lemma and bounded absences, not the arbitrary-witness paths; P26 supplies them and refutes the ne-n2 model candidate at width 82. The scanner correction replaces invalid n>1 GNEP and mixed-high VRC diagnostics while retaining P23's historical IDs. P25's exact conditional lemma has not been matched to a primary source separately from the 2016 source-known impossibility; no priority is claimed."
+[[collisions.comparisons]]
+source_claim = "weak-da-vrc-2016"
+project_formula = "X ⪰ Y"
+relationship = "contradicts"
+premises_match = false
+premise_comparison = "P25's equal-size two-source lemma closes a contradiction only if both primitive paths reach the common target. Its finite caps do not supply arbitrary-witness paths; P26 subsequently does. The 2016 chain has unrestricted GNE and a homogeneous W_1 weak-DA step covered by thesis DA."
+
+[[collisions]]
+result = "P26"
+ledger = ["P26-source-general-two-source-chain"]
+verdict = "collides"
+directional = true
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "thomas-2016-reconstructing"]
+known = "The 2016 reconstruction's Theorem 5 and its p. 10 remark derive not(high at least as good as negative-plus-positive) under not-worse DA, unrestricted-background General Non-Elitism, ED and GNEP. With the 2003 VRC witness's negative level and counts, choose its low bag at W_3 (every legal R(1,y) contains W_3) and a high level above its floor: VRC avoidance asserts the opposite high-at-least-as-good comparison. The thesis p. 159 supplies the precise N-shaped DA."
+open = "The P26 two-source path and product-of-counts certificate are independent explicit realizations of a source-known contradiction. The primary comparison does not settle off-chain quasi-orders or priority for this exact proof architecture; no novelty claim."
+[[collisions.comparisons]]
+source_claim = "weak-da-vrc-2016"
+project_formula = "X ⪰ Y"
+relationship = "contradicts"
+premises_match = true
+premise_comparison = "On each legal indexed-chain VRC witness choose X as n high lives and Y as m negative lives plus N lives at W_3, inside R(1,y). Both have ED, unrestricted-background NE/GNE and GNEP with the required witness dependencies. The source's homogeneous W_1 DA step is an instance of thesis p. 159 N-shaped not-worse DA; P26 independently proves every-witness closure. No off-chain claim."
+
+[[collisions]]
+result = "P26-ne-n2"
+ledger = ["P26-ne-n2-least-preorder-refutation"]
+verdict = "partial"
+directional = true
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "thomas-2016-reconstructing"]
+known = "The source-known unrestricted-NE/not-worse-DA contradiction rules out every legal witness, including ne-n2. P25's acyclicity proof for its primitive closure did not establish DA."
+open = "P26 gives an audited width-82 counterexample at the fixed ne-n2 witness beyond P25's caps eight and ten; no exact width-minimality or independent publication of that certificate is claimed."
+[[collisions.comparisons]]
+source_claim = "weak-da-vrc-2016"
+project_formula = "X ⪰ Y"
+relationship = "contradicts"
+premises_match = true
+premise_comparison = "The ne-n2 selected indexed-chain witness has unrestricted NE and fits the source's finite displayed chain when its DA step is restricted to equal W_1 additions as in thesis p. 159. This does not claim the source publishes P26's exact width-82 certificate or its minimality."
+
+[[collisions]]
+result = "P27"
+ledger = ["P27-ranged-ne-full-integer-model"]
+verdict = "partial"
+directional = true
+sources = ["arrhenius-2003-vrc", "arrhenius-2000-thesis", "thomas-2016-reconstructing", "thomas-2018-possibilities"]
+known = "P23 constructs the same frozen-witness ranged-NE/positive-DA model on one-sided chains, and P21 constructs the both-weakened model on the full integer chain. The 2003 theorem assumes unrestricted NE and proves the original positive-DA conjunction impossible; the 2016 reconstruction likewise uses unrestricted-background General Non-Elitism."
+open = "P27 extends the ranged-NE/positive-DA least preorder to every finite profile on the full integer-indexed chain at one legal witness, with a post-VRC negative-persistence certificate. None of the checked primary sources states this exact model; independent publication and models on richer off-chain welfare quasi-orders remain unchecked."
+[[collisions.comparisons]]
+source_claim = "weak-da-vrc-2016"
+project_formula = "X ⪰ Y"
+relationship = "contradicts"
+premises_match = false
+premise_comparison = "P27 has ranged NE (unlike the source's unrestricted GNE) and positive 2003 DA, on a full integer chain at one witness. The 2016 weak-DA consequence cannot be transferred to this different set; P27's model makes the same VRC avoidance comparison at the corresponding profiles."

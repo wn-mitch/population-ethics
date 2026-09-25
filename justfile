@@ -39,12 +39,24 @@ research:
     uv run python -m research.p19_vrc_universal
     uv run python -m research.p20_vrc_dual_routes
     uv run python -m research.p21_least_preorder
+    uv run python -m research.p22_shape_classification
+    uv run python -m research.p22_source_lift
+    uv run python -m research.p23_vrc_corners
+    uv run python -m research.p24_domain_boundary
+    uv run python -m research.p25_q011_frontier
+    uv run python -m research.p26_q011_unrestricted
+    uv run python -m research.p27_ranged_ne_integer
     uv run python -m research.render_ledger
 
-# Regenerate docs/results.md from the ledger and literature verdicts.
+# Regenerate the results index and detail pages from the ledger and literature verdicts.
 docs:
     uv run python -m research.render_ledger
 
 # Download source PDFs into corpus/cache/ and verify their hashes.
 fetch-sources *works:
     uv run python -m research.fetch {{works}}
+
+# Export the article data bundle (research/results/article.json) and copy it into the
+# alpacasoft app when apps/arrhenius exists.
+article-data:
+    uv run python -m research.export_article

@@ -23,6 +23,32 @@ This is a solver-checked **compositional certificate** over one unbounded, discr
 
 The construction is in [`research/p21_least_preorder.py`](research/p21_least_preorder.py), with its independent [machine certificate](research/p21_machine_check.py). [Q-011](docs/questions.md) states the result and open questions; [D-023](docs/decisions.md) records its domain and empty-population choices. The source readings are in [`corpus/readings.toml`](corpus/readings.toml), and the incomplete literature comparison is in [`corpus/literature.toml`](corpus/literature.toml).
 
+## Current boundary
+
+The original 2003 five-condition set remains impossible. Of its three weakened
+indexed-chain variants:
+
+| Variant | Current result |
+| --- | --- |
+| Ranged Non-Elitism and thesis not-worse Dominance Addition | P21: an all-size model on one full integer welfare chain, at one legal witness |
+| Unrestricted Non-Elitism and thesis not-worse Dominance Addition | P26: impossible for every legal witness on the reviewed convex indexed chains; the essential comparison occurs in the 2016 reconstruction |
+| Ranged Non-Elitism and positive 2003 Dominance Addition | P27: an all-size model on one full integer welfare chain, at one legal witness |
+
+These do not classify models with additional incomparable welfare levels. Independent
+publication of the exact P21 and P27 models remains unverified. P25's bounded
+`ne-n2` model candidate was refuted by a larger audited target, not promoted
+from its finite scan.
+
+Literature comparisons are separate from solver certificates. Directional claims
+in [`corpus/literature.toml`](corpus/literature.toml) name both populations,
+transcribe the source and project relations, and compare premises; `just docs`
+checks the certificate before publishing its verdict in
+[`docs/results/named.md`](docs/results/named.md). The 2016 weak-DA conclusion is
+`¬(high ⪰ negative-plus-positive)`, not its operand reversal. That conclusion
+conflicts with VRC avoidance under unrestricted Non-Elitism, but does not refute
+P21's ranged-background model. The source's parenthetical disagrees with its
+main comparison and displayed proof chain; the certificate records that ambiguity.
+
 ## Run the checks
 
 Requires Python 3.14, `uv`, and `just`:

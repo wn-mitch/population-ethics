@@ -1,0 +1,1441 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p26_q011_unrestricted",
+  "observations": {
+    "wall_time_s": 28.9
+  },
+  "result": {
+    "certificates": [
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 3,
+          "gnep_fuel": 2,
+          "level_one_pile_before_gnep": 21,
+          "levels_at_1": 24,
+          "levels_at_b": 1,
+          "negatives_at_x": 1,
+          "product_M": 8,
+          "reservoir_K": 24,
+          "step_sizes": {
+            "3": 2,
+            "4": 2,
+            "5": 2
+          },
+          "target_width": 25
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 25,
+          "full_p19_replay_problems": [],
+          "full_p19_replay_used": true,
+          "per_chain": {
+            "high": 24,
+            "low": 24
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 27,
+          "reason": null,
+          "relata": 26
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              5,
+              3,
+              1
+            ],
+            "0": [
+              5,
+              3,
+              1
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 1,
+            "(5, 1)": 1,
+            "(6, 1)": 1
+          },
+          "vrc": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5
+          ],
+          "A_low": [
+            4
+          ],
+          "B": [
+            6
+          ],
+          "C_level": 1,
+          "C_size": 24
+        },
+        "witness": "p21-witness"
+      },
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 3,
+          "gnep_fuel": 2,
+          "level_one_pile_before_gnep": 21,
+          "levels_at_1": 24,
+          "levels_at_b": 1,
+          "negatives_at_x": 1,
+          "product_M": 8,
+          "reservoir_K": 24,
+          "step_sizes": {
+            "3": 2,
+            "4": 2,
+            "5": 2
+          },
+          "target_width": 25
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 25,
+          "full_p19_replay_problems": [],
+          "full_p19_replay_used": true,
+          "per_chain": {
+            "high": 24,
+            "low": 24
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 27,
+          "reason": null,
+          "relata": 26
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              4,
+              3,
+              1
+            ],
+            "0": [
+              4,
+              3,
+              1
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 1,
+            "(5, 1)": 1,
+            "(6, 1)": 1
+          },
+          "vrc": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5
+          ],
+          "A_low": [
+            4
+          ],
+          "B": [
+            6
+          ],
+          "C_level": 1,
+          "C_size": 24
+        },
+        "witness": "p17-p18-p20-witness"
+      },
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 3,
+          "gnep_fuel": 2,
+          "level_one_pile_before_gnep": 78,
+          "levels_at_1": 81,
+          "levels_at_b": 1,
+          "negatives_at_x": 1,
+          "product_M": 27,
+          "reservoir_K": 81,
+          "step_sizes": {
+            "3": 3,
+            "4": 3,
+            "5": 3
+          },
+          "target_width": 82
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 43,
+          "full_p19_replay_problems": null,
+          "full_p19_replay_used": false,
+          "per_chain": {
+            "high": 42,
+            "low": 42
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 45,
+          "reason": null,
+          "relata": 44
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              5,
+              3,
+              1
+            ],
+            "0": [
+              5,
+              3,
+              1
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 2,
+            "(5, 1)": 2,
+            "(6, 1)": 2
+          },
+          "vrc": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5
+          ],
+          "A_low": [
+            4
+          ],
+          "B": [
+            6
+          ],
+          "C_level": 1,
+          "C_size": 81
+        },
+        "witness": "ne-n2"
+      },
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 5,
+          "gnep_fuel": 4,
+          "level_one_pile_before_gnep": 35,
+          "levels_at_1": 40,
+          "levels_at_b": 1,
+          "negatives_at_x": 1,
+          "product_M": 8,
+          "reservoir_K": 40,
+          "step_sizes": {
+            "3": 2,
+            "4": 2,
+            "5": 2
+          },
+          "target_width": 41
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 39,
+          "full_p19_replay_problems": null,
+          "full_p19_replay_used": false,
+          "per_chain": {
+            "high": 38,
+            "low": 38
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 41,
+          "reason": null,
+          "relata": 40
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              5,
+              3,
+              2
+            ],
+            "0": [
+              5,
+              3,
+              2
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 1,
+            "(5, 1)": 1,
+            "(6, 1)": 1
+          },
+          "vrc": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5
+          ],
+          "A_low": [
+            4
+          ],
+          "B": [
+            6
+          ],
+          "C_level": 1,
+          "C_size": 40
+        },
+        "witness": "gnep-n2"
+      },
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 5,
+          "gnep_fuel": 4,
+          "level_one_pile_before_gnep": 35,
+          "levels_at_1": 41,
+          "levels_at_b": 1,
+          "negatives_at_x": 2,
+          "product_M": 8,
+          "reservoir_K": 40,
+          "step_sizes": {
+            "3": 2,
+            "4": 2,
+            "5": 2
+          },
+          "target_width": 42
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 41,
+          "full_p19_replay_problems": null,
+          "full_p19_replay_used": false,
+          "per_chain": {
+            "high": 40,
+            "low": 40
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 43,
+          "reason": null,
+          "relata": 42
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              5,
+              3,
+              1
+            ],
+            "0": [
+              5,
+              3,
+              1
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 1,
+            "(5, 1)": 1,
+            "(6, 1)": 1
+          },
+          "vrc": {
+            "m": 2,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5
+          ],
+          "A_low": [
+            4
+          ],
+          "B": [
+            6
+          ],
+          "C_level": 1,
+          "C_size": 41
+        },
+        "witness": "vrc-m2"
+      },
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 4,
+          "gnep_fuel": 2,
+          "level_one_pile_before_gnep": 28,
+          "levels_at_1": 31,
+          "levels_at_b": 2,
+          "negatives_at_x": 1,
+          "product_M": 8,
+          "reservoir_K": 32,
+          "step_sizes": {
+            "3": 2,
+            "4": 2,
+            "5": 2
+          },
+          "target_width": 33
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 32,
+          "full_p19_replay_problems": null,
+          "full_p19_replay_used": false,
+          "per_chain": {
+            "high": 31,
+            "low": 31
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 34,
+          "reason": null,
+          "relata": 33
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              5,
+              3,
+              1
+            ],
+            "0": [
+              5,
+              3,
+              1
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 1,
+            "(5, 1)": 1,
+            "(6, 1)": 1
+          },
+          "vrc": {
+            "m": 1,
+            "n": 2,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5,
+            5
+          ],
+          "A_low": [
+            4,
+            4
+          ],
+          "B": [
+            6,
+            6
+          ],
+          "C_level": 1,
+          "C_size": 31
+        },
+        "witness": "vrc-n2"
+      },
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 4,
+          "gnep_fuel": 3,
+          "level_one_pile_before_gnep": 92,
+          "levels_at_1": 96,
+          "levels_at_b": 1,
+          "negatives_at_x": 1,
+          "product_M": 24,
+          "reservoir_K": 96,
+          "step_sizes": {
+            "3": 4,
+            "4": 2,
+            "5": 3
+          },
+          "target_width": 97
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 44,
+          "full_p19_replay_problems": null,
+          "full_p19_replay_used": false,
+          "per_chain": {
+            "high": 43,
+            "low": 43
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 46,
+          "reason": null,
+          "relata": 45
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              4,
+              3,
+              1
+            ],
+            "0": [
+              5,
+              3,
+              2
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 3,
+            "(5, 1)": 1,
+            "(6, 1)": 2
+          },
+          "vrc": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5
+          ],
+          "A_low": [
+            4
+          ],
+          "B": [
+            6
+          ],
+          "C_level": 1,
+          "C_size": 96
+        },
+        "witness": "dependent-ne-gnep"
+      },
+      {
+        "construction": {
+          "b": 6,
+          "fuel_H": 3,
+          "gnep_fuel": 2,
+          "level_one_pile_before_gnep": 21,
+          "levels_at_1": 24,
+          "levels_at_b": 1,
+          "negatives_at_x": 1,
+          "product_M": 8,
+          "reservoir_K": 24,
+          "step_sizes": {
+            "3": 2,
+            "4": 2,
+            "5": 2
+          },
+          "target_width": 25
+        },
+        "edges": {
+          "all_replayed_and_audited": true,
+          "distinct": 25,
+          "full_p19_replay_problems": [],
+          "full_p19_replay_used": true,
+          "per_chain": {
+            "high": 24,
+            "low": 24
+          },
+          "problems": []
+        },
+        "finite_certificate": true,
+        "general_scope": "the count identities hold for every positive witness parameter (see symbolic_obligations), so this witness is one instantiation of a schema covering every legal witness on a convex domain containing W_0",
+        "instances": {
+          "decision_without_completeness": "unsat",
+          "dominance_addition_audited": true,
+          "egalitarian_dominance_audited": true,
+          "instances": 27,
+          "reason": null,
+          "relata": 26
+        },
+        "legal": true,
+        "not_a_general_proof": false,
+        "params": {
+          "gnep_carriers": {
+            "-1": [
+              6,
+              3,
+              1
+            ],
+            "0": [
+              4,
+              3,
+              1
+            ]
+          },
+          "ne_pairs_used": {
+            "(4, 1)": 1,
+            "(5, 1)": 1,
+            "(6, 1)": 1
+          },
+          "vrc": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "source_dependent_quantifiers": "NE at pair-dependent n(j+1, 1); GNEP at carrier-dependent (u_z, y_z, n_z); VRC fixed",
+        "target": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "target_decomposition": {
+          "A_high": [
+            5
+          ],
+          "A_low": [
+            4
+          ],
+          "B": [
+            6
+          ],
+          "C_level": 1,
+          "C_size": 24
+        },
+        "witness": "high-gnep-floor"
+      }
+    ],
+    "corner": "not-worse-da",
+    "diagnostics": {
+      "empty_branches": {
+        "source_permitted_empty_branches": [
+          "VRC low bag B = empty",
+          "thesis DA C = empty",
+          "thesis DA A = B = empty"
+        ],
+        "status": "not used and not needed by the certificate: every instance here has a nonempty VRC low bag, a nonempty, perfectly equal positive DA addition C, and nonempty A, so the result holds inside the frozen translation and therefore for the source, which keeps those instances as well; the empty branches remain a separate review-first fidelity question and no claim is made about them"
+      },
+      "p25_bounded_absence": {
+        "constructed_reservoir_K": 81,
+        "constructed_target_width": 82,
+        "interpretation": "the cap-eight and cap-ten absences were genuine absences *below the cap*; the constructed target is far wider, so absence at a cap is not evidence for a model and the P25 bounded rows stay diagnostics",
+        "not_a_general_proof": true,
+        "p25_caps": [
+          8,
+          10
+        ],
+        "p25_result": "no equal-size two-source target at either cap",
+        "witness": "ne-n2"
+      }
+    },
+    "domain": "levels -1..6 on the frozen ladder; every finite population",
+    "domain_caveat": "the chain names levels x..0, 1, 3..b, u, u+1. Legality of the witness supplies every named level on a convex domain containing W_0: VRC's range needs u, u+1, u+2, its low range needs 1, 2, 3, u >= 4 forces b >= 6, and x..0 is the interval from VRC's negative level to W_0. On the frozen W_-1..W_6 ladder b = 6 for every legal witness; on the integer chain b is finite for every witness. A non-convex or W_0-free domain is outside the ledger's level translation and is not claimed here",
+    "generator_cross_check": {
+      "gnep-n2": {
+        "agrees": true,
+        "cap": "per-edge: the edge's own largest endpoint, so no edge is cap-truncated",
+        "edges_checked": 76,
+        "missing_from_p23_scanner": []
+      },
+      "ne-n2": {
+        "agrees": true,
+        "cap": "per-edge: the edge's own largest endpoint, so no edge is cap-truncated",
+        "edges_checked": 84,
+        "missing_from_p23_scanner": []
+      },
+      "p17-p18-p20-witness": {
+        "agrees": true,
+        "cap": "per-edge: the edge's own largest endpoint, so no edge is cap-truncated",
+        "edges_checked": 48,
+        "missing_from_p23_scanner": []
+      },
+      "p21-witness": {
+        "agrees": true,
+        "cap": "per-edge: the edge's own largest endpoint, so no edge is cap-truncated",
+        "edges_checked": 48,
+        "missing_from_p23_scanner": []
+      },
+      "vrc-m2": {
+        "agrees": true,
+        "cap": "per-edge: the edge's own largest endpoint, so no edge is cap-truncated",
+        "edges_checked": 80,
+        "missing_from_p23_scanner": []
+      },
+      "vrc-n2": {
+        "agrees": true,
+        "cap": "per-edge: the edge's own largest endpoint, so no edge is cap-truncated",
+        "edges_checked": 62,
+        "missing_from_p23_scanner": []
+      }
+    },
+    "lemma": {
+      "derivation": [
+        "A_low = (W_u)^n and A_high = (W_{u+1})^n are both legal VRC sources: n lives, one level, at or above VRC's floor u.",
+        "VRC sends each of them to (W_3)^K u (W_x)^m with K = M * H, because the low bag may be any subpopulation of R(1, y) and 3 lies in R(1, y) as y >= 3.",
+        "For j = 3..b-1 the pool at W_j holds L_j = (prod_{i>=j} N_i) * H lives with N_j = n(j+1,1)+1, so N_j | L_j and the NE instance at pair (j+1, 1) empties W_j while emitting one life at W_{j+1} and n(j+1,1) lives at W_1; 2003 NE allows the arbitrary shared background, which carries the negatives.",
+        "After the NE phases the population is (W_b)^H u (W_1)^{K-H} u (W_x)^m.",
+        "For each of the m negative carriers and each z = x..0, GNEP with n_z lives at W_b as fuel (legal because b >= u_z) and low bag (W_1)^{n_z} in R(1, y_z) lifts the carrier from W_z to W_{z+1}; total fuel m * sum_z n_z = H - n, so exactly n lives remain at W_b.",
+        "Both sources therefore reach T = (W_b)^n u (W_1)^k, k = K + m - n >= 2.",
+        "T is a legal thesis-DA target: B = (W_b)^n has the same size as A_high, every A_high life is below W_b because b >= u + 2, and C = (W_1)^k is nonempty, perfectly equal and positive.",
+        "A_low and A_high both reach T, so any model has A_low >= T and A_high >= T; the DA instance with A = A_high forces not(A_high > T), which with A_high >= T gives T >= A_high, hence A_low >= A_high by transitivity.",
+        "The strict ED instance A_high > A_low is legal (equal size, every life of A_low below W_{u+1}). Contradiction."
+      ],
+      "name": "source-general two-source primitive chain",
+      "not_a_general_proof": false,
+      "statement": "For every legal corner witness W on a convex level domain containing W_0, the five corner principles have no model: the VRC sources (W_u)^n and (W_{u+1})^n both reach T = (W_b)^n u (W_1)^k with k >= 2, which is a legal thesis-Dominance-Addition target for (W_{u+1})^n.",
+      "uses": [
+        "transitivity",
+        "the definition of strict preference as weak(a, b) and not weak(b, a)",
+        "classical propositional logic"
+      ],
+      "uses_completeness": false
+    },
+    "not_a_general_proof": false,
+    "principles": [
+      "arrhenius-2003:egalitarian-dominance",
+      "arrhenius-2003:non-elitism",
+      "arrhenius-2003:general-non-extreme-priority",
+      "arrhenius-2003:vrc-avoidance",
+      "thesis:dominance-addition"
+    ],
+    "priority": {
+      "consequence": "Q-011's remaining corner is impossible and the impossibility is essentially published; the module's contribution is an independent, machine-replayed per-witness certificate and the exact count identities, not priority",
+      "not_a_priority_claim": true,
+      "overlap": "the 2016 reconstruction's Theorem 5 uses Egalitarian Dominance, its General Non-Elitism (p. 7, 'for any population R', i.e. the unrestricted 2003 background), GNEP and Dominance Addition; its remark after the theorem states that with the weaker not-worse Dominance Addition the valid conclusion is that n[A] is not at least as good as m[z] u N[3]",
+      "sources": [
+        "thomas-2016-reconstructing, printed p. 10, remark after Theorem 5",
+        "arrhenius-2003-vrc, Theorem 5 (the fifth impossibility theorem, pp. 176-177)"
+      ],
+      "verdict": "collides / source-known",
+      "why_it_contradicts_the_corner": "that conclusion is not(A_high >= B u C) for a uniform W_3 low bag, which is the negation of 2003 VRC avoidance's own A >= B u C once the low bag is that uniform W_3 bag (3 lies in R(1, y) because y >= 3), the negative level is VRC's x, the high level is at or above VRC's floor u, and the sizes are matched"
+    },
+    "proof_obligations": {
+      "discharged": [
+        "O1 divisibility and nonemptiness: every level pool L_j is exactly divisible by its step size N_j and every phase runs at least once (z3 over symbolic N_j >= 2, H >= 1, depths 1..5; the identity is depth-independent by associativity of integer products)",
+        "O2 level bookkeeping: after the NE phases only levels b, 1 and x are occupied, with H lives at b and K - H drops at W_1 (asserted from the built populations per witness)",
+        "O3 fuel: the GNEP phases consume exactly m * sum_z n_z = H - n lives at W_b, leaving n",
+        "O4 target width: k = K + m - n >= 2 for every positive witness parameter (z3)",
+        "O5 VRC source legality at both levels u and u+1, with the low bag inside R(1, y)",
+        "O6 NE pair (j+1, 1) legality at the pair-dependent existential, with drop level 1 < j",
+        "O7 GNEP carrier (z, z+1) legality with b >= u_z and the low bag inside R(1, y_z)",
+        "O8 thesis-DA target and strict-ED instance legality, independently confirmed by research.ladder.audit at every witness",
+        "O9 closure: the finite theory induced on the certificate relata is UNSAT with no completeness assumption at every witness (research.lab.Engine)"
+      ],
+      "open": [
+        "the source-permitted empty branches (VRC low bag empty, thesis-DA C empty, thesis-DA A = B = empty) are untouched; the certificate never uses them, so no claim is made about a variant that adopts them",
+        "a non-convex or W_0-free level domain lies outside the ledger's level translation; the construction is not defined there and no claim is made about it",
+        "priority/novelty is not a proof obligation; the conclusion collides with the 2016 reconstruction (thomas-2016-reconstructing p. 10) and arrhenius-2003-vrc Theorem 5, so the module makes no novelty claim"
+      ]
+    },
+    "q011_verdict": {
+      "caveats": [
+        "the source-permitted empty branches are untouched and no claim is made about them",
+        "a non-convex or W_0-free level domain lies outside the translation",
+        "no novelty or priority claim is made"
+      ],
+      "corner": "not-worse-da",
+      "not_a_general_proof": false,
+      "priority": "collides (source-known: the 2016 reconstruction thomas-2016-reconstructing p. 10; arrhenius-2003-vrc Theorem 5)",
+      "scope": "every legal existential witness on a convex level domain containing W_0, so in particular on the frozen W_-1..W_6 ladder (b = 6 for every witness legal there) and on the integer chain (b finite for every witness)",
+      "settles": "Q-011's remaining corner, unrestricted 2003 Non-Elitism with thesis not-worse Dominance Addition",
+      "verdict": "impossible"
+    },
+    "refuted_candidates": [
+      {
+        "audited_by": "certificates[ne-n2].instances.decision_without_completeness == 'unsat' and certificates[ne-n2].edges.all_replayed_and_audited",
+        "candidate": "the P25 ne-n2 least-preorder candidate is a model of the corner",
+        "counterexample": "the ne-n2 certificate reaches T = (W_6) u (W_1)^81 of width 82 from both (W_4) and (W_5); DA plus strict ED make that theory UNSAT, so the least primitive closure at ne-n2 violates thesis DA and cannot be completed to a preorder",
+        "verdict": "refuted"
+      },
+      {
+        "audited_by": "diagnostics.p25_bounded_absence plus the ne-n2 certificate",
+        "candidate": "absence of a DA target below a population cap is evidence for a model",
+        "counterexample": "the same witness's constructed target has width 82 while P25 scanned caps 8 and 10; a bounded absence below the cap is not a model, and this target is above it",
+        "verdict": "refuted"
+      },
+      {
+        "audited_by": "certificates[ne-n2].edges (the replayed VRC edge)",
+        "candidate": "the level-sum measure M(P) = sum of levels is non-increasing along every weak edge of the corner",
+        "counterexample": "VRC's own instance used by the certificate carries A_low to the reservoir with level sum 4 -> 242; VRC's low bag is unbounded in size, so the unweighted level sum rises and cannot be the missing potential",
+        "verdict": "refuted"
+      },
+      {
+        "candidate": "the P21 score I(P) = #{t <= 0} - #{t >= 5} is preserved by the corner's unrestricted Non-Elitism",
+        "counterexample": "the legal instance (-1, 4, 4) >= (-1, 1, 5) at pair (5, 1) drops the score from 1 to 0",
+        "instance_audited": true,
+        "record": {
+          "background": [
+            [
+              -1,
+              1
+            ]
+          ],
+          "left": [
+            [
+              -1,
+              1
+            ],
+            [
+              4,
+              2
+            ]
+          ],
+          "left_part": [
+            [
+              4,
+              2
+            ]
+          ],
+          "page": "172",
+          "principle": "arrhenius-2003:non-elitism",
+          "right": [
+            [
+              -1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              5,
+              1
+            ]
+          ],
+          "right_part": [
+            [
+              1,
+              1
+            ],
+            [
+              5,
+              1
+            ]
+          ],
+          "shape": "W",
+          "source": "arrhenius-2003:non-elitism",
+          "witness": {
+            "n": 1,
+            "x": 5,
+            "y": 1
+          }
+        },
+        "verdict": "refuted"
+      }
+    ],
+    "status": "inconsistent for every legal witness (impossible); priority collides",
+    "status_reason": "an explicit primitive chain is written for an arbitrary legal witness: the two VRC sources (W_u)^n and (W_{u+1})^n both reach T = (W_b)^n u (W_1)^k, which is a legal thesis-DA target for (W_{u+1})^n, so DA forces T >= (W_{u+1})^n and transitivity contradicts the strict ED instance (W_{u+1})^n > (W_u)^n",
+    "symbolic_obligations": {
+      "all_identities_refuted": true,
+      "all_phases_nonempty": true,
+      "depth_checked": 5,
+      "divisibility_and_nonemptiness": [
+        {
+          "depth": 1,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 0,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 2,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 0,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 2,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 1,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 3,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 0,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 3,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 1,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 3,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 2,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 4,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 0,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 4,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 1,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 4,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 2,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 4,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 3,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 5,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 0,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 5,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 1,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 5,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 2,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 5,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 3,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        },
+        {
+          "depth": 5,
+          "identity_refuted": true,
+          "identity_status": "unsat",
+          "index": 4,
+          "nonempty_refuted": true,
+          "nonempty_status": "unsat"
+        }
+      ],
+      "fuel_identity_refuted": true,
+      "fuel_identity_status": "unsat",
+      "fuel_positive_refuted": true,
+      "fuel_positive_status": "unsat",
+      "general_depth_argument": "prod_{j<i} N_j * prod_{j>=i} N_j = prod_j N_j by associativity and commutativity of integer multiplication for every depth, so the per-depth checks above discharge the identity for all d and the loop instances are exactly the symbolic ones",
+      "not_a_general_proof": false,
+      "target_width_refuted": true,
+      "target_width_status": "unsat"
+    },
+    "witness_quantifiers": {
+      "GNEP": "exists (u_z, y_z, n_z) > 0 per carrier z, used at z = x..0",
+      "NE": "exists n(x, y) > 0 per pair, used at n(j+1, 1); the frozen uniform n is a special case",
+      "VRC": "exists (x, u, v, y, n, m); a single fixed witness",
+      "coverage": "the construction is a function of the witness, not of one witness"
+    }
+  },
+  "result_sha256": "aeff7046275ea24f84e595c2f612ab047cb45fb173f6e2bccdc6899adf9b50e4",
+  "schema": "population-ethics.research-result/v1"
+}

@@ -1,0 +1,3075 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p25_q011_frontier",
+  "observations": {},
+  "result": {
+    "bounded_rows": [
+      {
+        "certificate": {
+          "all_edges_replayed_and_audited": true,
+          "da_audited": true,
+          "decision_without_completeness": "unsat",
+          "decomposition": {
+            "B": [
+              6
+            ],
+            "C": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "ed_audited": true,
+          "edge_count": 19,
+          "paths": {
+            "high": [
+              {
+                "background": [],
+                "left": [
+                  5
+                ],
+                "principle": "arrhenius-2003:vrc-avoidance",
+                "right": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "shape": "W",
+                "witness": {
+                  "m": 1,
+                  "n": 1,
+                  "u": 4,
+                  "v": 6,
+                  "x": -1,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "left": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 6,
+                  "y": 4
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": -1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  4,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": 0
+                }
+              }
+            ],
+            "low": [
+              {
+                "background": [],
+                "left": [
+                  4
+                ],
+                "principle": "arrhenius-2003:vrc-avoidance",
+                "right": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "shape": "W",
+                "witness": {
+                  "m": 1,
+                  "n": 1,
+                  "u": 4,
+                  "v": 6,
+                  "x": -1,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "left": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 6,
+                  "y": 4
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": -1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  4,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          "sources": [
+            [
+              4
+            ],
+            [
+              5
+            ]
+          ],
+          "target": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            6
+          ]
+        },
+        "found_path": true,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 8,
+        "source_size": 1,
+        "witness": "p21-witness"
+      },
+      {
+        "certificate": {
+          "all_edges_replayed_and_audited": true,
+          "da_audited": true,
+          "decision_without_completeness": "unsat",
+          "decomposition": {
+            "B": [
+              6
+            ],
+            "C": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "ed_audited": true,
+          "edge_count": 19,
+          "paths": {
+            "high": [
+              {
+                "background": [],
+                "left": [
+                  5
+                ],
+                "principle": "arrhenius-2003:vrc-avoidance",
+                "right": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "shape": "W",
+                "witness": {
+                  "m": 1,
+                  "n": 1,
+                  "u": 4,
+                  "v": 6,
+                  "x": -1,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "left": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 6,
+                  "y": 4
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": -1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  4,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": 0
+                }
+              }
+            ],
+            "low": [
+              {
+                "background": [],
+                "left": [
+                  4
+                ],
+                "principle": "arrhenius-2003:vrc-avoidance",
+                "right": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "shape": "W",
+                "witness": {
+                  "m": 1,
+                  "n": 1,
+                  "u": 4,
+                  "v": 6,
+                  "x": -1,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "left": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  3,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  2,
+                  2,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  3,
+                  3,
+                  3,
+                  3,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  4,
+                  4,
+                  4
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  5
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  4,
+                  4,
+                  4,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  5
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 6,
+                  "y": 4
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 3
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  3,
+                  3,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 2
+                }
+              },
+              {
+                "background": [
+                  -1,
+                  1,
+                  1,
+                  4,
+                  5,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  2,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 3,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  6
+                ],
+                "left": [
+                  -1,
+                  1,
+                  1,
+                  1,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": -1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  4,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  3,
+                  3,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 4,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  4,
+                  4,
+                  6
+                ],
+                "principle": "arrhenius-2003:non-elitism",
+                "right": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "x": 5,
+                  "y": 1
+                }
+              },
+              {
+                "background": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "left": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  5,
+                  6
+                ],
+                "principle": "arrhenius-2003:general-non-extreme-priority",
+                "right": [
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  1,
+                  6
+                ],
+                "shape": "W",
+                "witness": {
+                  "n": 1,
+                  "u": 5,
+                  "y": 3,
+                  "z": 0
+                }
+              }
+            ]
+          },
+          "sources": [
+            [
+              4
+            ],
+            [
+              5
+            ]
+          ],
+          "target": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            6
+          ]
+        },
+        "found_path": true,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 10,
+        "source_size": 1,
+        "witness": "p21-witness"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 2
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 8,
+        "source_size": 1,
+        "witness": "ne-n2"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 2
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 10,
+        "source_size": 1,
+        "witness": "ne-n2"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 2,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 8,
+        "source_size": 1,
+        "witness": "vrc-m2"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 2,
+            "n": 1,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 10,
+        "source_size": 1,
+        "witness": "vrc-m2"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 2,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 8,
+        "source_size": 1,
+        "witness": "vrc-n2"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 2,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 8,
+        "source_size": 2,
+        "witness": "vrc-n2"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 2,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 10,
+        "source_size": 1,
+        "witness": "vrc-n2"
+      },
+      {
+        "bounded_absence": "No equal-size two-source DA target in the scanned primitive closure.",
+        "found_path": false,
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "params": {
+          "general-non-extreme-priority": {
+            "n": 1,
+            "u": 5,
+            "y": 3
+          },
+          "non-elitism": {
+            "n": 1
+          },
+          "vrc-avoidance": {
+            "m": 1,
+            "n": 2,
+            "u": 4,
+            "v": 6,
+            "x": -1,
+            "y": 3
+          }
+        },
+        "population_cap": 10,
+        "source_size": 2,
+        "witness": "vrc-n2"
+      }
+    ],
+    "conditional_lemma": "For every r>=1, a<a'<b, c>0 and k>=1, paths from W_a^r and W_a'^r to T=W_b^r union W_c^k force A_low>=T and A_high>=T. Thesis DA forbids A_high>T, so T>=A_high; then A_low>=A_high contradicts strict ED A_high>A_low. No completeness is used.",
+    "da_target_audit": {
+      "equal_C": true,
+      "mixed_C_rejected": true
+    },
+    "ne_n2_least_preorder_control": {
+      "bounded_reachable_singleton_da_targets": 0,
+      "missing_model_obligation": "No all-size invariant excludes every DA-forbidden return from every source, especially arbitrarily large VRC bags; acyclicity alone does not establish thesis DA.",
+      "not_a_general_proof": true,
+      "population_cap": 10,
+      "universal_acyclicity": "Same-size ED, unrestricted NE n=2 and GNEP n=1 strictly lower P21's positive-gain potential; nonempty VRC n=1 strictly grows size; SMT inequalities and Spacer finite-path induction exclude strict cycles."
+    },
+    "not_a_general_proof": true,
+    "p23_census_correction": "P23's prior ledger ID is retained. Its GNEP n>1 edges had used only one high life and one low life; VRC n>1 had accepted mixed high sources. The regenerated P23 artifact now enumerates exact counts and perfectly equal sources. At cap eight the corrected gnep-n2 row reports bounded absence, alongside ne-n2, vrc-m2 and vrc-n2. Prior paths from the invalid generator are not evidence.",
+    "p23_singleton_control": {
+      "replayed": true,
+      "target": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        6
+      ]
+    },
+    "principles": [
+      "arrhenius-2003:egalitarian-dominance",
+      "arrhenius-2003:non-elitism",
+      "arrhenius-2003:general-non-extreme-priority",
+      "arrhenius-2003:vrc-avoidance",
+      "thesis:dominance-addition"
+    ],
+    "source_empty_branches": "VRC B=empty and thesis DA C=empty or A=B=empty remain separate fidelity questions, not scanner edges.",
+    "status": "superseded by P26",
+    "translation": "frozen nonempty VRC low bag and nonempty thesis DA addition",
+    "universal_routes": {
+      "impossibility": "P25's fixed-witness scanner did not derive an arbitrary-witness chain. P26 later constructs that chain for every legal witness.",
+      "least_preorder_ne_n2": "P25 proved acyclicity but not DA compliance; P26 refutes DA compliance with an audited width-82 target.",
+      "not_a_general_proof": true
+    }
+  },
+  "result_sha256": "5c1d52ef2d9db4ca16aaeb0bb63432b6927ec8a3af6fd0dab2a5525bc961dcf8",
+  "schema": "population-ethics.research-result/v1"
+}

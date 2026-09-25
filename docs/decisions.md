@@ -302,3 +302,27 @@ every one resolves.
   either singly weakened variant, or challenge the original 2003
   impossibility theorem. The reflexive/transitive-closure method itself was already used
   as a consistency device in D-019; no priority claim follows from this construction.
+
+## D-024. Directed literature claims require source-to-formula certificates
+
+- **Status:** settled.
+- **Sources:** `corpus/literature.toml`, `research/render_ledger.py`,
+  `corpus/readings.toml`.
+- **Decision:** each literature collision explicitly classifies whether its prior-work
+  comparison is directional. A directional claim cites a cross-read primary passage
+  with its page, short excerpt, two named populations X and Y, and a formula over
+  `⪰`, `≻` and their negations. Each result records the corresponding project
+  formula and an explicit comparison of source and project premises, including
+  background, addition form, witness dependence and domain. The renderer checks
+  polarity against all two-population quasi-order states, rejects a reversed
+  relationship, and permits `collides` only with a matched-premise certificate.
+  Source transcription and premise matching still require independent human or
+  cold-agent reading; automated formula checks cannot establish either.
+- **Consequences:** R3 is `partial`, not `collides`: the 1999 source shares M2's
+  positive comparison directions but not M1's local completeness, C1's weakened
+  Addition or the exact E&P condition set. The 2016 weak-DA remark's operative
+  conclusion is `¬(high ⪰ negative+positive)`, opposite VRC avoidance; P21 has
+  ranged NE and cannot inherit the unrestricted-background derivation. The
+  parenthetical on that source page reverses the strong VRC comparison, so the
+  certificate records this textual ambiguity. The frozen turn-12 journal's
+  reversed `¬(low ⪰ high)` paraphrase is superseded here, not edited in place.

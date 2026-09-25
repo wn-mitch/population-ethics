@@ -1,0 +1,240 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p27_ranged_ne_integer",
+  "observations": {},
+  "result": {
+    "bounded_results_are_not_proofs": true,
+    "corner": "ranged-ne",
+    "diagnostics": [
+      {
+        "audited_instances": 10533,
+        "completion_model_violations": 0,
+        "cyclic_scc_count": 0,
+        "ed_reversals": 0,
+        "edge_count": 10469,
+        "empty_population_is_isolated": true,
+        "example_ed_reversals": [],
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "population_cap": 4,
+        "reachability_nodes_used": 494,
+        "source_permitted_empty_clauses": false,
+        "vrc_images_reaching_a_negative_free_state": 0
+      },
+      {
+        "audited_instances": 24253,
+        "completion_model_violations": 0,
+        "cyclic_scc_count": 0,
+        "ed_reversals": 0,
+        "edge_count": 24189,
+        "empty_population_is_isolated": true,
+        "example_ed_reversals": [],
+        "ladder": [
+          -3,
+          6
+        ],
+        "not_a_general_proof": true,
+        "population_cap": 4,
+        "reachability_nodes_used": 1000,
+        "source_permitted_empty_clauses": false,
+        "vrc_images_reaching_a_negative_free_state": 0
+      },
+      {
+        "audited_instances": 74781,
+        "completion_model_violations": 0,
+        "cyclic_scc_count": 0,
+        "ed_reversals": 0,
+        "edge_count": 74717,
+        "empty_population_is_isolated": true,
+        "example_ed_reversals": [],
+        "ladder": [
+          -6,
+          6
+        ],
+        "not_a_general_proof": true,
+        "population_cap": 4,
+        "reachability_nodes_used": 2379,
+        "source_permitted_empty_clauses": false,
+        "vrc_images_reaching_a_negative_free_state": 0
+      },
+      {
+        "audited_instances": 24253,
+        "completion_model_violations": 0,
+        "cyclic_scc_count": 0,
+        "ed_reversals": 0,
+        "edge_count": 38819,
+        "empty_population_is_isolated": true,
+        "example_ed_reversals": [],
+        "ladder": [
+          -3,
+          6
+        ],
+        "not_a_general_proof": true,
+        "population_cap": 4,
+        "reachability_nodes_used": 1000,
+        "source_permitted_empty_clauses": true,
+        "vrc_images_reaching_a_negative_free_state": 0
+      },
+      {
+        "audited_instances": 10533,
+        "completion_model_violations": 0,
+        "cyclic_scc_count": 0,
+        "ed_reversals": 0,
+        "edge_count": 14059,
+        "empty_population_is_isolated": true,
+        "example_ed_reversals": [],
+        "ladder": [
+          -1,
+          6
+        ],
+        "not_a_general_proof": true,
+        "population_cap": 4,
+        "reachability_nodes_used": 494,
+        "source_permitted_empty_clauses": true,
+        "vrc_images_reaching_a_negative_free_state": 0
+      }
+    ],
+    "domain": {
+      "completeness": "not assumed; a partial preorder is allowed",
+      "populations": "every finite multiset of welfare levels, including the empty population",
+      "relation": "reflexive/transitive closure of the primitive weak edges; pulled back to individuated lives by welfare profile",
+      "welfare_chain": "the bi-integer indexed chain W_i for every i in Z (no minimum, no maximum)"
+    },
+    "lemmas": {
+      "negative_persistence": "L1: every population reachable from a VRC image of the frozen witness keeps N >= 1 and Psi = N - H >= 1",
+      "no_cycle": "(S): a directed cycle needs a size-increasing edge; the unique such schema is nonempty-bag VRC, whose negative-free source cannot be recovered once (L1) holds",
+      "psi_is_not_monotone": "Psi falls by one at a ranged NE step with middle -1 and y <= -2 (the exact case P23 flagged below W_-1); it never falls below 1, and Psi = 1 - H with a single negative is unreachable, which is what blocks the last-negative-removing GNEP"
+    },
+    "model": {
+      "antisymmetry": "the closure is acyclic (no directed cycle), hence a partial preorder",
+      "construction": "least reflexive/transitive closure of the primitive ED, ranged NE, GNEP, VRC and 2003 weak-DA weak edges",
+      "ed_strictness": "a strict ED edge l -> r has no return path r ->* l, since l -> r ->* l would be a cycle",
+      "extends": "the P23 one-sided-chain model now covers the whole bi-integer chain; no minimum level is needed",
+      "unbounded_below": true
+    },
+    "obstruction": null,
+    "p23_gap_addressed": {
+      "prior": "P23: the bi-integer chain is not covered because ranged NE at x = 0 with y <= -2 lowers Psi",
+      "resolution": "Psi does fall there, but the proof needs only Psi >= 1 and negative persistence; the model therefore extends below W_-1 without a minimum level"
+    },
+    "proof_obligations": {
+      "discharged": {
+        "invariant_per_schema": {
+          "all_discharged": true,
+          "checks": {
+            "egalitarian_dominance": "an ED source is perfectly equal; N >= 1 forces its level < 0, so every target life is negative and no target high exists",
+            "gnep": "z >= 0 keeps E's negatives; z = -1 erases the last negative only when E is negative-free, which forces Psi(source) = 1 - n - H(E) <= 0 and contradicts Psi >= 1",
+            "ranged_ne": "y < m and D in R(y, m+1): middle < 0 keeps N >= 1 (x = 0 lowers N by one from a source with >= 2 negative middle lives and an all-nonpositive background); middle >= 0 with a negative background forces y < 0, so every gained high brings a negative",
+            "vrc_image": "N >= 1 and Psi >= 1 for every legal low bag size (empty included)",
+            "vrc_source": "no invariant (post-VRC) state is a VRC source: z >= 4, n >= 1 gives N = 0",
+            "weak_da": "C is positive, so a negative source life lies in B; every A life is strictly below it, hence A is entirely negative with no high and Psi(A) = |A| >= 1 (no bound on Psi(source) is used)"
+          },
+          "engine": "Z3 SMT, all integer level parameters and all legal background sizes",
+          "invariant": "N = #{t<0}, H = #{t>=5}, Psi = N - H",
+          "necessity_control": "without the Psi >= 1 half, GNEP z = -1 with a negative-free background reaches a negative-free target (satisfiable control), so the hypothesis is load-bearing",
+          "schema": "p27-ranged-ne-integer/v1",
+          "witness_quantifiers_discharged": {
+            "dominance-addition-2003": "no existential; C ranges over positive bags",
+            "egalitarian-dominance": "no existential",
+            "general-non-extreme-priority": "(u, y, n) = (5, 3, 1), uniform in z",
+            "non-elitism": "n = 1 (ranged background, uniform in the frozen translation)",
+            "vrc-avoidance": "(x, u, v, y, n, m) = (-1, 4, 6, 3, 1, 1)"
+          }
+        },
+        "path_closure": {
+          "consequence": "reachable-from-a-VRC-image implies N >= 1 and Psi >= 1, so no such state is a negative-free VRC source",
+          "cycle_argument": "a closed walk returns to its start size, so it must contain a size-increasing edge; the unique size-increasing schema is VRC with a nonempty low bag, whose source is a negative-free positive singleton; after its image no VRC is applicable and (L1) keeps a negative forever, so the walk can never return to that source",
+          "engine": "Z3 Spacer constrained-Horn induction over every finite path length",
+          "not_a_general_proof": false,
+          "post_vrc_invariant_decision": "unsat",
+          "size_effects": {
+            "arrhenius-2003:dominance-addition": "decreases |P| by |C| when C nonempty, else preserves",
+            "arrhenius-2003:general-non-extreme-priority": "preserves |P|",
+            "arrhenius-2003:vrc-avoidance": "increases |P| by |B| when B nonempty, else preserves",
+            "egalitarian-dominance": "preserves |P|",
+            "thesis:non-elitism": "preserves |P|"
+          }
+        },
+        "potential_for_size_preserving_edges": {
+          "analytic": {
+            "discharged": true,
+            "empty_clause_reason": "F strictly increasing on Z: empty-C DA has termwise a_i < b_i, so Phi(A) < Phi(b); empty-B VRC sends a positive singleton to W_-1, and F(-1) < F(z) for z >= u = 4",
+            "full_chain_potential": "F(0) = 0, F(t+1) - F(t) = g(t) = 1 + 1/(1 + 2**t), 1 < g < 2 and g strictly decreasing, so F is strictly increasing on all of Z",
+            "p21_machine_certificate": {
+              "all_finite_path_lengths_checked": true,
+              "arbitrary_finite_positive_sums": true,
+              "arbitrary_finite_signed_bag_sums": true,
+              "depends_on_reviewed_source_translation": true,
+              "engine": "Z3 exact SMT and Spacer constrained-Horn induction",
+              "unbounded_ne_and_gnep_potential_gaps": true,
+              "universal_local_arithmetic_checks": true,
+              "unrestricted_ne_negative_control": true
+            },
+            "size_preserving_edges_decrease_Phi": [
+              "egalitarian-dominance",
+              "thesis:non-elitism",
+              "arrhenius-2003:general-non-extreme-priority",
+              "arrhenius-2003:vrc-avoidance with B empty",
+              "arrhenius-2003:dominance-addition with C empty"
+            ]
+          },
+          "window_diagnostics": {
+            "exact_full_chain_F": {
+              "checks": {
+                "da_empty_c": 492870,
+                "vrc_empty_b": 9
+              },
+              "levels": [
+                -12,
+                12
+              ]
+            },
+            "not_a_general_proof": true
+          }
+        }
+      },
+      "open": {}
+    },
+    "question": "Do ED, thesis ranged Non-Elitism, 2003 GNEP, 2003 VRC avoidance and 2003 positive weak Dominance Addition admit an all-size model over every finite multiset on the full bi-integer indexed welfare chain W_i (i in Z)?",
+    "remaining_open_obligation": null,
+    "schema": "p27-ranged-ne-integer/v1",
+    "scope": "the model is exhibited at the frozen witness and satisfies the reviewed frozen translation; other legal witnesses and non-indexed welfare levels are not addressed",
+    "source_permitted_empty_cases": {
+      "da_empty_a_and_b": "a positive bag C is at least as good as the empty population; the empty population has only its reflexive edge, so it is a sink and closes no cycle",
+      "da_empty_c": "b -> A with |A| = |b| and every A life below every b life; size-preserving and strictly lowers Phi, and (L1) still routes a negative source through B",
+      "fidelity_branch": "handled separately from the frozen nonempty-bag translation",
+      "promotion_note": "these clauses are not folded into the frozen scanner or a promoted claim without a superseding formalization decision and an independent checker",
+      "vrc_empty_b": "z >= u descends to the negative singleton W_x; already a weak ED edge, size-preserving, and its image still satisfies (L1)"
+    },
+    "status": "full-chain model certified",
+    "witness": {
+      "general-non-extreme-priority": {
+        "n": 1,
+        "u": 5,
+        "y": 3
+      },
+      "non-elitism": {
+        "n": 1
+      },
+      "vrc-avoidance": {
+        "m": 1,
+        "n": 1,
+        "u": 4,
+        "v": 6,
+        "x": -1,
+        "y": 3
+      }
+    }
+  },
+  "result_sha256": "2a81d46a276c29fea2a1ad0a4a09cd3ebf9ee3c8cc7c28e92bf57e662d1dc012",
+  "schema": "population-ethics.research-result/v1"
+}

@@ -5,6 +5,7 @@ import random
 import re
 import tomllib
 from collections import Counter
+from copy import deepcopy
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
@@ -253,18 +254,76 @@ def test_literature_corpus_references_resolve_and_every_report_result_has_a_verd
     assert len(covered) == len(set(covered))
 
 
+def test_directional_literature_gate_rejects_reversed_relata_and_unmatched_collisions() -> None:
+    from research.render_ledger import _models, validate_literature
+
+    corpus = tomllib.loads(Path("corpus/literature.toml").read_text())
+    assert validate_literature(corpus)
+    # A not-better clause does not imply the reverse weak comparison without completeness.
+    assert (False, False) in _models("¬(X ≻ Y)")
+    assert (False, False) not in _models("Y ⪰ X")
+
+    reversed_source = deepcopy(corpus)
+    next(c for c in reversed_source["source_claims"] if c["id"] == "weak-da-vrc-2016")[
+        "formula"
+    ] = "¬(Y ⪰ X)"
+    with pytest.raises(ValueError, match="comparison is overlaps, not contradicts"):
+        validate_literature(reversed_source)
+    disagreed = deepcopy(corpus)
+    next(c for c in disagreed["source_claims"] if c["id"] == "weak-da-vrc-2016")[
+        "cross_verdict"
+    ] = "disagree"
+    with pytest.raises(ValueError, match="lacks independent agreement"):
+        validate_literature(disagreed)
+
+    missing = deepcopy(corpus)
+    next(c for c in missing["collisions"] if c["result"] == "P21")["comparisons"] = []
+    with pytest.raises(ValueError, match="P21: directional comparison needs"):
+        validate_literature(missing)
+
+    unmatched = deepcopy(corpus)
+    next(c for c in unmatched["collisions"] if c["result"] == "P26")["comparisons"][0][
+        "premises_match"
+    ] = False
+    with pytest.raises(ValueError, match="P26: collision requires"):
+        validate_literature(unmatched)
+
+    overclaimed = deepcopy(corpus)
+    next(c for c in overclaimed["collisions"] if c["result"] == "R3")["verdict"] = "collides"
+    with pytest.raises(ValueError, match="R3: collision requires"):
+        validate_literature(overclaimed)
+
+
 def test_results_register_is_rendered_from_the_current_ledger() -> None:
-    from research.render_ledger import RESULTS, render
+    from research.render_ledger import RESULTS, render_pages
 
-    assert RESULTS.read_text() == render(), "docs/results.md is stale; run `just docs`"
+    pages = render_pages()
+    detail = RESULTS.parent / "results"
+    assert set(pages) == {
+        RESULTS,
+        detail / "named.md",
+        detail / "ledger-early.md",
+        detail / "ledger-later.md",
+    }
+    for path, text in pages.items():
+        assert path.read_text() == text, f"{path} is stale; run `just docs`"
+    for path in pages:
+        if path != RESULTS:
+            assert f"(results/{path.name})" in pages[RESULTS], path
+
+    ledger = json.loads(Path("research/ledger.json").read_text())["entries"]
+    collisions = tomllib.loads(Path("corpus/literature.toml").read_text())["collisions"]
+    ledger_text = pages[detail / "ledger-early.md"] + pages[detail / "ledger-later.md"]
+    for entry in ledger:
+        row = rf"^\| {re.escape(entry['candidate_id'])} \|"
+        assert len(re.findall(row, ledger_text, flags=re.MULTILINE)) == 1
+    for collision in collisions:
+        row = rf"^\| {re.escape(collision['result'])} \|"
+        assert len(re.findall(row, pages[detail / "named.md"], flags=re.MULTILINE)) == 1
 
 
-@pytest.mark.parametrize(
-    ("path", "prefix"), [("docs/decisions.md", "D"), ("docs/questions.md", "Q")]
-)
-def test_decision_and_question_entries_are_unique_and_cite_resolvable_sources(
-    path: str, prefix: str
-) -> None:
+def test_decision_entries_are_unique_and_cite_resolvable_sources() -> None:
+    path, prefix = "docs/decisions.md", "D"
     text = Path(path).read_text()
     ids = re.findall(rf"^## ({prefix}-\d{{3}})\. ", text, flags=re.MULTILINE)
     assert ids and len(ids) == len(set(ids))
@@ -275,6 +334,44 @@ def test_decision_and_question_entries_are_unique_and_cite_resolvable_sources(
         for line in re.findall(r"^- \*\*Sources:\*\*(.*)$", entry, flags=re.MULTILINE):
             for ref in re.findall(r"`([^`]+)`", line):
                 assert ref in works or Path(ref).exists(), f"{entry[:5]} cites unknown {ref}"
+
+
+def test_question_index_links_to_unique_full_entries() -> None:
+    index = Path("docs/questions.md").read_text()
+    sections = re.split(r"^## (?=Q-\d{3}\. )", index, flags=re.MULTILINE)[1:]
+    ids = re.findall(r"^## (Q-\d{3})\. ", index, flags=re.MULTILINE)
+    assert len(ids) == len(sections)
+    assert ids == sorted(set(ids))
+    assert "- **Status:**" not in index
+
+    detail_paths = set(Path("docs/questions").glob("*.md"))
+    assert detail_paths
+    linked: set[Path] = set()
+    works = {w["id"] for w in tomllib.loads(Path("corpus/literature.toml").read_text())["works"]}
+    for question_id, section in zip(ids, sections, strict=True):
+        link = re.search(r"\]\((questions/[^)#]+\.md)#(q-\d{3})\)", section)
+        assert link and link.group(2) == question_id.lower(), question_id
+        path = Path("docs") / link.group(1)
+        assert path in detail_paths
+        linked.add(path)
+        entry = re.search(
+            rf'^<a id="{question_id.lower()}"></a>\n+## {question_id}\. '
+            r'.*?(?=^<a id="q-\d{3}"></a>|\Z)',
+            path.read_text(),
+            flags=re.MULTILINE | re.DOTALL,
+        )
+        assert entry and re.search(r"^- \*\*Status:\*\* ", entry.group(), flags=re.MULTILINE)
+        for line in re.findall(r"^- \*\*Sources:\*\*(.*)$", entry.group(), flags=re.MULTILINE):
+            for ref in re.findall(r"`([^`]+)`", line):
+                assert ref in works or Path(ref).exists(), f"{question_id} cites unknown {ref}"
+
+    assert linked == detail_paths
+    detail_ids = [
+        question_id
+        for path in detail_paths
+        for question_id in re.findall(r"^## (Q-\d{3})\. ", path.read_text(), flags=re.MULTILINE)
+    ]
+    assert sorted(detail_ids) == ids
 
 
 def test_arrhenius_1999_witness_needs_every_principle_and_no_completeness() -> None:
@@ -692,6 +789,50 @@ def test_minimal_cores_are_strict_cycles_and_fork_motifs_with_necklace_counts() 
     assert len(forks) == 36 and all(is_fork_motif(c) for c in forks)
     # A fork with one strict path only is satisfiable, so it is never reported.
     assert not is_fork_motif((4, (("I", (0, 1, 2)), ("S", (0, 1)), ("W", (2, 3)))))
+
+
+def test_shape_certificates_replay_cycles_and_equal_rank_models() -> None:
+    from research.census import rank_certificate, verify_rank_certificate
+
+    weak = (("W", (0, 1)), ("W", (1, 0)))
+    equal = rank_certificate(2, weak)
+    assert equal["decision"] == "sat" and equal["ranks"][0] == equal["ranks"][1]
+    assert verify_rank_certificate(2, weak, equal)
+
+    strict = (("S", (0, 1)), ("W", (1, 0)))
+    cycle = rank_certificate(2, strict)
+    assert cycle["decision"] == "unsat"
+    assert verify_rank_certificate(2, strict, cycle)
+    assert not verify_rank_certificate(2, strict, {**cycle, "branches": []})
+
+    fork = (("I", (0, 1, 2)), ("S", (0, 1)), ("S", (2, 1)))
+    obstruction = rank_certificate(3, fork)
+    assert obstruction["decision"] == "unsat"
+    assert {tuple(b["choices"]) for b in obstruction["branches"]} == {(0,), (1,)}
+    assert verify_rank_certificate(3, fork, obstruction)
+    assert all(rank_certificate(3, fork[:i] + fork[i + 1 :])["decision"] == "sat" for i in range(3))
+    broken = {**obstruction, "branches": [{**obstruction["branches"][0], "cycle": [0]}]}
+    assert not verify_rank_certificate(3, fork, broken)
+
+
+def test_two_fork_certificate_is_not_a_one_fork_motif() -> None:
+    from research.census import is_fork_motif, rank_certificate, verify_rank_certificate
+
+    edges = (
+        ("I", (3, 1, 2)),
+        ("I", (0, 3, 2)),
+        ("S", (0, 1)),
+        ("W", (2, 0)),
+    )
+    certificate = rank_certificate(4, edges)
+    assert certificate["decision"] == "unsat"
+    assert len(certificate["branches"]) == 4
+    assert verify_rank_certificate(4, edges, certificate)
+    assert all(
+        rank_certificate(4, edges[:i] + edges[i + 1 :])["decision"] == "sat"
+        for i in range(len(edges))
+    )
+    assert not is_fork_motif((4, edges))
 
 
 def test_cycle_census_agrees_with_marco_and_rediscovers_theorem_1() -> None:
@@ -1732,3 +1873,126 @@ def test_p21_integer_chain_certificate_covers_levels_beyond_the_finite_ladder() 
         machine_certificate(
             {**WITNESS.params, "general-non-extreme-priority": {"u": 4, "y": 3, "n": 1}}
         )
+
+
+def test_p23_ranged_ne_model_keeps_empty_clauses_and_blocks_unrestricted_ne() -> None:
+    from research.ladder import audit
+    from research.p17_vrc_boundary import GNEP, NE_2003, NE_THESIS
+    from research.p23_ranged_ne import (
+        LADDER,
+        WITNESS,
+        _edge_graph,
+        _gnep_psi_delta,
+        _psi,
+        acyclicity_certificate,
+        bounded_cycle_scan,
+    )
+    from research.schema import Instance
+
+    certificate = acyclicity_certificate()
+    assert certificate["unbounded_ne_delta_counterexample"].startswith("unsat")
+    assert certificate["unbounded_gnep_delta_counterexample"].startswith("unsat")
+    graph, _, _ = _edge_graph(3)
+    assert () in graph[(1,)]  # A = B = empty, C positive in 2003 DA
+    assert (-1,) in graph[(4,)]  # B empty in VRC
+    assert (5,) in graph[(6,)]  # C empty in 2003 DA
+    assert not graph.get(())  # The empty profile is a sink, not isolated
+    assert bounded_cycle_scan(3)["cyclic_scc_count"] == 0
+
+    unrestricted = Instance(NE_2003, ((-1, 4, 4), (-1, 1, 5)))
+    assert audit(unrestricted, LADDER, WITNESS)
+    assert not audit(Instance(NE_THESIS, unrestricted.args), LADDER, WITNESS)
+    assert _psi(unrestricted.args[0]) == 1 > _psi(unrestricted.args[1])
+    upper_gnep = Instance(GNEP, ((5, 5), (1, 6)))
+    assert audit(upper_gnep, LADDER, WITNESS)
+    assert _gnep_psi_delta(5) == _psi(upper_gnep.args[1]) - _psi(upper_gnep.args[0]) == 1
+
+
+def test_p23_scanner_respects_gnep_count_and_equal_vrc_source() -> None:
+    from research.ladder import Witness, audit
+    from research.p17_vrc_boundary import GNEP, VRC
+    from research.p21_least_preorder import LADDER
+    from research.p23_not_worse_da import CENSUS_WITNESSES, Schema, edges_from
+    from research.schema import Instance
+
+    params = dict(CENSUS_WITNESSES[3][1])
+    witness = Witness(params)
+    schema = Schema.of(witness)
+    edges = edges_from((5, 5, 5), 3, schema, ranged=False)
+    assert any(target == (1, 2, 6) and edge.principle == GNEP for target, edge in edges)
+    assert all(
+        len(edge.left) == 3 and sum(v >= 5 for v in edge.left) >= 2
+        for _, edge in edges
+        if edge.principle == GNEP
+    )
+    assert all(audit(edge.instance, LADDER, witness) for _, edge in edges)
+
+    vrc_params = {**params, "vrc-avoidance": {**params["vrc-avoidance"], "n": 2}}
+    vrc_witness = Witness(vrc_params)
+    assert not any(
+        edge.principle == VRC
+        for _, edge in edges_from((4, 5), 3, Schema.of(vrc_witness), ranged=False)
+    )
+    assert audit(Instance(VRC, ((4, 4), (-1, 1))), LADDER, vrc_witness)
+    assert any(
+        edge.principle == VRC
+        for _, edge in edges_from((4, 4), 3, Schema.of(vrc_witness), ranged=False)
+    )
+
+
+def test_p23_scanner_matches_independent_tiny_instance_generator() -> None:
+    from research.ladder import Witness, audit, domain, instances_over
+    from research.p17_vrc_boundary import ED, GNEP, NE_2003, VRC
+    from research.p21_least_preorder import LADDER
+    from research.p23_not_worse_da import CENSUS_WITNESSES, Schema, edges_from
+
+    principles = (ED, NE_2003, GNEP, VRC)
+    pops = domain(LADDER, 3)
+    for ne_n, gnep_n, vrc_n in ((1, 1, 1), (2, 1, 1), (1, 2, 2)):
+        params = dict(CENSUS_WITNESSES[3][1])
+        params["non-elitism"] = {"n": ne_n}
+        params["general-non-extreme-priority"] = {
+            **params["general-non-extreme-priority"],
+            "n": gnep_n,
+        }
+        params["vrc-avoidance"] = {**params["vrc-avoidance"], "n": vrc_n}
+        witness = Witness(params)
+        schema = Schema.of(witness)
+        for principle in principles:
+            expected = set(instances_over(pops, LADDER, witness, (principle,)))
+            actual = {
+                edge.instance
+                for pop in pops
+                for target, edge in edges_from(pop, 3, schema, ranged=False)
+                if edge.principle == principle
+            }
+            assert actual == expected, (principle, ne_n, gnep_n, vrc_n, actual ^ expected)
+            assert all(audit(instance, LADDER, witness) for instance in actual)
+
+
+def test_p25_equal_size_da_target_requires_one_positive_added_level() -> None:
+    from research.ladder import Witness, audit
+    from research.p17_vrc_boundary import DA_THESIS
+    from research.p21_least_preorder import LADDER
+    from research.p25_q011_frontier import _da_targets
+    from research.schema import Instance
+
+    source = (3, 3)
+    target = (1, 1, 6, 6)
+    mixed = (1, 2, 6, 6)
+    assert _da_targets(target, 2) == [(1, 6, 2), (6, 1, 2)]
+    assert _da_targets(mixed, 2) == []
+    assert audit(Instance(DA_THESIS, (source, target)), LADDER, Witness({}))
+    assert not audit(Instance(DA_THESIS, (source, mixed)), LADDER, Witness({}))
+
+
+def test_p23_not_worse_da_fixed_witness_core_closes_without_completeness() -> None:
+    from research.p23_not_worse_da import certificate, focused_decision
+
+    result = certificate(cap=8)
+    assert result["all_edges_replayed_clean"]
+    assert result["sources"][0] < result["sources"][-1]
+    assert result["dominance_addition_instance"]["shape"] == "N"
+    assert result["replay"]["da_instance_audited"]
+    assert result["replay"]["ed_instance_audited"]
+    assert focused_decision(result, cap=8)["decision_without_completeness"] == "unsat"
