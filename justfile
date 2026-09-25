@@ -33,6 +33,12 @@ research:
     uv run python -m research.p14_gnep_theorem_3
     uv run python -m research.p15_dominance_addition
     uv run python -m research.p16_ne_top
+    uv run python -m research.p17_vrc_boundary
+    uv run python -m research.p18_vrc_certificate
+    uv run python -m research.p19_impossibility_ranged_ne
+    uv run python -m research.p19_vrc_universal
+    uv run python -m research.p20_vrc_dual_routes
+    uv run python -m research.p21_least_preorder
     uv run python -m research.render_ledger
 
 # Regenerate docs/results.md from the ledger and literature verdicts.

@@ -1,0 +1,332 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p17_vrc_boundary",
+  "observations": {
+    "wall_time_s": 84.1
+  },
+  "result": {
+    "derived_proof_control": {
+      "audit": true,
+      "decision_without_completeness": "unsat",
+      "kind": "published derived beta/delta proof, not primitive source instances"
+    },
+    "ladder": [
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "max_lives": 6,
+    "runs": {
+      "both-weakened": {
+        "changed_source_proof_da": "source DA edge is absent: its positive addition is mixed, whereas thesis DA requires equal added lives; applicable thesis DA clauses are N-shaped, not reverse weak edges",
+        "cycle_scope": "W/S subset only; N-shaped DA excluded",
+        "cycles_max_8_weak_strict_only": [],
+        "decision_without_completeness": "sat",
+        "focused_instance_count": 3,
+        "focused_relata": [
+          [
+            -1,
+            1,
+            1,
+            1,
+            6,
+            6
+          ],
+          [
+            -1,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            3,
+            6
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
+        "instance_counts": {
+          "arrhenius-2003:egalitarian-dominance": 1,
+          "arrhenius-2003:general-non-extreme-priority": 0,
+          "arrhenius-2003:vrc-avoidance": 2,
+          "thesis:dominance-addition": 0,
+          "thesis:non-elitism": 0
+        },
+        "lost_source_proof_edge": "negative-background derived beta not available from ranged NE",
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "thesis:non-elitism",
+          "thesis:dominance-addition"
+        ],
+        "shape_counts": {
+          "N": 0,
+          "S": 1,
+          "W": 2
+        }
+      },
+      "not-worse-da": {
+        "changed_source_proof_da": "source DA edge is absent: its positive addition is mixed, whereas thesis DA requires equal added lives; applicable thesis DA clauses are N-shaped, not reverse weak edges",
+        "cycle_scope": "W/S subset only; N-shaped DA excluded",
+        "cycles_max_8_weak_strict_only": [],
+        "decision_without_completeness": "sat",
+        "focused_instance_count": 3,
+        "focused_relata": [
+          [
+            -1,
+            1,
+            1,
+            1,
+            6,
+            6
+          ],
+          [
+            -1,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            3,
+            6
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
+        "instance_counts": {
+          "arrhenius-2003:egalitarian-dominance": 1,
+          "arrhenius-2003:general-non-extreme-priority": 0,
+          "arrhenius-2003:non-elitism": 0,
+          "arrhenius-2003:vrc-avoidance": 2,
+          "thesis:dominance-addition": 0
+        },
+        "lost_source_proof_edge": null,
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2003:non-elitism",
+          "thesis:dominance-addition"
+        ],
+        "shape_counts": {
+          "N": 0,
+          "S": 1,
+          "W": 2
+        }
+      },
+      "original": {
+        "changed_source_proof_da": null,
+        "cycle_scope": "all source instances on five relata",
+        "cycles_max_8_weak_strict_only": [],
+        "decision_without_completeness": "sat",
+        "focused_instance_count": 5,
+        "focused_relata": [
+          [
+            -1,
+            1,
+            1,
+            1,
+            6,
+            6
+          ],
+          [
+            -1,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            3,
+            6
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
+        "instance_counts": {
+          "arrhenius-2003:dominance-addition": 2,
+          "arrhenius-2003:egalitarian-dominance": 1,
+          "arrhenius-2003:general-non-extreme-priority": 0,
+          "arrhenius-2003:non-elitism": 0,
+          "arrhenius-2003:vrc-avoidance": 2
+        },
+        "lost_source_proof_edge": null,
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:dominance-addition"
+        ],
+        "shape_counts": {
+          "N": 0,
+          "S": 1,
+          "W": 4
+        }
+      },
+      "ranged-ne": {
+        "changed_source_proof_da": null,
+        "cycle_scope": "all source instances on five relata",
+        "cycles_max_8_weak_strict_only": [],
+        "decision_without_completeness": "sat",
+        "focused_instance_count": 5,
+        "focused_relata": [
+          [
+            -1,
+            1,
+            1,
+            1,
+            6,
+            6
+          ],
+          [
+            -1,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            3,
+            6
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
+        "instance_counts": {
+          "arrhenius-2003:dominance-addition": 2,
+          "arrhenius-2003:egalitarian-dominance": 1,
+          "arrhenius-2003:general-non-extreme-priority": 0,
+          "arrhenius-2003:vrc-avoidance": 2,
+          "thesis:non-elitism": 0
+        },
+        "lost_source_proof_edge": "negative-background derived beta not available from ranged NE",
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "thesis:non-elitism",
+          "arrhenius-2003:dominance-addition"
+        ],
+        "shape_counts": {
+          "N": 0,
+          "S": 1,
+          "W": 4
+        }
+      }
+    },
+    "scope": "all primitive source instances on the five frozen 2003 proof populations, each at most six lives; not the full six-life domain",
+    "witness": {
+      "condition-beta": {
+        "step": 1
+      },
+      "condition-delta": {
+        "n": 1,
+        "u": 4,
+        "y": 3
+      },
+      "general-non-extreme-priority": {
+        "n": 1,
+        "u": 4,
+        "y": 3
+      },
+      "inequality-aversion": {
+        "step": 1
+      },
+      "non-elitism": {
+        "n": 1
+      },
+      "non-extreme-priority": {
+        "n": 1,
+        "x": 4,
+        "y": -1,
+        "z": 3
+      },
+      "quality": {
+        "n": 1,
+        "u": 4,
+        "v": 6,
+        "y": 3
+      },
+      "quantity": {
+        "step": 1
+      },
+      "restricted-quality-addition": {
+        "m": 1,
+        "n": 1,
+        "x": 4,
+        "y": 3
+      },
+      "vrc-avoidance": {
+        "m": 1,
+        "n": 1,
+        "u": 4,
+        "v": 6,
+        "x": -1,
+        "y": 3
+      },
+      "weak-non-sadism": {
+        "n": 1,
+        "x": -1
+      },
+      "weak-quality-addition": {
+        "n": 1,
+        "w": 6,
+        "x": 4,
+        "y": 3
+      }
+    }
+  },
+  "result_sha256": "8852a2a3e0e0f7df807e59ed200b33e5a208f98892790cc9163852f5b8b1bd0a",
+  "schema": "population-ethics.research-result/v1"
+}

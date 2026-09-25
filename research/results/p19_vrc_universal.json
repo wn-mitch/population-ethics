@@ -1,0 +1,995 @@
+{
+  "environment": {
+    "baseline_problem_id": "eef2501689a0611848bec5d91a3f2bf5e1c1e7a737b83e4b85fd766b4e2f7f53",
+    "baseline_toml_sha256": "e416c3a403e6926ba2b85bed78a6806ef832a739af2abc901778bdd599be646e",
+    "python": "3.14.3",
+    "uv_lock_sha256": "367c1c8ba0e5dc21018b6837cf3c82fbdc57483f71886afc7e0ee0e7ee721c03",
+    "z3_version": "5.1.0"
+  },
+  "name": "p19_vrc_universal",
+  "observations": {
+    "wall_time_s": 0.8
+  },
+  "result": {
+    "controls": {
+      "chain_replays_clean": true,
+      "chain_witness_problems": [],
+      "ladder": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "seven_principles": [
+        "arrhenius-2003:egalitarian-dominance",
+        "arrhenius-2003:general-non-extreme-priority",
+        "arrhenius-2003:vrc-avoidance",
+        "arrhenius-2003:non-elitism",
+        "thesis:non-elitism",
+        "arrhenius-2003:dominance-addition",
+        "thesis:dominance-addition"
+      ]
+    },
+    "mechanics": {
+      "runs": {
+        "both-weakened": {
+          "beta_form_used": "thesis:non-elitism",
+          "closure": {
+            "completeness_used": false,
+            "cycle_transitivity_constraints": 8,
+            "cycle_transitivity_decision": "unsat",
+            "decision_without_completeness": "unsat",
+            "dpll_decision": "unsat",
+            "formalization_id": "p19-mechanics/both-weakened",
+            "full_transitivity_decision": "unsat",
+            "instances": 5,
+            "relata": 5,
+            "shapes": [
+              "S",
+              "N",
+              "W",
+              "W",
+              "W"
+            ],
+            "states": [
+              "P_5",
+              "P_4",
+              "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3",
+              "P_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_6_6",
+              "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_6",
+              "P_5"
+            ],
+            "strict_edges": 1
+          },
+          "dominance_form_used": "thesis:dominance-addition",
+          "populations": {
+            "M1": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              6
+            ],
+            "M2": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              6,
+              6
+            ],
+            "M3": [
+              -1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "P1": [
+              4
+            ],
+            "P2": [
+              5
+            ]
+          },
+          "principles": [
+            "arrhenius-2003:egalitarian-dominance",
+            "arrhenius-2003:general-non-extreme-priority",
+            "arrhenius-2003:vrc-avoidance",
+            "thesis:non-elitism",
+            "thesis:dominance-addition"
+          ],
+          "source_problems": {
+            "p18_replay": {},
+            "ranged_beta_replay": []
+          },
+          "without_dominance_decision": "sat"
+        },
+        "not-worse-da": {
+          "beta_form_used": "arrhenius-2003:non-elitism",
+          "closure": {
+            "completeness_used": false,
+            "cycle_transitivity_constraints": 8,
+            "cycle_transitivity_decision": "unsat",
+            "decision_without_completeness": "unsat",
+            "dpll_decision": "unsat",
+            "formalization_id": "p19-mechanics/not-worse-da",
+            "full_transitivity_decision": "unsat",
+            "instances": 5,
+            "relata": 5,
+            "shapes": [
+              "S",
+              "N",
+              "W",
+              "W",
+              "W"
+            ],
+            "states": [
+              "P_5",
+              "P_4",
+              "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3",
+              "P_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_6_6",
+              "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_6",
+              "P_5"
+            ],
+            "strict_edges": 1
+          },
+          "dominance_form_used": "thesis:dominance-addition",
+          "populations": {
+            "M1": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              6
+            ],
+            "M2": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              6,
+              6
+            ],
+            "M3": [
+              -1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "P1": [
+              4
+            ],
+            "P2": [
+              5
+            ]
+          },
+          "principles": [
+            "arrhenius-2003:egalitarian-dominance",
+            "arrhenius-2003:general-non-extreme-priority",
+            "arrhenius-2003:vrc-avoidance",
+            "arrhenius-2003:non-elitism",
+            "thesis:dominance-addition"
+          ],
+          "source_problems": {
+            "p18_replay": {},
+            "ranged_beta_replay": []
+          },
+          "without_dominance_decision": "sat"
+        },
+        "original": {
+          "beta_form_used": "arrhenius-2003:non-elitism",
+          "closure": {
+            "completeness_used": false,
+            "cycle_transitivity_constraints": 8,
+            "cycle_transitivity_decision": "unsat",
+            "decision_without_completeness": "unsat",
+            "dpll_decision": "unsat",
+            "formalization_id": "p19-mechanics/original",
+            "full_transitivity_decision": "unsat",
+            "instances": 5,
+            "relata": 5,
+            "shapes": [
+              "S",
+              "W",
+              "W",
+              "W",
+              "W"
+            ],
+            "states": [
+              "P_5",
+              "P_4",
+              "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3",
+              "P_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_6_6",
+              "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_6",
+              "P_5"
+            ],
+            "strict_edges": 1
+          },
+          "dominance_form_used": "arrhenius-2003:dominance-addition",
+          "populations": {
+            "M1": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              6
+            ],
+            "M2": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              6,
+              6
+            ],
+            "M3": [
+              -1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "P1": [
+              4
+            ],
+            "P2": [
+              5
+            ]
+          },
+          "principles": [
+            "arrhenius-2003:egalitarian-dominance",
+            "arrhenius-2003:general-non-extreme-priority",
+            "arrhenius-2003:vrc-avoidance",
+            "arrhenius-2003:non-elitism",
+            "arrhenius-2003:dominance-addition"
+          ],
+          "source_problems": {
+            "p18_replay": {},
+            "ranged_beta_replay": []
+          },
+          "without_dominance_decision": "sat"
+        },
+        "ranged-ne": {
+          "beta_form_used": "thesis:non-elitism",
+          "closure": {
+            "completeness_used": false,
+            "cycle_transitivity_constraints": 8,
+            "cycle_transitivity_decision": "unsat",
+            "decision_without_completeness": "unsat",
+            "dpll_decision": "unsat",
+            "formalization_id": "p19-mechanics/ranged-ne",
+            "full_transitivity_decision": "unsat",
+            "instances": 5,
+            "relata": 5,
+            "shapes": [
+              "S",
+              "W",
+              "W",
+              "W",
+              "W"
+            ],
+            "states": [
+              "P_5",
+              "P_4",
+              "P_m1_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3",
+              "P_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_m1_6_6",
+              "P_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_6",
+              "P_5"
+            ],
+            "strict_edges": 1
+          },
+          "dominance_form_used": "arrhenius-2003:dominance-addition",
+          "populations": {
+            "M1": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              6
+            ],
+            "M2": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              6,
+              6
+            ],
+            "M3": [
+              -1,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "P1": [
+              4
+            ],
+            "P2": [
+              5
+            ]
+          },
+          "principles": [
+            "arrhenius-2003:egalitarian-dominance",
+            "arrhenius-2003:general-non-extreme-priority",
+            "arrhenius-2003:vrc-avoidance",
+            "thesis:non-elitism",
+            "arrhenius-2003:dominance-addition"
+          ],
+          "source_problems": {
+            "p18_replay": {},
+            "ranged_beta_replay": []
+          },
+          "without_dominance_decision": "sat"
+        }
+      },
+      "witness_problems": []
+    },
+    "models": {
+      "background_sensitive": {
+        "candidates": [
+          {
+            "background_sensitivity": "Background-sensitive: {W_1} ≻ {W_0,W_2} because its minimum is higher, but after shared D={W_-1} the minima tie and the second population has the higher maximum. The comparison reverses, so common backgrounds do not cancel.",
+            "candidate": "minimum occupied level",
+            "definition": "score(P)=(min(P), max(P), -N(P)); compare lexicographically.",
+            "driver": {
+              "bounded_scope_only": true,
+              "counterexamples_replayed": 5,
+              "fixed_population_count": 44,
+              "generated_instance_count": 461,
+              "premise_checks_failed": 0,
+              "relation_violations_by_condition": {
+                "arrhenius-2003:dominance-addition": 20,
+                "arrhenius-2003:general-non-extreme-priority": 27,
+                "thesis:dominance-addition": 20
+              },
+              "relation_violations_on_fixed_set": 67
+            },
+            "relation": "P ⪰ Q iff score(P) >= score(Q); P ≻ Q iff score(P) > score(Q).",
+            "scope": "ladder-relative, all finite sizes only where a lemma is printed",
+            "verdicts": {
+              "DA_2003": {
+                "counterexample": "DA_2003: left={W_1^1, W_3^1}, right={W_2^1}; witness={}; cap=2; ladder.audit=True; candidate scores left=(1, 3, -2), right=(2, 2, -1), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "",
+                "proof": ""
+              },
+              "DA_THESIS": {
+                "counterexample": "DA_THESIS: left={W_2^1}, right={W_1^1, W_3^1}; witness={}; cap=2; ladder.audit=True; candidate scores left=(2, 2, -1), right=(1, 3, -2), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "",
+                "proof": ""
+              },
+              "ED": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "For ED, min(A)=x while every B life is below x, so min(A)>min(B); equal size is irrelevant."
+              },
+              "GNEP": {
+                "counterexample": "GNEP: left={W_-1^1, W_4^1}, right={W_0^1, W_1^1}; witness={'u': 4, 'y': 3, 'n': 1}; cap=2; ladder.audit=True; candidate scores left=(-1, 4, -2), right=(0, 1, -2), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "At z=-1 and E empty, the left minimum is -1 while the right minimum is at least 0 for every permitted (u,y,n).",
+                "proof": ""
+              },
+              "NE_2003": {
+                "counterexample": "NE_2003: left={W_-1^1, W_0^2}, right={W_-1^2, W_1^1}; witness={'n': 1}; cap=3; ladder.audit=True; candidate scores left=(-1, 0, -3), right=(-1, 1, -3), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "The same unrestricted D={W_-1} refutes every n>=1.",
+                "proof": ""
+              },
+              "NE_THESIS": {
+                "counterexample": "NE_THESIS: left={W_-1^1, W_0^2}, right={W_-1^2, W_1^1}; witness={'n': 1}; cap=3; ladder.audit=True; candidate scores left=(-1, 0, -3), right=(-1, 1, -3), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "At (x,y)=(1,-1), D={W_-1}, the minima tie and the right has maximum 1 versus 0 on the left for every n>=1.",
+                "proof": ""
+              },
+              "VRC avoidance": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "The left has only z>=u>y>0, whereas the right contains m>0 lives at the negative level x<0; therefore min(left)>min(right), for every finite B size."
+              }
+            },
+            "weakest_five_all_proved": false
+          },
+          {
+            "background_sensitivity": "Background-sensitive: {W_1} ≻ {W_0}, but adding shared D={W_-1} reverses the comparison because their spans become 2 and 1.",
+            "candidate": "narrow-support span lex",
+            "definition": "score(P)=(-(max(P)-min(P)), max(P), min(P)); compare lexicographically.",
+            "driver": {
+              "bounded_scope_only": true,
+              "counterexamples_replayed": 3,
+              "fixed_population_count": 44,
+              "generated_instance_count": 461,
+              "premise_checks_failed": 0,
+              "relation_violations_by_condition": {
+                "arrhenius-2003:dominance-addition": 91,
+                "arrhenius-2003:general-non-extreme-priority": 38,
+                "thesis:dominance-addition": 91
+              },
+              "relation_violations_on_fixed_set": 220
+            },
+            "relation": "P ⪰ Q iff score(P) >= score(Q); P ≻ Q iff score(P) > score(Q).",
+            "scope": "ladder-relative, all finite sizes only where a lemma is printed",
+            "verdicts": {
+              "DA_2003": {
+                "counterexample": "DA_2003: left={W_0^1, W_1^1}, right={W_-1^1}; witness={}; cap=2; ladder.audit=True; candidate scores left=(-1, 1, 0), right=(0, -1, -1), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "",
+                "proof": ""
+              },
+              "DA_THESIS": {
+                "counterexample": "DA_THESIS: left={W_-1^1}, right={W_0^1, W_1^1}; witness={}; cap=2; ladder.audit=True; candidate scores left=(0, -1, -1), right=(-1, 1, 0), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "",
+                "proof": ""
+              },
+              "ED": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "A is homogeneous, hence span(A)=0. If B has more than one occupied level its span is positive; if B is homogeneous, max(A)=x>max(B)."
+              },
+              "GNEP": {
+                "counterexample": "GNEP: left={W_-1^1, W_4^1}, right={W_0^1, W_1^1}; witness={'u': 4, 'y': 3, 'n': 1}; cap=2; ladder.audit=True; candidate scores left=(-5, 4, -1), right=(-1, 1, 0), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "At z=-1 and E empty, the left span is at least u+1, while the right span is at most y<u for every permitted (u,y,n).",
+                "proof": ""
+              },
+              "NE_2003": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "The preceding extrema argument never used the range restriction on D; it therefore proves the same span inequality for every finite unrestricted background."
+              },
+              "NE_THESIS": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "Put a=x−1>y. For any finite D, max(D∪{a})<=max(D∪{x}) and min(D∪{a})>=min(D∪{y}), hence span(left)<=span(right). Equality can occur only with equal upper endpoints, so the (−span,max,min) tuple favors left. This covers every ranged background and every finite n."
+              },
+              "VRC avoidance": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "With no shared background, the left is homogeneous positive (span 0), while the right contains both a negative and a positive life (positive span); left wins."
+              }
+            },
+            "weakest_five_all_proved": false
+          },
+          {
+            "background_sensitivity": "Background-sensitive despite its first additive tier: {W_1} ≻ {W_0}, while shared D={W_6} makes both high-count 1 and max W_6, hence a tie. The max tie-break is not additive, so the whole order is not a fixed additive/lexicographic-additive order.",
+            "candidate": "high-count then maximum (cut=4)",
+            "definition": "score(P)=(N_{>=4}(P), max(P)); compare lexicographically. The first tier counts high lives; the tie-break is support-sensitive max.",
+            "driver": {
+              "bounded_scope_only": true,
+              "counterexamples_replayed": 2,
+              "fixed_population_count": 44,
+              "generated_instance_count": 461,
+              "premise_checks_failed": 0,
+              "relation_violations_by_condition": {
+                "arrhenius-2003:non-elitism": 11,
+                "thesis:non-elitism": 11
+              },
+              "relation_violations_on_fixed_set": 22
+            },
+            "relation": "P ⪰ Q iff score(P) >= score(Q); P ≻ Q iff score(P) > score(Q).",
+            "scope": "ladder-relative, all finite sizes only where a lemma is printed",
+            "verdicts": {
+              "DA_2003": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "The same high-count and maximum argument allows C to be any finite nonempty mixture of positive levels, so it proves the 2003 weak edge as well."
+              },
+              "DA_THESIS": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "Every B life is above every A life. Therefore B contributes at least as many high lives as A; if tied, max(B)>max(A), and adding positive C cannot lower either tier."
+              },
+              "ED": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "If A's high-count tier exceeds B's, A wins immediately; if tied, max(A)=x>max(B)."
+              },
+              "GNEP": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "With (u,y,n)=(4,3,1), after any shared E cancels in the high-count difference, left-minus-right is n+1[z>=4]−1[z+1>=4]>=0. It is strict except the only tie case n=1,z=3; there max(left)>=max(right) because x>=4 and B<=3. Thus the unbounded E and every finite z are covered."
+              },
+              "NE_2003": {
+                "counterexample": "NE_2003: left={W_0^2}, right={W_-1^1, W_1^1}; witness={'n': 1}; cap=2; ladder.audit=True; candidate scores left=(0, 0), right=(0, 1), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "The same unrestricted empty D refutes every n>=1.",
+                "proof": ""
+              },
+              "NE_THESIS": {
+                "counterexample": "NE_THESIS: left={W_0^2}, right={W_-1^1, W_1^1}; witness={'n': 1}; cap=2; ladder.audit=True; candidate scores left=(0, 0), right=(0, 1), so the required consequent is false",
+                "holds": false,
+                "no_witness_reason": "At (x,y)=(1,-1), D empty, both sides have zero high lives and the right maximum is 1 versus 0 on the left for every n>=1.",
+                "proof": ""
+              },
+              "VRC avoidance": {
+                "counterexample": null,
+                "holds": true,
+                "no_witness_reason": "",
+                "proof": "A contributes n high lives at z>=4; B is confined to 1..3 and C is negative, so the high-count tier strictly favors A for every finite B and m."
+              }
+            },
+            "weakest_five_all_proved": false
+          }
+        ],
+        "scope": "ladder-relative"
+      },
+      "candidates": [
+        "critical-level total utility sum(level - c)",
+        "level-count lexicographic from the top level down",
+        "count of lives at level >= u, then a secondary aggregator",
+        "thresholded sum ignoring lives below a cut",
+        "lexicographic on (count at >= u, then critical-level total)",
+        "exponential additive orders exp(level)"
+      ],
+      "counterexamples": {
+        "critical_level_total": {
+          "audited_thesis_da_instance": {
+            "args": [
+              [
+                5
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                6
+              ]
+            ],
+            "audit": true
+          },
+          "critical_level": 6,
+          "dominance_addition_scan": [
+            {
+              "A": [
+                5
+              ],
+              "A_strictly_better": true,
+              "B_union_C": [
+                1,
+                6
+              ],
+              "C_size": 1,
+              "total_A": -1,
+              "total_B_union_C": -5
+            },
+            {
+              "A": [
+                5
+              ],
+              "A_strictly_better": true,
+              "B_union_C": [
+                1,
+                1,
+                6
+              ],
+              "C_size": 2,
+              "total_A": -1,
+              "total_B_union_C": -10
+            },
+            {
+              "A": [
+                5
+              ],
+              "A_strictly_better": true,
+              "B_union_C": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                6
+              ],
+              "C_size": 8,
+              "total_A": -1,
+              "total_B_union_C": -40
+            }
+          ],
+          "verdict": "fails thesis Dominance Addition for C large enough below the critical level"
+        },
+        "level_count_lex": {
+          "non_elitism_witness_scan": [
+            {
+              "fails_non_elitism": true,
+              "left": [
+                4,
+                4
+              ],
+              "left_better": false,
+              "right": [
+                -1,
+                5
+              ],
+              "right_better": true,
+              "x": 5,
+              "y": -1
+            },
+            {
+              "fails_non_elitism": true,
+              "left": [
+                4,
+                4
+              ],
+              "left_better": false,
+              "right": [
+                1,
+                5
+              ],
+              "right_better": true,
+              "x": 5,
+              "y": 1
+            },
+            {
+              "fails_non_elitism": true,
+              "left": [
+                4,
+                4
+              ],
+              "left_better": false,
+              "right": [
+                3,
+                5
+              ],
+              "right_better": true,
+              "x": 5,
+              "y": 3
+            },
+            {
+              "fails_non_elitism": true,
+              "left": [
+                5,
+                5
+              ],
+              "left_better": false,
+              "right": [
+                -1,
+                6
+              ],
+              "right_better": true,
+              "x": 6,
+              "y": -1
+            },
+            {
+              "fails_non_elitism": true,
+              "left": [
+                5,
+                5
+              ],
+              "left_better": false,
+              "right": [
+                1,
+                6
+              ],
+              "right_better": true,
+              "x": 6,
+              "y": 1
+            },
+            {
+              "fails_non_elitism": true,
+              "left": [
+                5,
+                5
+              ],
+              "left_better": false,
+              "right": [
+                3,
+                6
+              ],
+              "right_better": true,
+              "x": 6,
+              "y": 3
+            }
+          ],
+          "verdict": "fails Non-Elitism for every pair (x, y) and every witness n"
+        },
+        "reference": "research/p19_vrc_model.py holds the six-candidate table and its checker"
+      },
+      "reference": "research/p19_vrc_model.py",
+      "tension": {
+        "consequence": "no translation-invariant lexicographic-linear order can satisfy the weakest five-condition set on this ladder; a surviving model must have background-dependent comparisons",
+        "da_positive_insensitivity": "critical-level total with the critical level above the added lives satisfies Egalitarian Dominance, Non-Elitism, GNEP and VRC avoidance but fails thesis Dominance Addition, because enough added lives below the critical level sink the side that is uniformly above",
+        "ne_mass_trade": "level-count lexicographic and the count-first orders tested satisfy Egalitarian Dominance, GNEP, VRC avoidance and both Dominance Addition forms but fail Non-Elitism for every pair (x, y), because one life at W_x outranks any number at W_{x-1}",
+        "statement": "the three requirements pull in different directions; the initial six additive or lexicographic candidates isolate individual failures",
+        "unbounded_vrc_dominance": "critical-level total at the VRC threshold and 2^level satisfy Egalitarian Dominance, both Non-Elitism forms, GNEP and both Dominance Addition forms but fail VRC avoidance, because arbitrary-size B keeps adding weight"
+      },
+      "translation_invariant": {
+        "necessary_first_tier": "unsat",
+        "proof": "DA makes all positive first-tier coefficients nonnegative; VRC's arbitrary low bag makes levels 1..3 nonpositive; NE at (4,1),(5,1),(6,1) makes levels 4..6 nonpositive. ED bounds levels 0 and -1 above by zero, while GNEP at z=0,-1 bounds both below by zero. No nonzero first functional remains.",
+        "reference": "research/p19_vrc_translation_invariant.py",
+        "scope": "all finite population sizes on W_-1..W_6; lexicographic-linear orders",
+        "without_vrc_unbounded_b": "sat"
+      },
+      "verdict": "no candidate satisfies all five conditions for all finite sizes; no candidate's failure proves inconsistency"
+    },
+    "obstruction": {
+      "bound_branch": {
+        "bound": 4,
+        "statement": "if delta's A lives are not nested in beta's A level they must lie in beta's permitted background R(z_beta, y_beta+1), so x_delta <= y_beta + 1 <= y_v + 1",
+        "why_not_supplied": "u_delta is the axiology's GNEP-derived witness level and y_v its own VRC range top; the source fixes no relation between them"
+      },
+      "independent_corroboration": {
+        "finding": "88 repaired templates obstruct with n_delta = 4*n_gnep*(m_beta+m_vrc) > n_beta, the same count tension",
+        "module": "research/p19_impossibility_ranged_ne.py"
+      },
+      "nesting_branch": {
+        "branch": "beta's A level equals delta's A level (nesting branch)",
+        "decision": "unsat",
+        "inequality": "n_b = n_d + n_v >= n_d = m_d*n_chi >= m_d = m_b + m_v > m_b > n_b",
+        "other_branch": "delta's A lives lie in beta's permitted background, requiring x_d <= y_b + 1 <= y_v + 1: an upper bound on the axiology's GNEP witness level relative to its own VRC range top, which no source condition supplies",
+        "relaxed_without_nesting": "sat"
+      }
+    },
+    "reading": {
+      "claim": "thesis Condition beta admits a negative background exactly when its own low level z is negative, because R(z, y+1) is closed at z",
+      "consequence": "phase 17/18's 'negative-background derived beta not available from ranged NE' holds at the published levels (x+2, 3, 1) only; it is not a property of the weakening",
+      "note": "beta levels (x, y, z) = (*, 3, -1): the background range R(-1, 4) is closed, so a negative level is available",
+      "published_level_choice": {
+        "admissible": false,
+        "background": [
+          [
+            -1,
+            1
+          ]
+        ],
+        "levels": {
+          "x": 6,
+          "y": 3,
+          "z": 1
+        },
+        "problems": [
+          "background levels [-1] lie outside R(1, 4)"
+        ]
+      },
+      "repaired_instance": {
+        "admissible": true,
+        "background": [
+          [
+            -1,
+            1
+          ]
+        ],
+        "levels": {
+          "x": 6,
+          "y": 3,
+          "z": -1
+        },
+        "problems": []
+      }
+    },
+    "scope": "Q-011 dual route pass; fixed-witness chain mechanics, reading correction, arithmetic obstruction, and ladder-relative class exclusion; no new source-general impossibility or model claim",
+    "verdicts": {
+      "both-weakened": {
+        "certified": [
+          "reading correction for ranged Condition beta's background",
+          "chain closure for both Dominance Addition forms without completeness",
+          "arithmetic obstruction of the nesting branch"
+        ],
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "thesis:non-elitism",
+          "thesis:dominance-addition"
+        ],
+        "route_a": "unresolved: no source-general contradiction; the repaired family is obstructed by the nesting count cycle or by the level bound on beta's background",
+        "route_b": "unresolved: no certified model; the count-sensitive classes tried fail Non-Elitism, VRC avoidance or thesis Dominance Addition, one requirement each"
+      },
+      "not-worse-da": {
+        "certified": [
+          "reading correction for ranged Condition beta's background",
+          "chain closure for both Dominance Addition forms without completeness",
+          "arithmetic obstruction of the nesting branch"
+        ],
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2003:non-elitism",
+          "thesis:dominance-addition"
+        ],
+        "route_a": "unresolved: no source-general contradiction; the repaired family is obstructed by the nesting count cycle or by the level bound on beta's background",
+        "route_b": "unresolved: no certified model; the count-sensitive classes tried fail Non-Elitism, VRC avoidance or thesis Dominance Addition, one requirement each"
+      },
+      "original": {
+        "certified": [
+          "reading correction for ranged Condition beta's background",
+          "chain closure for both Dominance Addition forms without completeness",
+          "arithmetic obstruction of the nesting branch",
+          "published 2003 theorem (external, not re-proved here)"
+        ],
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "arrhenius-2003:non-elitism",
+          "arrhenius-2003:dominance-addition"
+        ],
+        "route_a": "certified contradiction, published: the 2003 theorem is a source-general impossibility for this set; this phase's contribution is the fixed-witness chain mechanics (both Dominance Addition forms) plus the phase-18 primitive control, not an independent parameterized primitive proof",
+        "route_b": "impossible: a model of this set would contradict the published theorem"
+      },
+      "ranged-ne": {
+        "certified": [
+          "reading correction for ranged Condition beta's background",
+          "chain closure for both Dominance Addition forms without completeness",
+          "arithmetic obstruction of the nesting branch"
+        ],
+        "principles": [
+          "arrhenius-2003:egalitarian-dominance",
+          "arrhenius-2003:general-non-extreme-priority",
+          "arrhenius-2003:vrc-avoidance",
+          "thesis:non-elitism",
+          "arrhenius-2003:dominance-addition"
+        ],
+        "route_a": "unresolved: no source-general contradiction; the repaired family is obstructed by the nesting count cycle or by the level bound on beta's background",
+        "route_b": "unresolved: no certified model; the count-sensitive classes tried fail Non-Elitism, VRC avoidance or thesis Dominance Addition, one requirement each"
+      }
+    }
+  },
+  "result_sha256": "9eb8c9ecdd0183e23ed7615a3d1bdae3651f6e56e1bd799297f8e5b9213ac05a",
+  "schema": "population-ethics.research-result/v1"
+}

@@ -41,6 +41,20 @@ searches for proof skeletons, minimal cores and escapes, and compares them with 
 
 - Review first: a principle enters instance generation or the catalogue only after its reading
   passes the gate in D-010.
+- Research by candidate and independent certificate: start from a reviewed source reading and
+  freeze its quantifiers, witness dependencies, domain, and acceptance predicates before searching.
+  LLMs or solvers may propose explicit models, counterexamples, lemma chains, or search heuristics;
+  they may not change the checker to make a candidate pass. Export each candidate with enough
+  populations, witnesses, backgrounds, and relation shapes for an independent exact audit.
+- Separate discovery from promotion: a finite counterexample can refute a universal claim, but
+  finite SAT, a capped witness search, or a failed cycle search cannot prove consistency or
+  impossibility. Promote a positive model only after proving every source instance on its stated
+  domain; promote a contradiction only after checking each primitive premise and the source's
+  existential dependencies. Record finite-ladder, fixed-witness, and unrestricted claims separately.
+- Stress-test a surviving candidate outside its discovery sample and look for a compact
+  construction or proof. Compare the exact resulting claim against primary literature before
+  calling it new. A formal proof checker validates its encoding, not the fidelity of that encoding
+  to the source.
 - A judgment that two principles or lemma chains realize the same abstract edge is recorded
   once, as data, with its source and reason (D-011). Do not re-judge it per session.
 - Before adding a result to `known.CATALOGUE`, move its evidence to a phase that still verifies

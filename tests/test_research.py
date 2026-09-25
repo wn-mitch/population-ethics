@@ -713,6 +713,36 @@ def test_cycle_census_agrees_with_marco_and_rediscovers_theorem_1() -> None:
     assert min(source[i:] + source[:i] for i in range(5)) in top_down
 
 
+def test_vrc_boundary_preserves_derived_control_and_not_worse_semantics() -> None:
+    from research.ladder import audit
+    from research.p6_schema import core_constraints, name_of
+    from research.p8_catalogue import LADDER, THEOREM_2003
+    from research.p17_vrc_boundary import DA_THESIS, SOURCE_WITNESS, focused_ground
+
+    original = THEOREM_2003.instances()
+    assert focused_ground(original, sorted(THEOREM_2003.populations.values())) == "unsat"
+
+    a, bc = (1,), (1, 2)
+    not_worse = Instance(DA_THESIS, (a, bc))
+    assert audit(not_worse, LADDER, SOURCE_WITNESS)
+    names = (name_of(a), name_of(bc))
+    bg = background(names)
+    absent_reverse = ground(
+        "no-reverse",
+        "test",
+        Not(weak(names[1], names[0])),
+        "test/vrc-boundary",
+        "The reverse comparison is absent.",
+    )
+    hard = [*bg["reflexivity"], *bg["transitivity"], absent_reverse]
+    n_clause = core_constraints([not_worse], "test/vrc-boundary")
+    assert Engine(names, [*hard, *n_clause]).require().decision == "sat"
+    reverse_weak = core_constraints(
+        [Instance("arrhenius-2003:dominance-addition", (bc, a))], "test/vrc-boundary"
+    )
+    assert Engine(names, [*hard, *reverse_weak]).require().decision == "unsat"
+
+
 @pytest.mark.parametrize(
     ("n_per_m", "step", "fires"), [(0, 1, True), (2, 1, False), (0, 3, True), (1, 3, False)]
 )
@@ -1317,3 +1347,388 @@ def test_headroom_free_top_gnep_cycles_cover_ia_and_non_elitism_forms() -> None:
             assert _audit_all(steps, ladder, witness)
             assert decide_without_completeness(steps, f"test/p16/ia/{da_form}") == "unsat"
             assert steps[-1].shape == ("W" if da_form == "2003" else "N")
+
+
+def test_p18_vrc_certificate_rejects_out_of_range_negative_background_for_ranged_ne() -> None:
+    from research.ladder import audit
+    from research.p8_catalogue import LADDER
+    from research.p17_vrc_boundary import NE_2003, NE_THESIS
+    from research.p18_vrc_certificate import CONTROL_WITNESS, SOURCE_MANIFEST, Edge, verify_edge
+
+    edge = Edge(
+        NE_2003,
+        left_part=(5, 5),
+        right_part=(6, 1),
+        background=(-1, 1),
+        witness={"x": 6, "y": 1, "n": 1},
+    )
+    assert audit(edge.instance, LADDER, CONTROL_WITNESS)
+    record = edge.record()
+    assert record["source"] == SOURCE_MANIFEST[NE_2003].reading
+    assert verify_edge(record) == []
+
+    ranged = replace(edge, principle=NE_THESIS)
+    assert not audit(ranged.instance, LADDER, CONTROL_WITNESS)
+    problems = verify_edge(ranged.record())
+    assert any("ranged Non-Elitism needs D inside R(y, x)" in problem for problem in problems)
+
+
+def test_p18_vrc_certificate_rejects_mixed_positive_addition_for_thesis_da() -> None:
+    from research.ladder import audit
+    from research.p6_schema import core_constraints, name_of
+    from research.p8_catalogue import LADDER
+    from research.p17_vrc_boundary import DA_2003, DA_THESIS
+    from research.p18_vrc_certificate import CONTROL_WITNESS, Edge, verify_edge
+
+    a, bc = (1,), (2, 3, 5)
+    thesis = Edge(DA_THESIS, left_part=a, right_part=bc)
+    source = Edge(DA_2003, left_part=bc, right_part=a)
+    assert thesis.left == source.right and thesis.right == source.left
+    assert not audit(thesis.instance, LADDER, CONTROL_WITNESS)
+    assert audit(source.instance, LADDER, CONTROL_WITNESS)
+    assert any(
+        "thesis Dominance Addition needs C perfectly equal at one positive level" in problem
+        for problem in verify_edge(thesis.record())
+    )
+    assert verify_edge(source.record()) == []
+
+    equal_added = Edge(DA_THESIS, left_part=(1,), right_part=(2, 3, 3))
+    assert audit(equal_added.instance, LADDER, CONTROL_WITNESS)
+    assert verify_edge(equal_added.record()) == []
+    names = (name_of(equal_added.left), name_of(equal_added.right))
+    bg = background(names)
+    clause = core_constraints([equal_added.instance], "test/p18/vrc-certificate")
+    absent_reverse = ground(
+        "no-reverse",
+        "test",
+        Not(weak(names[1], names[0])),
+        "test/p18-vrc-certificate",
+        "The reverse comparison is absent.",
+    )
+    hard = [*bg["reflexivity"], *bg["transitivity"], absent_reverse]
+    assert Engine(names, [*hard, *clause]).require().decision == "sat"
+    reverse_weak = core_constraints(
+        [Instance(DA_2003, (equal_added.right, equal_added.left))],
+        "test/p18-vrc-certificate",
+    )
+    assert Engine(names, [*hard, *reverse_weak]).require().decision == "unsat"
+
+
+def test_p18_vrc_certificate_control_replays_and_detects_mutation() -> None:
+    from research.p17_vrc_boundary import DA_2003, ED, GNEP, NE_2003, VRC
+    from research.p18_vrc_certificate import compact_closure, control_edges, verify_edge
+
+    edges = control_edges()
+    assert len(edges) == 42
+    assert Counter(edge.principle for edge in edges) == Counter(
+        {NE_2003: 35, GNEP: 4, ED: 1, DA_2003: 1, VRC: 1}
+    )
+    records = [edge.record() for edge in edges]
+    assert all(verify_edge(record) == [] for record in records)
+    assert (
+        compact_closure([edge.instance for edge in edges], "test/p18-vrc-control")[
+            "decision_without_completeness"
+        ]
+        == "unsat"
+    )
+
+    gnep = next(edge for edge in edges if edge.principle == GNEP)
+    wrong_gnep = gnep.record()
+    wrong_gnep["witness"] = {
+        **wrong_gnep["witness"],
+        "z": wrong_gnep["witness"]["z"] + 1,
+    }
+    assert any("GNEP witness lookup" in problem for problem in verify_edge(wrong_gnep))
+
+    ne = next(edge for edge in edges if edge.principle == NE_2003)
+    wrong_ne = ne.record()
+    left_part = [list(pair) for pair in wrong_ne["left_part"]]
+    left_part[0][1] += 1
+    wrong_ne["left_part"] = left_part
+    assert any("Non-Elitism" in problem for problem in verify_edge(wrong_ne))
+
+
+def test_p19_ranged_beta_background_is_admissible_exactly_below_the_middle_level() -> None:
+    from research.p18_vrc_certificate import BETA
+    from research.p19_vrc_universal import ladder_chain, verify_beta_ranged
+
+    chain = ladder_chain()
+    repaired = chain.edges("arrhenius-2003:dominance-addition")[3].record()
+    assert repaired["principle"] == BETA
+    assert verify_beta_ranged(repaired) == []
+
+    # The published level choice (beta at W_6 > W_3 > W_1) is rejected on the background range
+    # alone: the closed lower endpoint of R(z, y + 1) is what makes a negative level admissible.
+    published = dict(repaired)
+    published.update(
+        left_part=[[3, 3]],
+        right_part=[[1, 2], [6, 1]],
+        left=[[-1, 1], [3, 3]],
+        right=[[-1, 1], [1, 2], [6, 1]],
+        background=[[-1, 1]],
+        witness={"step": 1},
+    )
+    problems = verify_beta_ranged(published)
+    assert problems == ["background levels [-1] lie outside R(1, 4)"]
+
+    # Positive control: the same body with the background inside the range replays clean, and
+    # moving the background life one level above the range top is rejected again.
+    inside = dict(published)
+    inside["background"] = [[4, 1]]
+    inside["left"] = [[3, 3], [4, 1]]
+    inside["right"] = [[1, 2], [4, 1], [6, 1]]
+    assert verify_beta_ranged(inside) == []
+    above = dict(inside)
+    above["background"] = [[5, 1]]
+    above["left"] = [[3, 3], [5, 1]]
+    above["right"] = [[1, 2], [5, 1], [6, 1]]
+    assert any("outside R(1, 4)" in problem for problem in verify_beta_ranged(above))
+
+    # A count mutation on the repaired edge is detected by the source replay.
+    mutated = dict(repaired)
+    mutated["left_part"] = [[3, 15]]
+    assert any("N(C) = m + n" in problem for problem in verify_beta_ranged(mutated))
+
+
+def test_p19_repaired_chain_closes_without_completeness_for_both_dominance_forms() -> None:
+    from research.p17_vrc_boundary import DA_2003, DA_THESIS
+    from research.p19_vrc_universal import (
+        chain_closure,
+        control_drop_dominance,
+        cycle_states,
+        ladder_chain,
+        verify_beta_ranged,
+    )
+
+    chain = ladder_chain()
+    assert chain.problems() == []
+    states = cycle_states(chain)
+    assert states[0] == states[-1] and len(states) == 6
+    for dominance in (DA_2003, DA_THESIS):
+        report = chain.report(dominance)
+        assert report["source_problems"]["p18_replay"] == {}, dominance
+        assert report["source_problems"]["ranged_beta_replay"] == [], dominance
+        closure = chain_closure(chain.instances(dominance), f"test/p19/{dominance}", states)
+        assert closure["decision_without_completeness"] == "unsat"
+        assert closure["cycle_transitivity_decision"] == "unsat"
+        assert closure["dpll_decision"] == "unsat"
+        assert closure["completeness_used"] is False
+        shapes = closure["shapes"]
+        assert shapes.count("S") == 1 and shapes[1] == ("W" if dominance == DA_2003 else "N")
+
+    # Negative control: without the dominance link the strict head edge closes nothing.
+    assert control_drop_dominance(chain, DA_THESIS) == "sat"
+    assert control_drop_dominance(chain, DA_2003) == "sat"
+    relaxed = chain.edges(DA_2003)[3]
+    assert verify_beta_ranged(relaxed.record()) == []
+
+
+def test_p19_nesting_obstruction_closes_the_chain_without_a_source_general_witness() -> None:
+    from research.p19_vrc_universal import (
+        beta_background_bound,
+        ladder_chain,
+        nesting_obstruction,
+        witness_grid,
+    )
+
+    obstruction = nesting_obstruction()
+    assert obstruction["decision"] == "unsat"
+    assert obstruction["relaxed_without_nesting"] == "sat"
+    chain = ladder_chain()
+    assert chain.n_b == chain.n_d + chain.n_v
+    assert beta_background_bound(chain) == chain.y_v + 1
+    # Every witness on the grid is in the nesting branch, and the grid is non-empty, so the
+    # obstruction's branch is the one the chain actually uses.
+    grid = witness_grid(limit=2)
+    assert grid and all(w.n_b == w.n_d + w.n_v for w in grid)
+    assert all(w.m_d >= w.m_b + w.m_v for w in grid)
+
+
+def test_p19_model_counterexamples_are_audited_instances_the_order_fails() -> None:
+    from research.ladder import audit
+    from research.p8_catalogue import LADDER
+    from research.p17_vrc_boundary import DA_THESIS, NE_THESIS
+    from research.p18_vrc_certificate import CONTROL_WITNESS
+    from research.p19_vrc_universal import level_count_lex
+    from research.schema import Instance
+
+    key = level_count_lex("lex")
+    instance = Instance(NE_THESIS, ((4, 4), (5, 3)))
+    assert audit(instance, LADDER, CONTROL_WITNESS)
+    # Level-count lexicographic: one life at W_5 beats any number of lives at W_4, so the order
+    # satisfies VRC avoidance and both Dominance Addition forms and fails Non-Elitism outright.
+    left, right = instance.args
+    assert key(right) > key(left)
+    assert key((5,)) > key((4,) * 100)
+
+    dominance = Instance(DA_THESIS, ((5,), tuple(sorted((6,) + (1,) * 8))))
+    assert audit(dominance, LADDER, CONTROL_WITNESS)
+    a, bc = dominance.args
+    critical = 6
+
+    def total(pop: tuple[int, ...]) -> int:
+        return sum(level - critical for level in pop)
+
+    # Critical-level total utility at c = 6 makes the thesis DA instance strictly worse: a single
+    # added life at W_1 already flips the comparison, which the not-worse clause forbids.
+    assert total(a) > total(bc)
+    assert total(a) > total((1, 6))
+
+
+def test_p19_background_candidates_change_comparison_with_common_lives() -> None:
+    from research.p19_vrc_model_background import HighCountMax, MinimumLevel, SpanLex
+
+    minimum = MinimumLevel()
+    assert minimum.strict((1,), (0, 2))
+    assert minimum.strict((-1, 0, 2), (-1, 1))
+
+    span = SpanLex()
+    assert span.strict((1,), (0,))
+    assert span.strict((-1, 0), (-1, 1))
+
+    high_count = HighCountMax()
+    assert high_count.strict((1,), (0,))
+    assert high_count.score((1, 6)) == high_count.score((0, 6))
+
+
+def test_p19_translation_invariant_first_tier_has_no_nonzero_solution() -> None:
+    from research.p19_vrc_translation_invariant import decide
+
+    assert decide(vrc_unbounded_b=True) == "unsat"
+    assert decide(vrc_unbounded_b=False) == "sat"
+
+
+def test_p20_direct_cycle_replays_under_both_weakenings_and_rejects_bad_vrc_bag() -> None:
+    from research.ladder import audit
+    from research.p17_vrc_boundary import DA_THESIS, NE_THESIS, VRC
+    from research.p20_direct_reservoir import (
+        LADDER,
+        build,
+        replay_chain,
+        source_witness,
+        witness_grid,
+    )
+    from research.schema import Instance
+
+    witness = witness_grid()[0]
+    report = replay_chain(witness, NE_THESIS, DA_THESIS, "test/p20-direct")
+    assert report["instances"] == 23
+    assert report["edges_replayed_clean"]
+    assert report["closure"]["decision_without_completeness"] == "unsat"
+    assert report["closure"]["completeness_used"] is False
+
+    steps, _ = build(witness, NE_THESIS, DA_THESIS)
+    assert steps[1].principle == VRC
+    vrc = steps[1].instance
+    bad_bag = tuple(5 if level == witness.bag else level for level in vrc.args[1])
+    assert not audit(Instance(VRC, (vrc.args[0], bad_bag)), LADDER, source_witness(witness))
+
+
+def test_p20_contextual_scan_includes_additions_at_the_population_cap() -> None:
+    from research.ladder import audit
+    from research.p8_catalogue import LADDER
+    from research.p20_contextual_priority import (
+        DA,
+        DESIGN_WITNESS,
+        WITNESS_PARAMS,
+        source_instances,
+    )
+    from research.schema import Instance
+
+    a = (3,)
+    b_with_c = (1, 1, 1, 1, 4)
+    assert audit(Instance(DA, (a, b_with_c)), LADDER, DESIGN_WITNESS)
+    assert ("DA", a, b_with_c, False) in source_instances(5, WITNESS_PARAMS)
+
+
+def test_p21_least_preorder_certificate_needs_ranged_ne_and_high_gnep_floor() -> None:
+    from research.ladder import audit
+    from research.p20_contextual_priority import NE
+    from research.p21_least_preorder import (
+        LADDER,
+        LEVELS,
+        WITNESS,
+        bounded_diagnostic,
+        certify_all_sizes,
+        invariant_preserved,
+        potential,
+        source_empty_cases,
+        witness_separation,
+    )
+    from research.schema import Instance
+
+    certificate = certify_all_sizes()
+    assert certificate["all_size_lemmas_checked"]
+    assert certificate["negative_ne_delta_cases"] == [
+        (0, -1),
+        (4, 1),
+        (4, 2),
+        (4, 3),
+    ]
+    assert (
+        certificate["minimum_high_to_low_potential_drop"]
+        > certificate["maximum_adjacent_potential_gain"]
+    )
+
+    # At middle level 4 and low level 1, an illicit negative background
+    # would take I from 1 to 0. Thesis NE forbids that background.
+    assert invariant_preserved(0, -1, LADDER.range(1, 5))
+    assert not invariant_preserved(0, -1, LEVELS)
+    assert not audit(Instance(NE, ((-1, 4, 4), (-1, 1, 5))), LADDER, WITNESS)
+
+    # Lowering GNEP's high floor from 5 to 4 defeats this descent certificate.
+    assert potential(4) + potential(-1) <= potential(3) + potential(0)
+    scan = bounded_diagnostic(4)
+    assert scan["ed_reversals"] == scan["da_forward_paths"] == 0
+    # The source leaves VRC's bag and DA's C unconstrained, so the empty cases are instances too.
+    assert scan["empty_vrc_bag_obligations"] == 3
+    assert scan["empty_da_c_obligations"] > 0
+    assert scan["empty_population_is_isolated"]
+    empty = source_empty_cases()
+    assert empty["vrc_empty_bag_image_invariant"] == 1
+    assert all(row["reaches_negative_level"] for row in empty["vrc_empty_bag_images"].values())
+
+    # The named lower-floor design has a genuine weak cycle; P20's other
+    # direct-route witnesses can differ in VRC ranges even when u_g=5.
+    separation = witness_separation()
+    assert separation["gnep_high_floor"] == 5
+    assert separation["phase_17_18_20_gnep_high_floor"] == 4
+    assert separation["instance_set_is_a_strict_subset_at_the_lower_floor"]
+    assert separation["extra_instances_are_all_gnep"]
+    assert separation["lower_floor_two_cycle"] == [[2, 4], [3, 3], [2, 4]]
+    assert separation["direct_route_unsat_chains_with_vrc_edge_outside_model"] > 0
+
+
+def test_p21_integer_chain_certificate_covers_levels_beyond_the_finite_ladder() -> None:
+    from research.ladder import Ladder, audit
+    from research.p20_contextual_priority import GNEP
+    from research.p21_least_preorder import (
+        WITNESS,
+        integer_certificate,
+        integer_gain,
+        integer_potential,
+        integer_window_diagnostic,
+        potential,
+    )
+    from research.p21_machine_check import machine_certificate
+    from research.schema import Instance
+
+    left, right = (-3, 5), (-2, 3)
+    assert audit(Instance(GNEP, (left, right)), Ladder(negative=3, positive=10), WITNESS)
+    assert sum(map(potential, left)) < sum(map(potential, right))
+    assert sum(map(integer_potential, left)) > sum(map(integer_potential, right))
+
+    assert 1 < integer_gain(-20) < 2
+    assert integer_gain(-20) > integer_gain(0) > integer_gain(20) > 1
+    assert integer_gain(3) + integer_gain(4) > 2
+    certificate = integer_certificate()
+    assert certificate["gain_bounds_verified_for_every_positive_real_q"]
+    assert certificate["machine_certificate"]["all_finite_path_lengths_checked"]
+    scan = integer_window_diagnostic()
+    assert scan["ladder"][0] < -1 and scan["ladder"][1] > 6
+    assert scan["empty_population_is_isolated"]
+
+    with pytest.raises(ValueError, match="only covers the stated P21 witness"):
+        machine_certificate(
+            {**WITNESS.params, "general-non-extreme-priority": {"u": 4, "y": 3, "n": 1}}
+        )
